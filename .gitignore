@@ -1,3 +1,3 @@
 /wikitext-103
 .env
-.py_cache
+.py_cachedata/wikitext-103/wiki.train.tokens
