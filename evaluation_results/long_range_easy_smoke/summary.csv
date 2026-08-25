@@ -1,0 +1,5 @@
+distance,examples,plain_accuracy,reset_accuracy,persistent_accuracy
+0,20,0.2,0.2,0.2
+1,20,0.2,0.2,0.2
+2,20,0.3,0.25,0.25
+4,20,0.3,0.3,0.3

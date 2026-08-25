@@ -1,0 +1,19 @@
+{
+  "checkpoint": "outputs/memory_gpt2_partial_ft_1k/checkpoint_best.pt",
+  "model_name": "gpt2",
+  "train_examples": 2000,
+  "validation_examples": 400,
+  "distances": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "epochs": 3,
+  "learning_rate": 5e-05,
+  "weight_decay": 0.01,
+  "max_grad_norm": 1.0,
+  "log_every": 100,
+  "seed": 42,
+  "output_dir": "outputs/synthetic_retrieval_memory_2k"
+}
