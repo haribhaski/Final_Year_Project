@@ -1,0 +1,23 @@
+{
+  "data_dir": "data/wikitext-103",
+  "output_dir": "outputs/gpt2_baseline_partial_ft_1k",
+  "model_name": "gpt2",
+  "chunk_size": 256,
+  "min_document_tokens": 128,
+  "max_train_documents": 1000,
+  "max_validation_documents": 200,
+  "epochs": 2,
+  "bptt_chunks": 4,
+  "unfreeze_last_n": 2,
+  "learning_rate": 5e-06,
+  "weight_decay": 0.01,
+  "max_grad_norm": 1.0,
+  "warmup_ratio": 0.05,
+  "log_every": 50,
+  "save_every_epoch": true,
+  "max_steps": null,
+  "seed": 42,
+  "num_workers": 0,
+  "disable_amp": false,
+  "use_amp": true
+}
