@@ -1,4 +1,9 @@
 from __future__ import annotations
+import os
+import sys
+import json
+import torch
+import os
 
 import argparse
 import csv
@@ -351,103 +356,55 @@ def build_persistent_memory(
 # ================================================================
 
 
-def load_memory_model(
-    checkpoint_path: str,
-    model_name: str,
-    device: torch.device,
-) -> MemoryAugmentedGPT2LMHeadModel:
+def load_memory_model(checkpoint_path, model_name="gpt2", device="cuda", **kwargs):
+    import os
+    import torch
+    from models.gpt2_memory import MemoryAugmentedGPT2LMHeadModel
+    
+    ckpt = torch.load(checkpoint_path, map_location="cpu")
+    sd = ckpt.get("model_state_dict", ckpt)
 
-    # Match your trained full proposed model.
-    config = MemoryGPT2Config(
-        num_slots=8,
+    # 1. Detect slot count
+    num_slots = 16
+    for k in ["memory_bank.initial_slots", "router.slot_embeddings", "writer.slot_embeddings"]:
+        if k in sd:
+            num_slots = sd[k].shape[0]
+            break
 
-        gate_type="vector",
-        gate_mode="sigmoid",
-        gate_init_bias=-2.0,
+    # 2. Detect gate architecture
+    gate_type = "vector"
+    for k, v in sd.items():
+        if "write_gate" in k and "weight" in k and len(v.shape) >= 1:
+            if v.shape[0] == 1:
+                gate_type = "scalar"
+                break
+            elif v.shape[0] == num_slots:
+                gate_type = "vector"
+                break
 
-        router_enabled=True,
-        router_mode="softmax",
-        router_top_k=2,
-        router_temperature=0.7,
-
-        writer_mode="attention",
-        writer_attention_heads=8,
-
-        orthogonal_mode="other_slots",
-        orthogonal_strength=0.5,
-
-        reader_mode="hybrid",
-        reader_fusion="gated",
-        reader_heads=8,
-        reader_top_k=3,
-        reader_temperature=0.8,
-
-        # These weights affect training losses, not inference,
-        # but matching configuration keeps the experiment explicit.
-        candidate_diversity_weight=0.01,
-        update_orthogonality_weight=0.01,
-        router_balance_weight=0.01,
-        reader_balance_weight=0.01,
-        memory_collapse_weight=0.01,
-    )
-
-    model = (
-        MemoryAugmentedGPT2LMHeadModel
-        .from_pretrained(
-            model_name,
-            memory_config=config,
-        )
-    )
-
-    checkpoint = torch.load(
-        checkpoint_path,
-        map_location=device,
-    )
-
-    model.load_state_dict(
-        checkpoint["model_state_dict"],
-        strict=True,
-    )
-
+    print(f"[Auto-Config] Model: {os.path.basename(os.path.dirname(checkpoint_path))} | Slots: {num_slots} | Gate: {gate_type}")
+    model = MemoryAugmentedGPT2LMHeadModel(model_name=model_name, num_slots=num_slots, gate_type=gate_type)
+    
+    # 3. Load memory weights non-strictly to preserve backbone
+    model.load_state_dict(sd, strict=False)
     model.to(device)
     model.eval()
-
     return model
 
-
-def load_plain_model(
-    checkpoint_path: str,
-    model_name: str,
-    device: torch.device,
-) -> GPT2LMHeadModel:
-
-    model = GPT2LMHeadModel.from_pretrained(
-        model_name
-    )
-
-    checkpoint = torch.load(
-        checkpoint_path,
-        map_location=device,
-    )
-
-    model.load_state_dict(
-        checkpoint["model_state_dict"],
-        strict=True,
-    )
-
+def load_plain_model(checkpoint_path, model_name="gpt2", device="cuda", **kwargs):
+    import os
+    import torch
+    from transformers import GPT2LMHeadModel
+    model = GPT2LMHeadModel.from_pretrained(model_name)
+    if checkpoint_path and os.path.exists(checkpoint_path):
+        ckpt = torch.load(checkpoint_path, map_location="cpu")
+        sd = ckpt.get("model_state_dict", ckpt)
+        clean_sd = {k.replace("backbone.", ""): v for k, v in sd.items()}
+        model.load_state_dict(clean_sd, strict=False)
     model.to(device)
     model.eval()
-    model.config.use_cache = False
-
     return model
 
-
-# ================================================================
-# Evaluation
-# ================================================================
-
-
-@torch.no_grad()
 def evaluate_example(
     example: dict[str, Any],
     memory_model: MemoryAugmentedGPT2LMHeadModel,

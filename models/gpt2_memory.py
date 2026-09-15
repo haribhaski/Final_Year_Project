@@ -51,7 +51,7 @@ class MemoryGPT2Config:
     gate_mode: str = "sigmoid"
     gate_temperature: float = 1.0
     gate_top_k: Optional[int] = None
-    gate_init_bias: float = -2.0
+    gate_init_bias: float = 0.0
 
     router_enabled: bool = True
     router_mode: str = "softmax"
@@ -88,7 +88,7 @@ class MemoryGPT2Config:
     dropout: float = 0.0
 
     candidate_diversity_weight: float = 0.0
-    update_orthogonality_weight: float = 0.0
+    update_orthogonality_weight: float = 0.1
     router_balance_weight: float = 0.0
     reader_balance_weight: float = 0.0
     head_diversity_weight: float = 0.0

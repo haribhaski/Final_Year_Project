@@ -1,0 +1,6 @@
+{
+  "gate_type": "vector",
+  "num_slots": 16,
+  "ortho_weight": 0.0,
+  "distractor_len": 256
+}

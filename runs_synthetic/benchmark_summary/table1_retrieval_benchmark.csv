@@ -1,0 +1,5 @@
+Model Architecture,256_tokens,512_tokens,1024_tokens,2048_tokens
+Plain GPT-2,N/A,N/A,N/A,N/A
+Condition A (Scalar Gate),N/A,N/A,N/A,N/A
+"Condition B (Vector, No Ortho)",N/A,N/A,N/A,N/A
+Condition C (Vector + Ortho 0.05),N/A,N/A,N/A,N/A

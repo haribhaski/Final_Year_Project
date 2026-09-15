@@ -1,0 +1,179 @@
+nohup: ignoring input
+=== Initializing WikiText-103 Benchmark on CUDA ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5847.48it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2976 > 1024). Running this sequence through the model will result in indexing errors
+Loaded 3309 documents from data/wikitext-103/wiki.train.tokens
+Loaded 8 documents from data/wikitext-103/wiki.valid.tokens
+>>> Commencing 15,000-Step Training Run. Checkpoints: outputs/memattn_wikitext_15k/ ...
+
+/teamspace/studios/this_studio/Final_Year_Project/train_wikitext_full.py:144: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
+  running_loss += float(out.lm_loss)
+Step 00100/15000 | LM Loss: 4.1424 | Train PPL:  62.95 | Gate: 0.060 | Elapsed: 0.00 hrs
+Step 00200/15000 | LM Loss: 4.2239 | Train PPL:  68.30 | Gate: 0.062 | Elapsed: 0.00 hrs
+Step 00300/15000 | LM Loss: 4.2239 | Train PPL:  68.30 | Gate: 0.062 | Elapsed: 0.00 hrs
+Step 00400/15000 | LM Loss: 4.2165 | Train PPL:  67.80 | Gate: 0.062 | Elapsed: 0.01 hrs
+Step 00500/15000 | LM Loss: 3.9439 | Train PPL:  51.62 | Gate: 0.062 | Elapsed: 0.01 hrs
+Step 00600/15000 | LM Loss: 4.0032 | Train PPL:  54.77 | Gate: 0.062 | Elapsed: 0.01 hrs
+Step 00700/15000 | LM Loss: 4.0277 | Train PPL:  56.13 | Gate: 0.062 | Elapsed: 0.01 hrs
+Step 00800/15000 | LM Loss: 4.0184 | Train PPL:  55.61 | Gate: 0.062 | Elapsed: 0.01 hrs
+Step 00900/15000 | LM Loss: 3.9505 | Train PPL:  51.96 | Gate: 0.062 | Elapsed: 0.01 hrs
+Step 01000/15000 | LM Loss: 3.8507 | Train PPL:  47.03 | Gate: 0.062 | Elapsed: 0.01 hrs
+--- [EVAL & SAVE] Step 1000 | Val Loss: 3.6944 | Val PPL:  40.22 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_1000.pt ---
+Step 01100/15000 | LM Loss: 4.1191 | Train PPL:  61.50 | Gate: 0.062 | Elapsed: 0.02 hrs
+Step 01200/15000 | LM Loss: 3.6802 | Train PPL:  39.66 | Gate: 0.062 | Elapsed: 0.02 hrs
+Step 01300/15000 | LM Loss: 3.7888 | Train PPL:  44.21 | Gate: 0.062 | Elapsed: 0.02 hrs
+Step 01400/15000 | LM Loss: 3.9380 | Train PPL:  51.31 | Gate: 0.062 | Elapsed: 0.02 hrs
+Step 01500/15000 | LM Loss: 4.0044 | Train PPL:  54.84 | Gate: 0.062 | Elapsed: 0.02 hrs
+Step 01600/15000 | LM Loss: 3.9330 | Train PPL:  51.06 | Gate: 0.062 | Elapsed: 0.02 hrs
+Step 01700/15000 | LM Loss: 3.8832 | Train PPL:  48.58 | Gate: 0.062 | Elapsed: 0.02 hrs
+Step 01800/15000 | LM Loss: 4.1343 | Train PPL:  62.45 | Gate: 0.062 | Elapsed: 0.03 hrs
+Step 01900/15000 | LM Loss: 4.0658 | Train PPL:  58.31 | Gate: 0.062 | Elapsed: 0.03 hrs
+Step 02000/15000 | LM Loss: 3.7795 | Train PPL:  43.79 | Gate: 0.062 | Elapsed: 0.03 hrs
+--- [EVAL & SAVE] Step 2000 | Val Loss: 3.5887 | Val PPL:  36.19 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_2000.pt ---
+Step 02100/15000 | LM Loss: 3.9275 | Train PPL:  50.78 | Gate: 0.062 | Elapsed: 0.03 hrs
+Step 02200/15000 | LM Loss: 3.8086 | Train PPL:  45.09 | Gate: 0.062 | Elapsed: 0.03 hrs
+Step 02300/15000 | LM Loss: 3.7850 | Train PPL:  44.04 | Gate: 0.062 | Elapsed: 0.03 hrs
+Step 02400/15000 | LM Loss: 3.8804 | Train PPL:  48.44 | Gate: 0.062 | Elapsed: 0.03 hrs
+Step 02500/15000 | LM Loss: 3.8504 | Train PPL:  47.01 | Gate: 0.062 | Elapsed: 0.03 hrs
+Step 02600/15000 | LM Loss: 3.8511 | Train PPL:  47.04 | Gate: 0.062 | Elapsed: 0.04 hrs
+Step 02700/15000 | LM Loss: 3.7017 | Train PPL:  40.51 | Gate: 0.062 | Elapsed: 0.04 hrs
+Step 02800/15000 | LM Loss: 3.9846 | Train PPL:  53.76 | Gate: 0.060 | Elapsed: 0.04 hrs
+Step 02900/15000 | LM Loss: 3.6892 | Train PPL:  40.01 | Gate: 0.033 | Elapsed: 0.04 hrs
+Step 03000/15000 | LM Loss: 3.8076 | Train PPL:  45.04 | Gate: 0.032 | Elapsed: 0.04 hrs
+--- [EVAL & SAVE] Step 3000 | Val Loss: 3.5829 | Val PPL:  35.98 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_3000.pt ---
+Step 03100/15000 | LM Loss: 3.9999 | Train PPL:  54.59 | Gate: 0.032 | Elapsed: 0.04 hrs
+Step 03200/15000 | LM Loss: 3.9228 | Train PPL:  50.54 | Gate: 0.032 | Elapsed: 0.04 hrs
+Step 03300/15000 | LM Loss: 3.7603 | Train PPL:  42.96 | Gate: 0.032 | Elapsed: 0.05 hrs
+Step 03400/15000 | LM Loss: 3.7508 | Train PPL:  42.56 | Gate: 0.032 | Elapsed: 0.05 hrs
+Step 03500/15000 | LM Loss: 3.8776 | Train PPL:  48.31 | Gate: 0.032 | Elapsed: 0.05 hrs
+Step 03600/15000 | LM Loss: 3.8497 | Train PPL:  46.98 | Gate: 0.032 | Elapsed: 0.05 hrs
+Step 03700/15000 | LM Loss: 3.8717 | Train PPL:  48.02 | Gate: 0.032 | Elapsed: 0.05 hrs
+Step 03800/15000 | LM Loss: 3.8288 | Train PPL:  46.01 | Gate: 0.032 | Elapsed: 0.05 hrs
+Step 03900/15000 | LM Loss: 3.8504 | Train PPL:  47.01 | Gate: 0.032 | Elapsed: 0.05 hrs
+Step 04000/15000 | LM Loss: 4.0148 | Train PPL:  55.41 | Gate: 0.032 | Elapsed: 0.06 hrs
+--- [EVAL & SAVE] Step 4000 | Val Loss: 3.5286 | Val PPL:  34.08 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_4000.pt ---
+Step 04100/15000 | LM Loss: 3.8505 | Train PPL:  47.02 | Gate: 0.032 | Elapsed: 0.06 hrs
+Step 04200/15000 | LM Loss: 3.8976 | Train PPL:  49.28 | Gate: 0.031 | Elapsed: 0.06 hrs
+Step 04300/15000 | LM Loss: 3.8991 | Train PPL:  49.36 | Gate: 0.032 | Elapsed: 0.06 hrs
+Step 04400/15000 | LM Loss: 3.6926 | Train PPL:  40.15 | Gate: 0.031 | Elapsed: 0.06 hrs
+Step 04500/15000 | LM Loss: 3.8565 | Train PPL:  47.30 | Gate: 0.031 | Elapsed: 0.06 hrs
+Step 04600/15000 | LM Loss: 3.6619 | Train PPL:  38.93 | Gate: 0.031 | Elapsed: 0.06 hrs
+Step 04700/15000 | LM Loss: 3.8523 | Train PPL:  47.10 | Gate: 0.032 | Elapsed: 0.07 hrs
+Step 04800/15000 | LM Loss: 4.0472 | Train PPL:  57.23 | Gate: 0.031 | Elapsed: 0.07 hrs
+Step 04900/15000 | LM Loss: 4.0121 | Train PPL:  55.26 | Gate: 0.031 | Elapsed: 0.07 hrs
+Step 05000/15000 | LM Loss: 3.8331 | Train PPL:  46.21 | Gate: 0.031 | Elapsed: 0.07 hrs
+--- [EVAL & SAVE] Step 5000 | Val Loss: 3.5304 | Val PPL:  34.14 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_5000.pt ---
+Step 05100/15000 | LM Loss: 3.8380 | Train PPL:  46.43 | Gate: 0.031 | Elapsed: 0.07 hrs
+Step 05200/15000 | LM Loss: 3.6934 | Train PPL:  40.18 | Gate: 0.031 | Elapsed: 0.07 hrs
+Step 05300/15000 | LM Loss: 3.9291 | Train PPL:  50.86 | Gate: 0.031 | Elapsed: 0.07 hrs
+Step 05400/15000 | LM Loss: 3.7624 | Train PPL:  43.05 | Gate: 0.031 | Elapsed: 0.08 hrs
+Step 05500/15000 | LM Loss: 3.9107 | Train PPL:  49.93 | Gate: 0.031 | Elapsed: 0.08 hrs
+Step 05600/15000 | LM Loss: 3.9655 | Train PPL:  52.75 | Gate: 0.031 | Elapsed: 0.08 hrs
+Step 05700/15000 | LM Loss: 3.6420 | Train PPL:  38.17 | Gate: 0.031 | Elapsed: 0.08 hrs
+Step 05800/15000 | LM Loss: 3.8742 | Train PPL:  48.14 | Gate: 0.031 | Elapsed: 0.08 hrs
+Step 05900/15000 | LM Loss: 3.7439 | Train PPL:  42.26 | Gate: 0.031 | Elapsed: 0.08 hrs
+Step 06000/15000 | LM Loss: 3.7752 | Train PPL:  43.61 | Gate: 0.031 | Elapsed: 0.08 hrs
+--- [EVAL & SAVE] Step 6000 | Val Loss: 3.5262 | Val PPL:  33.99 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_6000.pt ---
+Step 06100/15000 | LM Loss: 3.8288 | Train PPL:  46.01 | Gate: 0.031 | Elapsed: 0.09 hrs
+Step 06200/15000 | LM Loss: 3.4493 | Train PPL:  31.48 | Gate: 0.031 | Elapsed: 0.09 hrs
+Step 06300/15000 | LM Loss: 3.8073 | Train PPL:  45.03 | Gate: 0.031 | Elapsed: 0.09 hrs
+Step 06400/15000 | LM Loss: 3.8722 | Train PPL:  48.05 | Gate: 0.031 | Elapsed: 0.09 hrs
+Step 06500/15000 | LM Loss: 3.6568 | Train PPL:  38.74 | Gate: 0.031 | Elapsed: 0.09 hrs
+Step 06600/15000 | LM Loss: 3.8229 | Train PPL:  45.74 | Gate: 0.031 | Elapsed: 0.09 hrs
+Step 06700/15000 | LM Loss: 3.8488 | Train PPL:  46.94 | Gate: 0.031 | Elapsed: 0.09 hrs
+Step 06800/15000 | LM Loss: 3.7468 | Train PPL:  42.39 | Gate: 0.031 | Elapsed: 0.09 hrs
+Step 06900/15000 | LM Loss: 3.8832 | Train PPL:  48.58 | Gate: 0.031 | Elapsed: 0.10 hrs
+Step 07000/15000 | LM Loss: 3.7392 | Train PPL:  42.06 | Gate: 0.031 | Elapsed: 0.10 hrs
+--- [EVAL & SAVE] Step 7000 | Val Loss: 3.5136 | Val PPL:  33.57 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_7000.pt ---
+Step 07100/15000 | LM Loss: 3.8011 | Train PPL:  44.75 | Gate: 0.031 | Elapsed: 0.10 hrs
+Step 07200/15000 | LM Loss: 3.9346 | Train PPL:  51.14 | Gate: 0.031 | Elapsed: 0.10 hrs
+Step 07300/15000 | LM Loss: 3.8253 | Train PPL:  45.85 | Gate: 0.031 | Elapsed: 0.10 hrs
+Step 07400/15000 | LM Loss: 3.6723 | Train PPL:  39.34 | Gate: 0.031 | Elapsed: 0.10 hrs
+Step 07500/15000 | LM Loss: 3.8085 | Train PPL:  45.08 | Gate: 0.031 | Elapsed: 0.10 hrs
+Step 07600/15000 | LM Loss: 3.7847 | Train PPL:  44.02 | Gate: 0.031 | Elapsed: 0.11 hrs
+Step 07700/15000 | LM Loss: 3.8174 | Train PPL:  45.49 | Gate: 0.031 | Elapsed: 0.11 hrs
+Step 07800/15000 | LM Loss: 3.8470 | Train PPL:  46.85 | Gate: 0.031 | Elapsed: 0.11 hrs
+Step 07900/15000 | LM Loss: 3.8179 | Train PPL:  45.51 | Gate: 0.031 | Elapsed: 0.11 hrs
+Step 08000/15000 | LM Loss: 3.8043 | Train PPL:  44.89 | Gate: 0.031 | Elapsed: 0.11 hrs
+--- [EVAL & SAVE] Step 8000 | Val Loss: 3.5059 | Val PPL:  33.31 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_8000.pt ---
+Step 08100/15000 | LM Loss: 3.8662 | Train PPL:  47.76 | Gate: 0.031 | Elapsed: 0.11 hrs
+Step 08200/15000 | LM Loss: 3.8216 | Train PPL:  45.68 | Gate: 0.031 | Elapsed: 0.11 hrs
+Step 08300/15000 | LM Loss: 3.9953 | Train PPL:  54.34 | Gate: 0.031 | Elapsed: 0.12 hrs
+Step 08400/15000 | LM Loss: 3.9248 | Train PPL:  50.64 | Gate: 0.031 | Elapsed: 0.12 hrs
+Step 08500/15000 | LM Loss: 3.7929 | Train PPL:  44.38 | Gate: 0.031 | Elapsed: 0.12 hrs
+Step 08600/15000 | LM Loss: 3.6799 | Train PPL:  39.64 | Gate: 0.031 | Elapsed: 0.12 hrs
+Step 08700/15000 | LM Loss: 3.9053 | Train PPL:  49.66 | Gate: 0.031 | Elapsed: 0.12 hrs
+Step 08800/15000 | LM Loss: 3.7916 | Train PPL:  44.33 | Gate: 0.031 | Elapsed: 0.12 hrs
+Step 08900/15000 | LM Loss: 3.8622 | Train PPL:  47.57 | Gate: 0.031 | Elapsed: 0.12 hrs
+Step 09000/15000 | LM Loss: 3.7787 | Train PPL:  43.76 | Gate: 0.031 | Elapsed: 0.13 hrs
+--- [EVAL & SAVE] Step 9000 | Val Loss: 3.4958 | Val PPL:  32.98 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_9000.pt ---
+Step 09100/15000 | LM Loss: 3.7836 | Train PPL:  43.97 | Gate: 0.031 | Elapsed: 0.13 hrs
+Step 09200/15000 | LM Loss: 3.8417 | Train PPL:  46.60 | Gate: 0.031 | Elapsed: 0.13 hrs
+Step 09300/15000 | LM Loss: 3.9542 | Train PPL:  52.16 | Gate: 0.031 | Elapsed: 0.13 hrs
+Step 09400/15000 | LM Loss: 3.8501 | Train PPL:  47.00 | Gate: 0.031 | Elapsed: 0.13 hrs
+Step 09500/15000 | LM Loss: 3.7902 | Train PPL:  44.26 | Gate: 0.031 | Elapsed: 0.13 hrs
+Step 09600/15000 | LM Loss: 3.5383 | Train PPL:  34.41 | Gate: 0.031 | Elapsed: 0.13 hrs
+Step 09700/15000 | LM Loss: 3.8371 | Train PPL:  46.39 | Gate: 0.031 | Elapsed: 0.14 hrs
+Step 09800/15000 | LM Loss: 3.7621 | Train PPL:  43.04 | Gate: 0.031 | Elapsed: 0.14 hrs
+Step 09900/15000 | LM Loss: 3.8366 | Train PPL:  46.37 | Gate: 0.031 | Elapsed: 0.14 hrs
+Step 10000/15000 | LM Loss: 3.7706 | Train PPL:  43.41 | Gate: 0.031 | Elapsed: 0.14 hrs
+--- [EVAL & SAVE] Step 10000 | Val Loss: 3.5012 | Val PPL:  33.16 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_10000.pt ---
+Step 10100/15000 | LM Loss: 3.7494 | Train PPL:  42.50 | Gate: 0.031 | Elapsed: 0.14 hrs
+Step 10200/15000 | LM Loss: 3.6593 | Train PPL:  38.84 | Gate: 0.031 | Elapsed: 0.14 hrs
+Step 10300/15000 | LM Loss: 3.6151 | Train PPL:  37.16 | Gate: 0.031 | Elapsed: 0.14 hrs
+Step 10400/15000 | LM Loss: 3.7659 | Train PPL:  43.20 | Gate: 0.031 | Elapsed: 0.15 hrs
+Step 10500/15000 | LM Loss: 4.0249 | Train PPL:  55.97 | Gate: 0.031 | Elapsed: 0.15 hrs
+Step 10600/15000 | LM Loss: 3.7317 | Train PPL:  41.75 | Gate: 0.031 | Elapsed: 0.15 hrs
+Step 10700/15000 | LM Loss: 3.7110 | Train PPL:  40.90 | Gate: 0.031 | Elapsed: 0.15 hrs
+Step 10800/15000 | LM Loss: 4.0646 | Train PPL:  58.24 | Gate: 0.031 | Elapsed: 0.15 hrs
+Step 10900/15000 | LM Loss: 3.8389 | Train PPL:  46.47 | Gate: 0.031 | Elapsed: 0.15 hrs
+Step 11000/15000 | LM Loss: 3.9255 | Train PPL:  50.68 | Gate: 0.031 | Elapsed: 0.15 hrs
+--- [EVAL & SAVE] Step 11000 | Val Loss: 3.4854 | Val PPL:  32.64 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_11000.pt ---
+Step 11100/15000 | LM Loss: 3.8492 | Train PPL:  46.96 | Gate: 0.031 | Elapsed: 0.15 hrs
+Step 11200/15000 | LM Loss: 3.6730 | Train PPL:  39.37 | Gate: 0.031 | Elapsed: 0.16 hrs
+Step 11300/15000 | LM Loss: 3.6830 | Train PPL:  39.77 | Gate: 0.031 | Elapsed: 0.16 hrs
+Step 11400/15000 | LM Loss: 3.7961 | Train PPL:  44.53 | Gate: 0.031 | Elapsed: 0.16 hrs
+Step 11500/15000 | LM Loss: 3.8031 | Train PPL:  44.84 | Gate: 0.031 | Elapsed: 0.16 hrs
+Step 11600/15000 | LM Loss: 3.7410 | Train PPL:  42.14 | Gate: 0.031 | Elapsed: 0.16 hrs
+Step 11700/15000 | LM Loss: 3.6291 | Train PPL:  37.68 | Gate: 0.031 | Elapsed: 0.16 hrs
+Step 11800/15000 | LM Loss: 3.8476 | Train PPL:  46.88 | Gate: 0.031 | Elapsed: 0.16 hrs
+Step 11900/15000 | LM Loss: 3.7629 | Train PPL:  43.07 | Gate: 0.031 | Elapsed: 0.17 hrs
+Step 12000/15000 | LM Loss: 3.7313 | Train PPL:  41.73 | Gate: 0.031 | Elapsed: 0.17 hrs
+--- [EVAL & SAVE] Step 12000 | Val Loss: 3.4883 | Val PPL:  32.73 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_12000.pt ---
+Step 12100/15000 | LM Loss: 3.8164 | Train PPL:  45.44 | Gate: 0.031 | Elapsed: 0.17 hrs
+Step 12200/15000 | LM Loss: 3.8624 | Train PPL:  47.58 | Gate: 0.031 | Elapsed: 0.17 hrs
+Step 12300/15000 | LM Loss: 3.7102 | Train PPL:  40.86 | Gate: 0.031 | Elapsed: 0.17 hrs
+Step 12400/15000 | LM Loss: 3.7541 | Train PPL:  42.70 | Gate: 0.031 | Elapsed: 0.17 hrs
+Step 12500/15000 | LM Loss: 3.7740 | Train PPL:  43.55 | Gate: 0.031 | Elapsed: 0.17 hrs
+Step 12600/15000 | LM Loss: 3.8107 | Train PPL:  45.18 | Gate: 0.031 | Elapsed: 0.18 hrs
+Step 12700/15000 | LM Loss: 3.7907 | Train PPL:  44.29 | Gate: 0.031 | Elapsed: 0.18 hrs
+Step 12800/15000 | LM Loss: 3.7823 | Train PPL:  43.92 | Gate: 0.031 | Elapsed: 0.18 hrs
+Step 12900/15000 | LM Loss: 3.7592 | Train PPL:  42.91 | Gate: 0.031 | Elapsed: 0.18 hrs
+Step 13000/15000 | LM Loss: 4.0188 | Train PPL:  55.63 | Gate: 0.031 | Elapsed: 0.18 hrs
+--- [EVAL & SAVE] Step 13000 | Val Loss: 3.4895 | Val PPL:  32.77 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_13000.pt ---
+Step 13100/15000 | LM Loss: 3.7401 | Train PPL:  42.10 | Gate: 0.032 | Elapsed: 0.18 hrs
+Step 13200/15000 | LM Loss: 3.9958 | Train PPL:  54.37 | Gate: 0.032 | Elapsed: 0.18 hrs
+Step 13300/15000 | LM Loss: 3.7210 | Train PPL:  41.31 | Gate: 0.032 | Elapsed: 0.19 hrs
+Step 13400/15000 | LM Loss: 3.7243 | Train PPL:  41.44 | Gate: 0.032 | Elapsed: 0.19 hrs
+Step 13500/15000 | LM Loss: 3.7193 | Train PPL:  41.23 | Gate: 0.031 | Elapsed: 0.19 hrs
+Step 13600/15000 | LM Loss: 3.7130 | Train PPL:  40.98 | Gate: 0.031 | Elapsed: 0.19 hrs
+Step 13700/15000 | LM Loss: 3.7527 | Train PPL:  42.64 | Gate: 0.031 | Elapsed: 0.19 hrs
+Step 13800/15000 | LM Loss: 3.8285 | Train PPL:  45.99 | Gate: 0.031 | Elapsed: 0.19 hrs
+Step 13900/15000 | LM Loss: 4.0558 | Train PPL:  57.73 | Gate: 0.032 | Elapsed: 0.19 hrs
+Step 14000/15000 | LM Loss: 3.7820 | Train PPL:  43.91 | Gate: 0.031 | Elapsed: 0.20 hrs
+--- [EVAL & SAVE] Step 14000 | Val Loss: 3.4898 | Val PPL:  32.78 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_14000.pt ---
+Step 14100/15000 | LM Loss: 3.7868 | Train PPL:  44.11 | Gate: 0.031 | Elapsed: 0.20 hrs
+Step 14200/15000 | LM Loss: 3.6359 | Train PPL:  37.93 | Gate: 0.031 | Elapsed: 0.20 hrs
+Step 14300/15000 | LM Loss: 3.7034 | Train PPL:  40.59 | Gate: 0.031 | Elapsed: 0.20 hrs
+Step 14400/15000 | LM Loss: 3.8482 | Train PPL:  46.91 | Gate: 0.031 | Elapsed: 0.20 hrs
+Step 14500/15000 | LM Loss: 3.8083 | Train PPL:  45.07 | Gate: 0.031 | Elapsed: 0.20 hrs
+Step 14600/15000 | LM Loss: 3.9117 | Train PPL:  49.99 | Gate: 0.031 | Elapsed: 0.20 hrs
+Step 14700/15000 | LM Loss: 3.7312 | Train PPL:  41.73 | Gate: 0.031 | Elapsed: 0.20 hrs
+Step 14800/15000 | LM Loss: 3.7468 | Train PPL:  42.38 | Gate: 0.031 | Elapsed: 0.21 hrs
+Step 14900/15000 | LM Loss: 3.6494 | Train PPL:  38.45 | Gate: 0.031 | Elapsed: 0.21 hrs
+Step 15000/15000 | LM Loss: 3.7132 | Train PPL:  40.98 | Gate: 0.031 | Elapsed: 0.21 hrs
+--- [EVAL & SAVE] Step 15000 | Val Loss: 3.4868 | Val PPL:  32.68 | Saved: outputs/memattn_wikitext_15k/checkpoint_step_15000.pt ---
+
+[Finished] Full 15,000 steps complete! Final weights: outputs/memattn_wikitext_15k/memory_checkpoint_wikitext_15k.pt
