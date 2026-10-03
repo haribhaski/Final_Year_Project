@@ -1,0 +1,312 @@
+====================================================================================================
+WRITER ARCHITECTURE ABLATION
+====================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+A = ORIGINAL_WRITER
+B = DIRECT_SUMMARY
+C = WRITER_PLUS_SUMMARY
+
+All variants use:
+  Gate = 1.0
+  frozen OrthogonalUpdate
+  frozen MemoryBank
+  forced slot 0
+  simple diagnostic reader
+  frozen GPT-2
+
+Classes: 13
+Chance accuracy: 7.69%
+Chance CE: 2.5649
+Loading original checkpoint...
+
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5216.53it/s]
+
+Precomputing train...
+  4000/4000
+
+Precomputing validation...
+  500/500
+
+Precomputing test...
+  500/500
+
+####################################################################################################
+VARIANT: ORIGINAL_WRITER
+####################################################################################################
+Writer trainable params: 22,440,961
+Summary projection params: 0
+Reader params: 1,781,773
+Residual alpha trainable: False
+
+PRETRAIN
+match=8.00% | mismatch=8.00% | query=8.20% | gap=-0.000099 | source_relL2=0.0172 | stored_relL2=0.0182 | alpha=0.0000
+
+EPOCH 01 | loss=2.8467 | match=5.80% | mismatch=6.40% | query=8.20% | gap=+0.0125 | source_relL2=0.0265 | stored_relL2=0.0279 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 02 | loss=2.5105 | match=12.60% | mismatch=7.00% | query=8.20% | gap=+1.4065 | source_relL2=0.2958 | stored_relL2=0.3196 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 03 | loss=1.9823 | match=23.40% | mismatch=6.00% | query=7.60% | gap=+2.5722 | source_relL2=0.3575 | stored_relL2=0.3817 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 04 | loss=1.6464 | match=37.00% | mismatch=5.40% | query=8.80% | gap=+3.9227 | source_relL2=0.4765 | stored_relL2=0.4996 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 05 | loss=1.3157 | match=42.60% | mismatch=5.60% | query=8.60% | gap=+4.5696 | source_relL2=0.5838 | stored_relL2=0.6101 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 06 | loss=1.0568 | match=34.80% | mismatch=5.60% | query=7.80% | gap=+5.2045 | source_relL2=0.6770 | stored_relL2=0.7142 | alpha=0.0000
+
+EPOCH 07 | loss=0.6742 | match=55.80% | mismatch=4.00% | query=7.60% | gap=+6.3982 | source_relL2=0.7440 | stored_relL2=0.7826 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 08 | loss=0.4056 | match=61.60% | mismatch=3.80% | query=7.60% | gap=+7.7503 | source_relL2=0.8488 | stored_relL2=0.8667 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 09 | loss=0.2547 | match=66.20% | mismatch=3.60% | query=7.60% | gap=+8.9805 | source_relL2=0.9062 | stored_relL2=0.9320 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 10 | loss=0.1102 | match=82.60% | mismatch=2.60% | query=7.60% | gap=+10.7828 | source_relL2=1.0305 | stored_relL2=1.0472 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 11 | loss=0.0199 | match=87.80% | mismatch=1.80% | query=7.60% | gap=+11.7809 | source_relL2=1.0387 | stored_relL2=1.0526 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 12 | loss=0.0056 | match=83.80% | mismatch=2.40% | query=10.40% | gap=+12.6722 | source_relL2=1.0542 | stored_relL2=1.0675 | alpha=0.0000
+
+EPOCH 13 | loss=0.0021 | match=88.00% | mismatch=1.80% | query=9.40% | gap=+13.7297 | source_relL2=1.0966 | stored_relL2=1.1088 | alpha=0.0000
+Saved best checkpoint.
+
+EPOCH 14 | loss=0.0004 | match=83.60% | mismatch=1.80% | query=7.60% | gap=+13.4556 | source_relL2=1.0856 | stored_relL2=1.1002 | alpha=0.0000
+
+EPOCH 15 | loss=0.0002 | match=84.80% | mismatch=1.80% | query=7.20% | gap=+13.5942 | source_relL2=1.0790 | stored_relL2=1.0938 | alpha=0.0000
+
+==========================================================================================
+ORIGINAL_WRITER FINAL TEST — BEST EPOCH 13
+==========================================================================================
+MATCHED:       87.40%
+MISMATCHED:    1.00%
+QUERY ONLY:    10.40%
+NLL GAP:       +14.115003
+POSITIVE GAP:  98.60%
+ALPHA:         0.000000
+
+SOURCE CANDIDATE GEOMETRY
+mean_norm               27.711838
+mean_pairwise_l2        31.389141
+relative_l2             1.132698
+mean_cosine             0.272875
+
+RAW UPDATE GEOMETRY
+mean_norm               38.939228
+mean_pairwise_l2        31.389139
+relative_l2             0.806106
+mean_cosine             0.630021
+
+POST ORTHOGONAL GEOMETRY
+mean_norm               26.913887
+mean_pairwise_l2        30.806248
+relative_l2             1.144623
+mean_cosine             0.259934
+
+FINAL STORED GEOMETRY
+mean_norm               27.648108
+mean_pairwise_l2        31.646366
+relative_l2             1.144612
+mean_cosine             0.259992
+
+####################################################################################################
+VARIANT: DIRECT_SUMMARY
+####################################################################################################
+Writer trainable params: 0
+Summary projection params: 592,128
+Reader params: 1,781,773
+Residual alpha trainable: False
+
+PRETRAIN
+match=8.80% | mismatch=8.80% | query=8.20% | gap=-0.000757 | source_relL2=0.0232 | stored_relL2=0.0231 | alpha=1.0000
+
+EPOCH 01 | loss=2.8382 | match=5.80% | mismatch=5.80% | query=8.20% | gap=+0.0156 | source_relL2=0.0258 | stored_relL2=0.0257 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 02 | loss=2.7677 | match=12.40% | mismatch=7.20% | query=8.20% | gap=+0.0983 | source_relL2=0.0398 | stored_relL2=0.0397 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 03 | loss=2.3520 | match=39.20% | mismatch=4.20% | query=8.20% | gap=+1.5623 | source_relL2=0.1990 | stored_relL2=0.2080 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 04 | loss=0.7781 | match=85.60% | mismatch=0.80% | query=8.20% | gap=+5.6241 | source_relL2=0.5679 | stored_relL2=0.8226 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 05 | loss=0.0865 | match=94.60% | mismatch=0.00% | query=8.20% | gap=+7.7695 | source_relL2=0.6017 | stored_relL2=0.9819 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 06 | loss=0.0107 | match=98.20% | mismatch=0.00% | query=8.20% | gap=+8.9791 | source_relL2=0.6093 | stored_relL2=0.9890 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 07 | loss=0.0015 | match=99.00% | mismatch=0.00% | query=8.20% | gap=+9.8873 | source_relL2=0.6202 | stored_relL2=1.0330 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 08 | loss=0.0006 | match=99.80% | mismatch=0.00% | query=8.20% | gap=+10.1712 | source_relL2=0.6123 | stored_relL2=1.0251 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 09 | loss=0.0004 | match=100.00% | mismatch=0.00% | query=8.20% | gap=+10.3134 | source_relL2=0.6127 | stored_relL2=1.0361 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 10 | loss=0.0003 | match=100.00% | mismatch=0.00% | query=8.20% | gap=+10.5753 | source_relL2=0.6140 | stored_relL2=1.0433 | alpha=1.0000
+Saved best checkpoint.
+
+EPOCH 11 | loss=0.0002 | match=99.60% | mismatch=0.00% | query=8.20% | gap=+10.5336 | source_relL2=0.6127 | stored_relL2=1.0396 | alpha=1.0000
+
+EPOCH 12 | loss=0.0002 | match=99.60% | mismatch=0.00% | query=8.20% | gap=+10.7243 | source_relL2=0.6158 | stored_relL2=1.0448 | alpha=1.0000
+
+EPOCH 13 | loss=0.0002 | match=99.20% | mismatch=0.00% | query=8.20% | gap=+10.7629 | source_relL2=0.6130 | stored_relL2=1.0414 | alpha=1.0000
+
+EPOCH 14 | loss=0.0001 | match=99.60% | mismatch=0.00% | query=8.20% | gap=+10.9228 | source_relL2=0.6147 | stored_relL2=1.0503 | alpha=1.0000
+
+EPOCH 15 | loss=0.0001 | match=99.00% | mismatch=0.00% | query=8.20% | gap=+10.9041 | source_relL2=0.6127 | stored_relL2=1.0438 | alpha=1.0000
+
+==========================================================================================
+DIRECT_SUMMARY FINAL TEST — BEST EPOCH 10
+==========================================================================================
+MATCHED:       95.00%
+MISMATCHED:    0.60%
+QUERY ONLY:    8.40%
+NLL GAP:       +10.034964
+POSITIVE GAP:  100.00%
+ALPHA:         1.000000
+
+SOURCE CANDIDATE GEOMETRY
+mean_norm               1.086371
+mean_pairwise_l2        0.668520
+relative_l2             0.615370
+mean_cosine             0.803601
+
+RAW UPDATE GEOMETRY
+mean_norm               27.353798
+mean_pairwise_l2        0.668517
+relative_l2             0.024440
+mean_cosine             0.999679
+
+POST ORTHOGONAL GEOMETRY
+mean_norm               0.958805
+mean_pairwise_l2        0.666477
+relative_l2             0.695112
+mean_cosine             0.750149
+
+FINAL STORED GEOMETRY
+mean_norm               27.362366
+mean_pairwise_l2        27.869535
+relative_l2             1.018535
+mean_cosine             0.449994
+
+####################################################################################################
+VARIANT: WRITER_PLUS_SUMMARY
+####################################################################################################
+Writer trainable params: 22,440,961
+Summary projection params: 592,128
+Reader params: 1,781,773
+Residual alpha trainable: True
+
+PRETRAIN
+match=8.00% | mismatch=8.00% | query=8.20% | gap=-0.000388 | source_relL2=0.0162 | stored_relL2=0.0168 | alpha=0.5000
+
+EPOCH 01 | loss=2.8442 | match=5.80% | mismatch=5.80% | query=8.80% | gap=+0.0081 | source_relL2=0.0259 | stored_relL2=0.0266 | alpha=0.5051
+Saved best checkpoint.
+
+EPOCH 02 | loss=2.6684 | match=18.80% | mismatch=5.40% | query=8.20% | gap=+0.7264 | source_relL2=0.2806 | stored_relL2=0.2884 | alpha=0.5072
+Saved best checkpoint.
+
+EPOCH 03 | loss=2.1101 | match=30.40% | mismatch=6.60% | query=8.20% | gap=+2.7423 | source_relL2=0.7425 | stored_relL2=0.7516 | alpha=0.5068
+Saved best checkpoint.
+
+EPOCH 04 | loss=1.6893 | match=29.80% | mismatch=6.00% | query=7.60% | gap=+3.4307 | source_relL2=0.8761 | stored_relL2=0.8906 | alpha=0.5065
+
+EPOCH 05 | loss=1.1174 | match=31.40% | mismatch=6.00% | query=8.20% | gap=+4.7899 | source_relL2=0.9900 | stored_relL2=0.9963 | alpha=0.5066
+Saved best checkpoint.
+
+EPOCH 06 | loss=0.9710 | match=39.80% | mismatch=5.20% | query=8.60% | gap=+5.4386 | source_relL2=1.1638 | stored_relL2=1.1614 | alpha=0.5072
+Saved best checkpoint.
+
+EPOCH 07 | loss=0.5648 | match=51.00% | mismatch=5.40% | query=9.40% | gap=+6.8199 | source_relL2=1.1912 | stored_relL2=1.1790 | alpha=0.5078
+Saved best checkpoint.
+
+EPOCH 08 | loss=0.3331 | match=55.20% | mismatch=4.40% | query=8.20% | gap=+6.9631 | source_relL2=1.2229 | stored_relL2=1.2076 | alpha=0.5087
+Saved best checkpoint.
+
+EPOCH 09 | loss=0.2155 | match=69.00% | mismatch=3.00% | query=8.20% | gap=+8.8505 | source_relL2=1.2031 | stored_relL2=1.1909 | alpha=0.5092
+Saved best checkpoint.
+
+EPOCH 10 | loss=0.1067 | match=72.20% | mismatch=1.80% | query=8.20% | gap=+10.0126 | source_relL2=1.2301 | stored_relL2=1.2195 | alpha=0.5095
+Saved best checkpoint.
+
+EPOCH 11 | loss=0.1346 | match=84.20% | mismatch=2.20% | query=8.20% | gap=+11.0641 | source_relL2=1.2208 | stored_relL2=1.2129 | alpha=0.5096
+Saved best checkpoint.
+
+EPOCH 12 | loss=0.1051 | match=89.20% | mismatch=1.00% | query=8.20% | gap=+12.0101 | source_relL2=1.1927 | stored_relL2=1.1808 | alpha=0.5096
+Saved best checkpoint.
+
+EPOCH 13 | loss=0.0106 | match=88.40% | mismatch=1.00% | query=8.20% | gap=+11.8377 | source_relL2=1.1808 | stored_relL2=1.1654 | alpha=0.5098
+
+EPOCH 14 | loss=0.0043 | match=83.80% | mismatch=2.20% | query=8.20% | gap=+12.3991 | source_relL2=1.2327 | stored_relL2=1.2208 | alpha=0.5097
+
+EPOCH 15 | loss=0.0119 | match=85.00% | mismatch=1.40% | query=8.00% | gap=+13.2528 | source_relL2=1.2303 | stored_relL2=1.2173 | alpha=0.5097
+
+==========================================================================================
+WRITER_PLUS_SUMMARY FINAL TEST — BEST EPOCH 12
+==========================================================================================
+MATCHED:       88.00%
+MISMATCHED:    0.60%
+QUERY ONLY:    8.40%
+NLL GAP:       +11.312494
+POSITIVE GAP:  99.40%
+ALPHA:         0.509598
+
+SOURCE CANDIDATE GEOMETRY
+mean_norm               23.015059
+mean_pairwise_l2        27.895355
+relative_l2             1.212048
+mean_cosine             0.190758
+
+RAW UPDATE GEOMETRY
+mean_norm               35.961819
+mean_pairwise_l2        27.895351
+relative_l2             0.775694
+mean_cosine             0.672773
+
+POST ORTHOGONAL GEOMETRY
+mean_norm               22.553806
+mean_pairwise_l2        27.369181
+relative_l2             1.213506
+mean_cosine             0.191799
+
+FINAL STORED GEOMETRY
+mean_norm               27.644079
+mean_pairwise_l2        33.091888
+relative_l2             1.197070
+mean_cosine             0.191789
+
+==============================================================================================================
+FINAL WRITER ARCHITECTURE COMPARISON
+==============================================================================================================
+VARIANT                        MATCH      MISMATCH       QUERY       NLL GAP     SOURCE L2     STORED L2     ALPHA
+------------------------------------------------------------------------------------------------------------------
+original_writer               87.40%         1.00%      10.40%       14.1150        1.1327        1.1446    0.0000
+direct_summary                95.00%         0.60%       8.40%       10.0350        0.6154        1.0185    1.0000
+writer_plus_summary           88.00%         0.60%       8.40%       11.3125        1.2120        1.1971    0.5096
+
+==============================================================================================================
+INTERPRETATION
+==============================================================================================================
+Original writer:        87.40%
+Direct summary:         95.00%
+Writer + summary:       88.00%
+
+RESULT: MIXED.
+Inspect the three held-out accuracies and representation geometry before changing the architecture.
+
+Saved: outputs/writer_multiseed/seed_2094/writer_summary_ablation_results.json

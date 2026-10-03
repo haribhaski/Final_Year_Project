@@ -1,0 +1,205 @@
+
+====================================================================================================
+E5-ADDRESSED MEMORY INTEGRATION
+====================================================================================================
+E5 model: intfloat/e5-base-v2
+WRITE ADDRESS: passage: <fact>
+READ ADDRESS: query: <question>
+VALUE pathway: existing GPT-2 + CandidateWriter
+E5 frozen: True
+====================================================================================================
+
+====================================================================================================
+REPAIRED MEMORY — INTEGRATED TRAINING
+====================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+TRAINABLE:
+  CandidateWriter
+  VectorGate
+  MemoryReader + fusion
+  SlotRouter
+  AddressEncoder
+
+FROZEN:
+  GPT-2
+  LM head weights
+  MemoryBank
+  OrthogonalUpdate
+
+REPAIR:
+  write_count -> free-slot mask
+  straight-through top-1 routing
+  explicit answer-token loss
+  reader slot-address supervision
+  matched-vs-mismatched memory loss
+  minimum gate-strength penalty
+
+Classes: 13
+Candidate chance: 7.69%
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5636.12it/s]
+Missing keys:
+   address_encoder.0.weight
+   address_encoder.0.bias
+   address_encoder.1.weight
+Unexpected keys:
+
+Precomputing train GPT-2 states...
+Encoding E5 passage addresses...
+
+====================================================================================================
+LOADING E5 ADDRESS ENCODER
+====================================================================================================
+Model: intfloat/e5-base-v2
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4540.97it/s]
+E5 loaded.
+E5 parameters frozen.
+
+Encoding E5 query addresses...
+Precomputing validation GPT-2 states...
+Encoding E5 passage addresses...
+Encoding E5 query addresses...
+Precomputing test GPT-2 states...
+Encoding E5 passage addresses...
+Encoding E5 query addresses...
+
+ADDRESS MODE: FROZEN E5
+Address similarity temperature: 0.05
+
+Trainable parameter counts:
+Writer: 22,440,961
+Gate: 299,912
+Reader: 9,153,794
+Router: 1,485,704
+Address encoder: 591,360
+
+
+===============================================================================================
+PRETRAIN VALIDATION
+===============================================================================================
+FULL VOCAB ACC:       0.00%
+CANDIDATE ACC:        7.80%
+MISMATCH CANDIDATE:   7.60%
+QUERY-ONLY CANDIDATE: 7.40%
+MATCHED NLL:          15.0412
+MISMATCHED NLL:       15.0587
+NLL GAP:              +0.0175
+TARGET SLOT ATTENTION: 0.2779
+MEAN ACTIVE GATE:     0.5557
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.25]
+
+EPOCH 01
+train loss=8.4105 | answer=7.0736 | address=1.2611 | mismatch=0.1170 | gate=0.6173
+VAL candidate=7.00% | full=3.40% | mismatch=7.20% | query=7.40% | gap=+2.5081 | read_attn=0.2761 | gate=0.6503 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 02
+train loss=6.7526 | answer=5.6090 | address=1.1417 | mismatch=0.0004 | gate=0.7755
+VAL candidate=7.00% | full=3.40% | mismatch=7.00% | query=7.40% | gap=+2.9203 | read_attn=0.2886 | gate=0.8012 | collision=0.00%
+
+EPOCH 03
+train loss=5.9992 | answer=5.1671 | address=0.8307 | mismatch=0.0004 | gate=0.7983
+VAL candidate=7.60% | full=4.00% | mismatch=7.40% | query=7.40% | gap=+2.2313 | read_attn=0.4591 | gate=0.8121 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 04
+train loss=4.8292 | answer=4.6125 | address=0.2153 | mismatch=0.0009 | gate=0.8031
+VAL candidate=10.20% | full=7.80% | mismatch=8.60% | query=7.40% | gap=+2.4859 | read_attn=0.7765 | gate=0.7817 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 05
+train loss=2.4487 | answer=2.3916 | address=0.0515 | mismatch=0.0077 | gate=0.8388
+VAL candidate=44.00% | full=43.20% | mismatch=6.20% | query=7.40% | gap=+5.6802 | read_attn=0.8552 | gate=0.8798 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 06
+train loss=0.7737 | answer=0.7437 | address=0.0265 | mismatch=0.0043 | gate=0.8901
+VAL candidate=47.80% | full=47.80% | mismatch=7.00% | query=7.40% | gap=+5.3390 | read_attn=0.8523 | gate=0.8966 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 07
+train loss=0.4609 | answer=0.4034 | address=0.0480 | mismatch=0.0160 | gate=0.9000
+VAL candidate=65.40% | full=65.00% | mismatch=7.20% | query=7.40% | gap=+6.5139 | read_attn=0.8629 | gate=0.9050 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 08
+train loss=0.1808 | answer=0.1348 | address=0.0395 | mismatch=0.0096 | gate=0.9107
+VAL candidate=66.80% | full=66.80% | mismatch=6.60% | query=7.40% | gap=+6.1204 | read_attn=0.8528 | gate=0.9184 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 09
+train loss=0.1698 | answer=0.1248 | address=0.0400 | mismatch=0.0070 | gate=0.9059
+VAL candidate=70.80% | full=70.80% | mismatch=6.20% | query=7.40% | gap=+6.1390 | read_attn=0.8550 | gate=0.9026 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 10
+train loss=0.0664 | answer=0.0436 | address=0.0205 | mismatch=0.0016 | gate=0.9060
+VAL candidate=66.20% | full=65.80% | mismatch=7.20% | query=7.40% | gap=+5.4998 | read_attn=0.8891 | gate=0.9041 | collision=0.00%
+
+EPOCH 11
+train loss=0.0255 | answer=0.0123 | address=0.0114 | mismatch=0.0011 | gate=0.9068
+VAL candidate=68.20% | full=68.20% | mismatch=6.80% | query=7.40% | gap=+5.8912 | read_attn=0.8924 | gate=0.9132 | collision=0.00%
+
+EPOCH 12
+train loss=0.0878 | answer=0.0742 | address=0.0099 | mismatch=0.0027 | gate=0.9231
+VAL candidate=67.80% | full=67.60% | mismatch=7.20% | query=7.40% | gap=+5.3559 | read_attn=0.8904 | gate=0.9555 | collision=0.00%
+
+EPOCH 13
+train loss=0.0219 | answer=0.0122 | address=0.0056 | mismatch=0.0052 | gate=0.9514
+VAL candidate=64.80% | full=64.80% | mismatch=7.20% | query=7.40% | gap=+5.3677 | read_attn=0.9150 | gate=0.9508 | collision=0.00%
+
+EPOCH 14
+train loss=0.0181 | answer=0.0077 | address=0.0091 | mismatch=0.0001 | gate=0.9536
+VAL candidate=69.40% | full=69.40% | mismatch=6.60% | query=7.40% | gap=+5.8436 | read_attn=0.8564 | gate=0.9530 | collision=0.00%
+
+EPOCH 15
+train loss=0.0200 | answer=0.0113 | address=0.0077 | mismatch=0.0002 | gate=0.9588
+VAL candidate=68.00% | full=68.00% | mismatch=7.60% | query=7.40% | gap=+5.7677 | read_attn=0.9212 | gate=0.9615 | collision=0.00%
+
+===============================================================================================
+FINAL TEST — DENSE READER (BEST EPOCH 9)
+===============================================================================================
+FULL VOCAB ACC:       63.20%
+CANDIDATE ACC:        63.60%
+MISMATCH CANDIDATE:   6.80%
+QUERY-ONLY CANDIDATE: 7.40%
+MATCHED NLL:          2.4880
+MISMATCHED NLL:       8.2854
+NLL GAP:              +5.7973
+TARGET SLOT ATTENTION: 0.7683
+MEAN ACTIVE GATE:     0.9033
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.25, 0.0, 0.25, 0.25, 0.25, 0.0, 0.0]
+
+===============================================================================================
+FINAL TEST — READER TOP-K=3
+===============================================================================================
+FULL VOCAB ACC:       63.80%
+CANDIDATE ACC:        64.20%
+MISMATCH CANDIDATE:   7.20%
+QUERY-ONLY CANDIDATE: 7.40%
+MATCHED NLL:          2.4857
+MISMATCHED NLL:       8.1987
+NLL GAP:              +5.7129
+TARGET SLOT ATTENTION: 0.7774
+MEAN ACTIVE GATE:     0.9033
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.25, 0.0, 0.25, 0.25, 0.25, 0.0, 0.0]
+
+====================================================================================================
+FINAL INTEGRATION INTERPRETATION
+====================================================================================================
+PARTIAL INTEGRATION PASS.
+Inspect candidate accuracy, NLL gap, reader attention, and gate strength.
+
+Saved checkpoint: outputs/repaired_memory_e5_full/checkpoint_best.pt
+Saved results: outputs/repaired_memory_e5_full/integration_results.json

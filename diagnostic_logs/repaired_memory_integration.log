@@ -1,0 +1,161 @@
+====================================================================================================
+REPAIRED MEMORY — INTEGRATED TRAINING
+====================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+TRAINABLE:
+  CandidateWriter
+  VectorGate
+  MemoryReader + fusion
+  SlotRouter
+
+FROZEN:
+  GPT-2
+  LM head weights
+  MemoryBank
+  OrthogonalUpdate
+
+REPAIR:
+  write_count -> free-slot mask
+  straight-through top-1 routing
+  explicit answer-token loss
+  reader slot-address supervision
+  matched-vs-mismatched memory loss
+  minimum gate-strength penalty
+
+Classes: 13
+Candidate chance: 7.69%
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5836.10it/s]
+
+Precomputing train GPT-2 states...
+Precomputing validation GPT-2 states...
+Precomputing test GPT-2 states...
+
+Trainable parameter counts:
+Writer: 0
+Gate: 0
+Reader: 0
+Router: 1,485,704
+
+
+===============================================================================================
+PRETRAIN VALIDATION
+===============================================================================================
+FULL VOCAB ACC:       0.00%
+CANDIDATE ACC:        7.20%
+MISMATCH CANDIDATE:   7.20%
+QUERY-ONLY CANDIDATE: 7.40%
+MATCHED NLL:          14.7090
+MISMATCHED NLL:       14.7091
+NLL GAP:              +0.0001
+TARGET SLOT ATTENTION: 0.2500
+MEAN ACTIVE GATE:     0.5557
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.25]
+
+EPOCH 01
+train loss=12.1738 | answer=10.6720 | address=1.8520 | mismatch=1.0058 | gate=0.1703
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 02
+train loss=12.1374 | answer=10.8370 | address=1.4431 | mismatch=1.0060 | gate=0.1280
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 03
+train loss=12.1281 | answer=10.8292 | address=1.4401 | mismatch=1.0027 | gate=0.1275
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 04
+train loss=12.1229 | answer=10.8256 | address=1.4386 | mismatch=1.0000 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 05
+train loss=12.1230 | answer=10.8257 | address=1.4386 | mismatch=1.0001 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 06
+train loss=12.1231 | answer=10.8257 | address=1.4385 | mismatch=1.0001 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 07
+train loss=12.1232 | answer=10.8258 | address=1.4385 | mismatch=1.0000 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 08
+train loss=12.1233 | answer=10.8258 | address=1.4384 | mismatch=1.0000 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 09
+train loss=12.1234 | answer=10.8257 | address=1.4385 | mismatch=1.0001 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 10
+train loss=12.1233 | answer=10.8257 | address=1.4384 | mismatch=1.0001 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 11
+train loss=12.1234 | answer=10.8258 | address=1.4384 | mismatch=1.0001 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 12
+train loss=12.1235 | answer=10.8258 | address=1.4384 | mismatch=1.0002 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 13
+train loss=12.1234 | answer=10.8258 | address=1.4384 | mismatch=1.0000 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 14
+train loss=12.1234 | answer=10.8257 | address=1.4384 | mismatch=1.0000 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+EPOCH 15
+train loss=12.1234 | answer=10.8257 | address=1.4384 | mismatch=1.0001 | gate=0.1273
+VAL candidate=7.00% | full=0.00% | mismatch=7.00% | query=7.40% | gap=-0.0001 | read_attn=0.2500 | gate=0.1274 | collision=0.00%
+
+===============================================================================================
+FINAL TEST — DENSE READER (BEST EPOCH 1)
+===============================================================================================
+FULL VOCAB ACC:       0.00%
+CANDIDATE ACC:        7.40%
+MISMATCH CANDIDATE:   7.40%
+QUERY-ONLY CANDIDATE: 7.40%
+MATCHED NLL:          10.2873
+MISMATCHED NLL:       10.2873
+NLL GAP:              +0.0001
+TARGET SLOT ATTENTION: 0.2500
+MEAN ACTIVE GATE:     0.1275
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.25, 0.0, 0.25, 0.25, 0.0, 0.25, 0.0]
+
+===============================================================================================
+FINAL TEST — READER TOP-K=3
+===============================================================================================
+FULL VOCAB ACC:       0.00%
+CANDIDATE ACC:        7.40%
+MISMATCH CANDIDATE:   7.40%
+QUERY-ONLY CANDIDATE: 7.40%
+MATCHED NLL:          10.2732
+MISMATCHED NLL:       10.2733
+NLL GAP:              +0.0001
+TARGET SLOT ATTENTION: 0.2500
+MEAN ACTIVE GATE:     0.1275
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.25, 0.0, 0.25, 0.25, 0.0, 0.25, 0.0]
+
+====================================================================================================
+FINAL INTEGRATION INTERPRETATION
+====================================================================================================
+READER ADDRESSING REMAINS WEAK.
+
+Saved checkpoint: outputs/repaired_memory_integration/checkpoint_best.pt
+Saved results: outputs/repaired_memory_integration/integration_results.json

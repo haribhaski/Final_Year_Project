@@ -1,0 +1,488 @@
+
+==============================================================================================================
+TOKENIZER
+==============================================================================================================
+Tokenizer: GPT2Tokenizer
+Vocabulary: 50257
+
+==============================================================================================================
+LOAD MODEL
+==============================================================================================================
+Device: cuda
+Base: gpt2
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 2922.78it/s]
+Compatible tensors: 236
+Missing: 0
+Skipped: 0
+Model loaded.
+
+==============================================================================================================
+BUILD CROSS-TEMPLATE DATASET
+==============================================================================================================
+Entities: 500
+Write templates: 8
+Query templates: 8
+
+Examples:
+
+Entity: CrossEntity-0000
+Fact:  CrossEntity-0000 has been assigned the keyword tiger.
+Query: What is the keyword for CrossEntity-0000?
+
+Entity: CrossEntity-0001
+Fact:  The value assigned to CrossEntity-0001 is apple.
+Query: What value belongs to CrossEntity-0001?
+
+Entity: CrossEntity-0002
+Fact:  Store the mapping CrossEntity-0002 to blue.
+Query: The stored value for CrossEntity-0002 is
+
+Entity: CrossEntity-0003
+Fact:  CrossEntity-0003 has been assigned the keyword horse.
+Query: Recall the keyword associated with CrossEntity-0003:
+
+Entity: CrossEntity-0004
+Fact:  green is the keyword linked with CrossEntity-0004.
+Query: What is the keyword for CrossEntity-0004?
+
+==============================================================================================================
+EXTRACT: FACT / WRITE VIEW
+==============================================================================================================
+Hidden states: 13
+Batch 1/32
+Batch 10/32
+Batch 20/32
+Batch 30/32
+Batch 32/32
+
+==============================================================================================================
+EXTRACT: QUERY / READ VIEW
+==============================================================================================================
+Hidden states: 13
+Batch 1/32
+Batch 10/32
+Batch 20/32
+Batch 30/32
+Batch 32/32
+
+==============================================================================================================
+CROSS-TEMPLATE LAYER-WISE RETRIEVAL
+==============================================================================================================
+Random Recall@1 chance: 0.2000%
+
+--------------------------------------------------------------------------------------------------------------
+ENTITY_SPAN
+--------------------------------------------------------------------------------------------------------------
+Layer          R@1       R@5      R@10       MRR     Correct     HardNeg      Margin   PosMargin     ERank W     ERank Q
+0           48.20%    53.20%    56.40%    0.5087     0.97273     0.99468    -0.02195      48.20%      149.25      181.76
+1           61.00%    68.40%    68.40%    0.6445     0.97591     0.99433    -0.01842      61.00%      134.88      169.27
+2           43.40%    53.20%    59.40%    0.4868     0.90408     0.99281    -0.08873      43.40%       42.31      148.77
+3           33.20%    43.00%    48.20%    0.3799     0.91840     0.99218    -0.07378      33.20%        8.01      139.28
+4           29.60%    37.60%    40.80%    0.3382     0.91781     0.99082    -0.07302      29.60%        8.61      137.98
+5           25.80%    32.40%    36.20%    0.2973     0.92708     0.99131    -0.06423      25.80%        8.77      136.23
+6           23.80%    28.00%    31.40%    0.2665     0.92569     0.99029    -0.06460      23.80%        9.34      132.97
+7           20.00%    23.40%    25.00%    0.2257     0.92675     0.98959    -0.06285      20.00%       10.03      127.22
+8           19.00%    21.60%    23.00%    0.2104     0.92336     0.98762    -0.06426      19.00%       11.44      118.62
+9           15.20%    19.80%    21.80%    0.1788     0.92339     0.98540    -0.06200      15.20%       13.24      110.17
+10          14.40%    17.40%    19.80%    0.1679     0.92333     0.98495    -0.06162      14.40%       15.92      102.75
+11           8.60%    15.20%    16.40%    0.1188     0.93279     0.98802    -0.05523       8.60%       19.77       88.53
+12           2.60%     4.80%     6.60%    0.0449     0.99857     0.99951    -0.00094       2.60%       25.66       20.30
+
+--------------------------------------------------------------------------------------------------------------
+LAST_TOKEN
+--------------------------------------------------------------------------------------------------------------
+Layer          R@1       R@5      R@10       MRR     Correct     HardNeg      Margin   PosMargin     ERank W     ERank Q
+0            7.40%    15.80%    15.80%    0.1234     0.86188     0.86484    -0.00296       0.20%        2.58        2.76
+1            0.60%     4.40%     9.00%    0.0353     0.90849     0.91336    -0.00488       0.60%      113.46       36.52
+2            0.40%     2.20%     4.60%    0.0226     0.85087     0.85790    -0.00703       0.40%      105.35       25.66
+3            1.00%     4.60%     7.40%    0.0351     0.80609     0.82264    -0.01654       1.00%      101.00       38.74
+4            3.60%     8.40%    11.80%    0.0656     0.76104     0.79733    -0.03629       3.60%       98.67       49.91
+5            6.80%    11.40%    13.80%    0.0954     0.74511     0.79344    -0.04833       6.80%       99.75       61.15
+6            4.60%     8.80%    11.00%    0.0729     0.71180     0.76576    -0.05396       4.60%      102.86       59.70
+7            2.60%     6.60%     8.40%    0.0510     0.70325     0.75659    -0.05335       2.60%      103.62       60.31
+8            0.60%     4.00%     5.40%    0.0266     0.70202     0.75547    -0.05346       0.60%      102.65       56.87
+9            0.60%     2.00%     3.20%    0.0202     0.73990     0.79068    -0.05078       0.60%      104.64       56.08
+10           0.40%     1.40%     3.60%    0.0176     0.81837     0.85832    -0.03995       0.40%      104.25       55.92
+11           0.00%     1.20%     2.60%    0.0138     0.88897     0.91597    -0.02700       0.00%      100.76       53.94
+12           0.20%     1.40%     2.40%    0.0153     0.98793     0.99629    -0.00836       0.20%       27.26       13.99
+
+--------------------------------------------------------------------------------------------------------------
+MASKED_MEAN
+--------------------------------------------------------------------------------------------------------------
+Layer          R@1       R@5      R@10       MRR     Correct     HardNeg      Margin   PosMargin     ERank W     ERank Q
+0           11.80%    17.20%    19.60%    0.1535     0.98738     0.99095    -0.00358      11.80%      157.19      135.36
+1           10.40%    14.80%    16.00%    0.1332     0.98577     0.99031    -0.00454      10.40%      135.77      108.95
+2            6.80%    12.00%    13.60%    0.0990     0.98837     0.99269    -0.00431       6.80%      112.97       77.17
+3            6.60%    12.80%    16.40%    0.1000     0.99866     0.99919    -0.00053       6.60%       79.23       39.28
+4            7.40%    13.20%    16.80%    0.1084     0.99843     0.99905    -0.00062       7.40%       81.97       39.43
+5            7.60%    13.40%    15.20%    0.1071     0.99826     0.99891    -0.00066       7.60%       82.27       39.51
+6            5.80%    12.40%    13.60%    0.0932     0.99786     0.99869    -0.00083       5.60%       83.19       39.08
+7            4.40%    10.20%    13.20%    0.0757     0.99736     0.99839    -0.00104       4.40%       84.42       39.42
+8            3.80%     8.60%    11.60%    0.0681     0.99639     0.99780    -0.00142       3.80%       84.22       39.71
+9            1.60%     7.00%    11.40%    0.0464     0.99540     0.99723    -0.00183       1.60%       85.43       39.93
+10           2.00%     6.40%     9.40%    0.0488     0.99399     0.99649    -0.00250       2.00%       86.58       41.10
+11           1.80%     5.20%     7.00%    0.0404     0.99299     0.99599    -0.00300       1.80%       86.27       41.00
+12           0.60%     1.80%     2.40%    0.0186     0.99859     0.99951    -0.00093       0.60%       37.84       16.50
+
+==============================================================================================================
+BEST LAYER PER REPRESENTATION
+==============================================================================================================
+
+ENTITY_SPAN
+Best layer: 1
+Recall@1: 61.00%
+Recall@5: 68.40%
+MRR: 0.644459
+Correct cosine: 0.975907
+Hardest negative: 0.994330
+Mean margin: -0.018423
+Positive margins: 61.00%
+
+LAST_TOKEN
+Best layer: 0
+Recall@1: 7.40%
+Recall@5: 15.80%
+MRR: 0.123446
+Correct cosine: 0.861877
+Hardest negative: 0.864836
+Mean margin: -0.002960
+Positive margins: 0.20%
+
+MASKED_MEAN
+Best layer: 0
+Recall@1: 11.80%
+Recall@5: 17.20%
+MRR: 0.153452
+Correct cosine: 0.987377
+Hardest negative: 0.990953
+Mean margin: -0.003576
+Positive margins: 11.80%
+
+==============================================================================================================
+GLOBAL BEST CONFIGURATION
+==============================================================================================================
+Method: ENTITY_SPAN
+Layer: 1
+Recall@1: 61.00%
+Recall@5: 68.40%
+Recall@10: 68.40%
+MRR: 0.644459
+Correct cosine: 0.975907
+Hardest negative: 0.994330
+Mean margin: -0.018423
+Positive margin: 61.00%
+
+==============================================================================================================
+TOP 15 CONFIGURATIONS
+==============================================================================================================
+Rank  Method             Layer       R@1       MRR      Margin
+1     ENTITY_SPAN            1    61.00%    0.6445    -0.01842
+2     ENTITY_SPAN            0    48.20%    0.5087    -0.02195
+3     ENTITY_SPAN            2    43.40%    0.4868    -0.08873
+4     ENTITY_SPAN            3    33.20%    0.3799    -0.07378
+5     ENTITY_SPAN            4    29.60%    0.3382    -0.07302
+6     ENTITY_SPAN            5    25.80%    0.2973    -0.06423
+7     ENTITY_SPAN            6    23.80%    0.2665    -0.06460
+8     ENTITY_SPAN            7    20.00%    0.2257    -0.06285
+9     ENTITY_SPAN            8    19.00%    0.2104    -0.06426
+10    ENTITY_SPAN            9    15.20%    0.1788    -0.06200
+11    ENTITY_SPAN           10    14.40%    0.1679    -0.06162
+12    MASKED_MEAN            0    11.80%    0.1535    -0.00358
+13    MASKED_MEAN            1    10.40%    0.1332    -0.00454
+14    ENTITY_SPAN           11     8.60%    0.1188    -0.05523
+15    MASKED_MEAN            5     7.60%    0.1071    -0.00066
+
+==============================================================================================================
+TEMPLATE-PAIR BREAKDOWN FOR BEST CONFIG
+==============================================================================================================
+  WriteT  QueryT       N         R@1      MeanRank
+       0       0       7     100.00%          1.00
+       0       1      11     100.00%          1.00
+       0       2       6     100.00%          1.00
+       0       3      10     100.00%          1.00
+       0       4       8     100.00%          1.00
+       0       5       8     100.00%          1.00
+       0       6       6       0.00%         19.00
+       0       7       5     100.00%          1.00
+       1       0       9       0.00%        439.44
+       1       1       5       0.00%        432.00
+       1       2      13       0.00%        432.00
+       1       3      12       0.00%        432.00
+       1       4       6       0.00%        443.17
+       1       5       3       0.00%        432.00
+       1       6       7       0.00%        432.00
+       1       7      14       0.00%        432.00
+       2       0       4     100.00%          1.00
+       2       1       3     100.00%          1.00
+       2       2       1     100.00%          1.00
+       2       3       7     100.00%          1.00
+       2       4       8     100.00%          1.00
+       2       5       4     100.00%          1.00
+       2       6       7       0.00%         80.14
+       2       7      11     100.00%          1.00
+       3       0       3      33.33%          1.67
+       3       1      12     100.00%          1.00
+       3       2       8      75.00%          1.25
+       3       3       8      25.00%          2.38
+       3       4      13     100.00%          1.00
+       3       5       9      55.56%          2.22
+       3       6      12       0.00%         21.83
+       3       7       7      28.57%          2.00
+       4       0      11     100.00%          1.00
+       4       1       7     100.00%          1.00
+       4       2      11     100.00%          1.00
+       4       3       7     100.00%          1.00
+       4       4       3     100.00%          1.00
+       4       5       8     100.00%          1.00
+       4       6      11       0.00%         16.45
+       4       7      11      90.91%          1.09
+       5       0       3       0.00%        118.00
+       5       1       7       0.00%        174.00
+       5       2       4       0.00%         32.75
+       5       3       7       0.00%         37.00
+       5       4       9       0.00%        131.33
+       5       5       8       0.00%        123.12
+       5       6       6     100.00%          1.00
+       5       7       5       0.00%        230.20
+       6       0       7     100.00%          1.00
+       6       1       7     100.00%          1.00
+       6       2      11      36.36%          2.73
+       6       3       6      50.00%          1.83
+       6       4      10     100.00%          1.00
+       6       5      17     100.00%          1.00
+       6       6       4       0.00%        130.75
+       6       7       7     100.00%          1.00
+       7       0       5     100.00%          1.00
+       7       1      12      83.33%          1.17
+       7       2       7      71.43%          1.43
+       7       3       8     100.00%          1.00
+       7       4      15     100.00%          1.00
+       7       5       3     100.00%          1.00
+       7       6       6       0.00%         27.00
+       7       7      10      70.00%          1.40
+
+==============================================================================================================
+BEST-CONFIG RETRIEVAL EXAMPLES
+==============================================================================================================
+
+ENTITY: CrossEntity-0001
+FACT: The value assigned to CrossEntity-0001 is apple.
+QUERY: What value belongs to CrossEntity-0001?
+Correct rank: 1
+Margin: 0.013486
+Top matches:
+  1. CrossEntity-0001       cos=0.997954 <-- CORRECT
+  2. CrossEntity-0002       cos=0.984468 
+  3. CrossEntity-0010       cos=0.982919 
+  4. CrossEntity-0111       cos=0.982270 
+  5. CrossEntity-0139       cos=0.982175 
+
+ENTITY: CrossEntity-0002
+FACT: Store the mapping CrossEntity-0002 to blue.
+QUERY: The stored value for CrossEntity-0002 is
+Correct rank: 1
+Margin: 0.004589
+Top matches:
+  1. CrossEntity-0002       cos=0.994622 <-- CORRECT
+  2. CrossEntity-0001       cos=0.990033 
+  3. CrossEntity-0010       cos=0.983154 
+  4. CrossEntity-0442       cos=0.981168 
+  5. CrossEntity-0363       cos=0.980964 
+
+ENTITY: CrossEntity-0004
+FACT: green is the keyword linked with CrossEntity-0004.
+QUERY: What is the keyword for CrossEntity-0004?
+Correct rank: 1
+Margin: 0.003408
+Top matches:
+  1. CrossEntity-0004       cos=0.997944 <-- CORRECT
+  2. CrossEntity-0005       cos=0.994537 
+  3. CrossEntity-0008       cos=0.993765 
+  4. CrossEntity-0007       cos=0.993246 
+  5. CrossEntity-0006       cos=0.991116 
+
+ENTITY: CrossEntity-0005
+FACT: The assigned keyword for CrossEntity-0005 is orange.
+QUERY: Recall the keyword associated with CrossEntity-0005:
+Correct rank: 1
+Margin: 0.002590
+Top matches:
+  1. CrossEntity-0005       cos=0.997186 <-- CORRECT
+  2. CrossEntity-0004       cos=0.994596 
+  3. CrossEntity-0008       cos=0.994140 
+  4. CrossEntity-0007       cos=0.993784 
+  5. CrossEntity-0006       cos=0.992517 
+
+ENTITY: CrossEntity-0007
+FACT: The assigned keyword for CrossEntity-0007 is river.
+QUERY: What value belongs to CrossEntity-0007?
+Correct rank: 1
+Margin: 0.003492
+Top matches:
+  1. CrossEntity-0007       cos=0.997486 <-- CORRECT
+  2. CrossEntity-0005       cos=0.993994 
+  3. CrossEntity-0008       cos=0.992647 
+  4. CrossEntity-0009       cos=0.991992 
+  5. CrossEntity-0006       cos=0.991382 
+
+ENTITY: CrossEntity-0000
+FACT: CrossEntity-0000 has been assigned the keyword tiger.
+QUERY: What is the keyword for CrossEntity-0000?
+Correct rank: 499
+Margin: -0.182438
+Top matches:
+  1. CrossEntity-0001       cos=0.987587 
+  2. CrossEntity-0007       cos=0.983210 
+  3. CrossEntity-0100       cos=0.983146 
+  4. CrossEntity-0008       cos=0.982925 
+  5. CrossEntity-0036       cos=0.982697 
+
+ENTITY: CrossEntity-0200
+FACT: CrossEntity-0200 has been assigned the keyword chair.
+QUERY: Retrieve the mapping for CrossEntity-0200:
+Correct rank: 499
+Margin: -0.171352
+Top matches:
+  1. CrossEntity-0100       cos=0.984471 
+  2. CrossEntity-0001       cos=0.976043 
+  3. CrossEntity-0010       cos=0.973421 
+  4. CrossEntity-0188       cos=0.972790 
+  5. CrossEntity-0380       cos=0.972551 
+
+ENTITY: CrossEntity-0418
+FACT: CrossEntity-0418 has been assigned the keyword blue.
+QUERY: Give the stored keyword linked with CrossEntity-0418:
+Correct rank: 432
+Margin: -0.146477
+Top matches:
+  1. CrossEntity-0417       cos=0.995914 
+  2. CrossEntity-0218       cos=0.994412 
+  3. CrossEntity-0420       cos=0.994235 
+  4. CrossEntity-0426       cos=0.994188 
+  5. CrossEntity-0434       cos=0.993946 
+
+ENTITY: CrossEntity-0499
+FACT: CrossEntity-0499 has been assigned the keyword horse.
+QUERY: Give the stored keyword linked with CrossEntity-0499:
+Correct rank: 432
+Margin: -0.145075
+Top matches:
+  1. CrossEntity-0399       cos=0.995419 
+  2. CrossEntity-0196       cos=0.992551 
+  3. CrossEntity-0434       cos=0.991900 
+  4. CrossEntity-0417       cos=0.991237 
+  5. CrossEntity-0445       cos=0.991196 
+
+ENTITY: CrossEntity-0415
+FACT: CrossEntity-0415 has been assigned the keyword banana.
+QUERY: Give the stored keyword linked with CrossEntity-0415:
+Correct rank: 432
+Margin: -0.144751
+Top matches:
+  1. CrossEntity-0417       cos=0.995257 
+  2. CrossEntity-0420       cos=0.994566 
+  3. CrossEntity-0445       cos=0.994464 
+  4. CrossEntity-0413       cos=0.994152 
+  5. CrossEntity-0411       cos=0.993801 
+
+ENTITY: CrossEntity-0427
+FACT: CrossEntity-0427 has been assigned the keyword rabbit.
+QUERY: Give the stored keyword linked with CrossEntity-0427:
+Correct rank: 432
+Margin: -0.144583
+Top matches:
+  1. CrossEntity-0426       cos=0.996170 
+  2. CrossEntity-0417       cos=0.995237 
+  3. CrossEntity-0428       cos=0.995050 
+  4. CrossEntity-0434       cos=0.993909 
+  5. CrossEntity-0433       cos=0.993626 
+
+ENTITY: CrossEntity-0066
+FACT: CrossEntity-0066 has been assigned the keyword blue.
+QUERY: Give the stored keyword linked with CrossEntity-0066:
+Correct rank: 432
+Margin: -0.144098
+Top matches:
+  1. CrossEntity-0070       cos=0.993567 
+  2. CrossEntity-0088       cos=0.993371 
+  3. CrossEntity-0068       cos=0.993298 
+  4. CrossEntity-0036       cos=0.993242 
+  5. CrossEntity-0069       cos=0.992601 
+
+ENTITY: CrossEntity-0215
+FACT: CrossEntity-0215 has been assigned the keyword river.
+QUERY: Give the stored keyword linked with CrossEntity-0215:
+Correct rank: 432
+Margin: -0.143660
+Top matches:
+  1. CrossEntity-0212       cos=0.994936 
+  2. CrossEntity-0216       cos=0.994472 
+  3. CrossEntity-0218       cos=0.994291 
+  4. CrossEntity-0213       cos=0.993892 
+  5. CrossEntity-0214       cos=0.993605 
+
+ENTITY: CrossEntity-0480
+FACT: CrossEntity-0480 has been assigned the keyword tiger.
+QUERY: Give the stored keyword linked with CrossEntity-0480:
+Correct rank: 432
+Margin: -0.143539
+Top matches:
+  1. CrossEntity-0470       cos=0.994286 
+  2. CrossEntity-0420       cos=0.993935 
+  3. CrossEntity-0180       cos=0.993920 
+  4. CrossEntity-0460       cos=0.992878 
+  5. CrossEntity-0463       cos=0.992165 
+
+ENTITY: CrossEntity-0414
+FACT: CrossEntity-0414 has been assigned the keyword falcon.
+QUERY: Give the stored keyword linked with CrossEntity-0414:
+Correct rank: 432
+Margin: -0.143359
+Top matches:
+  1. CrossEntity-0434       cos=0.995047 
+  2. CrossEntity-0417       cos=0.994901 
+  3. CrossEntity-0413       cos=0.994660 
+  4. CrossEntity-0426       cos=0.993666 
+  5. CrossEntity-0411       cos=0.993510 
+
+==============================================================================================================
+FINAL LAYER VS BEST LAYER
+==============================================================================================================
+
+ENTITY_SPAN
+Final layer 12: R@1=2.60% MRR=0.0449 Margin=-0.000938
+Best layer 1: R@1=61.00% MRR=0.6445 Margin=-0.018423
+
+LAST_TOKEN
+Final layer 12: R@1=0.20% MRR=0.0153 Margin=-0.008363
+Best layer 0: R@1=7.40% MRR=0.1234 Margin=-0.002960
+
+MASKED_MEAN
+Final layer 12: R@1=0.60% MRR=0.0186 Margin=-0.000928
+Best layer 0: R@1=11.80% MRR=0.1535 Margin=-0.003576
+
+==============================================================================================================
+AUTOMATIC INTERPRETATION
+==============================================================================================================
+Best method: ENTITY_SPAN
+Best layer: 1
+Recall@1: 61.00%
+Chance: 0.2000%
+MRR: 0.644459
+Mean margin: -0.018423
+Positive margins: 61.00%
+
+RESULT: MODERATE CROSS-TEMPLATE SIGNAL.
+
+The representation contains useful identity information but is not yet reliable enough for direct addressing.
+
+NEXT:
+Test a small contrastive projection using this best layer.
+
+==============================================================================================================
+PROBE COMPLETE
+==============================================================================================================
+No training performed.
+No checkpoint modified.
+No model source files modified.

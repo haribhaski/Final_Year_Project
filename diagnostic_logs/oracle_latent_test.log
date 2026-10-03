@@ -1,0 +1,94 @@
+==============================================================================
+ORACLE LATENT VALUE TEST
+==============================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Loading model...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 6309.28it/s]
+
+Running 100 controlled examples...
+
+------------------------------------------------------------------------------
+EXAMPLE 1
+Fact:       The secret code associated with person_10000 is harbor.
+Question:   What is the secret code associated with person_10000?
+Answer:     harbor
+Candidates: ['amber', 'kelp', 'pearl', 'harbor']
+Oracle slot: 7
+Slot Δ: [0.3491, 0.3554, 0.78, 0.3429, 0.3495, 0.3587, 0.3089, 41.3901]
+
+------------------------------------------------------------------------------
+EXAMPLE 2
+Fact:       The secret code associated with person_10001 is lilac.
+Question:   What is the secret code associated with person_10001?
+Answer:     lilac
+Candidates: ['lilac', 'birch', 'nova', 'frost']
+Oracle slot: 7
+Slot Δ: [0.3491, 0.3554, 0.8078, 0.3429, 0.3495, 0.3587, 0.3089, 41.2343]
+
+------------------------------------------------------------------------------
+EXAMPLE 3
+Fact:       The secret code associated with person_10002 is pearl.
+Question:   What is the secret code associated with person_10002?
+Answer:     pearl
+Candidates: ['glade', 'harbor', 'pearl', 'ember']
+Oracle slot: 7
+Slot Δ: [0.3491, 0.3554, 0.789, 0.3429, 0.3495, 0.3587, 0.3089, 41.3399]
+
+------------------------------------------------------------------------------
+EXAMPLE 4
+Fact:       The secret code associated with person_10003 is amber.
+Question:   What is the secret code associated with person_10003?
+Answer:     amber
+Candidates: ['birch', 'amber', 'dune', 'iris']
+Oracle slot: 7
+Slot Δ: [0.3491, 0.3554, 0.7831, 0.3429, 0.3495, 0.3587, 0.3089, 41.3731]
+
+------------------------------------------------------------------------------
+EXAMPLE 5
+Fact:       The secret code associated with person_10004 is ember.
+Question:   What is the secret code associated with person_10004?
+Answer:     ember
+Candidates: ['frost', 'birch', 'ember', 'jade']
+Oracle slot: 7
+Slot Δ: [0.3491, 0.3554, 0.8078, 0.3429, 0.3495, 0.3587, 0.3089, 41.2367]
+
+==============================================================================
+FINAL RESULTS
+==============================================================================
+
+Condition               Accuracy     Correct     Answer Loss
+------------------------------------------------------------
+NO_MEMORY                 21.00%      21/100         12.3660
+NORMAL_READER             24.00%      24/100          9.0973
+ORACLE_SLOT               21.00%      21/100         11.8911
+
+==============================================================================
+MOST-WRITTEN SLOT DISTRIBUTION
+==============================================================================
+Slot 0:    0 / 100
+Slot 1:    0 / 100
+Slot 2:    0 / 100
+Slot 3:    0 / 100
+Slot 4:    0 / 100
+Slot 5:    0 / 100
+Slot 6:    0 / 100
+Slot 7:  100 / 100
+
+==============================================================================
+DIFFERENCES
+==============================================================================
+Normal reader - No memory: +3.00 pp
+Oracle slot   - No memory: +0.00 pp
+Oracle slot   - Normal reader: -3.00 pp
+
+==============================================================================
+AUTOMATIC INTERPRETATION
+==============================================================================
+VALUE TEST: FAIL / INCONCLUSIVE
+Forcing the likely written slot does not substantially outperform GPT-2 without memory.
+
+ADDRESSING RESULT:
+Forcing one slot does not improve over the normal reader.
+
+IMPORTANT: this is a controlled one-fact VALUE sanity test, not the final LoCoMo experiment.

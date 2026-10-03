@@ -1,0 +1,151 @@
+
+====================================================================================================
+E5-ADDRESSED MEMORY INTEGRATION
+====================================================================================================
+E5 model: intfloat/e5-base-v2
+WRITE ADDRESS: passage: <fact>
+READ ADDRESS: query: <question>
+VALUE pathway: existing GPT-2 + CandidateWriter
+E5 frozen: True
+====================================================================================================
+
+====================================================================================================
+REPAIRED MEMORY — INTEGRATED TRAINING
+====================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+TRAINABLE:
+  CandidateWriter
+  VectorGate
+  MemoryReader + fusion
+  SlotRouter
+  AddressEncoder
+
+FROZEN:
+  GPT-2
+  LM head weights
+  MemoryBank
+  OrthogonalUpdate
+
+REPAIR:
+  write_count -> free-slot mask
+  straight-through top-1 routing
+  explicit answer-token loss
+  reader slot-address supervision
+  matched-vs-mismatched memory loss
+  minimum gate-strength penalty
+
+Classes: 13
+Candidate chance: 7.69%
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 6225.87it/s]
+Missing keys:
+   address_encoder.0.weight
+   address_encoder.0.bias
+   address_encoder.1.weight
+Unexpected keys:
+
+Precomputing train GPT-2 states...
+Encoding E5 passage addresses...
+
+====================================================================================================
+LOADING E5 ADDRESS ENCODER
+====================================================================================================
+Model: intfloat/e5-base-v2
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  56%|█████▋    | 112/199 [00:00<00:00, 1117.48it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 1434.22it/s]
+E5 loaded.
+E5 parameters frozen.
+
+Encoding E5 query addresses...
+Precomputing validation GPT-2 states...
+Encoding E5 passage addresses...
+Encoding E5 query addresses...
+Precomputing test GPT-2 states...
+Encoding E5 passage addresses...
+Encoding E5 query addresses...
+
+ADDRESS MODE: FROZEN E5
+Address similarity temperature: 0.05
+
+Trainable parameter counts:
+Writer: 22,440,961
+Gate: 299,912
+Reader: 9,153,794
+Router: 1,485,704
+Address encoder: 591,360
+
+
+===============================================================================================
+PRETRAIN VALIDATION
+===============================================================================================
+FULL VOCAB ACC:       0.00%
+CANDIDATE ACC:        8.44%
+MISMATCH CANDIDATE:   8.12%
+QUERY-ONLY CANDIDATE: 7.81%
+MATCHED NLL:          14.9786
+MISMATCHED NLL:       14.9959
+NLL GAP:              +0.0173
+TARGET SLOT ATTENTION: 0.2806
+MEAN ACTIVE GATE:     0.5557
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.25]
+
+EPOCH 01
+train loss=10.0812 | answer=8.8944 | address=0.9982 | mismatch=0.2863 | gate=0.4096
+VAL candidate=7.50% | full=1.25% | mismatch=7.50% | query=7.81% | gap=+1.6846 | read_attn=0.2999 | gate=0.4920 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 02
+train loss=7.3377 | answer=6.4680 | address=0.8585 | mismatch=0.0040 | gate=0.6113
+VAL candidate=7.50% | full=2.50% | mismatch=7.50% | query=7.81% | gap=+1.8127 | read_attn=0.3238 | gate=0.7058 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 03
+train loss=6.7843 | answer=6.0768 | address=0.7063 | mismatch=0.0010 | gate=0.7523
+VAL candidate=7.50% | full=2.81% | mismatch=7.50% | query=7.81% | gap=+1.7203 | read_attn=0.3151 | gate=0.5956 | collision=0.00%
+Saved best integrated checkpoint.
+
+===============================================================================================
+FINAL TEST — DENSE READER (BEST EPOCH 3)
+===============================================================================================
+FULL VOCAB ACC:       4.38%
+CANDIDATE ACC:        8.44%
+MISMATCH CANDIDATE:   8.44%
+QUERY-ONLY CANDIDATE: 8.44%
+MATCHED NLL:          5.9649
+MISMATCHED NLL:       7.8105
+NLL GAP:              +1.8456
+TARGET SLOT ATTENTION: 0.3292
+MEAN ACTIVE GATE:     0.5965
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.25, 0.0, 0.25, 0.25, 0.25, 0.0, 0.0]
+
+===============================================================================================
+FINAL TEST — READER TOP-K=3
+===============================================================================================
+FULL VOCAB ACC:       4.38%
+CANDIDATE ACC:        8.44%
+MISMATCH CANDIDATE:   8.44%
+QUERY-ONLY CANDIDATE: 8.44%
+MATCHED NLL:          5.9480
+MISMATCHED NLL:       7.5125
+NLL GAP:              +1.5645
+TARGET SLOT ATTENTION: 0.3298
+MEAN ACTIVE GATE:     0.5965
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.25, 0.0, 0.25, 0.25, 0.25, 0.0, 0.0]
+
+====================================================================================================
+FINAL INTEGRATION INTERPRETATION
+====================================================================================================
+READER ADDRESSING REMAINS WEAK.
+
+Saved checkpoint: outputs/repaired_memory_e5_sanity/checkpoint_best.pt
+Saved results: outputs/repaired_memory_e5_sanity/integration_results.json

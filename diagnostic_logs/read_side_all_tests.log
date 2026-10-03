@@ -1,0 +1,252 @@
+====================================================================================================
+READ SIDE — COMPLETE ISOLATION TEST
+====================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+Tests:
+A. SIMPLE_CONTROL
+B. FROZEN_READER_CONTEXT
+C. FROZEN_READER_FUSED
+D. TRAINABLE_READER_CONTEXT
+E. TRAINABLE_READER_FUSED
+
+Router: DISABLED
+CandidateWriter: DISABLED
+VectorGate: DISABLED
+Correct slot: FORCED
+Reader memory mask: ONLY slot 0 visible
+
+Classes: 13
+Chance accuracy: 7.69%
+Chance CE: 2.5649
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 4759.49it/s]
+
+Precomputing train...
+  4000/4000
+
+Precomputing validation...
+  500/500
+
+Precomputing test...
+  500/500
+
+====================================================================================================
+STAGE 1 — BUILD KNOWN-GOOD STORED VALUE
+====================================================================================================
+EPOCH 01 | loss=2.8405 | match=8.80% | mismatch=8.80% | query=6.60% | gap=+0.0175
+EPOCH 02 | loss=2.7760 | match=8.20% | mismatch=6.20% | query=6.60% | gap=+0.0999
+EPOCH 03 | loss=2.1848 | match=80.00% | mismatch=1.60% | query=6.60% | gap=+3.2460
+EPOCH 04 | loss=0.3202 | match=93.20% | mismatch=0.60% | query=6.40% | gap=+7.5089
+EPOCH 05 | loss=0.0262 | match=96.40% | mismatch=0.20% | query=6.40% | gap=+9.2669
+EPOCH 06 | loss=0.0071 | match=90.40% | mismatch=0.80% | query=6.40% | gap=+9.9035
+EPOCH 07 | loss=0.0018 | match=99.60% | mismatch=0.20% | query=6.40% | gap=+10.9447
+EPOCH 08 | loss=0.0011 | match=89.60% | mismatch=0.80% | query=6.40% | gap=+10.2822
+EPOCH 09 | loss=0.0005 | match=90.60% | mismatch=1.00% | query=6.40% | gap=+10.5270
+EPOCH 10 | loss=0.0017 | match=92.40% | mismatch=0.60% | query=6.40% | gap=+11.1263
+EPOCH 11 | loss=0.0002 | match=95.20% | mismatch=0.40% | query=6.40% | gap=+11.4382
+EPOCH 12 | loss=0.0002 | match=91.80% | mismatch=0.80% | query=6.40% | gap=+11.3644
+EPOCH 13 | loss=0.0001 | match=94.00% | mismatch=0.60% | query=6.40% | gap=+11.5113
+EPOCH 14 | loss=0.0001 | match=93.40% | mismatch=0.60% | query=6.40% | gap=+11.5322
+EPOCH 15 | loss=0.0001 | match=92.80% | mismatch=0.60% | query=6.40% | gap=+11.6168
+
+Best VALUE control epoch: 7
+Best validation matched: 99.60%
+
+====================================================================================================
+A. SIMPLE_CONTROL FINAL TEST
+====================================================================================================
+MATCHED:       90.80%
+MISMATCHED:    0.20%
+QUERY ONLY:    8.00%
+NLL GAP:       +9.757713
+POSITIVE GAP:  100.00%
+
+####################################################################################################
+READER TEST: FROZEN_CONTEXT
+####################################################################################################
+Reader trainable: False
+Reader trainable params: 0
+Classifier params: 602,125
+EPOCH 01 | loss=0.4666 | match=98.60% | mismatch=0.40% | query=9.60% | gap=+5.9347 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 02 | loss=0.0036 | match=96.80% | mismatch=0.60% | query=9.60% | gap=+6.7450 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 03 | loss=0.0021 | match=97.00% | mismatch=0.60% | query=9.60% | gap=+6.9346 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 04 | loss=0.0016 | match=97.00% | mismatch=0.60% | query=9.60% | gap=+7.0841 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 05 | loss=0.0013 | match=97.20% | mismatch=0.60% | query=9.60% | gap=+7.2260 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 06 | loss=0.0011 | match=97.40% | mismatch=0.60% | query=9.60% | gap=+7.3591 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 07 | loss=0.0009 | match=97.40% | mismatch=0.60% | query=9.60% | gap=+7.4802 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 08 | loss=0.0007 | match=97.60% | mismatch=0.60% | query=9.60% | gap=+7.5981 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 09 | loss=0.0006 | match=97.60% | mismatch=0.60% | query=9.60% | gap=+7.7076 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 10 | loss=0.0005 | match=98.20% | mismatch=0.00% | query=9.60% | gap=+7.8090 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 11 | loss=0.0005 | match=98.20% | mismatch=0.00% | query=9.60% | gap=+7.9015 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 12 | loss=0.0004 | match=99.00% | mismatch=0.00% | query=9.60% | gap=+7.9922 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 13 | loss=0.0004 | match=98.80% | mismatch=0.00% | query=9.60% | gap=+8.0753 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 14 | loss=0.0003 | match=98.80% | mismatch=0.00% | query=9.60% | gap=+8.1549 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 15 | loss=0.0003 | match=99.00% | mismatch=0.00% | query=9.60% | gap=+8.2308 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+
+==========================================================================================
+FROZEN_CONTEXT FINAL TEST — BEST EPOCH 15
+==========================================================================================
+MATCHED:       86.00%
+MISMATCHED:    0.20%
+QUERY ONLY:    9.00%
+NLL GAP:       +7.329000
+POSITIVE GAP:  100.00%
+ACTIVE SLOT ATTENTION: 1.000000
+READ CONFIDENCE: 0.726328
+
+####################################################################################################
+READER TEST: FROZEN_FUSED
+####################################################################################################
+Reader trainable: False
+Reader trainable params: 0
+Classifier params: 602,125
+EPOCH 01 | loss=2.6790 | match=26.00% | mismatch=6.20% | query=7.20% | gap=+0.1315 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 02 | loss=2.2076 | match=41.60% | mismatch=4.20% | query=7.00% | gap=+0.4477 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 03 | loss=1.6081 | match=47.60% | mismatch=4.00% | query=6.60% | gap=+0.9239 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 04 | loss=1.0730 | match=60.80% | mismatch=2.60% | query=9.60% | gap=+1.4345 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 05 | loss=0.6916 | match=47.60% | mismatch=3.80% | query=9.60% | gap=+1.8904 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 06 | loss=0.4620 | match=61.80% | mismatch=2.80% | query=9.60% | gap=+2.2793 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 07 | loss=0.3211 | match=53.60% | mismatch=2.80% | query=9.60% | gap=+2.6037 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 08 | loss=0.2314 | match=57.40% | mismatch=2.80% | query=9.60% | gap=+2.8862 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 09 | loss=0.1772 | match=60.20% | mismatch=2.80% | query=9.60% | gap=+3.1246 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 10 | loss=0.1354 | match=58.80% | mismatch=2.80% | query=9.60% | gap=+3.3326 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 11 | loss=0.1091 | match=59.40% | mismatch=2.80% | query=9.60% | gap=+3.5172 | slot_attn=1.0000 | confidence=0.7562
+EPOCH 12 | loss=0.0891 | match=67.80% | mismatch=2.20% | query=9.60% | gap=+3.6844 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 13 | loss=0.0743 | match=67.80% | mismatch=2.40% | query=9.60% | gap=+3.8289 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 14 | loss=0.0635 | match=68.00% | mismatch=2.60% | query=9.60% | gap=+3.9685 | slot_attn=1.0000 | confidence=0.7562
+Saved best checkpoint.
+EPOCH 15 | loss=0.0546 | match=66.40% | mismatch=2.20% | query=9.60% | gap=+4.0981 | slot_attn=1.0000 | confidence=0.7562
+
+==========================================================================================
+FROZEN_FUSED FINAL TEST — BEST EPOCH 14
+==========================================================================================
+MATCHED:       39.60%
+MISMATCHED:    4.80%
+QUERY ONLY:    9.00%
+NLL GAP:       +3.463087
+POSITIVE GAP:  99.40%
+ACTIVE SLOT ATTENTION: 1.000000
+READ CONFIDENCE: 0.726328
+
+####################################################################################################
+READER TEST: TRAINABLE_CONTEXT
+####################################################################################################
+Reader trainable: True
+Reader trainable params: 9,153,794
+Classifier params: 602,125
+EPOCH 01 | loss=0.2924 | match=93.40% | mismatch=0.40% | query=9.60% | gap=+7.0050 | slot_attn=1.0000 | confidence=0.6694
+Saved best checkpoint.
+EPOCH 02 | loss=0.0009 | match=93.40% | mismatch=0.40% | query=9.60% | gap=+7.6723 | slot_attn=1.0000 | confidence=0.6840
+Saved best checkpoint.
+EPOCH 03 | loss=0.0005 | match=94.00% | mismatch=0.40% | query=9.60% | gap=+7.8834 | slot_attn=1.0000 | confidence=0.6916
+Saved best checkpoint.
+EPOCH 04 | loss=0.0004 | match=95.00% | mismatch=0.40% | query=9.60% | gap=+8.0583 | slot_attn=1.0000 | confidence=0.6985
+Saved best checkpoint.
+EPOCH 05 | loss=0.0003 | match=96.00% | mismatch=0.20% | query=9.60% | gap=+8.2221 | slot_attn=1.0000 | confidence=0.7046
+Saved best checkpoint.
+EPOCH 06 | loss=0.0003 | match=96.60% | mismatch=0.20% | query=9.60% | gap=+8.3645 | slot_attn=1.0000 | confidence=0.7086
+Saved best checkpoint.
+EPOCH 07 | loss=0.0002 | match=97.40% | mismatch=0.20% | query=9.60% | gap=+8.4874 | slot_attn=1.0000 | confidence=0.7113
+Saved best checkpoint.
+EPOCH 08 | loss=0.0002 | match=97.60% | mismatch=0.00% | query=9.60% | gap=+8.6105 | slot_attn=1.0000 | confidence=0.7144
+Saved best checkpoint.
+EPOCH 09 | loss=0.0002 | match=98.00% | mismatch=0.00% | query=9.60% | gap=+8.7263 | slot_attn=1.0000 | confidence=0.7172
+Saved best checkpoint.
+EPOCH 10 | loss=0.0002 | match=98.60% | mismatch=0.00% | query=9.60% | gap=+8.8274 | slot_attn=1.0000 | confidence=0.7192
+Saved best checkpoint.
+EPOCH 11 | loss=0.0001 | match=98.60% | mismatch=0.00% | query=9.60% | gap=+8.9149 | slot_attn=1.0000 | confidence=0.7203
+Saved best checkpoint.
+EPOCH 12 | loss=0.0001 | match=98.60% | mismatch=0.00% | query=9.60% | gap=+9.0078 | slot_attn=1.0000 | confidence=0.7225
+Saved best checkpoint.
+EPOCH 13 | loss=0.0001 | match=98.60% | mismatch=0.00% | query=9.60% | gap=+9.0852 | slot_attn=1.0000 | confidence=0.7237
+Saved best checkpoint.
+EPOCH 14 | loss=0.0001 | match=98.80% | mismatch=0.00% | query=9.60% | gap=+9.1643 | slot_attn=1.0000 | confidence=0.7249
+Saved best checkpoint.
+EPOCH 15 | loss=0.0001 | match=99.00% | mismatch=0.00% | query=9.60% | gap=+9.2384 | slot_attn=1.0000 | confidence=0.7259
+Saved best checkpoint.
+
+==========================================================================================
+TRAINABLE_CONTEXT FINAL TEST — BEST EPOCH 15
+==========================================================================================
+MATCHED:       91.20%
+MISMATCHED:    0.20%
+QUERY ONLY:    9.00%
+NLL GAP:       +8.472451
+POSITIVE GAP:  100.00%
+ACTIVE SLOT ATTENTION: 1.000000
+READ CONFIDENCE: 0.698693
+
+####################################################################################################
+READER TEST: TRAINABLE_FUSED
+####################################################################################################
+Reader trainable: True
+Reader trainable params: 9,153,794
+Classifier params: 602,125
+EPOCH 01 | loss=2.5083 | match=45.00% | mismatch=5.20% | query=7.20% | gap=+0.3790 | slot_attn=1.0000 | confidence=0.9574
+Saved best checkpoint.
+EPOCH 02 | loss=1.6957 | match=85.40% | mismatch=1.40% | query=8.60% | gap=+1.3518 | slot_attn=1.0000 | confidence=0.9801
+Saved best checkpoint.
+EPOCH 03 | loss=0.7776 | match=99.00% | mismatch=0.20% | query=7.20% | gap=+2.7611 | slot_attn=1.0000 | confidence=0.9863
+Saved best checkpoint.
+EPOCH 04 | loss=0.2629 | match=98.60% | mismatch=0.20% | query=9.60% | gap=+3.8294 | slot_attn=1.0000 | confidence=0.9879
+EPOCH 05 | loss=0.1073 | match=99.60% | mismatch=0.20% | query=9.60% | gap=+4.5651 | slot_attn=1.0000 | confidence=0.9886
+Saved best checkpoint.
+EPOCH 06 | loss=0.0591 | match=98.20% | mismatch=0.20% | query=9.60% | gap=+5.0160 | slot_attn=1.0000 | confidence=0.9888
+EPOCH 07 | loss=0.0384 | match=99.60% | mismatch=0.20% | query=9.60% | gap=+5.4408 | slot_attn=1.0000 | confidence=0.9888
+Saved best checkpoint.
+EPOCH 08 | loss=0.0274 | match=98.20% | mismatch=0.40% | query=6.60% | gap=+5.7237 | slot_attn=1.0000 | confidence=0.9891
+EPOCH 09 | loss=0.0206 | match=98.20% | mismatch=0.40% | query=9.40% | gap=+5.9468 | slot_attn=1.0000 | confidence=0.9889
+EPOCH 10 | loss=0.0161 | match=99.20% | mismatch=0.20% | query=9.60% | gap=+6.2208 | slot_attn=1.0000 | confidence=0.9890
+EPOCH 11 | loss=0.0130 | match=99.40% | mismatch=0.20% | query=9.60% | gap=+6.4025 | slot_attn=1.0000 | confidence=0.9892
+EPOCH 12 | loss=0.0107 | match=98.80% | mismatch=0.20% | query=8.40% | gap=+6.5770 | slot_attn=1.0000 | confidence=0.9892
+EPOCH 13 | loss=0.0090 | match=98.80% | mismatch=0.20% | query=8.80% | gap=+6.7474 | slot_attn=1.0000 | confidence=0.9892
+EPOCH 14 | loss=0.0077 | match=98.80% | mismatch=0.20% | query=8.80% | gap=+6.8779 | slot_attn=1.0000 | confidence=0.9892
+EPOCH 15 | loss=0.0066 | match=98.40% | mismatch=0.40% | query=7.00% | gap=+7.0137 | slot_attn=1.0000 | confidence=0.9892
+
+==========================================================================================
+TRAINABLE_FUSED FINAL TEST — BEST EPOCH 7
+==========================================================================================
+MATCHED:       96.60%
+MISMATCHED:    0.00%
+QUERY ONLY:    9.00%
+NLL GAP:       +5.294004
+POSITIVE GAP:  100.00%
+ACTIVE SLOT ATTENTION: 1.000000
+READ CONFIDENCE: 0.989610
+
+==============================================================================================================
+FINAL READ-SIDE COMPARISON
+==============================================================================================================
+TEST                               MATCH      MISMATCH       QUERY       NLL GAP
+----------------------------------------------------------------------------------
+simple_control                    90.80%         0.20%       8.00%        9.7577
+frozen_context                    86.00%         0.20%       9.00%        7.3290
+frozen_fused                      39.60%         4.80%       9.00%        3.4631
+trainable_context                 91.20%         0.20%       9.00%        8.4725
+trainable_fused                   96.60%         0.00%       9.00%        5.2940
+
+==============================================================================================================
+INTERPRETATION
+==============================================================================================================
+Simple control:          90.80%
+Frozen reader context:   86.00%
+Frozen reader fused:     39.60%
+Trainable reader context: 91.20%
+Trainable reader fused:  96.60%
+
+CHECKPOINT READER FAILURE:
+The reader architecture works when trained, but the original checkpoint reader weights were poorly learned.
+
+Saved: outputs/read_side_all_tests/read_side_all_results.json

@@ -1,0 +1,383 @@
+{
+  "fact_representation": "mean",
+  "best_epoch": 15,
+  "best_validation_gap": 9.14811223745346,
+  "test": {
+    "matched_accuracy": 69.20000314712524,
+    "mismatched_accuracy": 7.000000029802322,
+    "query_only_accuracy": 7.800000160932541,
+    "matched_loss": 0.7625287175178528,
+    "mismatched_loss": 9.724722862243652,
+    "query_only_loss": 2.858346462249756,
+    "nll_gap": 8.9621941447258,
+    "positive_gap_fraction": 97.00000286102295,
+    "value_geometry": {
+      "mean_norm": 11.252257347106934,
+      "mean_pairwise_l2": 1.6475037336349487,
+      "relative_l2": 0.14641539752483368,
+      "mean_pairwise_cosine": 0.9882673025131226
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 2.8253641052246095,
+        "matched_ce": 2.5786589393615724,
+        "rank_loss": 0.49341033840179443
+      },
+      "validation": {
+        "matched_accuracy": 8.60000029206276,
+        "mismatched_accuracy": 8.60000029206276,
+        "query_only_accuracy": 6.599999964237213,
+        "matched_loss": 2.563908100128174,
+        "mismatched_loss": 2.5773441791534424,
+        "query_only_loss": 2.5714046955108643,
+        "nll_gap": 0.013436079025268555,
+        "positive_gap_fraction": 94.80000734329224,
+        "value_geometry": {
+          "mean_norm": 11.830937385559082,
+          "mean_pairwise_l2": 0.4348619878292084,
+          "relative_l2": 0.03675634413957596,
+          "mean_pairwise_cosine": 0.9992057681083679
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "loss": 2.780426160812378,
+        "matched_ce": 2.545781982421875,
+        "rank_loss": 0.46928836560249326
+      },
+      "validation": {
+        "matched_accuracy": 6.599999964237213,
+        "mismatched_accuracy": 6.599999964237213,
+        "query_only_accuracy": 7.600000500679016,
+        "matched_loss": 2.5287930965423584,
+        "mismatched_loss": 2.584322929382324,
+        "query_only_loss": 2.570875406265259,
+        "nll_gap": 0.05552983283996582,
+        "positive_gap_fraction": 93.4000015258789,
+        "value_geometry": {
+          "mean_norm": 9.378656387329102,
+          "mean_pairwise_l2": 0.5500943064689636,
+          "relative_l2": 0.058653850108385086,
+          "mean_pairwise_cosine": 0.9980775117874146
+        }
+      }
+    },
+    {
+      "epoch": 3,
+      "train": {
+        "loss": 2.5935992584228518,
+        "matched_ce": 2.4207456150054933,
+        "rank_loss": 0.3457072911262512
+      },
+      "validation": {
+        "matched_accuracy": 34.20000076293945,
+        "mismatched_accuracy": 8.800000697374344,
+        "query_only_accuracy": 7.600000500679016,
+        "matched_loss": 2.2450857162475586,
+        "mismatched_loss": 2.6099493503570557,
+        "query_only_loss": 2.5790915489196777,
+        "nll_gap": 0.36486363410949707,
+        "positive_gap_fraction": 94.0000057220459,
+        "value_geometry": {
+          "mean_norm": 9.724440574645996,
+          "mean_pairwise_l2": 0.7664281129837036,
+          "relative_l2": 0.07881462574005127,
+          "mean_pairwise_cosine": 0.9965747594833374
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "train": {
+        "loss": 2.0811436729431154,
+        "matched_ce": 2.0193928184509278,
+        "rank_loss": 0.12350172570347787
+      },
+      "validation": {
+        "matched_accuracy": 18.400001525878906,
+        "mismatched_accuracy": 7.400000095367432,
+        "query_only_accuracy": 6.400000303983688,
+        "matched_loss": 1.9919551610946655,
+        "mismatched_loss": 2.979459047317505,
+        "query_only_loss": 2.614241361618042,
+        "nll_gap": 0.9875038862228394,
+        "positive_gap_fraction": 94.20000314712524,
+        "value_geometry": {
+          "mean_norm": 10.001925468444824,
+          "mean_pairwise_l2": 0.938395619392395,
+          "relative_l2": 0.09382149577140808,
+          "mean_pairwise_cosine": 0.9951102137565613
+        }
+      }
+    },
+    {
+      "epoch": 5,
+      "train": {
+        "loss": 1.5013455018997193,
+        "matched_ce": 1.4699952411651611,
+        "rank_loss": 0.06270050626993179
+      },
+      "validation": {
+        "matched_accuracy": 66.80000424385071,
+        "mismatched_accuracy": 7.800000160932541,
+        "query_only_accuracy": 7.600000500679016,
+        "matched_loss": 1.4653372764587402,
+        "mismatched_loss": 3.3977115154266357,
+        "query_only_loss": 2.6350295543670654,
+        "nll_gap": 1.9323742389678955,
+        "positive_gap_fraction": 95.00000476837158,
+        "value_geometry": {
+          "mean_norm": 11.036402702331543,
+          "mean_pairwise_l2": 1.0843884944915771,
+          "relative_l2": 0.09825561195611954,
+          "mean_pairwise_cosine": 0.9946148991584778
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "train": {
+        "loss": 1.027620036125183,
+        "matched_ce": 1.0037428531646728,
+        "rank_loss": 0.04775437128543854
+      },
+      "validation": {
+        "matched_accuracy": 71.60000205039978,
+        "mismatched_accuracy": 8.800000697374344,
+        "query_only_accuracy": 7.600000500679016,
+        "matched_loss": 1.1392871141433716,
+        "mismatched_loss": 4.104208946228027,
+        "query_only_loss": 2.665813446044922,
+        "nll_gap": 2.9649218320846558,
+        "positive_gap_fraction": 95.20000219345093,
+        "value_geometry": {
+          "mean_norm": 11.507579803466797,
+          "mean_pairwise_l2": 1.2051533460617065,
+          "relative_l2": 0.10472691804170609,
+          "mean_pairwise_cosine": 0.9938788414001465
+        }
+      }
+    },
+    {
+      "epoch": 7,
+      "train": {
+        "loss": 0.7200342650413514,
+        "matched_ce": 0.6988478798866272,
+        "rank_loss": 0.0423727707862854
+      },
+      "validation": {
+        "matched_accuracy": 72.80000448226929,
+        "mismatched_accuracy": 7.200000435113907,
+        "query_only_accuracy": 7.600000500679016,
+        "matched_loss": 0.860116720199585,
+        "mismatched_loss": 4.696528911590576,
+        "query_only_loss": 2.694467067718506,
+        "nll_gap": 3.836412191390991,
+        "positive_gap_fraction": 95.20000219345093,
+        "value_geometry": {
+          "mean_norm": 11.385721206665039,
+          "mean_pairwise_l2": 1.2939549684524536,
+          "relative_l2": 0.11364717036485672,
+          "mean_pairwise_cosine": 0.9928041100502014
+        }
+      }
+    },
+    {
+      "epoch": 8,
+      "train": {
+        "loss": 0.5072557821273803,
+        "matched_ce": 0.4867709164619446,
+        "rank_loss": 0.040969732224941255
+      },
+      "validation": {
+        "matched_accuracy": 84.60000157356262,
+        "mismatched_accuracy": 7.200000435113907,
+        "query_only_accuracy": 7.400000095367432,
+        "matched_loss": 0.6181886792182922,
+        "mismatched_loss": 5.303177833557129,
+        "query_only_loss": 2.729135036468506,
+        "nll_gap": 4.684989154338837,
+        "positive_gap_fraction": 95.40000557899475,
+        "value_geometry": {
+          "mean_norm": 11.243977546691895,
+          "mean_pairwise_l2": 1.3707460165023804,
+          "relative_l2": 0.12190935015678406,
+          "mean_pairwise_cosine": 0.9917413592338562
+        }
+      }
+    },
+    {
+      "epoch": 9,
+      "train": {
+        "loss": 0.3600968947410583,
+        "matched_ce": 0.3415055389404297,
+        "rank_loss": 0.03718271343410015
+      },
+      "validation": {
+        "matched_accuracy": 73.60000610351562,
+        "mismatched_accuracy": 7.800000160932541,
+        "query_only_accuracy": 6.599999964237213,
+        "matched_loss": 0.6948408484458923,
+        "mismatched_loss": 6.1316728591918945,
+        "query_only_loss": 2.7703731060028076,
+        "nll_gap": 5.436832010746002,
+        "positive_gap_fraction": 95.20000219345093,
+        "value_geometry": {
+          "mean_norm": 11.185873031616211,
+          "mean_pairwise_l2": 1.433538556098938,
+          "relative_l2": 0.1281561553478241,
+          "mean_pairwise_cosine": 0.9908969402313232
+        }
+      }
+    },
+    {
+      "epoch": 10,
+      "train": {
+        "loss": 0.25673033320903776,
+        "matched_ce": 0.2376989426612854,
+        "rank_loss": 0.03806278400123119
+      },
+      "validation": {
+        "matched_accuracy": 75.00000596046448,
+        "mismatched_accuracy": 7.200000435113907,
+        "query_only_accuracy": 6.400000303983688,
+        "matched_loss": 0.5658436417579651,
+        "mismatched_loss": 6.643097877502441,
+        "query_only_loss": 2.795706272125244,
+        "nll_gap": 6.077254235744476,
+        "positive_gap_fraction": 95.40000557899475,
+        "value_geometry": {
+          "mean_norm": 11.127179145812988,
+          "mean_pairwise_l2": 1.4809468984603882,
+          "relative_l2": 0.1330927461385727,
+          "mean_pairwise_cosine": 0.9901967644691467
+        }
+      }
+    },
+    {
+      "epoch": 11,
+      "train": {
+        "loss": 0.18088364446163177,
+        "matched_ce": 0.16123978793621063,
+        "rank_loss": 0.039287713468074796
+      },
+      "validation": {
+        "matched_accuracy": 82.20000267028809,
+        "mismatched_accuracy": 7.800000160932541,
+        "query_only_accuracy": 6.400000303983688,
+        "matched_loss": 0.4620997905731201,
+        "mismatched_loss": 7.25245475769043,
+        "query_only_loss": 2.8279306888580322,
+        "nll_gap": 6.79035496711731,
+        "positive_gap_fraction": 95.6000030040741,
+        "value_geometry": {
+          "mean_norm": 11.131607055664062,
+          "mean_pairwise_l2": 1.5286736488342285,
+          "relative_l2": 0.13732731342315674,
+          "mean_pairwise_cosine": 0.9895801544189453
+        }
+      }
+    },
+    {
+      "epoch": 12,
+      "train": {
+        "loss": 0.11887372809648514,
+        "matched_ce": 0.09904897809028626,
+        "rank_loss": 0.03964950017631054
+      },
+      "validation": {
+        "matched_accuracy": 71.60000205039978,
+        "mismatched_accuracy": 6.800000369548798,
+        "query_only_accuracy": 6.400000303983688,
+        "matched_loss": 0.54854416847229,
+        "mismatched_loss": 8.096412658691406,
+        "query_only_loss": 2.8645904064178467,
+        "nll_gap": 7.547868490219116,
+        "positive_gap_fraction": 95.40000557899475,
+        "value_geometry": {
+          "mean_norm": 11.14927864074707,
+          "mean_pairwise_l2": 1.5757009983062744,
+          "relative_l2": 0.1413276195526123,
+          "mean_pairwise_cosine": 0.9889824390411377
+        }
+      }
+    },
+    {
+      "epoch": 13,
+      "train": {
+        "loss": 0.07985629171133041,
+        "matched_ce": 0.060277797758579256,
+        "rank_loss": 0.03915698906779289
+      },
+      "validation": {
+        "matched_accuracy": 83.80000591278076,
+        "mismatched_accuracy": 8.20000022649765,
+        "query_only_accuracy": 6.400000303983688,
+        "matched_loss": 0.45711252093315125,
+        "mismatched_loss": 8.66032886505127,
+        "query_only_loss": 2.8993139266967773,
+        "nll_gap": 8.203216344118118,
+        "positive_gap_fraction": 95.20000219345093,
+        "value_geometry": {
+          "mean_norm": 11.213655471801758,
+          "mean_pairwise_l2": 1.612322449684143,
+          "relative_l2": 0.14378206431865692,
+          "mean_pairwise_cosine": 0.9886045455932617
+        }
+      }
+    },
+    {
+      "epoch": 14,
+      "train": {
+        "loss": 0.05968760934472084,
+        "matched_ce": 0.04115915966033935,
+        "rank_loss": 0.03705689924955368
+      },
+      "validation": {
+        "matched_accuracy": 81.2000036239624,
+        "mismatched_accuracy": 7.400000095367432,
+        "query_only_accuracy": 6.400000303983688,
+        "matched_loss": 0.39908722043037415,
+        "mismatched_loss": 9.142203330993652,
+        "query_only_loss": 2.914794445037842,
+        "nll_gap": 8.743116110563278,
+        "positive_gap_fraction": 95.6000030040741,
+        "value_geometry": {
+          "mean_norm": 11.218778610229492,
+          "mean_pairwise_l2": 1.6406420469284058,
+          "relative_l2": 0.146240696310997,
+          "mean_pairwise_cosine": 0.988222062587738
+        }
+      }
+    },
+    {
+      "epoch": 15,
+      "train": {
+        "loss": 0.04872141596674919,
+        "matched_ce": 0.02981464484333992,
+        "rank_loss": 0.03781354248523712
+      },
+      "validation": {
+        "matched_accuracy": 80.60000538825989,
+        "mismatched_accuracy": 7.800000160932541,
+        "query_only_accuracy": 6.400000303983688,
+        "matched_loss": 0.4762278199195862,
+        "mismatched_loss": 9.624340057373047,
+        "query_only_loss": 2.9455037117004395,
+        "nll_gap": 9.14811223745346,
+        "positive_gap_fraction": 95.40000557899475,
+        "value_geometry": {
+          "mean_norm": 11.230791091918945,
+          "mean_pairwise_l2": 1.6630586385726929,
+          "relative_l2": 0.1480802744626999,
+          "mean_pairwise_cosine": 0.9879317283630371
+        }
+      }
+    }
+  ]
+}

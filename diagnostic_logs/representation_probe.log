@@ -1,0 +1,167 @@
+==========================================================================================
+REPRESENTATION PROBE
+==========================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Forced memory slot: 0
+
+This script does NOT train or modify the memory architecture.
+
+Answer classes:
+  amber        class= 0 token=36505
+  frost        class= 1 token=21682
+  harbor       class= 2 token=25451
+  maple        class= 3 token=31377
+  olive        class= 4 token=19450
+  pearl        class= 5 token=43836
+  rose         class= 6 token=8278
+  silver       class= 7 token=8465
+  stone        class= 8 token=7815
+  violet       class= 9 token=45725
+  cloud        class=10 token=6279
+  river        class=11 token=7850
+  ocean        class=12 token=9151
+
+Number classes: 13
+Chance accuracy: 7.69%
+Chance CE loss: 2.5649
+Loading model...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 4269.04it/s]
+
+Train examples: 2000
+Validation examples: 400
+Test examples: 400
+
+==========================================================================================
+TRAIN REPRESENTATIONS
+==========================================================================================
+Extracting 2000 examples...
+  500/2000
+  1000/2000
+  1500/2000
+  2000/2000
+
+==========================================================================================
+VALIDATION REPRESENTATIONS
+==========================================================================================
+Extracting 400 examples...
+  400/400
+
+==========================================================================================
+TEST REPRESENTATIONS
+==========================================================================================
+Extracting 400 examples...
+  400/400
+
+==========================================================================================
+RAW REPRESENTATION GEOMETRY
+==========================================================================================
+
+MEAN_POOL
+  mean norm:          190.675110
+  mean pairwise L2:   9.788955
+  L2 / norm:          0.051338
+  mean cosine:        0.999647
+
+ANSWER_TOKEN
+  mean norm:          202.775085
+  mean pairwise L2:   31.005651
+  L2 / norm:          0.152907
+  mean cosine:        0.994787
+
+WRITTEN_SLOT
+  mean norm:          27.659353
+  mean pairwise L2:   0.037571
+  L2 / norm:          0.001358
+  mean cosine:        0.999999
+
+WRITE_DELTA
+  mean norm:          2.097054
+  mean pairwise L2:   0.036934
+  L2 / norm:          0.017612
+  mean cosine:        0.999748
+
+==========================================================================================
+TRAINING LINEAR PROBE: MEAN_POOL
+==========================================================================================
+    Epoch 01 | Train loss 1.6526 | Val acc 71.75%
+    Epoch 05 | Train loss 0.0495 | Val acc 88.00%
+    Epoch 10 | Train loss 0.0189 | Val acc 93.00%
+    Epoch 15 | Train loss 0.0107 | Val acc 96.25%
+    Epoch 20 | Train loss 0.0071 | Val acc 97.75%
+    Epoch 25 | Train loss 0.0051 | Val acc 98.50%
+    Epoch 30 | Train loss 0.0039 | Val acc 99.00%
+
+Best epoch: 30
+Train: acc=100.00% loss=0.0038
+Valid: acc=99.00% loss=0.1358
+Test: acc=96.75% loss=0.1619
+
+==========================================================================================
+TRAINING LINEAR PROBE: ANSWER_TOKEN
+==========================================================================================
+    Epoch 01 | Train loss 0.7602 | Val acc 100.00%
+    Epoch 05 | Train loss 0.0026 | Val acc 100.00%
+    Epoch 10 | Train loss 0.0017 | Val acc 100.00%
+    Epoch 15 | Train loss 0.0012 | Val acc 100.00%
+    Epoch 20 | Train loss 0.0009 | Val acc 100.00%
+    Epoch 25 | Train loss 0.0007 | Val acc 100.00%
+    Epoch 30 | Train loss 0.0005 | Val acc 100.00%
+
+Best epoch: 1
+Train: acc=100.00% loss=0.0348
+Valid: acc=100.00% loss=0.0364
+Test: acc=100.00% loss=0.0333
+
+==========================================================================================
+TRAINING LINEAR PROBE: WRITTEN_SLOT
+==========================================================================================
+    Epoch 01 | Train loss 2.5538 | Val acc 8.75%
+    Epoch 05 | Train loss 2.1917 | Val acc 11.50%
+    Epoch 10 | Train loss 1.9812 | Val acc 10.25%
+    Epoch 15 | Train loss 1.8191 | Val acc 19.25%
+    Epoch 20 | Train loss 1.6861 | Val acc 19.75%
+    Epoch 25 | Train loss 1.5652 | Val acc 18.25%
+    Epoch 30 | Train loss 1.4677 | Val acc 25.75%
+
+Best epoch: 30
+Train: acc=65.20% loss=1.4521
+Valid: acc=25.75% loss=8.2025
+Test: acc=32.50% loss=7.6188
+
+==========================================================================================
+TRAINING LINEAR PROBE: WRITE_DELTA
+==========================================================================================
+    Epoch 01 | Train loss 2.5372 | Val acc 8.00%
+    Epoch 05 | Train loss 2.1712 | Val acc 11.50%
+    Epoch 10 | Train loss 1.9586 | Val acc 17.00%
+    Epoch 15 | Train loss 1.7936 | Val acc 22.75%
+    Epoch 20 | Train loss 1.6647 | Val acc 23.75%
+    Epoch 25 | Train loss 1.5533 | Val acc 22.00%
+    Epoch 30 | Train loss 1.4445 | Val acc 25.25%
+
+Best epoch: 18
+Train: acc=56.45% loss=1.6871
+Valid: acc=27.00% loss=6.7260
+Test: acc=34.25% loss=6.2799
+
+==========================================================================================
+FINAL REPRESENTATION PROBE RESULTS
+==========================================================================================
+Representation               Train       Valid        Test     Test Loss
+------------------------------------------------------------------------
+MEAN_POOL                  100.00%      99.00%      96.75%        0.1619
+ANSWER_TOKEN               100.00%     100.00%     100.00%        0.0333
+WRITTEN_SLOT                65.20%      25.75%      32.50%        7.6188
+WRITE_DELTA                 56.45%      27.00%      34.25%        6.2799
+
+==========================================================================================
+DIAGNOSTIC SUMMARY
+==========================================================================================
+Chance:       7.69%
+Mean pool:    96.75%
+Answer token: 100.00%
+Written slot: 32.50%
+Write delta:  34.25%
+
+Finding: written memory slots contain linearly recoverable answer information. The failure may therefore be downstream in reading/fusion rather than storage.

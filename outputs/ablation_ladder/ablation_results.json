@@ -1,0 +1,57 @@
+{
+  "level_0": {
+    "best_epoch": 15,
+    "test": {
+      "matched_accuracy": 100.0,
+      "mismatched_accuracy": 0.0,
+      "query_only_accuracy": 7.200000435113907,
+      "matched_loss": 0.0010114040924236178,
+      "mismatched_loss": 12.330246925354004,
+      "nll_gap": 12.329235076904297
+    }
+  },
+  "level_1": {
+    "best_epoch": 15,
+    "test": {
+      "matched_accuracy": 100.0,
+      "mismatched_accuracy": 0.0,
+      "query_only_accuracy": 8.000000566244125,
+      "matched_loss": 5.490729381563142e-05,
+      "mismatched_loss": 15.333584785461426,
+      "nll_gap": 15.33353042602539
+    }
+  },
+  "level_2": {
+    "best_epoch": 15,
+    "test": {
+      "matched_accuracy": 100.0,
+      "mismatched_accuracy": 0.0,
+      "query_only_accuracy": 7.800000160932541,
+      "matched_loss": 0.011950737796723843,
+      "mismatched_loss": 12.636832237243652,
+      "nll_gap": 12.624881744384766
+    }
+  },
+  "level_3": {
+    "best_epoch": 15,
+    "test": {
+      "matched_accuracy": 100.0,
+      "mismatched_accuracy": 0.0,
+      "query_only_accuracy": 9.200000762939453,
+      "matched_loss": 0.014071211218833923,
+      "mismatched_loss": 11.193142890930176,
+      "nll_gap": 11.179072380065918
+    }
+  },
+  "level_4": {
+    "best_epoch": 1,
+    "test": {
+      "matched_accuracy": 9.600000083446503,
+      "mismatched_accuracy": 9.600000083446503,
+      "query_only_accuracy": 7.000000029802322,
+      "matched_loss": 2.5710620880126953,
+      "mismatched_loss": 2.571058750152588,
+      "nll_gap": -3.5452844713290688e-06
+    }
+  }
+}

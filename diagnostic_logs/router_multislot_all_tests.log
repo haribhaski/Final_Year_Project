@@ -1,0 +1,178 @@
+====================================================================================================
+ROUTER / MULTI-SLOT COMPLETE ISOLATION
+====================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+This tests WRITE-SIDE routing.
+The MemoryReader is NOT being tested for addressing in this script.
+Classes: 13
+Answer chance: 7.69%
+Slots: 8
+Router random top-1 chance: 12.50%
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 11853.97it/s]
+
+Precomputing train...
+Precomputing validation...
+Precomputing test...
+
+====================================================================================================
+STAGE 1 — KNOWN-GOOD VALUE PATH
+====================================================================================================
+EPOCH 01 | match=11.40%
+EPOCH 02 | match=23.60%
+EPOCH 03 | match=17.20%
+EPOCH 04 | match=54.40%
+EPOCH 05 | match=58.60%
+EPOCH 06 | match=64.40%
+EPOCH 07 | match=67.60%
+EPOCH 08 | match=73.80%
+EPOCH 09 | match=60.80%
+EPOCH 10 | match=79.60%
+EPOCH 11 | match=76.20%
+EPOCH 12 | match=75.80%
+VALUE CONTROL TEST: 68.00%
+
+====================================================================================================
+STAGE 2 — FROZEN ORIGINAL ROUTER
+====================================================================================================
+{
+  "top1_accuracy": 0.0,
+  "topk_accuracy": 25.0,
+  "unused_slot_fraction": 0.875,
+  "maximum_slot_share": 1.0,
+  "slot_distribution": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ]
+}
+
+====================================================================================================
+STAGE 3 — TRAINABLE ORIGINAL ROUTER (SUMMARY ONLY)
+====================================================================================================
+EPOCH 01 | loss=2.0460 | top1=26.40% | topk=49.40% | unused=0.750 | max_share=0.954
+Saved best router.
+EPOCH 02 | loss=1.6164 | top1=24.80% | topk=52.40% | unused=0.750 | max_share=0.998
+EPOCH 03 | loss=1.4703 | top1=25.00% | topk=51.00% | unused=0.875 | max_share=1.000
+EPOCH 04 | loss=1.4248 | top1=25.00% | topk=50.00% | unused=0.875 | max_share=1.000
+EPOCH 05 | loss=1.4079 | top1=25.00% | topk=50.00% | unused=0.875 | max_share=1.000
+EPOCH 06 | loss=1.3998 | top1=27.80% | topk=50.00% | unused=0.750 | max_share=0.882
+Saved best router.
+EPOCH 07 | loss=1.3974 | top1=26.80% | topk=50.00% | unused=0.750 | max_share=0.920
+EPOCH 08 | loss=1.3942 | top1=27.40% | topk=50.00% | unused=0.750 | max_share=0.812
+EPOCH 09 | loss=1.3908 | top1=25.00% | topk=52.40% | unused=0.875 | max_share=1.000
+EPOCH 10 | loss=1.3905 | top1=25.00% | topk=50.00% | unused=0.875 | max_share=1.000
+EPOCH 11 | loss=1.3877 | top1=24.80% | topk=50.20% | unused=0.750 | max_share=0.906
+EPOCH 12 | loss=1.3871 | top1=27.80% | topk=49.80% | unused=0.625 | max_share=0.850
+{
+  "top1_accuracy": 25.8,
+  "topk_accuracy": 50.0,
+  "unused_slot_fraction": 0.75,
+  "maximum_slot_share": 0.9599999785423279,
+  "slot_distribution": [
+    0.9599999785423279,
+    0.0,
+    0.03999999910593033,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ]
+}
+
+====================================================================================================
+STAGE 4 — TRAINABLE ROUTER + WRITE-POSITION SIGNAL
+====================================================================================================
+EPOCH 01 | loss=2.0430 | top1=25.00% | topk=57.80% | unused=0.750 | max_share=0.998
+Saved best router.
+EPOCH 02 | loss=1.6094 | top1=56.40% | topk=62.00% | unused=0.625 | max_share=0.578
+Saved best router.
+EPOCH 03 | loss=1.4585 | top1=62.20% | topk=75.40% | unused=0.625 | max_share=0.618
+Saved best router.
+EPOCH 04 | loss=1.4053 | top1=50.00% | topk=52.40% | unused=0.750 | max_share=0.750
+EPOCH 05 | loss=1.3751 | top1=25.00% | topk=75.20% | unused=0.875 | max_share=1.000
+EPOCH 06 | loss=1.3487 | top1=62.80% | topk=97.00% | unused=0.625 | max_share=0.622
+Saved best router.
+EPOCH 07 | loss=1.3156 | top1=100.00% | topk=100.00% | unused=0.500 | max_share=0.250
+Saved best router.
+EPOCH 08 | loss=1.2729 | top1=100.00% | topk=100.00% | unused=0.500 | max_share=0.250
+EPOCH 09 | loss=1.2109 | top1=100.00% | topk=100.00% | unused=0.500 | max_share=0.250
+EPOCH 10 | loss=1.1202 | top1=100.00% | topk=100.00% | unused=0.500 | max_share=0.250
+EPOCH 11 | loss=0.9967 | top1=100.00% | topk=100.00% | unused=0.500 | max_share=0.250
+EPOCH 12 | loss=0.8406 | top1=100.00% | topk=100.00% | unused=0.500 | max_share=0.250
+{
+  "top1_accuracy": 100.0,
+  "topk_accuracy": 100.0,
+  "unused_slot_fraction": 0.5,
+  "maximum_slot_share": 0.25,
+  "slot_distribution": [
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ]
+}
+
+====================================================================================================
+STAGE 5 — ORACLE MULTI-SLOT ALLOCATION
+====================================================================================================
+{
+  "routing_top1": 100.0,
+  "answer_accuracy": 65.4,
+  "collision_rate": 0.0,
+  "mean_unique_slots": 4.0
+}
+
+====================================================================================================
+STAGE 6 — FROZEN ROUTER MULTI-SLOT
+====================================================================================================
+{
+  "routing_top1": 0.0,
+  "answer_accuracy": 11.2,
+  "collision_rate": 75.0,
+  "mean_unique_slots": 1.0
+}
+
+====================================================================================================
+STAGE 7 — TRAINED CONDITIONED ROUTER MULTI-SLOT
+====================================================================================================
+{
+  "routing_top1": 100.0,
+  "answer_accuracy": 65.4,
+  "collision_rate": 0.0,
+  "mean_unique_slots": 4.0
+}
+
+==============================================================================================================
+FINAL ROUTER / MULTI-SLOT COMPARISON
+==============================================================================================================
+TEST                                  ROUTE TOP1        ANSWER     COLLISION    UNIQUE SLOTS
+-----------------------------------------------------------------------------------------------
+oracle allocation                        100.00%        65.40%         0.00%            4.00
+frozen original router                     0.00%        11.20%        75.00%            1.00
+trained conditioned router               100.00%        65.40%         0.00%            4.00
+
+RAW ROUTER CLASSIFICATION
+Frozen original router: 0.00%
+Trainable summary-only router: 25.80%
+Trainable + position router: 100.00%
+
+==============================================================================================================
+INTERPRETATION
+==============================================================================================================
+ORACLE MULTI-SLOT CONTROL FAILED.
+Do not diagnose router yet; multi-slot storage itself needs inspection.
+
+Saved: outputs/router_multislot_all_tests/router_multislot_results.json

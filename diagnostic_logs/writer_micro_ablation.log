@@ -1,0 +1,116 @@
+==========================================================================================
+WRITER MICRO-ABLATION
+==========================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+A = Direct masked-mean summary -> Linear VALUE
+B = Original CandidateWriter
+
+Both use same:
+  OrthogonalUpdate
+  frozen VectorGate
+  MemoryBank
+  simple reader
+
+Classes: 13
+Chance accuracy: 7.69%
+Chance CE: 2.5649
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5411.30it/s]
+
+Precomputing train...
+  500/4000
+  1000/4000
+  1500/4000
+  2000/4000
+  2500/4000
+  3000/4000
+  3500/4000
+  4000/4000
+
+Precomputing validation...
+  500/500
+
+Precomputing test...
+  500/500
+
+##########################################################################################
+VARIANT: DIRECT_SUMMARY
+##########################################################################################
+Trainable parameters: 2,373,901
+Original CandidateWriter trainable: False
+E01 | loss=2.8479 | match=8.80% | mismatch=8.80% | query=6.60% | gap=+0.0005
+E02 | loss=2.8340 | match=5.60% | mismatch=5.60% | query=6.80% | gap=+0.0007
+E03 | loss=2.8202 | match=9.80% | mismatch=9.80% | query=7.00% | gap=+0.0009
+E04 | loss=2.8201 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0011
+E05 | loss=2.8199 | match=7.20% | mismatch=6.20% | query=7.00% | gap=+0.0012
+E06 | loss=2.8159 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0016
+E07 | loss=2.8153 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0021
+
+DIRECT_SUMMARY TEST
+Matched:      9.00%
+Mismatched:   9.00%
+Query only:   7.40%
+NLL gap:      +0.002037
+Gate mean:    0.070318
+
+SOURCE VALUE GEOMETRY
+  mean_norm             18.716833
+  mean_pairwise_l2      0.916401
+  relative_l2           0.048961
+  mean_cosine           0.998701
+
+FINAL STORED GEOMETRY
+  mean_norm             27.658155
+  mean_pairwise_l2      0.070177
+  relative_l2           0.002537
+  mean_cosine           0.999996
+
+##########################################################################################
+VARIANT: ORIGINAL_WRITER
+##########################################################################################
+Trainable parameters: 1,781,773
+Original CandidateWriter trainable: False
+E01 | loss=2.8478 | match=8.80% | mismatch=8.80% | query=6.60% | gap=+0.0000
+E02 | loss=2.8343 | match=9.60% | mismatch=9.60% | query=6.40% | gap=+0.0000
+E03 | loss=2.8215 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0000
+E04 | loss=2.8216 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0000
+E05 | loss=2.8207 | match=8.20% | mismatch=8.00% | query=7.00% | gap=+0.0000
+E06 | loss=2.8173 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0000
+E07 | loss=2.8171 | match=8.60% | mismatch=8.60% | query=7.00% | gap=+0.0000
+
+ORIGINAL_WRITER TEST
+Matched:      9.60%
+Mismatched:   9.60%
+Query only:   7.00%
+NLL gap:      -0.000004
+Gate mean:    0.070318
+
+SOURCE VALUE GEOMETRY
+  mean_norm             27.762171
+  mean_pairwise_l2      0.467885
+  relative_l2           0.016853
+  mean_cosine           0.999765
+
+FINAL STORED GEOMETRY
+  mean_norm             27.659355
+  mean_pairwise_l2      0.037679
+  relative_l2           0.001362
+  mean_cosine           0.999999
+
+====================================================================================================
+FINAL WRITER MICRO-ABLATION
+====================================================================================================
+VARIANT                        MATCH      MISMATCH       QUERY       NLL GAP
+----------------------------------------------------------------------------
+direct_summary                 9.00%         9.00%       7.40%        0.0020
+original_writer                9.60%         9.60%       7.00%       -0.0000
+
+====================================================================================================
+DIAGNOSTIC INTERPRETATION
+====================================================================================================
+DIRECT SUMMARY ALSO FAILS.
+Do not redesign CandidateWriter yet. The earlier success may depend on the answer-token representation rather than the masked-mean summary.
+
+Saved: outputs/writer_micro_ablation/writer_ablation_results.json

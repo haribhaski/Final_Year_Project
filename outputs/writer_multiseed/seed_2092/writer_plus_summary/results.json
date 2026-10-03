@@ -1,0 +1,808 @@
+{
+  "variant": "writer_plus_summary",
+  "best_epoch": 12,
+  "best_validation_accuracy": 80.0000011920929,
+  "best_validation_gap": 11.785055160522461,
+  "pretrain": {
+    "matched_accuracy": 8.800000697374344,
+    "mismatched_accuracy": 8.800000697374344,
+    "query_only_accuracy": 6.400000303983688,
+    "matched_loss": 2.591660976409912,
+    "mismatched_loss": 2.5915591716766357,
+    "nll_gap": -0.0001016950627672486,
+    "positive_gap_fraction": 50.40000081062317,
+    "alpha": 0.5,
+    "summary_geometry": {
+      "mean_norm": 15.634015083312988,
+      "mean_pairwise_l2": 0.3901248872280121,
+      "relative_l2": 0.02495359629392624,
+      "mean_cosine": 0.9996166229248047
+    },
+    "source_geometry": {
+      "mean_norm": 32.523956298828125,
+      "mean_pairwise_l2": 0.5296728610992432,
+      "relative_l2": 0.016285622492432594,
+      "mean_cosine": 0.9997962117195129
+    },
+    "update_geometry": {
+      "mean_norm": 51.373138427734375,
+      "mean_pairwise_l2": 0.529656708240509,
+      "relative_l2": 0.010309993289411068,
+      "mean_cosine": 0.9999183416366577
+    },
+    "post_ortho_geometry": {
+      "mean_norm": 31.922149658203125,
+      "mean_pairwise_l2": 0.536688506603241,
+      "relative_l2": 0.016812417656183243,
+      "mean_cosine": 0.9997826218605042
+    },
+    "stored_geometry": {
+      "mean_norm": 27.664093017578125,
+      "mean_pairwise_l2": 0.4645608961582184,
+      "relative_l2": 0.016792919486761093,
+      "mean_cosine": 0.9997830390930176
+    }
+  },
+  "test": {
+    "matched_accuracy": 77.60000228881836,
+    "mismatched_accuracy": 1.8000001087784767,
+    "query_only_accuracy": 6.200000271201134,
+    "matched_loss": 1.3797006607055664,
+    "mismatched_loss": 12.83743953704834,
+    "nll_gap": 11.457738876342773,
+    "positive_gap_fraction": 98.00000190734863,
+    "alpha": 0.5078113675117493,
+    "summary_geometry": {
+      "mean_norm": 17.15028190612793,
+      "mean_pairwise_l2": 0.6110795736312866,
+      "relative_l2": 0.03563087806105614,
+      "mean_cosine": 0.9993132948875427
+    },
+    "source_geometry": {
+      "mean_norm": 23.151443481445312,
+      "mean_pairwise_l2": 27.953105926513672,
+      "relative_l2": 1.2074023485183716,
+      "mean_cosine": 0.18860705196857452
+    },
+    "update_geometry": {
+      "mean_norm": 36.1854362487793,
+      "mean_pairwise_l2": 27.95310401916504,
+      "relative_l2": 0.7724959850311279,
+      "mean_cosine": 0.6749072670936584
+    },
+    "post_ortho_geometry": {
+      "mean_norm": 22.838972091674805,
+      "mean_pairwise_l2": 27.620420455932617,
+      "relative_l2": 1.2093547582626343,
+      "mean_cosine": 0.1876453161239624
+    },
+    "stored_geometry": {
+      "mean_norm": 27.638887405395508,
+      "mean_pairwise_l2": 33.17106246948242,
+      "relative_l2": 1.2001590728759766,
+      "mean_cosine": 0.1875125765800476
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 2.8439485778808593,
+        "ce": 2.5953049907684327,
+        "rank": 0.4972871799468994
+      },
+      "validation": {
+        "matched_accuracy": 8.60000029206276,
+        "mismatched_accuracy": 8.60000029206276,
+        "query_only_accuracy": 6.800000369548798,
+        "matched_loss": 2.5759165287017822,
+        "mismatched_loss": 2.5828442573547363,
+        "nll_gap": 0.006927694659680128,
+        "positive_gap_fraction": 84.40000414848328,
+        "alpha": 0.5041454434394836,
+        "summary_geometry": {
+          "mean_norm": 16.43318748474121,
+          "mean_pairwise_l2": 0.4202076196670532,
+          "relative_l2": 0.025570670142769814,
+          "mean_cosine": 0.9996131062507629
+        },
+        "source_geometry": {
+          "mean_norm": 33.50749969482422,
+          "mean_pairwise_l2": 0.8017361164093018,
+          "relative_l2": 0.02392706461250782,
+          "mean_cosine": 0.9996359944343567
+        },
+        "update_geometry": {
+          "mean_norm": 52.636348724365234,
+          "mean_pairwise_l2": 0.8016924262046814,
+          "relative_l2": 0.015230775810778141,
+          "mean_cosine": 0.9998531937599182
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 32.99711990356445,
+          "mean_pairwise_l2": 0.8107684254646301,
+          "relative_l2": 0.024570884183049202,
+          "mean_cosine": 0.9996159672737122
+        },
+        "stored_geometry": {
+          "mean_norm": 27.66221046447754,
+          "mean_pairwise_l2": 0.6777423620223999,
+          "relative_l2": 0.024500658735632896,
+          "mean_cosine": 0.9996166229248047
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "loss": 2.775778921127319,
+        "ce": 2.545051866531372,
+        "rank": 0.46145407581329345
+      },
+      "validation": {
+        "matched_accuracy": 13.600000739097595,
+        "mismatched_accuracy": 6.599999964237213,
+        "query_only_accuracy": 6.400000303983688,
+        "matched_loss": 2.312026023864746,
+        "mismatched_loss": 2.89811372756958,
+        "nll_gap": 0.5860877633094788,
+        "positive_gap_fraction": 73.60000610351562,
+        "alpha": 0.5058771967887878,
+        "summary_geometry": {
+          "mean_norm": 16.14300537109375,
+          "mean_pairwise_l2": 0.48255792260169983,
+          "relative_l2": 0.0298926942050457,
+          "mean_cosine": 0.9994932413101196
+        },
+        "source_geometry": {
+          "mean_norm": 31.01382064819336,
+          "mean_pairwise_l2": 12.622245788574219,
+          "relative_l2": 0.4069877862930298,
+          "mean_cosine": 0.8843725919723511
+        },
+        "update_geometry": {
+          "mean_norm": 49.43492126464844,
+          "mean_pairwise_l2": 12.622238159179688,
+          "relative_l2": 0.2553304135799408,
+          "mean_cosine": 0.954523503780365
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 30.775957107543945,
+          "mean_pairwise_l2": 12.530044555664062,
+          "relative_l2": 0.4071374535560608,
+          "mean_cosine": 0.8846821188926697
+        },
+        "stored_geometry": {
+          "mean_norm": 27.658203125,
+          "mean_pairwise_l2": 11.240514755249023,
+          "relative_l2": 0.4064079821109772,
+          "mean_cosine": 0.8847821354866028
+        }
+      }
+    },
+    {
+      "epoch": 3,
+      "train": {
+        "loss": 1.964667791366577,
+        "ce": 1.862649552345276,
+        "rank": 0.204036492228508
+      },
+      "validation": {
+        "matched_accuracy": 35.600000619888306,
+        "mismatched_accuracy": 7.000000029802322,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.8843704462051392,
+        "mismatched_loss": 5.513271808624268,
+        "nll_gap": 3.628901243209839,
+        "positive_gap_fraction": 86.00000143051147,
+        "alpha": 0.5035219788551331,
+        "summary_geometry": {
+          "mean_norm": 15.769209861755371,
+          "mean_pairwise_l2": 0.5434873700141907,
+          "relative_l2": 0.03446509689092636,
+          "mean_cosine": 0.9993367791175842
+        },
+        "source_geometry": {
+          "mean_norm": 25.57465171813965,
+          "mean_pairwise_l2": 24.182668685913086,
+          "relative_l2": 0.945571780204773,
+          "mean_cosine": 0.43291759490966797
+        },
+        "update_geometry": {
+          "mean_norm": 40.71730041503906,
+          "mean_pairwise_l2": 24.182668685913086,
+          "relative_l2": 0.5939162969589233,
+          "mean_cosine": 0.7780871987342834
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 25.215227127075195,
+          "mean_pairwise_l2": 23.74015998840332,
+          "relative_l2": 0.9415009617805481,
+          "mean_cosine": 0.44089826941490173
+        },
+        "stored_geometry": {
+          "mean_norm": 27.649370193481445,
+          "mean_pairwise_l2": 25.86199188232422,
+          "relative_l2": 0.935355544090271,
+          "mean_cosine": 0.4410974383354187
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "train": {
+        "loss": 1.1010070433616639,
+        "ce": 1.0586543307304381,
+        "rank": 0.08470543833076954
+      },
+      "validation": {
+        "matched_accuracy": 47.200003266334534,
+        "mismatched_accuracy": 4.000000283122063,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.7267783880233765,
+        "mismatched_loss": 7.420804500579834,
+        "nll_gap": 5.694025993347168,
+        "positive_gap_fraction": 88.40000629425049,
+        "alpha": 0.5038718581199646,
+        "summary_geometry": {
+          "mean_norm": 15.990728378295898,
+          "mean_pairwise_l2": 0.5810874104499817,
+          "relative_l2": 0.03633902221918106,
+          "mean_cosine": 0.9992685317993164
+        },
+        "source_geometry": {
+          "mean_norm": 22.619678497314453,
+          "mean_pairwise_l2": 26.64105796813965,
+          "relative_l2": 1.1777822971343994,
+          "mean_cosine": 0.20903554558753967
+        },
+        "update_geometry": {
+          "mean_norm": 35.43614959716797,
+          "mean_pairwise_l2": 26.64105796813965,
+          "relative_l2": 0.751804530620575,
+          "mean_cosine": 0.6830598711967468
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 22.181575775146484,
+          "mean_pairwise_l2": 26.17719841003418,
+          "relative_l2": 1.180132508277893,
+          "mean_cosine": 0.20938198268413544
+        },
+        "stored_geometry": {
+          "mean_norm": 27.645763397216797,
+          "mean_pairwise_l2": 32.203102111816406,
+          "relative_l2": 1.1648476123809814,
+          "mean_cosine": 0.20956143736839294
+        }
+      }
+    },
+    {
+      "epoch": 5,
+      "train": {
+        "loss": 0.5998413667678834,
+        "ce": 0.5888354778289795,
+        "rank": 0.0220117796882987
+      },
+      "validation": {
+        "matched_accuracy": 53.200000524520874,
+        "mismatched_accuracy": 4.600000381469727,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.7755939960479736,
+        "mismatched_loss": 7.7047834396362305,
+        "nll_gap": 5.929189682006836,
+        "positive_gap_fraction": 91.80000424385071,
+        "alpha": 0.5053572058677673,
+        "summary_geometry": {
+          "mean_norm": 16.338714599609375,
+          "mean_pairwise_l2": 0.5942385792732239,
+          "relative_l2": 0.03636997193098068,
+          "mean_cosine": 0.9992697834968567
+        },
+        "source_geometry": {
+          "mean_norm": 23.617528915405273,
+          "mean_pairwise_l2": 26.505342483520508,
+          "relative_l2": 1.1222741603851318,
+          "mean_cosine": 0.2810913324356079
+        },
+        "update_geometry": {
+          "mean_norm": 36.857547760009766,
+          "mean_pairwise_l2": 26.505342483520508,
+          "relative_l2": 0.7191293239593506,
+          "mean_cosine": 0.7122374773025513
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 23.237253189086914,
+          "mean_pairwise_l2": 25.93224334716797,
+          "relative_l2": 1.115977168083191,
+          "mean_cosine": 0.2902218699455261
+        },
+        "stored_geometry": {
+          "mean_norm": 27.645126342773438,
+          "mean_pairwise_l2": 30.487754821777344,
+          "relative_l2": 1.10282564163208,
+          "mean_cosine": 0.29042986035346985
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "train": {
+        "loss": 0.4504743642807007,
+        "ce": 0.44328244018554686,
+        "rank": 0.014383841529488564
+      },
+      "validation": {
+        "matched_accuracy": 55.400002002716064,
+        "mismatched_accuracy": 5.000000074505806,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.6359946727752686,
+        "mismatched_loss": 9.116232872009277,
+        "nll_gap": 7.4802374839782715,
+        "positive_gap_fraction": 93.00000667572021,
+        "alpha": 0.5056653618812561,
+        "summary_geometry": {
+          "mean_norm": 16.398530960083008,
+          "mean_pairwise_l2": 0.5993979573249817,
+          "relative_l2": 0.036551930010318756,
+          "mean_cosine": 0.9992634057998657
+        },
+        "source_geometry": {
+          "mean_norm": 23.17949867248535,
+          "mean_pairwise_l2": 28.4777889251709,
+          "relative_l2": 1.2285765409469604,
+          "mean_cosine": 0.15266552567481995
+        },
+        "update_geometry": {
+          "mean_norm": 36.28683853149414,
+          "mean_pairwise_l2": 28.477787017822266,
+          "relative_l2": 0.7847965955734253,
+          "mean_cosine": 0.6623251438140869
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 22.75688934326172,
+          "mean_pairwise_l2": 27.940147399902344,
+          "relative_l2": 1.227766513824463,
+          "mean_cosine": 0.15486782789230347
+        },
+        "stored_geometry": {
+          "mean_norm": 27.64185905456543,
+          "mean_pairwise_l2": 33.6339225769043,
+          "relative_l2": 1.2167749404907227,
+          "mean_cosine": 0.1548907607793808
+        }
+      }
+    },
+    {
+      "epoch": 7,
+      "train": {
+        "loss": 0.1819879195690155,
+        "ce": 0.18054665660858155,
+        "rank": 0.002882527522742748
+      },
+      "validation": {
+        "matched_accuracy": 64.20000195503235,
+        "mismatched_accuracy": 3.800000250339508,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.1209174394607544,
+        "mismatched_loss": 9.41261100769043,
+        "nll_gap": 8.291693687438965,
+        "positive_gap_fraction": 96.00000381469727,
+        "alpha": 0.5061625838279724,
+        "summary_geometry": {
+          "mean_norm": 16.511531829833984,
+          "mean_pairwise_l2": 0.604992151260376,
+          "relative_l2": 0.03664058446884155,
+          "mean_cosine": 0.9992610812187195
+        },
+        "source_geometry": {
+          "mean_norm": 22.789737701416016,
+          "mean_pairwise_l2": 28.38669776916504,
+          "relative_l2": 1.2455912828445435,
+          "mean_cosine": 0.1327633261680603
+        },
+        "update_geometry": {
+          "mean_norm": 35.54310607910156,
+          "mean_pairwise_l2": 28.38669776916504,
+          "relative_l2": 0.7986555099487305,
+          "mean_cosine": 0.6534502506256104
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 22.39817237854004,
+          "mean_pairwise_l2": 27.858314514160156,
+          "relative_l2": 1.2437762022018433,
+          "mean_cosine": 0.1369389146566391
+        },
+        "stored_geometry": {
+          "mean_norm": 27.644502639770508,
+          "mean_pairwise_l2": 34.04490661621094,
+          "relative_l2": 1.2315254211425781,
+          "mean_cosine": 0.13709944486618042
+        }
+      }
+    },
+    {
+      "epoch": 8,
+      "train": {
+        "loss": 0.13062969309091568,
+        "ce": 0.1296684060692787,
+        "rank": 0.0019225735291838646
+      },
+      "validation": {
+        "matched_accuracy": 62.00000047683716,
+        "mismatched_accuracy": 4.400000348687172,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.5932519435882568,
+        "mismatched_loss": 10.120083808898926,
+        "nll_gap": 8.526832580566406,
+        "positive_gap_fraction": 94.20000314712524,
+        "alpha": 0.5067442059516907,
+        "summary_geometry": {
+          "mean_norm": 16.70248794555664,
+          "mean_pairwise_l2": 0.6109445095062256,
+          "relative_l2": 0.03657805547118187,
+          "mean_cosine": 0.9992644190788269
+        },
+        "source_geometry": {
+          "mean_norm": 23.28748321533203,
+          "mean_pairwise_l2": 28.382240295410156,
+          "relative_l2": 1.2187765836715698,
+          "mean_cosine": 0.1641576588153839
+        },
+        "update_geometry": {
+          "mean_norm": 36.33086013793945,
+          "mean_pairwise_l2": 28.382240295410156,
+          "relative_l2": 0.7812157273292542,
+          "mean_cosine": 0.668327271938324
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 22.917678833007812,
+          "mean_pairwise_l2": 27.882308959960938,
+          "relative_l2": 1.2166287899017334,
+          "mean_cosine": 0.1691964566707611
+        },
+        "stored_geometry": {
+          "mean_norm": 27.640840530395508,
+          "mean_pairwise_l2": 33.35347366333008,
+          "relative_l2": 1.2066736221313477,
+          "mean_cosine": 0.16918103396892548
+        }
+      }
+    },
+    {
+      "epoch": 9,
+      "train": {
+        "loss": 0.10838420726358891,
+        "ce": 0.10710166145861148,
+        "rank": 0.0025650896057486535
+      },
+      "validation": {
+        "matched_accuracy": 64.60000276565552,
+        "mismatched_accuracy": 2.800000086426735,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.4224977493286133,
+        "mismatched_loss": 10.667131423950195,
+        "nll_gap": 9.244633674621582,
+        "positive_gap_fraction": 96.20000720024109,
+        "alpha": 0.5069857239723206,
+        "summary_geometry": {
+          "mean_norm": 16.79902458190918,
+          "mean_pairwise_l2": 0.61582350730896,
+          "relative_l2": 0.03665829077363014,
+          "mean_cosine": 0.9992613792419434
+        },
+        "source_geometry": {
+          "mean_norm": 23.441715240478516,
+          "mean_pairwise_l2": 28.93024444580078,
+          "relative_l2": 1.2341351509094238,
+          "mean_cosine": 0.1496284157037735
+        },
+        "update_geometry": {
+          "mean_norm": 36.77104568481445,
+          "mean_pairwise_l2": 28.930246353149414,
+          "relative_l2": 0.7867670059204102,
+          "mean_cosine": 0.6640616059303284
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 23.10912322998047,
+          "mean_pairwise_l2": 28.466075897216797,
+          "relative_l2": 1.2318111658096313,
+          "mean_cosine": 0.15428277850151062
+        },
+        "stored_geometry": {
+          "mean_norm": 27.640960693359375,
+          "mean_pairwise_l2": 33.77203369140625,
+          "relative_l2": 1.2218111753463745,
+          "mean_cosine": 0.15426643192768097
+        }
+      }
+    },
+    {
+      "epoch": 10,
+      "train": {
+        "loss": 0.0296479497551918,
+        "ce": 0.029578286468982695,
+        "rank": 0.0001393270343542099
+      },
+      "validation": {
+        "matched_accuracy": 73.60000610351562,
+        "mismatched_accuracy": 2.4000000208616257,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.4280134439468384,
+        "mismatched_loss": 11.341012954711914,
+        "nll_gap": 9.913000106811523,
+        "positive_gap_fraction": 95.80000638961792,
+        "alpha": 0.5075305700302124,
+        "summary_geometry": {
+          "mean_norm": 17.02597999572754,
+          "mean_pairwise_l2": 0.6191010475158691,
+          "relative_l2": 0.03636213764548302,
+          "mean_cosine": 0.9992737770080566
+        },
+        "source_geometry": {
+          "mean_norm": 23.93321418762207,
+          "mean_pairwise_l2": 28.32723617553711,
+          "relative_l2": 1.1835951805114746,
+          "mean_cosine": 0.2077448070049286
+        },
+        "update_geometry": {
+          "mean_norm": 37.2172966003418,
+          "mean_pairwise_l2": 28.327238082885742,
+          "relative_l2": 0.7611309885978699,
+          "mean_cosine": 0.6813726425170898
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 23.58747100830078,
+          "mean_pairwise_l2": 27.939037322998047,
+          "relative_l2": 1.1844863891601562,
+          "mean_cosine": 0.20924286544322968
+        },
+        "stored_geometry": {
+          "mean_norm": 27.63903045654297,
+          "mean_pairwise_l2": 32.568233489990234,
+          "relative_l2": 1.1783421039581299,
+          "mean_cosine": 0.20912763476371765
+        }
+      }
+    },
+    {
+      "epoch": 11,
+      "train": {
+        "loss": 0.019304454263765366,
+        "ce": 0.01923912065895274,
+        "rank": 0.0001306672915816307
+      },
+      "validation": {
+        "matched_accuracy": 79.80000376701355,
+        "mismatched_accuracy": 2.0000001415610313,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.2530076503753662,
+        "mismatched_loss": 12.283867835998535,
+        "nll_gap": 11.03085994720459,
+        "positive_gap_fraction": 96.00000381469727,
+        "alpha": 0.5076768398284912,
+        "summary_geometry": {
+          "mean_norm": 17.109582901000977,
+          "mean_pairwise_l2": 0.6214123368263245,
+          "relative_l2": 0.036319550126791,
+          "mean_cosine": 0.9992755651473999
+        },
+        "source_geometry": {
+          "mean_norm": 23.68291473388672,
+          "mean_pairwise_l2": 28.734521865844727,
+          "relative_l2": 1.2133017778396606,
+          "mean_cosine": 0.17752066254615784
+        },
+        "update_geometry": {
+          "mean_norm": 36.841156005859375,
+          "mean_pairwise_l2": 28.734525680541992,
+          "relative_l2": 0.7799572348594666,
+          "mean_cosine": 0.6706537008285522
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 23.33917236328125,
+          "mean_pairwise_l2": 28.35116195678711,
+          "relative_l2": 1.2147457599639893,
+          "mean_cosine": 0.17810498178005219
+        },
+        "stored_geometry": {
+          "mean_norm": 27.638702392578125,
+          "mean_pairwise_l2": 33.39693069458008,
+          "relative_l2": 1.2083393335342407,
+          "mean_cosine": 0.1779734045267105
+        }
+      }
+    },
+    {
+      "epoch": 12,
+      "train": {
+        "loss": 0.004535423543304205,
+        "ce": 0.004535423543304205,
+        "rank": 0.0
+      },
+      "validation": {
+        "matched_accuracy": 80.0000011920929,
+        "mismatched_accuracy": 2.0000001415610313,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.1385107040405273,
+        "mismatched_loss": 12.923566818237305,
+        "nll_gap": 11.785055160522461,
+        "positive_gap_fraction": 97.60000705718994,
+        "alpha": 0.5078113675117493,
+        "summary_geometry": {
+          "mean_norm": 17.1501522064209,
+          "mean_pairwise_l2": 0.6225274205207825,
+          "relative_l2": 0.03629865124821663,
+          "mean_cosine": 0.9992765188217163
+        },
+        "source_geometry": {
+          "mean_norm": 23.360702514648438,
+          "mean_pairwise_l2": 28.493919372558594,
+          "relative_l2": 1.2197372913360596,
+          "mean_cosine": 0.17256218194961548
+        },
+        "update_geometry": {
+          "mean_norm": 36.46905517578125,
+          "mean_pairwise_l2": 28.493919372558594,
+          "relative_l2": 0.7813177108764648,
+          "mean_cosine": 0.6685305833816528
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 23.024391174316406,
+          "mean_pairwise_l2": 28.137039184570312,
+          "relative_l2": 1.2220535278320312,
+          "mean_cosine": 0.17175808548927307
+        },
+        "stored_geometry": {
+          "mean_norm": 27.63886833190918,
+          "mean_pairwise_l2": 33.566043853759766,
+          "relative_l2": 1.214450716972351,
+          "mean_cosine": 0.17162315547466278
+        }
+      }
+    },
+    {
+      "epoch": 13,
+      "train": {
+        "loss": 0.0051469984455034135,
+        "ce": 0.0051469984455034135,
+        "rank": 0.0
+      },
+      "validation": {
+        "matched_accuracy": 77.40000486373901,
+        "mismatched_accuracy": 2.200000174343586,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.120453119277954,
+        "mismatched_loss": 13.168540954589844,
+        "nll_gap": 12.048086166381836,
+        "positive_gap_fraction": 96.8000054359436,
+        "alpha": 0.5079632997512817,
+        "summary_geometry": {
+          "mean_norm": 17.21332359313965,
+          "mean_pairwise_l2": 0.623923659324646,
+          "relative_l2": 0.03624655306339264,
+          "mean_cosine": 0.9992786645889282
+        },
+        "source_geometry": {
+          "mean_norm": 23.488969802856445,
+          "mean_pairwise_l2": 28.804656982421875,
+          "relative_l2": 1.2263057231903076,
+          "mean_cosine": 0.16797176003456116
+        },
+        "update_geometry": {
+          "mean_norm": 36.744380950927734,
+          "mean_pairwise_l2": 28.804656982421875,
+          "relative_l2": 0.7839200496673584,
+          "mean_cosine": 0.6678916811943054
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 23.1549015045166,
+          "mean_pairwise_l2": 28.402677536010742,
+          "relative_l2": 1.226637840270996,
+          "mean_cosine": 0.16930748522281647
+        },
+        "stored_geometry": {
+          "mean_norm": 27.640287399291992,
+          "mean_pairwise_l2": 33.68730926513672,
+          "relative_l2": 1.2187756299972534,
+          "mean_cosine": 0.16920632123947144
+        }
+      }
+    },
+    {
+      "epoch": 14,
+      "train": {
+        "loss": 0.0019197696782648564,
+        "ce": 0.0019197696782648564,
+        "rank": 0.0
+      },
+      "validation": {
+        "matched_accuracy": 76.80000066757202,
+        "mismatched_accuracy": 1.8000001087784767,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.5954484939575195,
+        "mismatched_loss": 13.52198314666748,
+        "nll_gap": 11.926535606384277,
+        "positive_gap_fraction": 95.40000557899475,
+        "alpha": 0.5080654621124268,
+        "summary_geometry": {
+          "mean_norm": 17.274898529052734,
+          "mean_pairwise_l2": 0.6246776580810547,
+          "relative_l2": 0.03616100177168846,
+          "mean_cosine": 0.9992821216583252
+        },
+        "source_geometry": {
+          "mean_norm": 23.648075103759766,
+          "mean_pairwise_l2": 29.51039695739746,
+          "relative_l2": 1.2478984594345093,
+          "mean_cosine": 0.1401219218969345
+        },
+        "update_geometry": {
+          "mean_norm": 36.787689208984375,
+          "mean_pairwise_l2": 29.51039695739746,
+          "relative_l2": 0.8021813035011292,
+          "mean_cosine": 0.6521483659744263
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 23.312597274780273,
+          "mean_pairwise_l2": 29.120288848876953,
+          "relative_l2": 1.2491225004196167,
+          "mean_cosine": 0.14032793045043945
+        },
+        "stored_geometry": {
+          "mean_norm": 27.63880729675293,
+          "mean_pairwise_l2": 34.38690185546875,
+          "relative_l2": 1.2441529035568237,
+          "mean_cosine": 0.14013095200061798
+        }
+      }
+    },
+    {
+      "epoch": 15,
+      "train": {
+        "loss": 0.0013920155344530941,
+        "ce": 0.0013920155344530941,
+        "rank": 0.0
+      },
+      "validation": {
+        "matched_accuracy": 78.00000309944153,
+        "mismatched_accuracy": 2.0000001415610313,
+        "query_only_accuracy": 7.800000160932541,
+        "matched_loss": 1.6524131298065186,
+        "mismatched_loss": 13.788374900817871,
+        "nll_gap": 12.135961532592773,
+        "positive_gap_fraction": 95.6000030040741,
+        "alpha": 0.5081140995025635,
+        "summary_geometry": {
+          "mean_norm": 17.281625747680664,
+          "mean_pairwise_l2": 0.6249471306800842,
+          "relative_l2": 0.036162517964839935,
+          "mean_cosine": 0.9992821216583252
+        },
+        "source_geometry": {
+          "mean_norm": 23.376174926757812,
+          "mean_pairwise_l2": 28.91898536682129,
+          "relative_l2": 1.2371137142181396,
+          "mean_cosine": 0.15338119864463806
+        },
+        "update_geometry": {
+          "mean_norm": 36.38123321533203,
+          "mean_pairwise_l2": 28.918983459472656,
+          "relative_l2": 0.794887363910675,
+          "mean_cosine": 0.6585968136787415
+        },
+        "post_ortho_geometry": {
+          "mean_norm": 23.013830184936523,
+          "mean_pairwise_l2": 28.508609771728516,
+          "relative_l2": 1.2387598752975464,
+          "mean_cosine": 0.1535748690366745
+        },
+        "stored_geometry": {
+          "mean_norm": 27.641254425048828,
+          "mean_pairwise_l2": 34.08451461791992,
+          "relative_l2": 1.2331030368804932,
+          "mean_cosine": 0.1535521000623703
+        }
+      }
+    }
+  ]
+}

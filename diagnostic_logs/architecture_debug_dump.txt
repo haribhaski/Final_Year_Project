@@ -1,0 +1,1306 @@
+===== GPT2 CONFIG / INIT =====
+            normalization=self.memory_config.memory_normalization,
+            max_slot_norm=self.memory_config.memory_max_slot_norm,
+            trainable_initial_memory=(
+                self.memory_config.trainable_initial_memory
+            ),
+        )
+
+        if self.memory_config.gate_type == "scalar":
+            self.write_gate_module: nn.Module = ScalarGate(
+                d_model=d_model,
+                num_slots=self.num_slots,
+                hidden_dim=self.memory_config.gate_hidden_dim,
+                dropout=self.memory_config.dropout,
+                init_bias=self.memory_config.gate_init_bias,
+            )
+        else:
+            self.write_gate_module = VectorGate(
+                d_model=d_model,
+                num_slots=self.num_slots,
+                hidden_dim=self.memory_config.gate_hidden_dim,
+                mode=self.memory_config.gate_mode,
+                temperature=self.memory_config.gate_temperature,
+                dropout=self.memory_config.dropout,
+                init_bias=self.memory_config.gate_init_bias,
+                top_k=self.memory_config.gate_top_k,
+            )
+
+        self.router: Optional[SlotRouter]
+        if self.memory_config.router_enabled:
+            self.router = SlotRouter(
+                d_model=d_model,
+                num_slots=self.num_slots,
+                hidden_dim=self.memory_config.router_hidden_dim,
+                mode=self.memory_config.router_mode,
+                top_k=self.memory_config.router_top_k,
+                temperature=self.memory_config.router_temperature,
+                dropout=self.memory_config.dropout,
+            )
+        else:
+            self.router = None
+
+        self.writer = CandidateWriter(
+            d_model=d_model,
+            num_slots=self.num_slots,
+            hidden_dim=self.memory_config.writer_hidden_dim,
+            mode=self.memory_config.writer_mode,
+            dropout=self.memory_config.dropout,
+            candidate_activation=self.memory_config.writer_activation,
+            residual_scale=self.memory_config.writer_residual_scale,
+            num_attention_heads=self.memory_config.writer_attention_heads,
+        )
+
+        self.orthogonalizer = OrthogonalUpdate(
+            d_model=d_model,
+            num_slots=self.num_slots,
+            mode=self.memory_config.orthogonal_mode,
+            learned_rank=self.memory_config.learned_basis_rank,
+            preserve_norm=self.memory_config.preserve_update_norm,
+            strength=self.memory_config.orthogonal_strength,
+        )
+
+        self.reader = MemoryReader(
+            d_model=d_model,
+            num_slots=self.num_slots,
+            num_heads=self.memory_config.reader_heads,
+            mode=self.memory_config.reader_mode,
+            fusion=self.memory_config.reader_fusion,
+            top_k=self.memory_config.reader_top_k,
+            temperature=self.memory_config.reader_temperature,
+            dropout=self.memory_config.dropout,
+            residual_scale=self.memory_config.reader_residual_scale,
+            return_attention_by_default=True,
+        )
+
+        # A confidence estimate for each newly written slot.
+        self.write_confidence_head = nn.Sequential(
+            nn.LayerNorm(d_model),
+            nn.Linear(d_model, 1),
+            nn.Sigmoid(),
+        )
+
+    @classmethod
+    def from_pretrained(
+        cls,
+        pretrained_model_name_or_path: str = "gpt2",
+        memory_config: Optional[MemoryGPT2Config] = None,
+        **kwargs: Any,
+    ) -> "MemoryAugmentedGPT2LMHeadModel":
+        """
+        Load a pretrained GPT-2 language model and attach memory modules.
+        """
+        backbone = GPT2LMHeadModel.from_pretrained(
+            pretrained_model_name_or_path,
+            **kwargs,
+        )
+        return cls(backbone=backbone, memory_config=memory_config)
+
+    @classmethod
+    def from_gpt2_config(
+        cls,
+        gpt2_config: Any,
+        memory_config: Optional[MemoryGPT2Config] = None,
+    ) -> "MemoryAugmentedGPT2LMHeadModel":
+        """
+        Create a randomly initialized GPT-2 model from a transformers GPT2Config.
+        """
+        backbone = GPT2LMHeadModel(gpt2_config)
+        return cls(backbone=backbone, memory_config=memory_config)
+
+    def initialize_memory(
+        self,
+        batch_size: int,
+        device: Optional[torch.device | str] = None,
+        dtype: Optional[torch.dtype] = None,
+    ) -> MemoryState:
+        return self.memory_bank.initialize(
+            batch_size=batch_size,
+            device=device,
+            dtype=dtype,
+        )
+
+    def reset_memory(
+        self,
+        batch_size: int,
+        reference: Optional[Tensor] = None,
+    ) -> MemoryState:
+        device = reference.device if reference is not None else None
+        dtype = reference.dtype if reference is not None else None
+        return self.initialize_memory(
+            batch_size=batch_size,
+            device=device,
+            dtype=dtype,
+        )
+
+    def detach_memory(self, memory_state: MemoryState) -> MemoryState:
+        return memory_state.detach()
+
+    def forward(
+===== GPT2 FORWARD =====
+    def forward(
+        self,
+        input_ids: Optional[Tensor] = None,
+        attention_mask: Optional[Tensor] = None,
+        labels: Optional[Tensor] = None,
+        memory_state: Optional[MemoryState] = None,
+        memory_mask: Optional[Tensor] = None,
+        token_type_ids: Optional[Tensor] = None,
+        position_ids: Optional[Tensor] = None,
+        inputs_embeds: Optional[Tensor] = None,
+        past_key_values: Optional[Any] = None,
+        use_cache: Optional[bool] = None,
+        return_diagnostics: bool = True,
+        update_memory: bool = True,
+    ) -> MemoryGPT2Output:
+        """
+        Run GPT-2, read memory, compute logits, and update memory.
+
+        Memory boundaries
+        -----------------
+        Pass `memory_state=None` to start a fresh sequence/document.
+        Pass the returned state into the next chunk to retain long-term context.
+        Do not carry state across unrelated examples unless that is intentional.
+        """
+        if input_ids is None and inputs_embeds is None:
+            raise ValueError("Provide input_ids or inputs_embeds.")
+        if input_ids is not None and inputs_embeds is not None:
+            raise ValueError(
+                "Provide only one of input_ids and inputs_embeds."
+            )
+
+        reference = (
+            inputs_embeds
+            if inputs_embeds is not None
+            else self.backbone.transformer.wte(input_ids)
+        )
+        batch_size = reference.size(0)
+
+        if memory_state is None:
+            memory_state = self.initialize_memory(
+                batch_size=batch_size,
+                device=reference.device,
+                dtype=reference.dtype,
+            )
+        else:
+            self._validate_memory_state(
+                memory_state,
+                batch_size=batch_size,
+            )
+            memory_state = memory_state.to(reference.device)
+
+        transformer_outputs = self.backbone.transformer(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            token_type_ids=token_type_ids,
+            position_ids=position_ids,
+            inputs_embeds=inputs_embeds,
+            past_key_values=past_key_values,
+            use_cache=use_cache,
+            return_dict=True,
+        )
+
+        base_hidden = transformer_outputs.last_hidden_state
+        summary = self._pool_hidden(
+            hidden_states=base_hidden,
+            attention_mask=attention_mask,
+        )
+
+        read_output: Optional[MemoryReadOutput] = None
+        routing_output: Optional[RoutingOutput] = None
+        writer_output: Optional[CandidateWriterOutput] = None
+        orthogonal_output: Optional[OrthogonalUpdateOutput] = None
+        write_gate: Optional[Tensor] = None
+        context: Optional[Tensor] = None
+
+        working_state = memory_state
+
+        if not self.memory_config.enable_memory:
+            fused_hidden = base_hidden
+            new_state = working_state
+        else:
+            if self.memory_config.read_before_write:
+                read_output = self._read_memory(
+                    hidden_states=base_hidden,
+                    memory_state=working_state,
+                    attention_mask=attention_mask,
+                    memory_mask=memory_mask,
+                )
+                fused_hidden = read_output.fused_hidden
+                context = read_output.context
+
+                if update_memory:
+                    (
+                        new_state,
+                        routing_output,
+                        writer_output,
+                        orthogonal_output,
+                        write_gate,
+                    ) = self._write_memory(
+                        summary=summary,
+                        token_states=base_hidden,
+                        attention_mask=attention_mask,
+                        memory_state=working_state,
+                        memory_mask=memory_mask,
+                    )
+                else:
+                    new_state = working_state
+
+            else:
+                if update_memory:
+                    (
+                        written_state,
+                        routing_output,
+                        writer_output,
+                        orthogonal_output,
+                        write_gate,
+                    ) = self._write_memory(
+                        summary=summary,
+                        token_states=base_hidden,
+                        attention_mask=attention_mask,
+                        memory_state=working_state,
+                        memory_mask=memory_mask,
+                    )
+                else:
+                    written_state = working_state
+
+                read_output = self._read_memory(
+                    hidden_states=base_hidden,
+                    memory_state=written_state,
+                    attention_mask=attention_mask,
+                    memory_mask=memory_mask,
+                )
+                fused_hidden = read_output.fused_hidden
+                context = read_output.context
+                new_state = written_state
+
+            if read_output is not None:
+                new_state = self.memory_bank.record_reads(
+                    state=new_state,
+                    read_weights=read_output.slot_usage,
+                )
+
+        if (
+            self.memory_config.detach_memory_between_steps
+            and update_memory
+        ):
+            new_state = new_state.detach()
+
+        logits = self.backbone.lm_head(fused_hidden)
+
+        lm_loss = None
+        if labels is not None:
+            lm_loss = self._causal_language_modeling_loss(
+                logits=logits,
+                labels=labels,
+            )
+
+        auxiliary_losses = self._compute_auxiliary_losses(
+            new_state=new_state,
+            routing_output=routing_output,
+            writer_output=writer_output,
+            orthogonal_output=orthogonal_output,
+            read_output=read_output,
+            write_gate=write_gate,
+        )
+
+        if auxiliary_losses:
+            auxiliary_loss = torch.stack(
+                [value for value in auxiliary_losses.values()]
+            ).sum()
+        else:
+            auxiliary_loss = logits.new_zeros(())
+
+        loss = None
+        if lm_loss is not None:
+            loss = lm_loss + auxiliary_loss
+
+        diagnostics: Dict[str, Tensor] = {}
+        if return_diagnostics:
+            diagnostics = self._collect_diagnostics(
+                memory_state=new_state,
+                routing_output=routing_output,
+                writer_output=writer_output,
+                orthogonal_output=orthogonal_output,
+                read_output=read_output,
+                write_gate=write_gate,
+                attention_mask=attention_mask,
+            )
+
+        return MemoryGPT2Output(
+            loss=loss,
+            lm_loss=lm_loss,
+            auxiliary_loss=auxiliary_loss,
+            logits=logits,
+===== GPT2 READ/WRITE =====
+            logits=logits,
+            memory_state=new_state,
+            hidden_states=fused_hidden,
+            memory_context=context,
+            read_output=read_output,
+            routing_output=routing_output,
+            writer_output=writer_output,
+            orthogonal_output=orthogonal_output,
+            write_gate=write_gate,
+            diagnostics=diagnostics,
+            auxiliary_losses=auxiliary_losses,
+            past_key_values=transformer_outputs.past_key_values,
+        )
+
+    def _read_memory(
+        self,
+        hidden_states: Tensor,
+        memory_state: MemoryState,
+        attention_mask: Optional[Tensor],
+        memory_mask: Optional[Tensor],
+    ) -> MemoryReadOutput:
+
+        confidence = memory_state.confidence
+
+        # New memory begins with zero confidence.
+        # Keep a small floor so newly written slots can still be read.
+        confidence_prior = confidence.clamp_min(0.05)
+
+        return self.reader(
+            hidden_states=hidden_states,
+            memory_slots=memory_state.slots,
+            attention_mask=attention_mask,
+            memory_mask=memory_mask,
+            memory_confidence=confidence_prior,
+            return_attention=True,
+        )
+
+    def _write_memory(
+        self,
+        summary: Tensor,
+        token_states: Tensor,
+        attention_mask: Optional[Tensor],
+        memory_state: MemoryState,
+        memory_mask: Optional[Tensor],
+    ) -> Tuple[
+        MemoryState,
+        Optional[RoutingOutput],
+        CandidateWriterOutput,
+        OrthogonalUpdateOutput,
+        Tensor,
+    ]:
+        routing_output = None
+        routing_weights = None
+        write_mask = memory_mask
+
+        if self.router is not None:
+            routing_output = self.router(
+                query=summary,
+                memory_slots=memory_state.slots,
+                slot_mask=memory_mask,
+                write_count=memory_state.write_count,
+            )
+            routing_weights = routing_output.weights
+            write_mask = routing_output.mask.unsqueeze(-1)
+
+        writer_output = self.writer(
+            summary=summary,
+            memory_slots=memory_state.slots,
+            token_states=(
+                token_states
+                if self.memory_config.writer_mode == "attention"
+                else None
+            ),
+            attention_mask=(
+                attention_mask
+                if self.memory_config.writer_mode == "attention"
+                else None
+            ),
+            routing_weights=routing_weights,
+        )
+
+        orthogonal_output = self.orthogonalizer(
+            updates=writer_output.deltas,
+            memory_slots=memory_state.slots,
+        )
+
+        projected_candidate = (
+            memory_state.slots + orthogonal_output.updates
+        )
+
+        write_gate = self.write_gate_module(
+            summary,
+            slot_mask=memory_mask,
+        )
+
+        if routing_weights is not None:
+            write_gate = write_gate * routing_weights.unsqueeze(-1)
+
+        confidence = self.write_confidence_head(
+            projected_candidate
+        ).squeeze(-1)
+
+        new_state = self.memory_bank(
+            state=memory_state,
+            candidate=projected_candidate,
+            write_gate=write_gate,
+            write_mask=write_mask,
+            confidence=confidence,
+        )
+
+        return (
+            new_state,
+            routing_output,
+            writer_output,
+            orthogonal_output,
+            write_gate,
+        )
+
+    def _pool_hidden(
+        self,
+        hidden_states: Tensor,
+        attention_mask: Optional[Tensor],
+    ) -> Tensor:
+        if self.memory_config.summary_mode == "first_token":
+            return hidden_states[:, 0]
+
+        if self.memory_config.summary_mode == "last_token":
+            if attention_mask is None:
+                return hidden_states[:, -1]
+
+            indices = attention_mask.long().sum(dim=-1).sub(1).clamp_min(0)
+            batch_indices = torch.arange(
+                hidden_states.size(0),
+                device=hidden_states.device,
+            )
+            return hidden_states[batch_indices, indices]
+
+        if attention_mask is None:
+            return hidden_states.mean(dim=1)
+
+        weights = attention_mask.unsqueeze(-1).to(hidden_states.dtype)
+        return (
+            hidden_states * weights
+        ).sum(dim=1) / weights.sum(dim=1).clamp_min(1.0)
+
+    @staticmethod
+    def _causal_language_modeling_loss(
+        logits: Tensor,
+        labels: Tensor,
+    ) -> Tensor:
+        if labels.shape != logits.shape[:2]:
+            raise ValueError(
+                "labels must have shape [B, T] matching logits."
+            )
+
+        shift_logits = logits[..., :-1, :].contiguous()
+        shift_labels = labels[..., 1:].contiguous()
+
+        return F.cross_entropy(
+            shift_logits.view(-1, shift_logits.size(-1)),
+            shift_labels.view(-1),
+            ignore_index=-100,
+        )
+
+    def _compute_auxiliary_losses(
+        self,
+        new_state: MemoryState,
+        routing_output: Optional[RoutingOutput],
+        writer_output: Optional[CandidateWriterOutput],
+        orthogonal_output: Optional[OrthogonalUpdateOutput],
+        read_output: Optional[MemoryReadOutput],
+        write_gate: Optional[Tensor],
+    ) -> Dict[str, Tensor]:
+        losses: Dict[str, Tensor] = {}
+        cfg = self.memory_config
+
+        if (
+            writer_output is not None
+            and cfg.candidate_diversity_weight > 0
+        ):
+            losses["candidate_diversity"] = (
+                cfg.candidate_diversity_weight
+                * self.writer.candidate_diversity_loss(
+                    writer_output.candidates
+                )
+            )
+
+        if (
+            orthogonal_output is not None
+            and cfg.update_orthogonality_weight > 0
+        ):
+===== READER FORWARD =====
+225:    def forward(
+226-        self,
+227-        hidden_states: Tensor,
+228-        memory_slots: Tensor,
+229-        address_slots: Optional[Tensor] = None,
+230-        attention_mask: Optional[Tensor] = None,
+231-        memory_mask: Optional[Tensor] = None,
+232-        routing_prior: Optional[Tensor] = None,
+233-        memory_confidence: Optional[Tensor] = None,
+234-        return_attention: Optional[bool] = None,
+235-    ) -> MemoryReadOutput:
+236-        """
+237-        Read memory and optionally fuse it with transformer hidden states.
+238-
+239-        Parameters
+240-        ----------
+241-        hidden_states:
+242-            Transformer states, shape [B, T, D].
+243-        memory_slots:
+244-            Memory bank, shape [B, N, D].
+245-        attention_mask:
+246-            Token validity mask, shape [B, T].
+247-            Used for summary pooling and diagnostics.
+248-        memory_mask:
+249-            Available-slot mask, shape [B, N] or [B, N, 1].
+250-        routing_prior:
+251-            Optional multiplicative/additive prior over memory reads.
+252-            Shape [B, N] or [B, T, N].
+253-        memory_confidence:
+254-            Confidence associated with each memory slot.
+255-            Shape [B, N] or [B, N, 1].
+256-        return_attention:
+257-            Override default attention-return setting.
+258-
+259-        Returns
+260-        -------
+261-        MemoryReadOutput
+262-        """
+263-        self._validate_hidden(hidden_states)
+264-        self._validate_memory(memory_slots, hidden_states.size(0))
+265-
+266-        if address_slots is not None:
+267-            self._validate_memory(
+268-                address_slots,
+269-                hidden_states.size(0),
+270-            )
+271-
+272-        batch_size, sequence_length, _ = hidden_states.shape
+273-
+274-        token_mask = self._prepare_attention_mask(
+275-            attention_mask,
+276-            batch_size=batch_size,
+277-            sequence_length=sequence_length,
+278-            device=hidden_states.device,
+279-        )
+280-
+281-        slot_mask = self._prepare_memory_mask(
+282-            memory_mask,
+283-            batch_size=batch_size,
+284-            device=hidden_states.device,
+285-        )
+286-
+287-        prior = self._prepare_routing_prior(
+288-            routing_prior,
+289-            batch_size=batch_size,
+290-            sequence_length=sequence_length,
+291-            device=hidden_states.device,
+292-            dtype=hidden_states.dtype,
+293-        )
+294-
+295-        confidence = self._prepare_memory_confidence(
+296-            memory_confidence,
+297-            batch_size=batch_size,
+298-            device=hidden_states.device,
+299-            dtype=hidden_states.dtype,
+300-        )
+301-
+302-        queries = self._build_queries(
+303-            hidden_states=hidden_states,
+304-            token_mask=token_mask,
+305-        )
+306-
+307-       # ---------------------------------------------------------
+308-        # KEY-VALUE MEMORY ADDRESSING
+309-        # ---------------------------------------------------------
+310-        #
+311-        # address_slots = stable learned slot addresses
+312-        # memory_slots  = changing stored memory values
+313-        #
+314-        # Query compares against ADDRESS keys.
+315-        # Retrieved information comes from VALUE memory.
+316-        #
+317-        # If address_slots is not supplied, fall back to the old
+318-        # behaviour for backward compatibility.
+319-        # ---------------------------------------------------------
+320-
+321-        normalized_memory = self.memory_norm(memory_slots)
+322-
+323-        if address_slots is None:
+324-            normalized_addresses = normalized_memory
+325-        else:
+326-            normalized_addresses = self.memory_norm(address_slots)
+327-
+328-        q = self._split_heads(
+329-            self.query_projection(queries)
+330-        )
+331-
+332-        k = self._split_heads(
+333-            self.key_projection(normalized_addresses)
+334-        )
+335-
+336-        v = self._split_heads(
+337-            self.value_projection(normalized_memory)
+338-        )
+339-
+340-        scores = torch.einsum("bhtd,bhnd->bhtn", q, k)
+341-        scores = scores / (self.head_dim ** 0.5)
+342-        scores = scores / self.temperature
+343-
+344-        if prior is not None:
+345-            scores = scores + prior.clamp_min(self.eps).log().unsqueeze(1)
+346-
+347-        if confidence is not None:
+348-            scores = scores + confidence.clamp_min(self.eps).log().unsqueeze(1).unsqueeze(2)
+349-
+350-        if slot_mask is not None:
+351-            minimum = torch.finfo(scores.dtype).min
+352-            scores = scores.masked_fill(
+353-                ~slot_mask[:, None, None, :],
+354-                minimum,
+355-            )
+356-
+357-        selected_indices = None
+358-        if self.top_k is not None and self.top_k < self.num_slots:
+359-            scores, selected_indices = self._apply_top_k(scores)
+360-
+361-        weights = torch.softmax(scores, dim=-1)
+362-        weights = self.dropout(weights)
+363-
+364-        context_heads = torch.einsum(
+365-            "bhtn,bhnd->bhtd",
+366-            weights,
+367-            v,
+368-        )
+369-        context = self._merge_heads(context_heads)
+370-        context = self.output_projection(context)
+371-        context = self.output_norm(context)
+372-
+373-        if token_mask is not None:
+374-            context = context * token_mask.unsqueeze(-1).to(context.dtype)
+375-
+376-        read_confidence = self._compute_read_confidence(
+377-            context=context,
+378-            weights=weights,
+379-        )
+380-
+381-        fused_hidden = self._fuse(
+382-            hidden_states=hidden_states,
+383-            context=context,
+384-            read_confidence=read_confidence,
+385-        )
+386-
+387-        slot_usage = weights.mean(dim=1).mean(dim=1)
+388-
+389-        should_return_attention = (
+390-            self.return_attention_by_default
+391-            if return_attention is None
+392-            else return_attention
+393-        )
+394-
+395-        return MemoryReadOutput(
+396-            context=context,
+397-            fused_hidden=fused_hidden,
+398-            attention_weights=weights if should_return_attention else None,
+399-            slot_usage=slot_usage,
+400-            read_confidence=read_confidence,
+401-            selected_indices=selected_indices,
+402-        )
+403-
+404-    def _build_queries(
+405-        self,
+406-        hidden_states: Tensor,
+407-        token_mask: Optional[Tensor],
+408-    ) -> Tensor:
+409-        normalized = self.query_norm(hidden_states)
+410-        batch_size, sequence_length, _ = normalized.shape
+411-
+412-        if self.mode == "token":
+413-            return normalized
+414-
+415-        summary = self._masked_mean(normalized, token_mask)
+416-        projected_summary = self.summary_projection(summary)
+417-        summary_expanded = projected_summary.unsqueeze(1).expand(
+418-            -1,
+419-            sequence_length,
+420-            -1,
+421-        )
+422-
+423-        learned = self.learned_query.expand(
+424-            batch_size,
+425-            sequence_length,
+426-            -1,
+427-        )
+428-
+429-        if self.mode == "summary":
+430-            return summary_expanded
+431-
+432-        if self.mode == "learned":
+433-            return normalized + learned
+434-
+435-        if self.mode == "hybrid":
+436-            combined = torch.cat(
+437-                [normalized, summary_expanded, learned],
+438-                dim=-1,
+439-            )
+440-            return self.query_combiner(combined)
+441-
+442-        raise RuntimeError(f"Unsupported query mode: {self.mode}")
+443-
+444-    def _apply_top_k(
+445-        self,
+===== WRITER FORWARD =====
+194:    def forward(
+195-        self,
+196-        summary: Tensor,
+197-        memory_slots: Tensor,
+198-        token_states: Optional[Tensor] = None,
+199-        attention_mask: Optional[Tensor] = None,
+200-        routing_weights: Optional[Tensor] = None,
+201-    ) -> CandidateWriterOutput:
+202-        """
+203-        Generate one candidate vector per memory slot.
+204-
+205-        Parameters
+206-        ----------
+207-        summary:
+208-            Sequence-level representation, shape [B, D].
+209-        memory_slots:
+210-            Current memory, shape [B, N, D].
+211-        token_states:
+212-            Token-level hidden states, shape [B, T, D].
+213-            Required only in attention mode.
+214-        attention_mask:
+215-            Token validity mask, shape [B, T], with 1/True for valid tokens.
+216-        routing_weights:
+217-            Optional router weights, shape [B, N] or [B, N, 1].
+218-            These weights modulate candidate deltas but do not replace the
+219-            separate memory gate.
+220-
+221-        Returns
+222-        -------
+223-        CandidateWriterOutput
+224-        """
+225-        self._validate_summary(summary)
+226-        self._validate_memory(memory_slots, summary.size(0))
+227-
+228-        route = self._prepare_routing_weights(
+229-            routing_weights,
+230-            batch_size=summary.size(0),
+231-            device=summary.device,
+232-            dtype=summary.dtype,
+233-        )
+234-
+235-        if self.mode == "mlp":
+236-            raw_candidates = self._mlp_candidates(summary, memory_slots)
+237-            attended_context = None
+238-
+239-        elif self.mode == "gru":
+240-            raw_candidates = self._gru_candidates(summary, memory_slots)
+241-            attended_context = None
+242-
+243-        elif self.mode == "residual":
+244-            raw_candidates = self._residual_candidates(summary, memory_slots)
+245-            attended_context = None
+246-
+247-        elif self.mode == "attention":
+248-            raw_candidates, attended_context = self._attention_candidates(
+249-                summary=summary,
+250-                memory_slots=memory_slots,
+251-                token_states=token_states,
+252-                attention_mask=attention_mask,
+253-            )
+254-
+255-        else:
+256-            raise RuntimeError(f"Unsupported writer mode: {self.mode}")
+257-
+258-        raw_candidates = self._activate(raw_candidates)
+259-
+260-        if self.mode == "residual":
+261-            candidates = raw_candidates
+262-        else:
+263-            candidates = self.output_norm(raw_candidates)
+264-
+265-        deltas = candidates - memory_slots
+266-
+267-        if route is not None:
+268-            deltas = deltas * route
+269-            candidates = memory_slots + deltas
+270-            candidates = self.output_norm(candidates)
+271-
+272-        return CandidateWriterOutput(
+273-            candidates=candidates,
+274-            deltas=candidates - memory_slots,
+275-            attended_context=attended_context,
+276-        )
+277-
+278-    def _mlp_candidates(
+279-        self,
+280-        summary: Tensor,
+281-        memory_slots: Tensor,
+282-    ) -> Tensor:
+283-        batch_size = summary.size(0)
+284-
+285-        summary_expanded = self.summary_norm(summary).unsqueeze(1).expand(
+286-            -1,
+287-            self.num_slots,
+288-            -1,
+289-        )
+290-
+291-        parts = [summary_expanded]
+292-
+293-        if self.use_memory_content:
+294-            parts.append(self.memory_norm(memory_slots))
+295-
+296-        if self.use_slot_embeddings:
+297-            slot_ids = self.slot_embeddings.unsqueeze(0).expand(
+298-                batch_size,
+299-                -1,
+300-                -1,
+301-            )
+302-            parts.append(slot_ids)
+303-
+304-        fused = torch.cat(parts, dim=-1)
+305-        return self.mlp_writer(fused)
+306-
+307-    def _gru_candidates(
+308-        self,
+309-        summary: Tensor,
+310-        memory_slots: Tensor,
+311-    ) -> Tensor:
+312-        batch_size = summary.size(0)
+313-        summary_expanded = self.summary_norm(summary).unsqueeze(1).expand(
+314-            -1,
+315-            self.num_slots,
+316-            -1,
+317-        )
+318-
+319-        gru_parts = [summary_expanded]
+320-
+321-        if self.use_slot_embeddings:
+322-            gru_parts.append(
+323-                self.slot_embeddings.unsqueeze(0).expand(
+324-                    batch_size,
+325-                    -1,
+326-                    -1,
+327-                )
+328-            )
+329-
+330-        gru_input = torch.cat(gru_parts, dim=-1)
+331-        gru_input = self.gru_input_projection(gru_input)
+332-
+333-        flat_input = gru_input.reshape(
+334-            batch_size * self.num_slots,
+335-            self.d_model,
+336-        )
+337-        flat_memory = self.memory_norm(memory_slots).reshape(
+338-            batch_size * self.num_slots,
+339-            self.d_model,
+340-        )
+341-
+342-        updated = self.gru_cell(flat_input, flat_memory)
+343-        return updated.reshape(
+344-            batch_size,
+345-            self.num_slots,
+346-            self.d_model,
+347-        )
+348-
+349-    def _residual_candidates(
+350-        self,
+351-        summary: Tensor,
+352-        memory_slots: Tensor,
+353-    ) -> Tensor:
+354-        batch_size = summary.size(0)
+355-
+356-        summary_expanded = self.summary_norm(summary).unsqueeze(1).expand(
+357-            -1,
+358-            self.num_slots,
+359-            -1,
+360-        )
+361-
+362-        parts = [summary_expanded]
+363-
+364-        if self.use_memory_content:
+365-            parts.append(self.memory_norm(memory_slots))
+366-
+367-        if self.use_slot_embeddings:
+368-            parts.append(
+369-                self.slot_embeddings.unsqueeze(0).expand(
+370-                    batch_size,
+371-                    -1,
+372-                    -1,
+373-                )
+374-            )
+375-
+376-        fused = torch.cat(parts, dim=-1)
+377-        delta = self.residual_writer(fused)
+378-        delta = self._activate(delta)
+379-
+380-        scale = self.residual_scale.abs()
+381-        return self.output_norm(memory_slots + scale * delta)
+382-
+383-    def _attention_candidates(
+384-        self,
+385-        summary: Tensor,
+386-        memory_slots: Tensor,
+387-        token_states: Optional[Tensor],
+388-        attention_mask: Optional[Tensor],
+389-    ) -> Tuple[Tensor, Tensor]:
+390-        if token_states is None:
+391-            raise ValueError(
+392-                "token_states is required when mode='attention'."
+393-            )
+394-
+395-        self._validate_token_states(
+396-            token_states,
+397-            batch_size=summary.size(0),
+398-        )
+399-
+400-        batch_size = summary.size(0)
+401-
+402-        summary_query = self.query_projection(
+403-            self.summary_norm(summary)
+404-        ).unsqueeze(1)
+405-
+406-        slot_identity = self.slot_embeddings.unsqueeze(0).expand(
+407-            batch_size,
+408-            -1,
+409-            -1,
+410-        )
+411-
+412-        slot_queries = self.slot_projection(
+413-            self.memory_norm(memory_slots) + slot_identity
+414-        )
+===== ROUTER FORWARD =====
+161:    def forward(
+162-        self,
+163-        query: Tensor,
+164-        memory_slots: Optional[Tensor] = None,
+165-        slot_mask: Optional[Tensor] = None,
+166-
+167-        # NEW
+168-        write_count: Optional[Tensor] = None,
+169-    ) -> RoutingOutput:
+170-
+171-        self._validate_query(query)
+172-
+173-        batch_size = query.size(0)
+174-
+175-        prepared_mask = self._prepare_slot_mask(
+176-            slot_mask,
+177-            batch_size=batch_size,
+178-            device=query.device,
+179-        )
+180-
+181-        if self.mode == "cosine":
+182-            logits = self._cosine_logits(
+183-                query,
+184-                memory_slots,
+185-            )
+186-
+187-        elif self.mode == "occupancy":
+188-            logits = self._occupancy_logits(
+189-                query=query,
+190-                memory_slots=memory_slots,
+191-                write_count=write_count,
+192-            )
+193-
+194-        else:
+195-            logits = self.router(
+196-                self.query_norm(query)
+197-            )
+198-
+199-        masked_logits = self._mask_logits(
+200-            logits,
+201-            prepared_mask,
+202-        )
+203-
+204-        dense_weights = self._activate(
+205-            masked_logits
+206-        )
+207-
+208-        weights, active_mask, selected_indices = (
+209-            self._sparsify(
+210-                dense_weights=dense_weights,
+211-                slot_mask=prepared_mask,
+212-            )
+213-        )
+214-
+215-        return RoutingOutput(
+216-            weights=weights,
+217-            mask=active_mask,
+218-            logits=logits,
+219-            selected_indices=selected_indices,
+220-        )
+221-
+222-    # ---------------------------------------------------------
+223-    # NEW OCCUPANCY ROUTER
+224-    # ---------------------------------------------------------
+225-
+226-    def _occupancy_logits(
+227-        self,
+228-        query: Tensor,
+229-        memory_slots: Optional[Tensor],
+230-        write_count: Optional[Tensor],
+231-    ) -> Tensor:
+232-
+233-        batch_size = query.size(0)
+234-
+235-        # ---------------------------------------
+236-        # Query representation
+237-        # ---------------------------------------
+238-
+239-        q = self.query_projection(
+240-            self.query_norm(query)
+241-        )
+242-
+243-        q = F.normalize(
+244-            q,
+245-            p=2,
+246-            dim=-1,
+247-            eps=self.eps,
+248-        )
+249-
+250-        # ---------------------------------------
+251-        # Slot/address representation
+252-        # ---------------------------------------
+253-
+254-        #
+255-        # IMPORTANT:
+256-        # use learned addresses here rather than
+257-        # only memory contents.
+258-        #
+259-        # Otherwise an empty slot has no useful
+260-        # address representation.
+261-        #
+262-
+263-        addresses = self.slot_embeddings.unsqueeze(0).expand(
+264-            batch_size,
+265-            -1,
+266-            -1,
+267-        )
+268-
+269-        projected_addresses = self.slot_projection(
+270-            addresses
+271-        )
+272-
+273-        projected_addresses = F.normalize(
+274-            projected_addresses,
+275-            p=2,
+276-            dim=-1,
+277-            eps=self.eps,
+278-        )
+279-
+280-        # ---------------------------------------
+281-        # Query ↔ address compatibility
+282-        # ---------------------------------------
+283-
+284-        content_score = torch.einsum(
+285-            "bd,bnd->bn",
+286-            q,
+287-            projected_addresses,
+288-        )
+289-
+290-        # ---------------------------------------
+291-        # No occupancy information
+292-        # ---------------------------------------
+293-
+294-        if write_count is None:
+295-            return content_score
+296-
+297-        if write_count.shape != (
+298-            batch_size,
+299-            self.num_slots,
+300-        ):
+301-            raise ValueError(
+302-                "write_count must have shape "
+303-                f"[B,{self.num_slots}], "
+304-                f"got {tuple(write_count.shape)}"
+305-            )
+306-
+307-        # 0 = free
+308-        # 1 = occupied
+309-
+310-        occupied = (
+311-            write_count > 0
+312-        ).to(content_score.dtype)
+313-
+314-        free = 1.0 - occupied
+315-
+316-        # ---------------------------------------
+317-        # Final score
+318-        #
+319-        # compatible slots score higher
+320-        # occupied slots score lower
+321-        # free slots receive bonus
+322-        # ---------------------------------------
+323-
+324-        logits = (
+325-            content_score
+326-            - self.occupancy_penalty * occupied
+327-            + self.free_slot_bonus * free
+328-        )
+329-
+330-        return logits
+331-
+332-    # ---------------------------------------------------------
+333-    # Original cosine router
+334-    # ---------------------------------------------------------
+335-
+336-    def _cosine_logits(
+337-        self,
+338-        query: Tensor,
+339-        memory_slots: Optional[Tensor],
+340-    ) -> Tensor:
+341-
+===== MEMORY BANK FORWARD =====
+105:    def forward(
+106-        self,
+107-        state: MemoryState,
+108-        candidate: Tensor,
+109-        write_gate: Tensor,
+110-        erase_gate: Optional[Tensor] = None,
+111-        write_mask: Optional[Tensor] = None,
+112-        confidence: Optional[Tensor] = None,
+113-    ) -> MemoryState:
+114-        self._validate_state(state)
+115-        self._validate_update_tensor(candidate, "candidate", self.d_model)
+116-        self._validate_update_tensor(write_gate, "write_gate", 1)
+117-
+118-        if erase_gate is not None:
+119-            self._validate_update_tensor(erase_gate, "erase_gate", 1)
+120-        if write_mask is not None:
+121-            self._validate_update_tensor(write_mask, "write_mask", 1)
+122-
+123-        if candidate.shape[:2] != (state.slots.size(0), self.num_slots):
+124-            raise ValueError("candidate has an invalid batch or slot dimension.")
+125-        if write_gate.shape[:2] != (state.slots.size(0), self.num_slots):
+126-            raise ValueError("write_gate has an invalid batch or slot dimension.")
+127-
+128-        write_gate = write_gate.clamp(0.0, 1.0)
+129-        if write_mask is not None:
+130-            write_gate = write_gate * write_mask.to(write_gate.dtype).clamp(0.0, 1.0)
+131-
+132-        if erase_gate is None:
+133-            new_slots = (1.0 - write_gate) * state.slots + write_gate * candidate
+134-        else:
+135-            erase_gate = erase_gate.clamp(0.0, 1.0)
+136-            if write_mask is not None:
+137-                erase_gate = erase_gate * write_mask.to(erase_gate.dtype).clamp(0.0, 1.0)
+138-            new_slots = (1.0 - erase_gate) * state.slots + write_gate * candidate
+139-
+140-        new_slots = self.normalize_slots(new_slots)
+141-        wrote = write_gate.squeeze(-1) > 1e-4
+142-        new_age = torch.where(wrote, torch.zeros_like(state.age), state.age + 1)
+143-        new_write_count = state.write_count + wrote.long()
+144-
+145-        if confidence is None:
+146-            new_confidence = state.confidence
+147-        else:
+148-            if confidence.dim() == 3 and confidence.size(-1) == 1:
+149-                confidence = confidence.squeeze(-1)
+150-            if confidence.shape != state.confidence.shape:
+151-                raise ValueError("confidence must have shape [B, N] or [B, N, 1].")
+152-            new_confidence = torch.where(wrote, confidence.to(state.confidence.dtype), state.confidence)
+153-
+154-        return MemoryState(
+155-            slots=new_slots,
+156-            age=new_age,
+157-            write_count=new_write_count,
+158-            read_count=state.read_count,
+159-            confidence=new_confidence,
+160-        )
+161-
+162-    def record_reads(self, state: MemoryState, read_weights: Tensor, threshold: float = 1e-4) -> MemoryState:
+163-        self._validate_state(state)
+164-        if read_weights.dim() == 3 and read_weights.size(-1) == 1:
+165-            read_weights = read_weights.squeeze(-1)
+166-        if read_weights.shape != state.read_count.shape:
+167-            raise ValueError("read_weights must have shape [B, N] or [B, N, 1].")
+168-
+169-        read_events = (read_weights > threshold).long()
+170-        return MemoryState(
+171-            slots=state.slots,
+172-            age=state.age,
+173-            write_count=state.write_count,
+174-            read_count=state.read_count + read_events,
+175-            confidence=state.confidence,
+176-        )
+177-
+178-    def normalize_slots(self, slots: Tensor) -> Tensor:
+179-        if slots.dim() != 3:
+180-            raise ValueError("slots must have shape [B, N, D].")
+181-
+182-        if self.normalization == "layernorm":
+183-            slots = self.layer_norm(slots)
+184-        elif self.normalization == "rms":
+185-            rms = slots.pow(2).mean(dim=-1, keepdim=True).add(self.eps).sqrt()
+186-            slots = slots / rms
+187-        elif self.normalization == "l2":
+188-            slots = F.normalize(slots, p=2, dim=-1, eps=self.eps)
+189-
+190-        if self.max_slot_norm is not None:
+191-            norms = slots.norm(p=2, dim=-1, keepdim=True).clamp_min(self.eps)
+192-            slots = slots * (self.max_slot_norm / norms).clamp(max=1.0)
+193-
+194-        return slots
+195-
+196-    @torch.no_grad()
+197-    def collapse_metrics(self, state: MemoryState) -> Dict[str, Tensor]:
+198-        self._validate_state(state)
+199-        slots = state.slots.float()
+200-        normalized = F.normalize(slots, p=2, dim=-1, eps=self.eps)
+201-        gram = torch.bmm(normalized, normalized.transpose(1, 2))
+202-        eye = torch.eye(self.num_slots, device=slots.device, dtype=slots.dtype).unsqueeze(0)
+203-        denominator = max(slots.size(0) * self.num_slots * (self.num_slots - 1), 1)
+204-        pairwise_cosine = (gram * (1.0 - eye)).sum() / denominator
+205-
+206-        effective_ranks = []
+207-        stable_ranks = []
+208-        for sample in slots:
+209-            s = torch.linalg.svdvals(sample)
+210-            p = s / s.sum().clamp_min(self.eps)
+211-            effective_ranks.append((-(p * p.clamp_min(self.eps).log()).sum()).exp())
+212-            stable_ranks.append(s.pow(2).sum() / s.max().pow(2).clamp_min(self.eps))
+213-
+214-        norms = slots.norm(p=2, dim=-1)
+215-        return {
+216-            "pairwise_cosine": pairwise_cosine,
+217-            "effective_rank": torch.stack(effective_ranks).mean(),
+218-            "stable_rank": torch.stack(stable_ranks).mean(),
+219-            "slot_norm_mean": norms.mean(),
+220-            "slot_norm_std": norms.std(unbiased=False),
+221-            "unused_slot_fraction": (state.write_count == 0).float().mean(),
+222-        }
+223-
+224-    def _validate_state(self, state: MemoryState) -> None:
+225-        if not isinstance(state, MemoryState):
+226-            raise TypeError("state must be a MemoryState.")
+227-        if state.slots.dim() != 3 or state.slots.shape[1:] != (self.num_slots, self.d_model):
+228-            raise ValueError(f"state.slots must have shape [B, {self.num_slots}, {self.d_model}].")
+229-        expected_meta = (state.slots.size(0), self.num_slots)
+230-        for name in ("age", "write_count", "read_count", "confidence"):
+231-            if getattr(state, name).shape != expected_meta:
+232-                raise ValueError(f"state.{name} must have shape {expected_meta}.")
+233-
+234-    @staticmethod
+235-    def _validate_update_tensor(tensor: Tensor, name: str, final_dim: int) -> None:
+236-        if not torch.is_tensor(tensor):
+237-            raise TypeError(f"{name} must be a tensor.")
+238-        if tensor.dim() != 3 or tensor.size(-1) != final_dim:
+239-            raise ValueError(f"{name} must have shape [B, N, {final_dim}].")
+240-
+241-
+242-def _smoke_test() -> None:
+243-    torch.manual_seed(42)
+244-    bank = MemoryBank(num_slots=8, d_model=64, normalization="layernorm", max_slot_norm=12.0)
+245-    state = bank.initialize(batch_size=4)
+246-    candidate = torch.randn(4, 8, 64)
+247-    write_gate = torch.sigmoid(torch.randn(4, 8, 1))
+248-    erase_gate = torch.sigmoid(torch.randn(4, 8, 1)) * 0.2
+249-    state = bank(state, candidate, write_gate, erase_gate, confidence=write_gate.squeeze(-1))
+250-    state = bank.record_reads(state, torch.softmax(torch.randn(4, 8), dim=-1))
+251-    metrics = bank.collapse_metrics(state)
+252-    print("Memory shape:", tuple(state.slots.shape))
+253-    print({k: round(float(v.item()), 4) for k, v in metrics.items()})
+254-
+255-
+256-if __name__ == "__main__":
+257-    _smoke_test()

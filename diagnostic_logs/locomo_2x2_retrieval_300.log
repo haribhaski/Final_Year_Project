@@ -1,0 +1,232 @@
+
+=============================================================================================================================
+TOKENIZER
+=============================================================================================================================
+Tokenizer: GPT2Tokenizer
+Vocabulary: 50257
+
+=============================================================================================================================
+LOAD FROZEN MEMORY MODEL
+=============================================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5889.37it/s]
+Compatible tensors: 236
+Missing tensors: 0
+Model frozen.
+
+=============================================================================================================================
+LOAD LOCOMO
+=============================================================================================================================
+Conversations: 10
+
+=============================================================================================================================
+BUILD RETRIEVAL QUESTIONS
+=============================================================================================================================
+Eligible questions: 1965
+Categories: {'2': 320, '3': 86, '1': 273, '4': 840, '5': 446}
+Questions evaluated: 300
+
+=============================================================================================================================
+RUN 2x2 RETRIEVAL ISOLATION
+=============================================================================================================================
+
+A = Existing Writer + Existing Reader
+B = Existing Writer + Cosine Reader
+C = Direct Memory + Existing Reader
+D = Direct Memory + Cosine Reader
+
+Memory slots: 8
+Questions: 300
+
+NO VALUE DECODER.
+NO WORD CLASSIFICATION.
+NO ANSWER GENERATION.
+ONLY GOLD-EVIDENCE RETRIEVAL.
+
+====================================================================================================
+EXAMPLE
+====================================================================================================
+
+QUESTION:
+What is Caroline's identity?
+
+GOLD EVIDENCE: ['D1:5']
+
+MEMORY CANDIDATES:
+0. D19:2
+Melanie: Congrats, Caroline! Adoption sounds awesome. I'm so happy for you. These figurines I bought yesterday remind me of family love. Tell me, what's your vision for the future?
+
+1. D1:5 <--- GOLD
+Caroline: The transgender stories were so inspiring! I was so happy and thankful for all the support.
+
+2. D18:7
+Melanie: Thanks! They were scared but we reassured them and explained their brother would be OK. They're tough kids.
+
+3. D5:6
+Melanie: I'm a big fan of pottery - the creativity and skill is awesome. Plus, making it is so calming. Look at this!
+
+4. D6:9
+Caroline: I've got lots of kids' books- classics, stories from different cultures, educational books, all of that. What's a favorite book you remember from your childhood?
+
+5. D4:11
+Caroline: Lately, I've been looking into counseling and mental health as a career. I want to help people who have gone through the same things as me.
+
+6. D4:7
+Caroline: Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?
+
+7. D3:5
+Caroline: Thanks Mel! Your kind words mean a lot. Sharing our experiences isn't always easy, but I feel it's important to help promote understanding and acceptance. I've been blessed with loads of love and support throughout this journey, and I want to pass it on to others. By sharing our stories, we can build a strong, supportive community of hope.
+
+RANKINGS:
+
+A_OLD_WRITER_OLD_READER
+  1. D18:7
+  2. D5:6
+  3. D4:11
+  4. D4:7
+  5. D1:5 <--- GOLD
+  6. D6:9
+  7. D3:5
+  8. D19:2
+
+B_OLD_WRITER_COSINE
+  1. D1:5 <--- GOLD
+  2. D18:7
+  3. D5:6
+  4. D3:5
+  5. D6:9
+  6. D4:11
+  7. D4:7
+  8. D19:2
+
+C_DIRECT_MEMORY_OLD_READER
+  1. D4:11
+  2. D3:5
+  3. D19:2
+  4. D6:9
+  5. D5:6
+  6. D18:7
+  7. D1:5 <--- GOLD
+  8. D4:7
+
+D_DIRECT_MEMORY_COSINE
+  1. D19:2
+  2. D5:6
+  3. D1:5 <--- GOLD
+  4. D4:7
+  5. D18:7
+  6. D6:9
+  7. D4:11
+  8. D3:5
+Completed 25/300
+Completed 50/300
+Completed 75/300
+Completed 100/300
+Completed 125/300
+Completed 150/300
+Completed 175/300
+Completed 200/300
+Completed 225/300
+Completed 250/300
+Completed 275/300
+Completed 300/300
+
+=============================================================================================================================
+FINAL 2x2 RETRIEVAL RESULTS
+=============================================================================================================================
+Questions: 300
+
+Method                              Hit@1     Hit@3     Hit@5    Recall@3    Recall@5       MRR
+A_OLD_WRITER_OLD_READER            17.67%    43.00%    67.67%      36.37%      61.00%    0.3866
+B_OLD_WRITER_COSINE                18.00%    47.00%    69.33%      38.42%      63.47%    0.3983
+C_DIRECT_MEMORY_OLD_READER         15.33%    37.33%    63.33%      31.46%      57.82%    0.3589
+D_DIRECT_MEMORY_COSINE             32.33%    67.33%    88.00%      60.54%      83.03%    0.5427
+
+=============================================================================================================================
+2x2 HIT@1 MATRIX
+=============================================================================================================================
+
+                         READER
+                 OLD             COSINE
+
+OLD WRITER        17.67%           18.00%
+
+DIRECT MEMORY     15.33%           32.33%
+
+=============================================================================================================================
+COMPONENT EFFECTS
+=============================================================================================================================
+Change ONLY reader (Old Writer: A -> B):
++0.33 points
+
+Change ONLY writer (Old Reader: A -> C):
+-2.33 points
+
+Change reader with DIRECT memory (C -> D):
++17.00 points
+
+Change writer with COSINE reader (B -> D):
++14.33 points
+
+=============================================================================================================================
+AUTOMATIC DIAGNOSIS
+=============================================================================================================================
+A OLD WRITER + OLD READER   : 17.67%
+B OLD WRITER + COSINE       : 18.00%
+C DIRECT MEMORY + OLD READER: 15.33%
+D DIRECT MEMORY + COSINE    : 32.33%
+
+PRIMARY DIAGNOSIS: BOTH WRITER AND READER
+
+Both components independently reduce retrieval quality.
+
+=============================================================================================================================
+CATEGORY HIT@1 BREAKDOWN
+=============================================================================================================================
+
+Category 1 (n=43)
+  A_OLD_WRITER_OLD_READER          34.88%
+  B_OLD_WRITER_COSINE              44.19%
+  C_DIRECT_MEMORY_OLD_READER       34.88%
+  D_DIRECT_MEMORY_COSINE           48.84%
+
+Category 2 (n=52)
+  A_OLD_WRITER_OLD_READER           9.62%
+  B_OLD_WRITER_COSINE              13.46%
+  C_DIRECT_MEMORY_OLD_READER       11.54%
+  D_DIRECT_MEMORY_COSINE           30.77%
+
+Category 3 (n=12)
+  A_OLD_WRITER_OLD_READER          16.67%
+  B_OLD_WRITER_COSINE               8.33%
+  C_DIRECT_MEMORY_OLD_READER       16.67%
+  D_DIRECT_MEMORY_COSINE           25.00%
+
+Category 4 (n=129)
+  A_OLD_WRITER_OLD_READER          15.50%
+  B_OLD_WRITER_COSINE              15.50%
+  C_DIRECT_MEMORY_OLD_READER       13.18%
+  D_DIRECT_MEMORY_COSINE           31.01%
+
+Category 5 (n=64)
+  A_OLD_WRITER_OLD_READER          17.19%
+  B_OLD_WRITER_COSINE              10.94%
+  C_DIRECT_MEMORY_OLD_READER        9.38%
+  D_DIRECT_MEMORY_COSINE           26.56%
+
+=============================================================================================================================
+SAVE RESULTS
+=============================================================================================================================
+Saved: outputs/locomo_2x2_retrieval.pt
+
+=============================================================================================================================
+EXPERIMENT COMPLETE
+=============================================================================================================================
+This was a RETRIEVAL-ONLY experiment.
+No value decoder.
+No answer classifier.
+No GPT-2 training.
+No CandidateWriter training.
+No MemoryReader training.
+No models/ source files modified.

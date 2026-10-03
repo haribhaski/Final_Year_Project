@@ -1,0 +1,126 @@
+==========================================================================================
+MEAN VALUE + TRAINABLE VECTOR GATE
+==========================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+Pipeline:
+masked mean
+  -> trainable Linear VALUE
+  -> TRAINABLE original VectorGate
+  -> frozen MemoryBank
+  -> trainable simple reader
+
+Disabled:
+  CandidateWriter
+  OrthogonalUpdate
+  Router
+  Original MemoryReader
+
+Number classes: 13
+Chance accuracy: 7.69%
+Chance CE: 2.5649
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5589.43it/s]
+
+Precomputing train...
+  4000/4000
+
+Precomputing validation...
+  500/500
+
+Precomputing test...
+  500/500
+
+Value + reader params: 2,373,901
+Gate params: 299,912
+MemoryBank trainable: False
+VectorGate trainable: True
+
+==========================================================================================
+PRETRAIN VALIDATION
+==========================================================================================
+Matched:     6.60%
+Mismatched:  6.60%
+NLL gap:     -0.000022
+Gate mean:   0.070394
+Gate std:    0.000093
+Stored relL2: 0.001062
+
+EPOCH 01 | loss=2.8443 | match=8.80% | mismatch=8.80% | query=8.60% | gap=+0.0025 | gate=0.2531 ±0.0009 | relL2=0.0053
+Saved best checkpoint.
+
+EPOCH 02 | loss=2.8221 | match=10.80% | mismatch=9.40% | query=8.60% | gap=+0.0139 | gate=0.5176 ±0.0024 | relL2=0.0192
+Saved best checkpoint.
+
+EPOCH 03 | loss=2.7415 | match=18.40% | mismatch=7.80% | query=8.60% | gap=+0.2578 | gate=0.7949 ±0.0025 | relL2=0.0755
+Saved best checkpoint.
+
+EPOCH 04 | loss=1.4619 | match=95.20% | mismatch=0.60% | query=6.40% | gap=+5.0500 | gate=0.8320 ±0.0023 | relL2=0.7321
+Saved best checkpoint.
+
+EPOCH 05 | loss=0.1044 | match=78.80% | mismatch=0.80% | query=5.80% | gap=+7.1155 | gate=0.8323 ±0.0022 | relL2=0.9067
+Saved best checkpoint.
+
+EPOCH 06 | loss=0.0079 | match=95.00% | mismatch=0.20% | query=6.40% | gap=+9.0173 | gate=0.8334 ±0.0022 | relL2=0.9951
+Saved best checkpoint.
+
+EPOCH 07 | loss=0.0012 | match=91.40% | mismatch=0.60% | query=6.40% | gap=+9.2647 | gate=0.8340 ±0.0022 | relL2=0.9991
+Saved best checkpoint.
+
+EPOCH 08 | loss=0.0007 | match=97.40% | mismatch=0.20% | query=6.40% | gap=+9.7453 | gate=0.8339 ±0.0021 | relL2=1.0258
+Saved best checkpoint.
+
+EPOCH 09 | loss=0.0005 | match=96.80% | mismatch=0.40% | query=6.40% | gap=+9.8824 | gate=0.8344 ±0.0021 | relL2=1.0225
+Saved best checkpoint.
+
+EPOCH 10 | loss=0.0004 | match=97.00% | mismatch=0.40% | query=6.40% | gap=+10.0005 | gate=0.8338 ±0.0021 | relL2=1.0300
+Saved best checkpoint.
+
+EPOCH 11 | loss=0.0003 | match=97.00% | mismatch=0.20% | query=6.40% | gap=+10.1293 | gate=0.8341 ±0.0021 | relL2=1.0279
+Saved best checkpoint.
+
+EPOCH 12 | loss=0.0003 | match=98.00% | mismatch=0.20% | query=6.40% | gap=+10.3109 | gate=0.8344 ±0.0021 | relL2=1.0319
+Saved best checkpoint.
+
+EPOCH 13 | loss=0.0003 | match=97.20% | mismatch=0.20% | query=6.40% | gap=+10.2853 | gate=0.8344 ±0.0021 | relL2=1.0281
+
+EPOCH 14 | loss=0.0002 | match=98.40% | mismatch=0.20% | query=6.40% | gap=+10.5382 | gate=0.8345 ±0.0021 | relL2=1.0367
+Saved best checkpoint.
+
+EPOCH 15 | loss=0.0002 | match=98.00% | mismatch=0.20% | query=6.40% | gap=+10.5226 | gate=0.8343 ±0.0021 | relL2=1.0345
+
+==========================================================================================
+FINAL TEST — BEST EPOCH 14
+==========================================================================================
+MATCHED:       90.60%
+MISMATCHED:    0.40%
+QUERY ONLY:    8.00%
+NLL GAP:       +9.468637
+POSITIVE GAP:  100.00%
+
+VECTOR GATE
+mean:          0.835485
+std:           0.001995
+min:           0.830654
+max:           0.840145
+
+RAW VALUE GEOMETRY
+mean_norm               5.590044
+mean_pairwise_l2        0.874344
+relative_l2             0.156411
+mean_cosine             0.986881
+
+STORED VALUE GEOMETRY
+mean_norm               27.418728
+mean_pairwise_l2        27.223099
+relative_l2             0.992865
+mean_cosine             0.475690
+
+==========================================================================================
+VERDICT
+==========================================================================================
+PASS: training the VectorGate recovers the mean-pooled latent VALUE pathway.
+Conclusion: the VectorGate architecture can work; the frozen checkpoint gate was poorly calibrated.
+
+Saved: outputs/mean_trainable_gate/trainable_gate_results.json

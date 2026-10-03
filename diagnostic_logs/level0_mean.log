@@ -1,0 +1,500 @@
+==========================================================================================
+LEVEL-0 LATENT VALUE EXPERIMENT
+==========================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Fact representation: mean
+
+NO CandidateWriter
+NO router
+NO write gate
+NO orthogonalizer
+NO MemoryBank
+NO original MemoryReader
+NO E5
+
+Answer classes: ['amber', 'frost', 'harbor', 'maple', 'olive', 'pearl', 'rose', 'silver', 'stone', 'violet', 'cloud', 'river', 'ocean']
+Number classes: 13
+Chance accuracy: 7.69%
+Chance CE: 2.5649
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 6028.35it/s]
+GPT-2 hidden size: 768
+
+==========================================================================================
+PRECOMPUTING TRAIN
+==========================================================================================
+  4000/4000
+
+==========================================================================================
+PRECOMPUTING VALIDATION
+==========================================================================================
+  500/500
+
+==========================================================================================
+PRECOMPUTING TEST
+==========================================================================================
+  500/500
+
+Level-0 trainable parameters: 2,373,901
+
+==========================================================================================
+PRE-TRAIN VALIDATION
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                        9.60%        2.5724
+MISMATCHED                     8.20%        2.5725
+QUERY_ONLY                     7.60%        2.5722
+
+Matched - mismatched accuracy: +1.40 pp
+Mismatched NLL - matched NLL:   +0.000041
+Examples with positive NLL gap: 48.60%
+
+VALUE geometry:
+  mean_norm               15.698940
+  mean_pairwise_l2        0.392825
+  relative_l2             0.025022
+  mean_pairwise_cosine    0.999616
+
+==========================================================================================
+EPOCH 1/15
+==========================================================================================
+Train total loss: 2.8254
+Train matched CE: 2.5787
+Train rank loss: 0.4934
+
+==========================================================================================
+VALIDATION EPOCH 1
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                        8.60%        2.5639
+MISMATCHED                     8.60%        2.5773
+QUERY_ONLY                     6.60%        2.5714
+
+Matched - mismatched accuracy: +0.00 pp
+Mismatched NLL - matched NLL:   +0.013436
+Examples with positive NLL gap: 94.80%
+
+VALUE geometry:
+  mean_norm               11.830937
+  mean_pairwise_l2        0.434862
+  relative_l2             0.036756
+  mean_pairwise_cosine    0.999206
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 2/15
+==========================================================================================
+Train total loss: 2.7804
+Train matched CE: 2.5458
+Train rank loss: 0.4693
+
+==========================================================================================
+VALIDATION EPOCH 2
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                        6.60%        2.5288
+MISMATCHED                     6.60%        2.5843
+QUERY_ONLY                     7.60%        2.5709
+
+Matched - mismatched accuracy: +0.00 pp
+Mismatched NLL - matched NLL:   +0.055530
+Examples with positive NLL gap: 93.40%
+
+VALUE geometry:
+  mean_norm               9.378656
+  mean_pairwise_l2        0.550094
+  relative_l2             0.058654
+  mean_pairwise_cosine    0.998078
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 3/15
+==========================================================================================
+Train total loss: 2.5936
+Train matched CE: 2.4207
+Train rank loss: 0.3457
+
+==========================================================================================
+VALIDATION EPOCH 3
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       34.20%        2.2451
+MISMATCHED                     8.80%        2.6099
+QUERY_ONLY                     7.60%        2.5791
+
+Matched - mismatched accuracy: +25.40 pp
+Mismatched NLL - matched NLL:   +0.364864
+Examples with positive NLL gap: 94.00%
+
+VALUE geometry:
+  mean_norm               9.724441
+  mean_pairwise_l2        0.766428
+  relative_l2             0.078815
+  mean_pairwise_cosine    0.996575
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 4/15
+==========================================================================================
+Train total loss: 2.0811
+Train matched CE: 2.0194
+Train rank loss: 0.1235
+
+==========================================================================================
+VALIDATION EPOCH 4
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       18.40%        1.9920
+MISMATCHED                     7.40%        2.9795
+QUERY_ONLY                     6.40%        2.6142
+
+Matched - mismatched accuracy: +11.00 pp
+Mismatched NLL - matched NLL:   +0.987504
+Examples with positive NLL gap: 94.20%
+
+VALUE geometry:
+  mean_norm               10.001925
+  mean_pairwise_l2        0.938396
+  relative_l2             0.093821
+  mean_pairwise_cosine    0.995110
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 5/15
+==========================================================================================
+Train total loss: 1.5013
+Train matched CE: 1.4700
+Train rank loss: 0.0627
+
+==========================================================================================
+VALIDATION EPOCH 5
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       66.80%        1.4653
+MISMATCHED                     7.80%        3.3977
+QUERY_ONLY                     7.60%        2.6350
+
+Matched - mismatched accuracy: +59.00 pp
+Mismatched NLL - matched NLL:   +1.932374
+Examples with positive NLL gap: 95.00%
+
+VALUE geometry:
+  mean_norm               11.036403
+  mean_pairwise_l2        1.084388
+  relative_l2             0.098256
+  mean_pairwise_cosine    0.994615
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 6/15
+==========================================================================================
+Train total loss: 1.0276
+Train matched CE: 1.0037
+Train rank loss: 0.0478
+
+==========================================================================================
+VALIDATION EPOCH 6
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       71.60%        1.1393
+MISMATCHED                     8.80%        4.1042
+QUERY_ONLY                     7.60%        2.6658
+
+Matched - mismatched accuracy: +62.80 pp
+Mismatched NLL - matched NLL:   +2.964922
+Examples with positive NLL gap: 95.20%
+
+VALUE geometry:
+  mean_norm               11.507580
+  mean_pairwise_l2        1.205153
+  relative_l2             0.104727
+  mean_pairwise_cosine    0.993879
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 7/15
+==========================================================================================
+Train total loss: 0.7200
+Train matched CE: 0.6988
+Train rank loss: 0.0424
+
+==========================================================================================
+VALIDATION EPOCH 7
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       72.80%        0.8601
+MISMATCHED                     7.20%        4.6965
+QUERY_ONLY                     7.60%        2.6945
+
+Matched - mismatched accuracy: +65.60 pp
+Mismatched NLL - matched NLL:   +3.836412
+Examples with positive NLL gap: 95.20%
+
+VALUE geometry:
+  mean_norm               11.385721
+  mean_pairwise_l2        1.293955
+  relative_l2             0.113647
+  mean_pairwise_cosine    0.992804
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 8/15
+==========================================================================================
+Train total loss: 0.5073
+Train matched CE: 0.4868
+Train rank loss: 0.0410
+
+==========================================================================================
+VALIDATION EPOCH 8
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       84.60%        0.6182
+MISMATCHED                     7.20%        5.3032
+QUERY_ONLY                     7.40%        2.7291
+
+Matched - mismatched accuracy: +77.40 pp
+Mismatched NLL - matched NLL:   +4.684989
+Examples with positive NLL gap: 95.40%
+
+VALUE geometry:
+  mean_norm               11.243978
+  mean_pairwise_l2        1.370746
+  relative_l2             0.121909
+  mean_pairwise_cosine    0.991741
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 9/15
+==========================================================================================
+Train total loss: 0.3601
+Train matched CE: 0.3415
+Train rank loss: 0.0372
+
+==========================================================================================
+VALIDATION EPOCH 9
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       73.60%        0.6948
+MISMATCHED                     7.80%        6.1317
+QUERY_ONLY                     6.60%        2.7704
+
+Matched - mismatched accuracy: +65.80 pp
+Mismatched NLL - matched NLL:   +5.436832
+Examples with positive NLL gap: 95.20%
+
+VALUE geometry:
+  mean_norm               11.185873
+  mean_pairwise_l2        1.433539
+  relative_l2             0.128156
+  mean_pairwise_cosine    0.990897
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 10/15
+==========================================================================================
+Train total loss: 0.2567
+Train matched CE: 0.2377
+Train rank loss: 0.0381
+
+==========================================================================================
+VALIDATION EPOCH 10
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       75.00%        0.5658
+MISMATCHED                     7.20%        6.6431
+QUERY_ONLY                     6.40%        2.7957
+
+Matched - mismatched accuracy: +67.80 pp
+Mismatched NLL - matched NLL:   +6.077254
+Examples with positive NLL gap: 95.40%
+
+VALUE geometry:
+  mean_norm               11.127179
+  mean_pairwise_l2        1.480947
+  relative_l2             0.133093
+  mean_pairwise_cosine    0.990197
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 11/15
+==========================================================================================
+Train total loss: 0.1809
+Train matched CE: 0.1612
+Train rank loss: 0.0393
+
+==========================================================================================
+VALIDATION EPOCH 11
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       82.20%        0.4621
+MISMATCHED                     7.80%        7.2525
+QUERY_ONLY                     6.40%        2.8279
+
+Matched - mismatched accuracy: +74.40 pp
+Mismatched NLL - matched NLL:   +6.790355
+Examples with positive NLL gap: 95.60%
+
+VALUE geometry:
+  mean_norm               11.131607
+  mean_pairwise_l2        1.528674
+  relative_l2             0.137327
+  mean_pairwise_cosine    0.989580
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 12/15
+==========================================================================================
+Train total loss: 0.1189
+Train matched CE: 0.0990
+Train rank loss: 0.0396
+
+==========================================================================================
+VALIDATION EPOCH 12
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       71.60%        0.5485
+MISMATCHED                     6.80%        8.0964
+QUERY_ONLY                     6.40%        2.8646
+
+Matched - mismatched accuracy: +64.80 pp
+Mismatched NLL - matched NLL:   +7.547868
+Examples with positive NLL gap: 95.40%
+
+VALUE geometry:
+  mean_norm               11.149279
+  mean_pairwise_l2        1.575701
+  relative_l2             0.141328
+  mean_pairwise_cosine    0.988982
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 13/15
+==========================================================================================
+Train total loss: 0.0799
+Train matched CE: 0.0603
+Train rank loss: 0.0392
+
+==========================================================================================
+VALIDATION EPOCH 13
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       83.80%        0.4571
+MISMATCHED                     8.20%        8.6603
+QUERY_ONLY                     6.40%        2.8993
+
+Matched - mismatched accuracy: +75.60 pp
+Mismatched NLL - matched NLL:   +8.203216
+Examples with positive NLL gap: 95.20%
+
+VALUE geometry:
+  mean_norm               11.213655
+  mean_pairwise_l2        1.612322
+  relative_l2             0.143782
+  mean_pairwise_cosine    0.988605
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 14/15
+==========================================================================================
+Train total loss: 0.0597
+Train matched CE: 0.0412
+Train rank loss: 0.0371
+
+==========================================================================================
+VALIDATION EPOCH 14
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       81.20%        0.3991
+MISMATCHED                     7.40%        9.1422
+QUERY_ONLY                     6.40%        2.9148
+
+Matched - mismatched accuracy: +73.80 pp
+Mismatched NLL - matched NLL:   +8.743116
+Examples with positive NLL gap: 95.60%
+
+VALUE geometry:
+  mean_norm               11.218779
+  mean_pairwise_l2        1.640642
+  relative_l2             0.146241
+  mean_pairwise_cosine    0.988222
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 15/15
+==========================================================================================
+Train total loss: 0.0487
+Train matched CE: 0.0298
+Train rank loss: 0.0378
+
+==========================================================================================
+VALIDATION EPOCH 15
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       80.60%        0.4762
+MISMATCHED                     7.80%        9.6243
+QUERY_ONLY                     6.40%        2.9455
+
+Matched - mismatched accuracy: +72.80 pp
+Mismatched NLL - matched NLL:   +9.148112
+Examples with positive NLL gap: 95.40%
+
+VALUE geometry:
+  mean_norm               11.230791
+  mean_pairwise_l2        1.663059
+  relative_l2             0.148080
+  mean_pairwise_cosine    0.987932
+Saved new best checkpoint.
+
+==========================================================================================
+LOADING BEST EPOCH 15
+==========================================================================================
+
+==========================================================================================
+FINAL HELD-OUT TEST
+==========================================================================================
+Condition                   Accuracy          Loss
+----------------------------------------------------
+MATCHED                       69.20%        0.7625
+MISMATCHED                     7.00%        9.7247
+QUERY_ONLY                     7.80%        2.8583
+
+Matched - mismatched accuracy: +62.20 pp
+Mismatched NLL - matched NLL:   +8.962194
+Examples with positive NLL gap: 97.00%
+
+VALUE geometry:
+  mean_norm               11.252257
+  mean_pairwise_l2        1.647504
+  relative_l2             0.146415
+  mean_pairwise_cosine    0.988267
+
+==========================================================================================
+LEVEL-0 VERDICT
+==========================================================================================
+MATCHED:       69.20%
+MISMATCHED:    7.00%
+QUERY ONLY:    7.80%
+NLL GAP:       +8.962194
+POSITIVE GAP:  97.00% of examples
+
+PASS: the minimal latent VALUE system works. We can now add original memory components back one at a time.
+
+Saved results: outputs/level0_latent_value/level0_results.json
+Saved best checkpoint: outputs/level0_latent_value/checkpoint_best.pt

@@ -1,0 +1,149 @@
+==========================================================================================
+MEAN-POOL VALUE LADDER
+==========================================================================================
+Device: cuda
+Chance accuracy: 7.69%
+Chance CE: 2.5649
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 4781.86it/s]
+
+Precomputing train...
+  4000/4000
+
+Precomputing validation...
+  500/500
+
+Precomputing test...
+  500/500
+
+##########################################################################################
+MEAN LEVEL M0
+##########################################################################################
+M0 E01 | loss=2.8275 | match=8.80% | mismatch=8.80% | query=6.60% | gap=+0.0154
+M0 E02 | loss=2.7741 | match=6.60% | mismatch=6.60% | query=6.60% | gap=+0.0708
+M0 E03 | loss=2.5430 | match=7.20% | mismatch=7.20% | query=7.20% | gap=+0.4556
+M0 E04 | loss=1.9810 | match=37.20% | mismatch=4.00% | query=6.40% | gap=+1.2140
+M0 E05 | loss=1.4623 | match=50.80% | mismatch=3.40% | query=7.00% | gap=+1.9497
+M0 E06 | loss=1.0832 | match=67.60% | mismatch=2.20% | query=6.40% | gap=+2.8189
+M0 E07 | loss=0.7896 | match=80.20% | mismatch=1.40% | query=6.40% | gap=+3.6902
+M0 E08 | loss=0.5496 | match=81.20% | mismatch=2.20% | query=6.40% | gap=+4.6643
+M0 E09 | loss=0.3677 | match=83.80% | mismatch=1.20% | query=8.80% | gap=+5.5690
+M0 E10 | loss=0.2411 | match=82.00% | mismatch=1.00% | query=6.40% | gap=+6.4369
+M0 E11 | loss=0.1533 | match=83.00% | mismatch=0.60% | query=8.80% | gap=+7.2208
+M0 E12 | loss=0.0964 | match=87.60% | mismatch=1.00% | query=8.80% | gap=+8.0237
+M0 E13 | loss=0.0577 | match=98.00% | mismatch=0.20% | query=7.00% | gap=+8.6825
+M0 E14 | loss=0.0415 | match=98.40% | mismatch=0.20% | query=8.80% | gap=+9.2422
+M0 E15 | loss=0.0300 | match=92.80% | mismatch=0.40% | query=8.80% | gap=+9.6895
+
+M0 TEST
+Matched:       87.60%
+Mismatched:    0.60%
+Query only:    9.60%
+NLL gap:       +9.194042
+Raw rel L2:    0.146217
+Stored rel L2: 0.146217
+Stored cosine: 0.988344
+
+##########################################################################################
+MEAN LEVEL M1
+##########################################################################################
+M1 E01 | loss=2.8405 | match=8.80% | mismatch=8.80% | query=6.60% | gap=+0.0175
+M1 E02 | loss=2.7760 | match=8.20% | mismatch=6.20% | query=6.60% | gap=+0.0999
+M1 E03 | loss=2.1848 | match=80.00% | mismatch=1.60% | query=6.60% | gap=+3.2460
+M1 E04 | loss=0.3202 | match=93.20% | mismatch=0.60% | query=6.40% | gap=+7.5089
+M1 E05 | loss=0.0262 | match=96.40% | mismatch=0.20% | query=6.40% | gap=+9.2669
+M1 E06 | loss=0.0071 | match=90.40% | mismatch=0.80% | query=6.40% | gap=+9.9035
+M1 E07 | loss=0.0018 | match=99.60% | mismatch=0.20% | query=6.40% | gap=+10.9447
+M1 E08 | loss=0.0011 | match=89.60% | mismatch=0.80% | query=6.40% | gap=+10.2822
+M1 E09 | loss=0.0005 | match=90.60% | mismatch=1.00% | query=6.40% | gap=+10.5270
+M1 E10 | loss=0.0017 | match=92.40% | mismatch=0.60% | query=6.40% | gap=+11.1263
+M1 E11 | loss=0.0002 | match=95.20% | mismatch=0.40% | query=6.40% | gap=+11.4382
+M1 E12 | loss=0.0002 | match=91.80% | mismatch=0.80% | query=6.40% | gap=+11.3644
+M1 E13 | loss=0.0001 | match=94.00% | mismatch=0.60% | query=6.40% | gap=+11.5113
+M1 E14 | loss=0.0001 | match=93.40% | mismatch=0.60% | query=6.40% | gap=+11.5322
+M1 E15 | loss=0.0001 | match=92.80% | mismatch=0.60% | query=6.40% | gap=+11.6168
+
+M1 TEST
+Matched:       85.00%
+Mismatched:    0.20%
+Query only:    8.00%
+NLL gap:       +10.380264
+Raw rel L2:    0.901828
+Stored rel L2: 0.988222
+Stored cosine: 0.481134
+Gate mean:     1.000000
+
+##########################################################################################
+MEAN LEVEL M2
+##########################################################################################
+M2 E01 | loss=2.8479 | match=8.80% | mismatch=8.80% | query=6.60% | gap=+0.0005
+M2 E02 | loss=2.8341 | match=5.60% | mismatch=5.60% | query=6.40% | gap=+0.0007
+M2 E03 | loss=2.8202 | match=9.80% | mismatch=9.80% | query=7.00% | gap=+0.0009
+M2 E04 | loss=2.8202 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0011
+M2 E05 | loss=2.8201 | match=8.20% | mismatch=6.20% | query=7.00% | gap=+0.0012
+M2 E06 | loss=2.8156 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0016
+M2 E07 | loss=2.8154 | match=10.40% | mismatch=8.80% | query=7.00% | gap=+0.0021
+M2 E08 | loss=2.8176 | match=8.60% | mismatch=8.60% | query=7.00% | gap=+0.0026
+M2 E09 | loss=2.8139 | match=8.00% | mismatch=8.00% | query=7.00% | gap=+0.0045
+M2 E10 | loss=2.8111 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0070
+M2 E11 | loss=2.8031 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0151
+M2 E12 | loss=2.7911 | match=8.60% | mismatch=7.40% | query=7.00% | gap=+0.0305
+M2 E13 | loss=2.7654 | match=16.20% | mismatch=6.60% | query=7.00% | gap=+0.0646
+M2 E14 | loss=2.7145 | match=21.20% | mismatch=6.40% | query=7.00% | gap=+0.1288
+M2 E15 | loss=2.5779 | match=18.80% | mismatch=6.00% | query=6.40% | gap=+0.2804
+
+M2 TEST
+Matched:       19.20%
+Mismatched:    7.00%
+Query only:    7.00%
+NLL gap:       +0.273170
+Raw rel L2:    0.054974
+Stored rel L2: 0.010347
+Stored cosine: 0.999937
+Gate mean:     0.070318
+
+##########################################################################################
+MEAN LEVEL M3
+##########################################################################################
+M3 E01 | loss=2.8479 | match=8.80% | mismatch=8.80% | query=6.60% | gap=+0.0005
+M3 E02 | loss=2.8340 | match=5.60% | mismatch=5.60% | query=6.80% | gap=+0.0007
+M3 E03 | loss=2.8202 | match=9.80% | mismatch=9.80% | query=7.00% | gap=+0.0009
+M3 E04 | loss=2.8201 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0011
+M3 E05 | loss=2.8199 | match=7.20% | mismatch=6.20% | query=7.00% | gap=+0.0012
+M3 E06 | loss=2.8159 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0016
+M3 E07 | loss=2.8153 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0021
+M3 E08 | loss=2.8173 | match=8.60% | mismatch=8.60% | query=7.00% | gap=+0.0028
+M3 E09 | loss=2.8141 | match=8.00% | mismatch=8.00% | query=7.00% | gap=+0.0045
+M3 E10 | loss=2.8117 | match=9.80% | mismatch=9.80% | query=7.00% | gap=+0.0070
+M3 E11 | loss=2.8027 | match=9.60% | mismatch=9.60% | query=7.00% | gap=+0.0156
+M3 E12 | loss=2.7877 | match=15.00% | mismatch=6.60% | query=7.00% | gap=+0.0353
+M3 E13 | loss=2.7438 | match=16.20% | mismatch=8.00% | query=7.00% | gap=+0.1054
+M3 E14 | loss=2.6139 | match=12.20% | mismatch=6.40% | query=7.00% | gap=+0.2555
+M3 E15 | loss=2.4029 | match=27.40% | mismatch=5.60% | query=7.00% | gap=+0.5056
+
+M3 TEST
+Matched:       22.40%
+Mismatched:    7.00%
+Query only:    7.00%
+NLL gap:       +0.496193
+Raw rel L2:    0.053007
+Stored rel L2: 0.015319
+Stored cosine: 0.999862
+Gate mean:     0.070318
+
+====================================================================================================
+FINAL MEAN-POOL LADDER
+====================================================================================================
+LEVEL              MATCH      MISMATCH       QUERY       NLL GAP      REL L2
+------------------------------------------------------------------------------
+M0                87.60%         0.60%       9.60%        9.1940      0.1462
+M1                85.00%         0.20%       8.00%       10.3803      0.9882
+M2                19.20%         7.00%       7.00%        0.2732      0.0103
+M3                22.40%         7.00%       7.00%        0.4962      0.0153
+
+Meaning:
+M0 = Mean -> Linear
+M1 = M0 + MemoryBank
+M2 = M1 + frozen original VectorGate
+M3 = M2 + original OrthogonalUpdate
+
+Saved: outputs/mean_value_ladder/mean_ladder_results.json

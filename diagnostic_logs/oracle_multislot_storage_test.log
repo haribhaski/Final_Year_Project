@@ -1,0 +1,107 @@
+====================================================================================================
+ORACLE MULTI-SLOT STORAGE TEST
+====================================================================================================
+Device: cuda
+
+Disabled:
+  Router
+  CandidateWriter
+  VectorGate
+  OrthogonalUpdate
+  Original MemoryReader
+
+Testing:
+  Single-slot storage
+  One-shot 4-slot storage
+  Sequential 4-slot storage
+  Drift of earlier slots
+
+Classes: 13
+Chance: 7.69%
+Loading original model...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 10221.59it/s]
+Loaded known-good VALUE encoder:
+outputs/read_side_all_tests/known_good_value_encoder.pt
+
+Precomputing flat train...
+Precomputing flat validation...
+Precomputing flat test...
+
+====================================================================================================
+STAGE 1 — SINGLE-SLOT CONTROL
+====================================================================================================
+EPOCH 01 | match=99.00% | mismatch=0.00% | gap=+7.4144
+Saved best reader.
+EPOCH 02 | match=99.40% | mismatch=0.20% | gap=+8.2503
+Saved best reader.
+EPOCH 03 | match=99.40% | mismatch=0.00% | gap=+8.4607
+EPOCH 04 | match=99.40% | mismatch=0.00% | gap=+8.5487
+EPOCH 05 | match=99.40% | mismatch=0.00% | gap=+8.8162
+EPOCH 06 | match=99.40% | mismatch=0.00% | gap=+9.0375
+EPOCH 07 | match=99.40% | mismatch=0.00% | gap=+9.2457
+EPOCH 08 | match=99.40% | mismatch=0.00% | gap=+9.2299
+EPOCH 09 | match=99.40% | mismatch=0.00% | gap=+9.4096
+EPOCH 10 | match=99.60% | mismatch=0.00% | gap=+9.4662
+Saved best reader.
+EPOCH 11 | match=99.60% | mismatch=0.00% | gap=+9.5161
+EPOCH 12 | match=99.60% | mismatch=0.00% | gap=+9.7461
+EPOCH 13 | match=99.60% | mismatch=0.20% | gap=+9.5670
+EPOCH 14 | match=99.60% | mismatch=0.00% | gap=+10.0326
+EPOCH 15 | match=99.60% | mismatch=0.00% | gap=+10.0337
+
+SINGLE SLOT TEST
+MATCHED:    90.80%
+MISMATCHED: 0.60%
+NLL GAP:    +8.552544
+
+Precomputing multi-slot episodes...
+
+====================================================================================================
+STAGE 2 — ORACLE MULTI-SLOT STORAGE
+====================================================================================================
+
+ONE-SHOT 4-SLOT ACCURACY:
+96.10%
+
+SEQUENTIAL 4-SLOT ACCURACY:
+96.20%
+
+ONE-SHOT vs SEQUENTIAL:
+{
+  "mean_l2": 0.2487618914246559,
+  "relative_l2": 0.009087844548746943,
+  "cosine": 0.9999782955646515
+}
+
+SLOT 0 DRIFT AFTER WRITING SLOTS 1,2,3:
+{
+  "mean_l2": 0.3912472817897797,
+  "relative_l2": 0.014290034040808678,
+  "cosine": 0.999944233417511
+}
+
+SEQUENTIAL ACCURACY BY SLOT POSITION:
+{
+  "0": 95.2,
+  "1": 96.0,
+  "2": 96.8,
+  "3": 96.8
+}
+
+====================================================================================================
+FINAL COMPARISON
+====================================================================================================
+TEST                                  ACCURACY
+------------------------------------------------
+single_slot                             90.80%
+one_shot_4_slot                         96.10%
+sequential_4_slot                       96.20%
+
+====================================================================================================
+INTERPRETATION
+====================================================================================================
+PASS:
+MemoryBank preserves multiple independent VALUEs.
+Multi-slot storage is not the cause of the previous ~65% ceiling.
+
+Saved: outputs/oracle_multislot_storage_test/oracle_multislot_storage_results.json

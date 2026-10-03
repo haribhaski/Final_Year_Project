@@ -1,0 +1,176 @@
+==========================================================================================
+LATENT VALUE CONTROL EXPERIMENT
+==========================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+==========================================================================================
+ANSWER TOKEN CHECK
+==========================================================================================
+Single-token answers: ['amber', 'frost', 'harbor', 'maple', 'olive', 'pearl', 'rose', 'silver', 'stone', 'violet', 'cloud', 'river', 'ocean']
+Rejected multi-token answers: ['birch', 'cedar', 'dune', 'ember', 'glade', 'iris', 'jade', 'kelp', 'lilac', 'nova', 'willow']
+Number usable: 13
+Loading model...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 4692.75it/s]
+
+==========================================================================================
+WRITING FACTS TO MEMORY
+==========================================================================================
+
+Example 1
+Fact: The secret code associated with person_10000 is maple.
+Max changed slot: 7
+Slot delta norms: [0.3491, 0.3554, 0.7826, 0.3429, 0.3495, 0.3587, 0.3089, 41.3783]
+
+Example 2
+Fact: The secret code associated with person_10001 is violet.
+Max changed slot: 7
+Slot delta norms: [0.3491, 0.3554, 0.7722, 0.3429, 0.3495, 0.3587, 0.3089, 41.4288]
+
+Example 3
+Fact: The secret code associated with person_10002 is pearl.
+Max changed slot: 7
+Slot delta norms: [0.3491, 0.3554, 0.789, 0.3429, 0.3495, 0.3587, 0.3089, 41.3399]
+
+Example 4
+Fact: The secret code associated with person_10003 is silver.
+Max changed slot: 7
+Slot delta norms: [0.3491, 0.3554, 0.769, 0.3429, 0.3495, 0.3587, 0.3089, 41.4467]
+
+Example 5
+Fact: The secret code associated with person_10004 is stone.
+Max changed slot: 7
+Slot delta norms: [0.3491, 0.3554, 0.7985, 0.3429, 0.3495, 0.3587, 0.3089, 41.2874]
+
+==========================================================================================
+WRITE DISTRIBUTION
+==========================================================================================
+Slot 0: 0/200
+Slot 1: 0/200
+Slot 2: 0/200
+Slot 3: 0/200
+Slot 4: 0/200
+Slot 5: 0/200
+Slot 6: 0/200
+Slot 7: 200/200
+
+Dominant slot: 7
+
+==========================================================================================
+EVALUATING
+==========================================================================================
+
+------------------------------------------------------------------------------------------
+Example 1
+Fact:       The secret code associated with person_10000 is maple.
+Question:   What is the secret code associated with person_10000?
+Answer:     maple
+Candidates: ['amber', 'maple', 'harbor', 'stone']
+Matched correct-answer NLL: 10.0673
+Mismatch correct-answer NLL: 10.0681
+Raw-text correct-answer NLL: 7.5242
+
+------------------------------------------------------------------------------------------
+Example 2
+Fact:       The secret code associated with person_10001 is violet.
+Question:   What is the secret code associated with person_10001?
+Answer:     violet
+Candidates: ['olive', 'frost', 'violet', 'stone']
+Matched correct-answer NLL: 9.5656
+Mismatch correct-answer NLL: 9.5663
+Raw-text correct-answer NLL: 6.9134
+
+------------------------------------------------------------------------------------------
+Example 3
+Fact:       The secret code associated with person_10002 is pearl.
+Question:   What is the secret code associated with person_10002?
+Answer:     pearl
+Candidates: ['frost', 'silver', 'pearl', 'violet']
+Matched correct-answer NLL: 10.4803
+Mismatch correct-answer NLL: 10.4823
+Raw-text correct-answer NLL: 7.5064
+
+------------------------------------------------------------------------------------------
+Example 4
+Fact:       The secret code associated with person_10003 is silver.
+Question:   What is the secret code associated with person_10003?
+Answer:     silver
+Candidates: ['river', 'amber', 'silver', 'maple']
+Matched correct-answer NLL: 5.5281
+Mismatch correct-answer NLL: 5.5276
+Raw-text correct-answer NLL: 6.6142
+
+------------------------------------------------------------------------------------------
+Example 5
+Fact:       The secret code associated with person_10004 is stone.
+Question:   What is the secret code associated with person_10004?
+Answer:     stone
+Candidates: ['violet', 'amber', 'stone', 'maple']
+Matched correct-answer NLL: 8.7363
+Mismatch correct-answer NLL: 8.7357
+Raw-text correct-answer NLL: 5.2862
+
+==========================================================================================
+CONTROL RESULTS
+==========================================================================================
+Condition                    Accuracy       Correct      Mean NLL
+-----------------------------------------------------------------
+EMPTY_MEMORY                   26.00%       52/200        11.0345
+MATCHED_MEMORY                 27.00%       54/200        10.1154
+MISMATCHED_MEMORY              27.00%       54/200        10.1154
+RAW_TEXT                      100.00%      200/200         7.8912
+
+==========================================================================================
+MATCHED VS MISMATCHED MEMORY
+==========================================================================================
+Matched accuracy:    27.00%
+Mismatched accuracy: 27.00%
+Accuracy difference: +0.00 pp
+
+Mean (mismatched correct-answer NLL - matched correct-answer NLL): -0.0000
+Positive means the matching memory assigns higher probability to the correct answer.
+
+==========================================================================================
+CONTENT-DEPENDENCE CHECK
+==========================================================================================
+Dominant slot: 7
+
+FINAL SLOT VECTORS
+Mean vector norm:       27.666470
+Mean pairwise L2:       0.093029
+Pairwise L2 / norm:     0.003363
+Mean pairwise cosine:   0.999991
+
+WRITE DELTA VECTORS
+Mean delta norm:        41.326309
+Mean pairwise delta L2: 0.093052
+Delta L2 / delta norm:  0.002252
+Mean delta cosine:      0.999998
+
+==========================================================================================
+INTERPRETATION GUIDE
+==========================================================================================
+
+1. RAW_TEXT should be clearly above chance (25%).
+   If not, stop: the evaluation prompt/candidate setup is unreliable.
+
+2. MATCHED_MEMORY should beat MISMATCHED_MEMORY if the latent
+   memory carries fact-specific information.
+
+3. If MATCHED ≈ MISMATCHED, but both beat EMPTY_MEMORY,
+   the memory is likely changing the model's prior rather than
+   retrieving the correct fact.
+
+4. For content dependence:
+      relative L2 very small
+      + cosine near 1.0
+   means different facts produce nearly identical slot values.
+
+5. Slot collapse:
+   if the same slot receives the maximum write almost every time,
+   routing/write allocation is collapsed.
+
+This still tests the CURRENT CHECKPOINT only.
+It does not prove what the architecture could learn after
+direct value-path training.
+

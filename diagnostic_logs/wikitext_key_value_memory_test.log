@@ -1,0 +1,477 @@
+
+=============================================================================================================================
+WIKITEXT FILES
+=============================================================================================================================
+Train: data/wikitext-103/wiki.train.tokens
+Valid: data/wikitext-103/wiki.valid.tokens
+Test : data/wikitext-103/wiki.test.tokens
+
+=============================================================================================================================
+TOKENIZER
+=============================================================================================================================
+Tokenizer: GPT2Tokenizer
+Vocabulary: 50257
+
+=============================================================================================================================
+LOAD FROZEN GPT-2
+=============================================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 4938.91it/s]
+Compatible tensors: 236
+Missing tensors: 0
+GPT-2 frozen.
+
+=============================================================================================================================
+LOAD FROZEN ADDRESS ENCODER
+=============================================================================================================================
+Address layer: 1
+Address dimension: 256
+Previous synthetic Recall@1: 0.9710000157356262
+Address encoder frozen.
+
+=============================================================================================================================
+PARSE TRAIN
+=============================================================================================================================
+Articles: 29443
+Usable sentence examples: 3580677
+
+=============================================================================================================================
+PARSE VALID
+=============================================================================================================================
+Articles: 60
+Usable sentence examples: 7633
+
+=============================================================================================================================
+PARSE TEST
+=============================================================================================================================
+Articles: 62
+Usable sentence examples: 8777
+
+=============================================================================================================================
+SELECT WIKITEXT ANSWER VOCABULARY
+=============================================================================================================================
+Answer                 Train     Valid      Test       Min
+war                    15878        54        63        54
+city                   11535        57        51        51
+time                   19900        38        40        38
+year                   15144        35        32        32
+north                   8943        35        28        28
+area                    8627        28        29        28
+river                   6443        39        28        28
+day                    10711        25        31        25
+new                     8752        26        24        24
+south                   8971        35        23        23
+season                 14720        22        36        22
+him                    15809        21        37        21
+states                 12025        29        20        20
+years                  13006        20        19        19
+series                 10274        19        21        19
+work                    7044        20        19        19
+
+Selected answers:
+['war', 'city', 'time', 'year', 'north', 'area', 'river', 'day', 'new', 'south', 'season', 'him', 'states', 'years', 'series', 'work']
+
+Chance: 6.25%
+
+Balanced samples per class:
+Train: 100
+Valid: 19
+Test : 19
+
+=============================================================================================================================
+FINAL WIKITEXT DATASETS
+=============================================================================================================================
+Train: 1600
+Valid: 304
+Test : 304
+
+Example:
+TITLE:
+Sheerness
+
+SENTENCE:
+Due to the inherent danger and projected expense, the ship and its cargo have never been salvaged; if the wreck were to explode, it would be one of the largest non - nuclear explosions of all time.
+
+TARGET:
+time
+
+=============================================================================================================================
+EXTRACT WIKITEXT TRAIN VALUES
+=============================================================================================================================
+TRAIN: 100/1600
+TRAIN: 200/1600
+TRAIN: 300/1600
+TRAIN: 400/1600
+TRAIN: 500/1600
+TRAIN: 600/1600
+TRAIN: 700/1600
+TRAIN: 800/1600
+TRAIN: 900/1600
+TRAIN: 1000/1600
+TRAIN: 1100/1600
+TRAIN: 1200/1600
+TRAIN: 1300/1600
+TRAIN: 1400/1600
+TRAIN: 1500/1600
+TRAIN: 1600/1600
+
+=============================================================================================================================
+EXTRACT WIKITEXT VALID VALUES
+=============================================================================================================================
+VALID: 100/304
+VALID: 200/304
+VALID: 300/304
+VALID: 304/304
+
+=============================================================================================================================
+EXTRACT WIKITEXT TEST VALUES
+=============================================================================================================================
+TEST: 100/304
+TEST: 200/304
+TEST: 300/304
+TEST: 304/304
+
+=============================================================================================================================
+TRAIN WIKITEXT VALUE DECODER
+=============================================================================================================================
+Epoch 01/50 | loss=2.2887 | val acc=42.11% | val MRR=0.5866
+Epoch 10/50 | loss=0.0676 | val acc=48.36% | val MRR=0.6371
+Epoch 20/50 | loss=0.0231 | val acc=47.04% | val MRR=0.6280
+Epoch 30/50 | loss=0.0128 | val acc=47.70% | val MRR=0.6321
+Epoch 40/50 | loss=0.0084 | val acc=47.70% | val MRR=0.6323
+Epoch 50/50 | loss=0.0061 | val acc=48.36% | val MRR=0.6354
+
+=============================================================================================================================
+VALUE DECODER RESULTS
+=============================================================================================================================
+Best epoch: 7
+
+Split             Accuracy         MRR     Mean Rank
+TRAIN               99.50%      0.9971        1.0075
+VALID               49.01%      0.6387        3.0164
+TEST                54.61%      0.6823        2.5855
+
+=============================================================================================================================
+REAL WIKITEXT KEY-VALUE MEMORY
+=============================================================================================================================
+Facts: [2, 4, 8]
+Episodes per size: 200
+Answer classes: 16
+Answer chance: 6.25%
+
+=============================================================================================================================
+2-FACT WIKITEXT MEMORY
+=============================================================================================================================
+
+EXAMPLE REAL WIKITEXT EPISODE
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 0
+TITLE:
+Clayton Kershaw
+
+REAL WIKITEXT SENTENCE:
+His father, Christopher George Kershaw, was a musician and won a Clio Award for his work.
+
+TARGET CONTENT WORD: work
+ADDRESSED SLOT: 0
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: series
+ORACLE VALUE PREDICTION: series
+WRONG VALUE PREDICTION: time
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 1
+TITLE:
+2003 Pacific typhoon season
+
+REAL WIKITEXT SENTENCE:
+The names not retired from this list will be used again in the 2007 season.
+
+TARGET CONTENT WORD: season
+ADDRESSED SLOT: 1
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: time
+ORACLE VALUE PREDICTION: time
+WRONG VALUE PREDICTION: series
+Completed 50/200
+Completed 100/200
+Completed 150/200
+Completed 200/200
+
+2-FACT RESULTS
+Address accuracy: 98.50%
+Address MRR: 0.992500
+Addressed value accuracy: 51.50%
+Oracle value accuracy: 52.25%
+Wrong-value accuracy: 4.25%
+
+=============================================================================================================================
+4-FACT WIKITEXT MEMORY
+=============================================================================================================================
+
+EXAMPLE REAL WIKITEXT EPISODE
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 0
+TITLE:
+New York State Route 93
+
+REAL WIKITEXT SENTENCE:
+The route was assigned as part of the 1930 renumbering of state highways in New York.
+
+TARGET CONTENT WORD: new
+ADDRESSED SLOT: 0
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: new
+ORACLE VALUE PREDICTION: new
+WRONG VALUE PREDICTION: work
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 1
+TITLE:
+The Hustler (film)
+
+REAL WIKITEXT SENTENCE:
+100 Heroes and Villains: Bert Gordon - Nominated Villain AFI 's 100 Years...
+
+TARGET CONTENT WORD: years
+ADDRESSED SLOT: 1
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: work
+ORACLE VALUE PREDICTION: work
+WRONG VALUE PREDICTION: him
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 2
+TITLE:
+Head VI
+
+REAL WIKITEXT SENTENCE:
+He adapts Velázquez 's positioning of the pope to place him above the viewer 's point of view, elevating and distancing him.
+
+TARGET CONTENT WORD: him
+ADDRESSED SLOT: 2
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: him
+ORACLE VALUE PREDICTION: him
+WRONG VALUE PREDICTION: series
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 3
+TITLE:
+Clayton Kershaw
+
+REAL WIKITEXT SENTENCE:
+He has been honored with the Roberto Clemente Award and the Branch Rickey Award for his humanitarian work.
+
+TARGET CONTENT WORD: work
+ADDRESSED SLOT: 3
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: series
+ORACLE VALUE PREDICTION: series
+WRONG VALUE PREDICTION: new
+Completed 50/200
+Completed 100/200
+Completed 150/200
+Completed 200/200
+
+4-FACT RESULTS
+Address accuracy: 97.25%
+Address MRR: 0.985208
+Addressed value accuracy: 55.38%
+Oracle value accuracy: 56.75%
+Wrong-value accuracy: 2.88%
+
+=============================================================================================================================
+8-FACT WIKITEXT MEMORY
+=============================================================================================================================
+
+EXAMPLE REAL WIKITEXT EPISODE
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 0
+TITLE:
+No. 20 Squadron RAAF
+
+REAL WIKITEXT SENTENCE:
+From Cairns it continued to conduct reconnaissance, anti - submarine and occasional bombing operations over the waters around New Guinea.
+
+TARGET CONTENT WORD: new
+ADDRESSED SLOT: 0
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: north
+ORACLE VALUE PREDICTION: north
+WRONG VALUE PREDICTION: work
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 1
+TITLE:
+American Beauty (1999 film)
+
+REAL WIKITEXT SENTENCE:
+He said Mendes ' " sure hand " was " as precise and controlled " as his theater work.
+
+TARGET CONTENT WORD: work
+ADDRESSED SLOT: 1
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: work
+ORACLE VALUE PREDICTION: work
+WRONG VALUE PREDICTION: season
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 2
+TITLE:
+Brock Lesnar
+
+REAL WIKITEXT SENTENCE:
+He was named a defensive tackle for the Minnesota Vikings but was cut prior to the start of the 2004 – 05 season.
+
+TARGET CONTENT WORD: season
+ADDRESSED SLOT: 2
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: season
+ORACLE VALUE PREDICTION: season
+WRONG VALUE PREDICTION: river
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 3
+TITLE:
+Ise - class battleship
+
+REAL WIKITEXT SENTENCE:
+Both ships had 10 - metre (32 ft 10 in) rangefinders installed at the top of the pagoda mast at that time.
+
+TARGET CONTENT WORD: time
+ADDRESSED SLOT: 3
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: river
+ORACLE VALUE PREDICTION: river
+WRONG VALUE PREDICTION: year
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 4
+TITLE:
+2003 Pacific typhoon season
+
+REAL WIKITEXT SENTENCE:
+These extratropical remnants dissipated south of the Aleutian Islands the following day.
+
+TARGET CONTENT WORD: day
+ADDRESSED SLOT: 4
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: year
+ORACLE VALUE PREDICTION: year
+WRONG VALUE PREDICTION: series
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 5
+TITLE:
+Clayton Kershaw
+
+REAL WIKITEXT SENTENCE:
+Out of the stretch, he uses a slide step as it makes it difficult for the base runner at first base to get a read on him.
+
+TARGET CONTENT WORD: him
+ADDRESSED SLOT: 5
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: series
+ORACLE VALUE PREDICTION: series
+WRONG VALUE PREDICTION: time
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 6
+TITLE:
+Free Derry
+
+REAL WIKITEXT SENTENCE:
+At that time the parade was held on 12 August each year.
+
+TARGET CONTENT WORD: year
+ADDRESSED SLOT: 6
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: time
+ORACLE VALUE PREDICTION: time
+WRONG VALUE PREDICTION: work
+
+------------------------------------------------------------------------------------------
+MEMORY SLOT: 7
+TITLE:
+Independiente (Ricardo Arjona album)
+
+REAL WIKITEXT SENTENCE:
+In 5to Piso (2008), Torres produced several tracks; one was the lead single " Como Duele ", considered Arjona 's " biggest hit in years " by Jason Birchmeier of Allmusic.
+
+TARGET CONTENT WORD: years
+ADDRESSED SLOT: 7
+ADDRESS RANK: 1
+ADDRESSED VALUE PREDICTION: work
+ORACLE VALUE PREDICTION: work
+WRONG VALUE PREDICTION: north
+Completed 50/200
+Completed 100/200
+Completed 150/200
+Completed 200/200
+
+8-FACT RESULTS
+Address accuracy: 94.44%
+Address MRR: 0.968281
+Addressed value accuracy: 49.44%
+Oracle value accuracy: 51.88%
+Wrong-value accuracy: 2.44%
+
+=============================================================================================================================
+FINAL WIKITEXT KEY-VALUE RESULTS
+=============================================================================================================================
+Facts          Address    Addr MRR     Addressed      Oracle       Wrong      Chance
+2               98.50%      0.9925        51.50%      52.25%       4.25%       6.25%
+4               97.25%      0.9852        55.38%      56.75%       2.88%       6.25%
+8               94.44%      0.9683        49.44%      51.88%       2.44%       6.25%
+
+=============================================================================================================================
+ADDRESS VS VALUE GAP
+=============================================================================================================================
+
+2 facts
+Oracle - Addressed: +0.75 points
+Oracle - Wrong: +48.00 points
+
+4 facts
+Oracle - Addressed: +1.38 points
+Oracle - Wrong: +53.87 points
+
+8 facts
+Oracle - Addressed: +2.44 points
+Oracle - Wrong: +49.44 points
+
+=============================================================================================================================
+AUTOMATIC DIAGNOSIS
+=============================================================================================================================
+Mean address accuracy: 96.73%
+Mean addressed accuracy: 52.10%
+Mean oracle accuracy: 53.62%
+Mean wrong-value accuracy: 3.19%
+
+RESULT: PARTIAL TRANSFER.
+
+Inspect ADDRESS and ORACLE separately.
+Do not modify the main architecture yet.
+
+=============================================================================================================================
+SAVE RESULTS
+=============================================================================================================================
+Saved: outputs/wikitext_key_value_memory_test.pt
+
+=============================================================================================================================
+EXPERIMENT COMPLETE
+=============================================================================================================================
+Used real WikiText-103 sentences.
+GPT-2 frozen.
+Address encoder frozen.
+Existing CandidateWriter not used.
+Existing reader not used.
+Scalar/vector gate not used.
+Only the diagnostic value decoder was trained.
+No models/ source files were modified.
+No original checkpoints overwritten.

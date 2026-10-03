@@ -1,0 +1,80 @@
+==========================================================================================
+LOADING MODEL
+==========================================================================================
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 24028.68it/s]
+Loaded: outputs/capacity_n64.pt
+Device: cuda
+Trainable parameters: 33393428
+
+
+==========================================================================================
+BEFORE SEQUENTIAL TRAINING
+==========================================================================================
+A -> true=tiger | pred=falcon | rank=7 | loss=7.685094
+B -> true=apple | pred=falcon | rank=14 | loss=13.695872
+
+
+==========================================================================================
+SEQUENTIAL TWO-FACT TRAINING
+==========================================================================================
+
+Step 001 | loss=12.549191 | loss_A=8.652584 | loss_B=16.445799 | grad=140.2194
+  A: pred=falcon   | rank= 3 | loss=5.053923
+  B: pred=falcon   | rank= 9 | loss=11.354131
+
+Step 025 | loss=1.789889 | loss_A=3.131942 | loss_B=0.447835 | grad=37.4000
+  A: pred=apple    | rank= 2 | loss=1.718886
+  B: pred=apple    | rank= 1 | loss=0.283851
+
+Step 050 | loss=0.834851 | loss_A=1.322384 | loss_B=0.347317 | grad=23.2155
+  A: pred=apple    | rank= 2 | loss=0.919507
+  B: pred=apple    | rank= 1 | loss=0.625042
+
+Step 075 | loss=0.838053 | loss_A=1.107146 | loss_B=0.568960 | grad=12.1234
+  A: pred=apple    | rank= 2 | loss=0.836202
+  B: pred=apple    | rank= 1 | loss=0.680839
+
+Step 100 | loss=0.547718 | loss_A=0.863143 | loss_B=0.232293 | grad=14.1212
+  A: pred=tiger    | rank= 1 | loss=0.581587
+  B: pred=tiger    | rank= 2 | loss=0.961506
+
+Step 125 | loss=1.404949 | loss_A=2.224705 | loss_B=0.585193 | grad=11.0865
+  A: pred=apple    | rank= 2 | loss=0.753281
+  B: pred=tiger    | rank= 2 | loss=0.752223
+
+Step 150 | loss=0.788174 | loss_A=1.103797 | loss_B=0.472550 | grad=7.0645
+  A: pred=tiger    | rank= 1 | loss=0.603811
+  B: pred=tiger    | rank= 2 | loss=0.914103
+
+Step 175 | loss=0.715965 | loss_A=0.590353 | loss_B=0.841576 | grad=3.3471
+  A: pred=apple    | rank= 2 | loss=0.899087
+  B: pred=apple    | rank= 1 | loss=0.611328
+
+Step 200 | loss=0.801327 | loss_A=0.776544 | loss_B=0.826110 | grad=2.2804
+  A: pred=apple    | rank= 2 | loss=1.052720
+  B: pred=apple    | rank= 1 | loss=0.502381
+
+Step 225 | loss=0.879161 | loss_A=0.517345 | loss_B=1.240976 | grad=6.2131
+  A: pred=tiger    | rank= 1 | loss=0.417389
+  B: pred=tiger    | rank= 2 | loss=1.205301
+
+Step 250 | loss=0.946620 | loss_A=0.823394 | loss_B=1.069846 | grad=2.1414
+  A: pred=apple    | rank= 2 | loss=0.828510
+  B: pred=apple    | rank= 1 | loss=0.658985
+
+Step 275 | loss=0.488560 | loss_A=0.359652 | loss_B=0.617469 | grad=3.2906
+  A: pred=tiger    | rank= 1 | loss=0.390385
+  B: pred=tiger    | rank= 2 | loss=1.257398
+
+Step 300 | loss=1.088465 | loss_A=0.999497 | loss_B=1.177432 | grad=2.7628
+  A: pred=apple    | rank= 2 | loss=0.819696
+  B: pred=apple    | rank= 1 | loss=0.660949
+
+
+==========================================================================================
+FINAL RESULT
+==========================================================================================
+A after A+B | true=tiger | pred=apple | rank=2 | loss=0.819696
+B after A+B | true=apple | pred=apple | rank=1 | loss=0.660949
+
+Saved model to: outputs/two_fact_sequential_trained.pt

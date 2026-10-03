@@ -1,0 +1,75 @@
+{
+  "best_epoch": 1,
+  "pre_validation": {
+    "EMPTY_MEMORY": {
+      "accuracy": 25.5,
+      "correct": 102,
+      "mean_nll": 10.085763837099075
+    },
+    "MATCHED_MEMORY": {
+      "accuracy": 25.25,
+      "correct": 101,
+      "mean_nll": 9.960885465145111
+    },
+    "MISMATCHED_MEMORY": {
+      "accuracy": 25.25,
+      "correct": 101,
+      "mean_nll": 9.960892601013184
+    },
+    "RAW_TEXT": {
+      "accuracy": 98.75,
+      "correct": 395,
+      "mean_nll": 8.484909353256226
+    },
+    "memory_specific_nll_gain": 7.1358680725097656e-06,
+    "slot_vector_stats": {
+      "mean_norm": 27.65935516357422,
+      "mean_pairwise_l2": 0.039195649325847626,
+      "relative_l2": 0.0014170847107562072,
+      "mean_pairwise_cosine": 0.9999984502792358
+    },
+    "slot_delta_stats": {
+      "mean_norm": 2.0992000102996826,
+      "mean_pairwise_l2": 0.03814564645290375,
+      "relative_l2": 0.01817151585557724,
+      "mean_pairwise_cosine": 0.9997304081916809
+    }
+  },
+  "final_test": {
+    "EMPTY_MEMORY": {
+      "accuracy": 26.5,
+      "correct": 106,
+      "mean_nll": 5.370644303560257
+    },
+    "MATCHED_MEMORY": {
+      "accuracy": 26.75,
+      "correct": 107,
+      "mean_nll": 5.375156118273735
+    },
+    "MISMATCHED_MEMORY": {
+      "accuracy": 26.75,
+      "correct": 107,
+      "mean_nll": 5.375253553390503
+    },
+    "RAW_TEXT": {
+      "accuracy": 97.75,
+      "correct": 391,
+      "mean_nll": 8.5651520550251
+    },
+    "memory_specific_nll_gain": 9.74351167678833e-05,
+    "slot_vector_stats": {
+      "mean_norm": 27.663110733032227,
+      "mean_pairwise_l2": 0.09553328156471252,
+      "relative_l2": 0.0034534540403694624,
+      "mean_pairwise_cosine": 0.9999889135360718
+    },
+    "slot_delta_stats": {
+      "mean_norm": 2.762049674987793,
+      "mean_pairwise_l2": 0.09447076916694641,
+      "relative_l2": 0.03420313895163111,
+      "mean_pairwise_cosine": 0.9988843202590942
+    }
+  },
+  "forced_slot": 0,
+  "starting_checkpoint": "outputs/retrieval_gradient_test/checkpoint_best.pt"
+}

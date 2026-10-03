@@ -1,0 +1,71 @@
+{
+  "value_control": {
+    "accuracy": 68.0
+  },
+  "frozen_router": {
+    "top1_accuracy": 0.0,
+    "topk_accuracy": 25.0,
+    "unused_slot_fraction": 0.875,
+    "maximum_slot_share": 1.0,
+    "slot_distribution": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "trainable_summary_router": {
+    "top1_accuracy": 25.8,
+    "topk_accuracy": 50.0,
+    "unused_slot_fraction": 0.75,
+    "maximum_slot_share": 0.9599999785423279,
+    "slot_distribution": [
+      0.9599999785423279,
+      0.0,
+      0.03999999910593033,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "trainable_position_router": {
+    "top1_accuracy": 100.0,
+    "topk_accuracy": 100.0,
+    "unused_slot_fraction": 0.5,
+    "maximum_slot_share": 0.25,
+    "slot_distribution": [
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "oracle_multislot": {
+    "routing_top1": 100.0,
+    "answer_accuracy": 65.4,
+    "collision_rate": 0.0,
+    "mean_unique_slots": 4.0
+  },
+  "frozen_multislot": {
+    "routing_top1": 0.0,
+    "answer_accuracy": 11.2,
+    "collision_rate": 75.0,
+    "mean_unique_slots": 1.0
+  },
+  "trained_multislot": {
+    "routing_top1": 100.0,
+    "answer_accuracy": 65.4,
+    "collision_rate": 0.0,
+    "mean_unique_slots": 4.0
+  }
+}

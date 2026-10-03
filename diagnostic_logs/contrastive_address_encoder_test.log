@@ -1,0 +1,478 @@
+
+==============================================================================================================
+TOKENIZER
+==============================================================================================================
+Tokenizer: GPT2Tokenizer
+Vocabulary: 50257
+
+==============================================================================================================
+LOAD FROZEN GPT-2 MEMORY MODEL
+==============================================================================================================
+Device: cuda
+Base: gpt2
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 12489.58it/s]
+Compatible tensors: 236
+Missing: 0
+Skipped: 0
+GPT-2 + memory model completely FROZEN.
+
+Address encoder parameters: 526336
+
+==============================================================================================================
+DATASET
+==============================================================================================================
+Train entities: 4000
+Validation entities: 500
+Test entities: 1000
+
+Example training pair:
+WRITE: The assigned keyword for TrainEntity-00000 is tiger.
+QUERY: Retrieve the mapping for TrainEntity-00000:
+
+==============================================================================================================
+RAW LAYER-1 BASELINE
+==============================================================================================================
+Raw test Recall@1: 61.00%
+Raw test Recall@5: 67.90%
+Raw test MRR: 0.643719
+
+==============================================================================================================
+TRAIN CONTRASTIVE ADDRESS ENCODER
+==============================================================================================================
+Epoch 01/12 | Step 020 | Loss 0.6316 | Batch R@1 92.19%
+Epoch 01/12 | Step 040 | Loss 0.0437 | Batch R@1 100.00%
+Epoch 01/12 | Step 060 | Loss 0.0275 | Batch R@1 100.00%
+
+Epoch 01 complete | mean loss=0.8011 | mean batch R@1=82.47%
+
+VALIDATION AFTER EPOCH 1
+Recall@1: 87.60%
+Recall@5: 89.20%
+Recall@10: 91.20%
+MRR: 0.887143
+Correct cosine: 0.960890
+Hard-negative cosine: 0.881341
+Mean margin: 0.079549
+Positive margins: 87.60%
+
+NEW BEST VALIDATION MODEL:
+Recall@1 = 87.60%
+Epoch 02/12 | Step 020 | Loss 0.0157 | Batch R@1 100.00%
+Epoch 02/12 | Step 040 | Loss 0.0126 | Batch R@1 100.00%
+Epoch 02/12 | Step 060 | Loss 0.0129 | Batch R@1 100.00%
+
+Epoch 02 complete | mean loss=0.0181 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 2
+Recall@1: 87.80%
+Recall@5: 90.20%
+Recall@10: 91.20%
+MRR: 0.889114
+Correct cosine: 0.967723
+Hard-negative cosine: 0.891934
+Mean margin: 0.075789
+Positive margins: 87.80%
+
+NEW BEST VALIDATION MODEL:
+Recall@1 = 87.80%
+Epoch 03/12 | Step 020 | Loss 0.0143 | Batch R@1 100.00%
+Epoch 03/12 | Step 040 | Loss 0.0109 | Batch R@1 100.00%
+Epoch 03/12 | Step 060 | Loss 0.0095 | Batch R@1 100.00%
+
+Epoch 03 complete | mean loss=0.0115 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 3
+Recall@1: 87.80%
+Recall@5: 90.00%
+Recall@10: 91.40%
+MRR: 0.890196
+Correct cosine: 0.969280
+Hard-negative cosine: 0.889594
+Mean margin: 0.079686
+Positive margins: 87.80%
+Epoch 04/12 | Step 020 | Loss 0.0123 | Batch R@1 100.00%
+Epoch 04/12 | Step 040 | Loss 0.0093 | Batch R@1 100.00%
+Epoch 04/12 | Step 060 | Loss 0.0087 | Batch R@1 100.00%
+
+Epoch 04 complete | mean loss=0.0098 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 4
+Recall@1: 88.60%
+Recall@5: 92.00%
+Recall@10: 94.60%
+MRR: 0.902182
+Correct cosine: 0.968446
+Hard-negative cosine: 0.872647
+Mean margin: 0.095799
+Positive margins: 88.60%
+
+NEW BEST VALIDATION MODEL:
+Recall@1 = 88.60%
+Epoch 05/12 | Step 020 | Loss 0.0069 | Batch R@1 100.00%
+Epoch 05/12 | Step 040 | Loss 0.0080 | Batch R@1 100.00%
+Epoch 05/12 | Step 060 | Loss 0.0067 | Batch R@1 100.00%
+
+Epoch 05 complete | mean loss=0.0082 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 5
+Recall@1: 88.60%
+Recall@5: 92.40%
+Recall@10: 95.80%
+MRR: 0.905676
+Correct cosine: 0.969153
+Hard-negative cosine: 0.870625
+Mean margin: 0.098527
+Positive margins: 88.60%
+Epoch 06/12 | Step 020 | Loss 0.0114 | Batch R@1 100.00%
+Epoch 06/12 | Step 040 | Loss 0.0054 | Batch R@1 100.00%
+Epoch 06/12 | Step 060 | Loss 0.0072 | Batch R@1 100.00%
+
+Epoch 06 complete | mean loss=0.0064 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 6
+Recall@1: 88.40%
+Recall@5: 92.20%
+Recall@10: 95.00%
+MRR: 0.903568
+Correct cosine: 0.970037
+Hard-negative cosine: 0.875643
+Mean margin: 0.094395
+Positive margins: 88.40%
+Epoch 07/12 | Step 020 | Loss 0.0048 | Batch R@1 100.00%
+Epoch 07/12 | Step 040 | Loss 0.0079 | Batch R@1 100.00%
+Epoch 07/12 | Step 060 | Loss 0.0061 | Batch R@1 100.00%
+
+Epoch 07 complete | mean loss=0.0065 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 7
+Recall@1: 88.40%
+Recall@5: 92.00%
+Recall@10: 94.40%
+MRR: 0.900825
+Correct cosine: 0.970223
+Hard-negative cosine: 0.878159
+Mean margin: 0.092064
+Positive margins: 88.40%
+Epoch 08/12 | Step 020 | Loss 0.0078 | Batch R@1 100.00%
+Epoch 08/12 | Step 040 | Loss 0.0045 | Batch R@1 100.00%
+Epoch 08/12 | Step 060 | Loss 0.0041 | Batch R@1 100.00%
+
+Epoch 08 complete | mean loss=0.0063 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 8
+Recall@1: 90.80%
+Recall@5: 96.00%
+Recall@10: 98.20%
+MRR: 0.930374
+Correct cosine: 0.971054
+Hard-negative cosine: 0.862056
+Mean margin: 0.108998
+Positive margins: 90.80%
+
+NEW BEST VALIDATION MODEL:
+Recall@1 = 90.80%
+Epoch 09/12 | Step 020 | Loss 0.0104 | Batch R@1 100.00%
+Epoch 09/12 | Step 040 | Loss 0.0051 | Batch R@1 100.00%
+Epoch 09/12 | Step 060 | Loss 0.0092 | Batch R@1 100.00%
+
+Epoch 09 complete | mean loss=0.0067 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 9
+Recall@1: 90.80%
+Recall@5: 94.40%
+Recall@10: 98.00%
+MRR: 0.926317
+Correct cosine: 0.971168
+Hard-negative cosine: 0.865308
+Mean margin: 0.105860
+Positive margins: 90.80%
+Epoch 10/12 | Step 020 | Loss 0.0051 | Batch R@1 100.00%
+Epoch 10/12 | Step 040 | Loss 0.0059 | Batch R@1 100.00%
+Epoch 10/12 | Step 060 | Loss 0.0038 | Batch R@1 100.00%
+
+Epoch 10 complete | mean loss=0.0065 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 10
+Recall@1: 90.60%
+Recall@5: 95.40%
+Recall@10: 97.60%
+MRR: 0.926802
+Correct cosine: 0.971327
+Hard-negative cosine: 0.861375
+Mean margin: 0.109953
+Positive margins: 90.60%
+Epoch 11/12 | Step 020 | Loss 0.0035 | Batch R@1 100.00%
+Epoch 11/12 | Step 040 | Loss 0.0059 | Batch R@1 100.00%
+Epoch 11/12 | Step 060 | Loss 0.0043 | Batch R@1 100.00%
+
+Epoch 11 complete | mean loss=0.0054 | mean batch R@1=100.00%
+
+VALIDATION AFTER EPOCH 11
+Recall@1: 89.80%
+Recall@5: 95.00%
+Recall@10: 97.60%
+MRR: 0.919138
+Correct cosine: 0.967930
+Hard-negative cosine: 0.851866
+Mean margin: 0.116064
+Positive margins: 89.80%
+Epoch 12/12 | Step 020 | Loss 0.0072 | Batch R@1 100.00%
+Epoch 12/12 | Step 040 | Loss 0.0058 | Batch R@1 100.00%
+Epoch 12/12 | Step 060 | Loss 0.0083 | Batch R@1 100.00%
+
+Epoch 12 complete | mean loss=0.0057 | mean batch R@1=99.95%
+
+VALIDATION AFTER EPOCH 12
+Recall@1: 89.20%
+Recall@5: 94.80%
+Recall@10: 97.00%
+MRR: 0.915533
+Correct cosine: 0.970783
+Hard-negative cosine: 0.863196
+Mean margin: 0.107587
+Positive margins: 89.20%
+
+==============================================================================================================
+RESTORE BEST VALIDATION MODEL
+==============================================================================================================
+Best validation Recall@1: 90.80%
+
+==============================================================================================================
+FINAL UNSEEN-ENTITY TEST
+==============================================================================================================
+
+UNSEEN TEST
+Recall@1: 97.10%
+Recall@5: 100.00%
+Recall@10: 100.00%
+MRR: 0.984083
+Correct cosine: 0.973227
+Hard-negative cosine: 0.829214
+Mean margin: 0.144012
+Positive margins: 97.10%
+
+==============================================================================================================
+RAW VS CONTRASTIVE
+==============================================================================================================
+Raw layer-1 test R@1: 61.00%
+Contrastive test R@1: 97.10%
+Absolute improvement: 36.10 points
+
+==============================================================================================================
+TEST TEMPLATE-PAIR BREAKDOWN
+==============================================================================================================
+  WriteT  QueryT       N         R@1      MeanRank
+       0       0      14     100.00%          1.00
+       0       1      17     100.00%          1.00
+       0       2      16     100.00%          1.00
+       0       3      11     100.00%          1.00
+       0       4      16     100.00%          1.00
+       0       5      16     100.00%          1.00
+       0       6      16     100.00%          1.00
+       0       7      18     100.00%          1.00
+       1       0      20      70.00%          1.35
+       1       1      11      54.55%          1.55
+       1       2      15      80.00%          1.20
+       1       3       8      62.50%          1.50
+       1       4      24      87.50%          1.25
+       1       5      12      58.33%          1.58
+       1       6      14     100.00%          1.00
+       1       7      15      73.33%          1.33
+       2       0      23     100.00%          1.00
+       2       1      13     100.00%          1.00
+       2       2      24     100.00%          1.00
+       2       3      20     100.00%          1.00
+       2       4      15     100.00%          1.00
+       2       5      14     100.00%          1.00
+       2       6      20     100.00%          1.00
+       2       7      19     100.00%          1.00
+       3       0      20     100.00%          1.00
+       3       1      19     100.00%          1.00
+       3       2      16     100.00%          1.00
+       3       3      18     100.00%          1.00
+       3       4      19     100.00%          1.00
+       3       5      15     100.00%          1.00
+       3       6      17     100.00%          1.00
+       3       7      17     100.00%          1.00
+       4       0      14     100.00%          1.00
+       4       1      18     100.00%          1.00
+       4       2      11     100.00%          1.00
+       4       3      22     100.00%          1.00
+       4       4      20     100.00%          1.00
+       4       5      10     100.00%          1.00
+       4       6      15     100.00%          1.00
+       4       7       8     100.00%          1.00
+       5       0      17     100.00%          1.00
+       5       1       4     100.00%          1.00
+       5       2      10     100.00%          1.00
+       5       3      19     100.00%          1.00
+       5       4      20     100.00%          1.00
+       5       5      21     100.00%          1.00
+       5       6      11     100.00%          1.00
+       5       7      16     100.00%          1.00
+       6       0       9     100.00%          1.00
+       6       1      20     100.00%          1.00
+       6       2      10     100.00%          1.00
+       6       3      23     100.00%          1.00
+       6       4      14     100.00%          1.00
+       6       5      18     100.00%          1.00
+       6       6      14     100.00%          1.00
+       6       7       8     100.00%          1.00
+       7       0      12     100.00%          1.00
+       7       1      12     100.00%          1.00
+       7       2      17     100.00%          1.00
+       7       3      12     100.00%          1.00
+       7       4      15     100.00%          1.00
+       7       5      11     100.00%          1.00
+       7       6      16     100.00%          1.00
+       7       7      21     100.00%          1.00
+
+==============================================================================================================
+WORST UNSEEN RETRIEVAL FAILURES
+==============================================================================================================
+
+ENTITY: TestEntity-00361
+WRITE: TestEntity-00361 has been assigned the keyword lemon.
+QUERY: Retrieve the mapping for TestEntity-00361:
+Correct rank: 3
+Margin: -0.061285
+Top matches:
+  1. TestEntity-00362          cos=0.876006 
+  2. TestEntity-00359          cos=0.832588 
+  3. TestEntity-00361          cos=0.814721 <-- CORRECT
+  4. TestEntity-00371          cos=0.791005 
+  5. TestEntity-00372          cos=0.775082 
+
+ENTITY: TestEntity-00461
+WRITE: TestEntity-00461 has been assigned the keyword garden.
+QUERY: What value belongs to TestEntity-00461?
+Correct rank: 3
+Margin: -0.051663
+Top matches:
+  1. TestEntity-00462          cos=0.889717 
+  2. TestEntity-00451          cos=0.844751 
+  3. TestEntity-00461          cos=0.838053 <-- CORRECT
+  4. TestEntity-00459          cos=0.809324 
+  5. TestEntity-00457          cos=0.809213 
+
+ENTITY: TestEntity-00806
+WRITE: TestEntity-00806 has been assigned the keyword piano.
+QUERY: Which keyword was assigned to TestEntity-00806?
+Correct rank: 2
+Margin: -0.036598
+Top matches:
+  1. TestEntity-00796          cos=0.821229 
+  2. TestEntity-00806          cos=0.784632 <-- CORRECT
+  3. TestEntity-00807          cos=0.765282 
+  4. TestEntity-00756          cos=0.747358 
+  5. TestEntity-00786          cos=0.745956 
+
+ENTITY: TestEntity-00980
+WRITE: TestEntity-00980 has been assigned the keyword green.
+QUERY: The stored value for TestEntity-00980 is
+Correct rank: 2
+Margin: -0.031988
+Top matches:
+  1. TestEntity-00880          cos=0.810815 
+  2. TestEntity-00980          cos=0.778827 <-- CORRECT
+  3. TestEntity-00975          cos=0.715320 
+  4. TestEntity-00580          cos=0.703157 
+  5. TestEntity-00970          cos=0.697049 
+
+ENTITY: TestEntity-00969
+WRITE: TestEntity-00969 has been assigned the keyword lemon.
+QUERY: Which keyword was assigned to TestEntity-00969?
+Correct rank: 4
+Margin: -0.030736
+Top matches:
+  1. TestEntity-00968          cos=0.819729 
+  2. TestEntity-00970          cos=0.792576 
+  3. TestEntity-00569          cos=0.791001 
+  4. TestEntity-00969          cos=0.788993 <-- CORRECT
+  5. TestEntity-00869          cos=0.752180 
+
+ENTITY: TestEntity-00221
+WRITE: TestEntity-00221 has been assigned the keyword garden.
+QUERY: Retrieve the mapping for TestEntity-00221:
+Correct rank: 3
+Margin: -0.026363
+Top matches:
+  1. TestEntity-00222          cos=0.875919 
+  2. TestEntity-00220          cos=0.850474 
+  3. TestEntity-00221          cos=0.849556 <-- CORRECT
+  4. TestEntity-00771          cos=0.782410 
+  5. TestEntity-00227          cos=0.780904 
+
+ENTITY: TestEntity-00186
+WRITE: TestEntity-00186 has been assigned the keyword purple.
+QUERY: What is the keyword for TestEntity-00186?
+Correct rank: 3
+Margin: -0.023848
+Top matches:
+  1. TestEntity-00185          cos=0.848181 
+  2. TestEntity-00187          cos=0.833018 
+  3. TestEntity-00186          cos=0.824333 <-- CORRECT
+  4. TestEntity-00188          cos=0.816590 
+  5. TestEntity-00184          cos=0.797744 
+
+ENTITY: TestEntity-00561
+WRITE: TestEntity-00561 has been assigned the keyword apple.
+QUERY: What is the keyword for TestEntity-00561?
+Correct rank: 2
+Margin: -0.022723
+Top matches:
+  1. TestEntity-00562          cos=0.853332 
+  2. TestEntity-00561          cos=0.830610 <-- CORRECT
+  3. TestEntity-00563          cos=0.820689 
+  4. TestEntity-00551          cos=0.804329 
+  5. TestEntity-00557          cos=0.781588 
+
+ENTITY: TestEntity-00640
+WRITE: TestEntity-00640 has been assigned the keyword tiger.
+QUERY: Which keyword was assigned to TestEntity-00640?
+Correct rank: 2
+Margin: -0.014943
+Top matches:
+  1. TestEntity-00406          cos=0.823072 
+  2. TestEntity-00640          cos=0.808129 <-- CORRECT
+  3. TestEntity-00540          cos=0.794463 
+  4. TestEntity-00620          cos=0.792286 
+  5. TestEntity-00740          cos=0.784968 
+
+ENTITY: TestEntity-00367
+WRITE: TestEntity-00367 has been assigned the keyword banana.
+QUERY: Recall the keyword associated with TestEntity-00367:
+Correct rank: 3
+Margin: -0.013853
+Top matches:
+  1. TestEntity-00366          cos=0.855022 
+  2. TestEntity-00368          cos=0.849610 
+  3. TestEntity-00367          cos=0.841169 <-- CORRECT
+  4. TestEntity-00365          cos=0.802520 
+  5. TestEntity-00363          cos=0.778804 
+
+==============================================================================================================
+SAVE EXPERIMENTAL ENCODER
+==============================================================================================================
+Saved experimental encoder to: outputs/contrastive_address_encoder.pt
+
+==============================================================================================================
+FINAL DECISION
+==============================================================================================================
+Unseen test Recall@1: 97.10%
+Unseen test MRR: 0.984083
+Positive margins: 97.10%
+
+RESULT: STRONG.
+
+The contrastive address encoder generalizes well enough to move to the next isolated experiment:
+
+STORE THESE KEYS BESIDE OCCUPANCY-ALLOCATED MEMORY SLOTS AND TEST 2/4/8-FACT SLOT RETRIEVAL.
+
+==============================================================================================================
+DONE
+==============================================================================================================
+GPT-2 was frozen.
+Original memory architecture unchanged.
+Original checkpoint unchanged.

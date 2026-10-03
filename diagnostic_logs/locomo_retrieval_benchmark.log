@@ -1,0 +1,258 @@
+
+=============================================================================================================================
+TOKENIZER
+=============================================================================================================================
+Tokenizer: GPT2Tokenizer
+Vocabulary: 50257
+
+=============================================================================================================================
+LOAD EXISTING MEMORY MODEL
+=============================================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 13263.19it/s]
+Compatible tensors: 236
+Missing tensors: 0
+Existing memory model frozen.
+
+=============================================================================================================================
+LOAD CONTRASTIVE ADDRESS ENCODER
+=============================================================================================================================
+Address layer: 1
+Address dimension: 256
+Previous synthetic address R@1: 0.9710000157356262
+Address encoder frozen.
+
+=============================================================================================================================
+LOAD LOCOMO
+=============================================================================================================================
+Conversations: 10
+
+=============================================================================================================================
+BUILD RETRIEVAL QUESTIONS
+=============================================================================================================================
+Eligible evidence questions: 1965
+Skipped no evidence: 4
+Skipped unresolved evidence: 9
+Skipped >8 evidence turns: 8
+Categories: {'2': 320, '3': 86, '1': 273, '4': 840, '5': 446}
+
+Questions evaluated: 300
+
+=============================================================================================================================
+RUN REAL LOCOMO RETRIEVAL BENCHMARK
+=============================================================================================================================
+Memory slots: 8
+Questions: 300
+
+NO VALUE CLASSIFICATION.
+NO ANSWER DECODER.
+ONLY: question -> retrieve gold evidence turn.
+
+==========================================================================================
+EXAMPLE RETRIEVAL QUESTION
+==========================================================================================
+
+Sample: conv-49
+Category: 5
+
+QUESTION:
+Why did Sam decide to get the bonsai tree?
+
+GOLD ANSWER:
+
+
+GOLD EVIDENCE: ['D5:17']
+
+8 MEMORY CANDIDATES:
+
+[0] D11:3
+Sam: Hey Evan, sorry to hear about your knee. It must be tough. Are there any ways to stay active while you heal up?
+
+[1] D5:17 <--- GOLD
+Evan: I got this because it symbolizes strength and resilience. Taking care of it motivates me to keep going through tough times.
+
+[2] D19:13
+Evan: Thanks, Sam! Your support means a lot. I'll keep you updated. Take care, bye!
+
+[3] D9:3
+Sam: Oh no, sorry to hear about that, Evan. It's frustrating when our bodies don't cooperate, isn't it? Is there anything I can do to help?
+
+[4] D14:6
+Evan: Awesome, Sam! Getting started will get easier with time. And don't forget it's about feeling good and reaching goals, too. Let's plan a hike soon!
+
+[5] D8:1
+Sam: Hey Evan, some big news: I'm on a diet and living healthier! Been tough, but I'm determined.
+
+[6] D2:4
+Sam: That sounds great, Evan! It's so important to take time for ourselves and find peace, especially after a hard week. Mine's been tough.
+
+[7] D1:2
+Evan: Hey Sam! Good to see you! Yeah, I just got back from a trip with my family in my new Prius.
+
+RETRIEVAL RANKINGS:
+
+EXISTING_WRITER_READER
+  1. D19:13
+  2. D9:3
+  3. D8:1
+  4. D2:4
+  5. D5:17 <--- GOLD
+  6. D14:6
+  7. D1:2
+  8. D11:3
+
+FINAL_MEAN_COSINE
+  1. D8:1
+  2. D1:2
+  3. D11:3
+  4. D14:6
+  5. D5:17 <--- GOLD
+  6. D2:4
+  7. D19:13
+  8. D9:3
+
+L4_MEAN_COSINE
+  1. D19:13
+  2. D8:1
+  3. D5:17 <--- GOLD
+  4. D11:3
+  5. D1:2
+  6. D2:4
+  7. D14:6
+  8. D9:3
+
+L1_MEAN_COSINE
+  1. D19:13
+  2. D8:1
+  3. D5:17 <--- GOLD
+  4. D11:3
+  5. D1:2
+  6. D2:4
+  7. D14:6
+  8. D9:3
+
+L1_ADDRESS_ENCODER
+  1. D19:13
+  2. D2:4
+  3. D8:1
+  4. D9:3
+  5. D1:2
+  6. D11:3
+  7. D5:17 <--- GOLD
+  8. D14:6
+Completed 25/300
+Completed 50/300
+Completed 75/300
+Completed 100/300
+Completed 125/300
+Completed 150/300
+Completed 175/300
+Completed 200/300
+Completed 225/300
+Completed 250/300
+Completed 275/300
+Completed 300/300
+
+=============================================================================================================================
+FINAL LOCOMO RETRIEVAL RESULTS
+=============================================================================================================================
+Successful questions: 300
+
+Method                           Hit@1     Hit@3     Hit@5    Recall@3    Recall@5       MRR
+EXISTING_WRITER_READER          17.33%    45.00%    65.33%      36.38%      59.27%    0.3881
+FINAL_MEAN_COSINE               31.33%    57.67%    79.67%      50.79%      75.17%    0.5108
+L4_MEAN_COSINE                   9.00%    24.00%    45.33%      18.96%      38.74%    0.2772
+L1_MEAN_COSINE                  14.33%    30.00%    52.67%      24.58%      46.24%    0.3243
+L1_ADDRESS_ENCODER              31.00%    52.67%    72.33%      45.44%      66.50%    0.4864
+
+=============================================================================================================================
+ALL-GOLD-EVIDENCE COVERAGE
+=============================================================================================================================
+Method                           All@1     All@3     All@5
+EXISTING_WRITER_READER           8.67%    29.67%    51.67%
+FINAL_MEAN_COSINE               20.33%    44.67%    69.00%
+L4_MEAN_COSINE                   4.33%    15.33%    32.33%
+L1_MEAN_COSINE                   9.00%    20.67%    40.00%
+L1_ADDRESS_ENCODER              23.67%    39.33%    60.00%
+
+=============================================================================================================================
+CATEGORY BREAKDOWN
+=============================================================================================================================
+
+CATEGORY 1 (n=43)
+Method                           Hit@1     Hit@3       MRR
+EXISTING_WRITER_READER          41.86%    76.74%    0.6221
+FINAL_MEAN_COSINE               55.81%    81.40%    0.7161
+L4_MEAN_COSINE                  27.91%    48.84%    0.4664
+L1_MEAN_COSINE                  25.58%    53.49%    0.4645
+L1_ADDRESS_ENCODER              32.56%    76.74%    0.5830
+
+CATEGORY 2 (n=56)
+Method                           Hit@1     Hit@3       MRR
+EXISTING_WRITER_READER          17.86%    44.64%    0.3843
+FINAL_MEAN_COSINE               37.50%    55.36%    0.5397
+L4_MEAN_COSINE                   1.79%    14.29%    0.2043
+L1_MEAN_COSINE                  14.29%    19.64%    0.2894
+L1_ADDRESS_ENCODER              26.79%    48.21%    0.4431
+
+CATEGORY 3 (n=11)
+Method                           Hit@1     Hit@3       MRR
+EXISTING_WRITER_READER          27.27%    90.91%    0.5455
+FINAL_MEAN_COSINE               36.36%    72.73%    0.5812
+L4_MEAN_COSINE                  18.18%    36.36%    0.3819
+L1_MEAN_COSINE                  18.18%    45.45%    0.3895
+L1_ADDRESS_ENCODER              54.55%    63.64%    0.6448
+
+CATEGORY 4 (n=129)
+Method                           Hit@1     Hit@3       MRR
+EXISTING_WRITER_READER          10.85%    35.66%    0.3324
+FINAL_MEAN_COSINE               26.36%    56.59%    0.4791
+L4_MEAN_COSINE                   6.98%    21.71%    0.2539
+L1_MEAN_COSINE                  12.40%    26.36%    0.3035
+L1_ADDRESS_ENCODER              32.56%    50.39%    0.4859
+
+CATEGORY 5 (n=61)
+Method                           Hit@1     Hit@3       MRR
+EXISTING_WRITER_READER          11.48%    34.43%    0.3162
+FINAL_MEAN_COSINE               18.03%    42.62%    0.3940
+L4_MEAN_COSINE                   4.92%    18.03%    0.2412
+L1_MEAN_COSINE                   9.84%    27.87%    0.2896
+L1_ADDRESS_ENCODER              26.23%    42.62%    0.4304
+
+=============================================================================================================================
+RETRIEVAL DIAGNOSIS
+=============================================================================================================================
+Existing writer+reader Hit@1: 17.33%
+Final-layer cosine Hit@1: 31.33%
+Layer-1 cosine Hit@1: 14.33%
+Layer-1 address encoder Hit@1: 31.00%
+
+Existing writer+reader MRR: 0.3881
+Final-layer cosine MRR: 0.5108
+Layer-1 cosine MRR: 0.3243
+Layer-1 address encoder MRR: 0.4864
+
+Best direct retrieval method: FINAL_MEAN_COSINE
+Best direct MRR: 0.5108
+
+RESULT:
+The alternative retrieval representation substantially outperforms the existing CandidateWriter + MemoryReader pathway.
+
+This supports changing the actual retrieval mechanism rather than continuing to tune the existing reader around the same representation.
+
+=============================================================================================================================
+SAVE RESULTS
+=============================================================================================================================
+Saved: outputs/locomo_retrieval_benchmark.pt
+
+=============================================================================================================================
+EXPERIMENT COMPLETE
+=============================================================================================================================
+This experiment measured RETRIEVAL only.
+No value decoder was trained.
+No answer classifier was trained.
+No GPT-2 parameters were trained.
+No CandidateWriter parameters were trained.
+No MemoryReader parameters were trained.
+No models/ source files were modified.

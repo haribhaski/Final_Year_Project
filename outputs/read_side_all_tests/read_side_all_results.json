@@ -1,0 +1,853 @@
+{
+  "simple_control": {
+    "matched": 90.80000519752502,
+    "mismatched": 0.20000000949949026,
+    "query_only": 8.000000566244125,
+    "nll_gap": 9.757713317871094,
+    "positive_gap": 100.0
+  },
+  "frozen_context": {
+    "variant": "frozen_context",
+    "best_epoch": 15,
+    "best_validation_accuracy": 99.0000069141388,
+    "test": {
+      "matched": 86.00000143051147,
+      "mismatched": 0.20000000949949026,
+      "query_only": 9.000000357627869,
+      "nll_gap": 7.328999996185303,
+      "positive_gap": 100.0,
+      "active_slot_attention": 1.0,
+      "read_confidence": 0.7263278812170029
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 0.4666384580656886,
+        "validation": {
+          "matched": 98.60000610351562,
+          "mismatched": 0.4000000189989805,
+          "query_only": 9.600000083446503,
+          "nll_gap": 5.934692859649658,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 2,
+        "loss": 0.003642093453556299,
+        "validation": {
+          "matched": 96.8000054359436,
+          "mismatched": 0.6000000052154064,
+          "query_only": 9.600000083446503,
+          "nll_gap": 6.745038986206055,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 3,
+        "loss": 0.002059692617505789,
+        "validation": {
+          "matched": 97.00000286102295,
+          "mismatched": 0.6000000052154064,
+          "query_only": 9.600000083446503,
+          "nll_gap": 6.934584140777588,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 4,
+        "loss": 0.001600878966972232,
+        "validation": {
+          "matched": 97.00000286102295,
+          "mismatched": 0.6000000052154064,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.084104061126709,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 5,
+        "loss": 0.0012843819549307226,
+        "validation": {
+          "matched": 97.20000624656677,
+          "mismatched": 0.6000000052154064,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.2260308265686035,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 6,
+        "loss": 0.0010502107609063388,
+        "validation": {
+          "matched": 97.40000367164612,
+          "mismatched": 0.6000000052154064,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.359142303466797,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 7,
+        "loss": 0.0008724727015942336,
+        "validation": {
+          "matched": 97.40000367164612,
+          "mismatched": 0.6000000052154064,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.4802327156066895,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 8,
+        "loss": 0.0007361576426774263,
+        "validation": {
+          "matched": 97.60000705718994,
+          "mismatched": 0.6000000052154064,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.598092079162598,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 9,
+        "loss": 0.0006280416883528233,
+        "validation": {
+          "matched": 97.60000705718994,
+          "mismatched": 0.6000000052154064,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.707645893096924,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 10,
+        "loss": 0.00054267797479406,
+        "validation": {
+          "matched": 98.20000529289246,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.808999538421631,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 11,
+        "loss": 0.00047322591580450533,
+        "validation": {
+          "matched": 98.20000529289246,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.9015350341796875,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 12,
+        "loss": 0.00041650987137109043,
+        "validation": {
+          "matched": 99.0000069141388,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.992169380187988,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 13,
+        "loss": 0.00036900611175224186,
+        "validation": {
+          "matched": 98.80000352859497,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.075348854064941,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 14,
+        "loss": 0.0003299899650737643,
+        "validation": {
+          "matched": 98.80000352859497,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.15489387512207,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 15,
+        "loss": 0.000296475060749799,
+        "validation": {
+          "matched": 99.0000069141388,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.230809211730957,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      }
+    ]
+  },
+  "frozen_fused": {
+    "variant": "frozen_fused",
+    "best_epoch": 14,
+    "best_validation_accuracy": 68.00000071525574,
+    "test": {
+      "matched": 39.60000276565552,
+      "mismatched": 4.800000041723251,
+      "query_only": 9.000000357627869,
+      "nll_gap": 3.463087320327759,
+      "positive_gap": 99.40000176429749,
+      "active_slot_attention": 1.0,
+      "read_confidence": 0.7263278812170029
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 2.6790440158843993,
+        "validation": {
+          "matched": 26.000002026557922,
+          "mismatched": 6.200000271201134,
+          "query_only": 7.200000435113907,
+          "nll_gap": 0.13153772056102753,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 2,
+        "loss": 2.20761913394928,
+        "validation": {
+          "matched": 41.600000858306885,
+          "mismatched": 4.200000315904617,
+          "query_only": 7.000000029802322,
+          "nll_gap": 0.44773951172828674,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 3,
+        "loss": 1.6081235466003418,
+        "validation": {
+          "matched": 47.600001096725464,
+          "mismatched": 4.000000283122063,
+          "query_only": 6.599999964237213,
+          "nll_gap": 0.9239396452903748,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 4,
+        "loss": 1.0729696736335754,
+        "validation": {
+          "matched": 60.80000400543213,
+          "mismatched": 2.6000000536441803,
+          "query_only": 9.600000083446503,
+          "nll_gap": 1.434503197669983,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 5,
+        "loss": 0.6915897884368897,
+        "validation": {
+          "matched": 47.600001096725464,
+          "mismatched": 3.800000250339508,
+          "query_only": 9.600000083446503,
+          "nll_gap": 1.8903599977493286,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 6,
+        "loss": 0.4620418224334717,
+        "validation": {
+          "matched": 61.80000305175781,
+          "mismatched": 2.800000086426735,
+          "query_only": 9.600000083446503,
+          "nll_gap": 2.2792627811431885,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 7,
+        "loss": 0.32111190748214724,
+        "validation": {
+          "matched": 53.60000133514404,
+          "mismatched": 2.800000086426735,
+          "query_only": 9.600000083446503,
+          "nll_gap": 2.6037302017211914,
+          "positive_gap": 99.80000257492065,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 8,
+        "loss": 0.23143132543563844,
+        "validation": {
+          "matched": 57.40000009536743,
+          "mismatched": 2.800000086426735,
+          "query_only": 9.600000083446503,
+          "nll_gap": 2.886172294616699,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 9,
+        "loss": 0.1771829206943512,
+        "validation": {
+          "matched": 60.200005769729614,
+          "mismatched": 2.800000086426735,
+          "query_only": 9.600000083446503,
+          "nll_gap": 3.124570846557617,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 10,
+        "loss": 0.13541436040401458,
+        "validation": {
+          "matched": 58.799999952316284,
+          "mismatched": 2.800000086426735,
+          "query_only": 9.600000083446503,
+          "nll_gap": 3.33255934715271,
+          "positive_gap": 99.80000257492065,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 11,
+        "loss": 0.10914148449897766,
+        "validation": {
+          "matched": 59.400004148483276,
+          "mismatched": 2.800000086426735,
+          "query_only": 9.600000083446503,
+          "nll_gap": 3.5171804428100586,
+          "positive_gap": 99.80000257492065,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 12,
+        "loss": 0.08907424831390381,
+        "validation": {
+          "matched": 67.80000329017639,
+          "mismatched": 2.200000174343586,
+          "query_only": 9.600000083446503,
+          "nll_gap": 3.684387683868408,
+          "positive_gap": 99.80000257492065,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 13,
+        "loss": 0.0743138428926468,
+        "validation": {
+          "matched": 67.80000329017639,
+          "mismatched": 2.4000000208616257,
+          "query_only": 9.600000083446503,
+          "nll_gap": 3.8289337158203125,
+          "positive_gap": 99.80000257492065,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 14,
+        "loss": 0.06353054708242416,
+        "validation": {
+          "matched": 68.00000071525574,
+          "mismatched": 2.6000000536441803,
+          "query_only": 9.600000083446503,
+          "nll_gap": 3.9685091972351074,
+          "positive_gap": 99.80000257492065,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      },
+      {
+        "epoch": 15,
+        "loss": 0.05461470314860344,
+        "validation": {
+          "matched": 66.40000343322754,
+          "mismatched": 2.200000174343586,
+          "query_only": 9.600000083446503,
+          "nll_gap": 4.0981035232543945,
+          "positive_gap": 99.80000257492065,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7562189251184464
+        }
+      }
+    ]
+  },
+  "trainable_context": {
+    "variant": "trainable_context",
+    "best_epoch": 15,
+    "best_validation_accuracy": 99.0000069141388,
+    "test": {
+      "matched": 91.2000060081482,
+      "mismatched": 0.20000000949949026,
+      "query_only": 9.000000357627869,
+      "nll_gap": 8.472451210021973,
+      "positive_gap": 100.0,
+      "active_slot_attention": 1.0,
+      "read_confidence": 0.6986927092075348
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 0.29241348987817767,
+        "validation": {
+          "matched": 93.4000015258789,
+          "mismatched": 0.4000000189989805,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.0049848556518555,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.6694477200508118
+        }
+      },
+      {
+        "epoch": 2,
+        "loss": 0.0008687539021484554,
+        "validation": {
+          "matched": 93.4000015258789,
+          "mismatched": 0.4000000189989805,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.672320365905762,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.6839588582515717
+        }
+      },
+      {
+        "epoch": 3,
+        "loss": 0.0005307030810508877,
+        "validation": {
+          "matched": 94.0000057220459,
+          "mismatched": 0.4000000189989805,
+          "query_only": 9.600000083446503,
+          "nll_gap": 7.883449077606201,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.6915696859359741
+        }
+      },
+      {
+        "epoch": 4,
+        "loss": 0.00041510585881769657,
+        "validation": {
+          "matched": 95.00000476837158,
+          "mismatched": 0.4000000189989805,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.05826473236084,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.6985073238611221
+        }
+      },
+      {
+        "epoch": 5,
+        "loss": 0.00033677132800221445,
+        "validation": {
+          "matched": 96.00000381469727,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.222125053405762,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7046256959438324
+        }
+      },
+      {
+        "epoch": 6,
+        "loss": 0.0002785944743081927,
+        "validation": {
+          "matched": 96.60000205039978,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.364544868469238,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7086014002561569
+        }
+      },
+      {
+        "epoch": 7,
+        "loss": 0.00023455559043213724,
+        "validation": {
+          "matched": 97.40000367164612,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.487353324890137,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7112897783517838
+        }
+      },
+      {
+        "epoch": 8,
+        "loss": 0.00019957415480166674,
+        "validation": {
+          "matched": 97.60000705718994,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.610450744628906,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7144016623497009
+        }
+      },
+      {
+        "epoch": 9,
+        "loss": 0.00017233458044938743,
+        "validation": {
+          "matched": 98.00000190734863,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.726289749145508,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7171624004840851
+        }
+      },
+      {
+        "epoch": 10,
+        "loss": 0.00015032700658775867,
+        "validation": {
+          "matched": 98.60000610351562,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.827394485473633,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7192077040672302
+        }
+      },
+      {
+        "epoch": 11,
+        "loss": 0.0001324091834248975,
+        "validation": {
+          "matched": 98.60000610351562,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 8.91491413116455,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7202912718057632
+        }
+      },
+      {
+        "epoch": 12,
+        "loss": 0.00011753318167757243,
+        "validation": {
+          "matched": 98.60000610351562,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 9.007795333862305,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7224887609481812
+        }
+      },
+      {
+        "epoch": 13,
+        "loss": 0.00010504229983780533,
+        "validation": {
+          "matched": 98.60000610351562,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 9.085213661193848,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7236576229333878
+        }
+      },
+      {
+        "epoch": 14,
+        "loss": 9.451224189251662e-05,
+        "validation": {
+          "matched": 98.80000352859497,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 9.164286613464355,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7249322831630707
+        }
+      },
+      {
+        "epoch": 15,
+        "loss": 8.553809614386409e-05,
+        "validation": {
+          "matched": 99.0000069141388,
+          "mismatched": 0.0,
+          "query_only": 9.600000083446503,
+          "nll_gap": 9.23835563659668,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.7259220480918884
+        }
+      }
+    ]
+  },
+  "trainable_fused": {
+    "variant": "trainable_fused",
+    "best_epoch": 7,
+    "best_validation_accuracy": 99.60000514984131,
+    "test": {
+      "matched": 96.60000205039978,
+      "mismatched": 0.0,
+      "query_only": 9.000000357627869,
+      "nll_gap": 5.294003963470459,
+      "positive_gap": 100.0,
+      "active_slot_attention": 1.0,
+      "read_confidence": 0.9896102994680405
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 2.5082525310516357,
+        "validation": {
+          "matched": 45.00000178813934,
+          "mismatched": 5.200000107288361,
+          "query_only": 7.200000435113907,
+          "nll_gap": 0.378985196352005,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9573510438203812
+        }
+      },
+      {
+        "epoch": 2,
+        "loss": 1.6957192058563233,
+        "validation": {
+          "matched": 85.40000319480896,
+          "mismatched": 1.4000000432133675,
+          "query_only": 8.60000029206276,
+          "nll_gap": 1.3517814874649048,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9801472425460815
+        }
+      },
+      {
+        "epoch": 3,
+        "loss": 0.7775857930183411,
+        "validation": {
+          "matched": 99.0000069141388,
+          "mismatched": 0.20000000949949026,
+          "query_only": 7.200000435113907,
+          "nll_gap": 2.7611236572265625,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9863137304782867
+        }
+      },
+      {
+        "epoch": 4,
+        "loss": 0.26293165850639344,
+        "validation": {
+          "matched": 98.60000610351562,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 3.8294332027435303,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9878966808319092
+        }
+      },
+      {
+        "epoch": 5,
+        "loss": 0.10734813916683197,
+        "validation": {
+          "matched": 99.60000514984131,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 4.565070152282715,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.988579124212265
+        }
+      },
+      {
+        "epoch": 6,
+        "loss": 0.05910738104581833,
+        "validation": {
+          "matched": 98.20000529289246,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 5.016018390655518,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.98882757127285
+        }
+      },
+      {
+        "epoch": 7,
+        "loss": 0.03841152626276016,
+        "validation": {
+          "matched": 99.60000514984131,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 5.440797328948975,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9888306856155396
+        }
+      },
+      {
+        "epoch": 8,
+        "loss": 0.02737617501616478,
+        "validation": {
+          "matched": 98.20000529289246,
+          "mismatched": 0.4000000189989805,
+          "query_only": 6.599999964237213,
+          "nll_gap": 5.723655700683594,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9890617877244949
+        }
+      },
+      {
+        "epoch": 9,
+        "loss": 0.020572360165417195,
+        "validation": {
+          "matched": 98.20000529289246,
+          "mismatched": 0.4000000189989805,
+          "query_only": 9.400000423192978,
+          "nll_gap": 5.946820259094238,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9889475107192993
+        }
+      },
+      {
+        "epoch": 10,
+        "loss": 0.01612298808991909,
+        "validation": {
+          "matched": 99.20000433921814,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 6.220762729644775,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9890353232622147
+        }
+      },
+      {
+        "epoch": 11,
+        "loss": 0.012981821320950986,
+        "validation": {
+          "matched": 99.40000176429749,
+          "mismatched": 0.20000000949949026,
+          "query_only": 9.600000083446503,
+          "nll_gap": 6.402538299560547,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9891602545976639
+        }
+      },
+      {
+        "epoch": 12,
+        "loss": 0.010711926482617855,
+        "validation": {
+          "matched": 98.80000352859497,
+          "mismatched": 0.20000000949949026,
+          "query_only": 8.400000631809235,
+          "nll_gap": 6.577014923095703,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9891916215419769
+        }
+      },
+      {
+        "epoch": 13,
+        "loss": 0.009003706499934197,
+        "validation": {
+          "matched": 98.80000352859497,
+          "mismatched": 0.20000000949949026,
+          "query_only": 8.800000697374344,
+          "nll_gap": 6.747393608093262,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9892081320285797
+        }
+      },
+      {
+        "epoch": 14,
+        "loss": 0.007692862465977669,
+        "validation": {
+          "matched": 98.80000352859497,
+          "mismatched": 0.20000000949949026,
+          "query_only": 8.800000697374344,
+          "nll_gap": 6.877913951873779,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9892490655183792
+        }
+      },
+      {
+        "epoch": 15,
+        "loss": 0.006643965393304824,
+        "validation": {
+          "matched": 98.4000027179718,
+          "mismatched": 0.4000000189989805,
+          "query_only": 7.000000029802322,
+          "nll_gap": 7.0136847496032715,
+          "positive_gap": 100.0,
+          "active_slot_attention": 1.0,
+          "read_confidence": 0.9892468303442001
+        }
+      }
+    ]
+  }
+}

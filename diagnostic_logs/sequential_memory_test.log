@@ -1,0 +1,193 @@
+Loading model...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 7911.76it/s]
+Loaded: outputs/capacity_n64.pt
+
+
+==========================================================================================
+SEQUENTIAL MULTI-FACT MEMORY TEST
+==========================================================================================
+
+
+==========================================================================================
+TESTING 1 FACT(S) IN SAME MEMORY
+==========================================================================================
+
+WRITE SEQUENCE
+----------------------------------------------------------------------
+Write 01: Project-0000 -> tiger
+
+RETRIEVAL RESULTS
+------------------------------------------------------------------------------------------
+Project-0000   true=tiger    pred=tiger    rank= 1 loss=0.4890 OK
+
+SUMMARY
+N=1 | accuracy=100.00% | MRR=1.0000 | mean_rank=1.00
+
+
+==========================================================================================
+TESTING 2 FACT(S) IN SAME MEMORY
+==========================================================================================
+
+WRITE SEQUENCE
+----------------------------------------------------------------------
+Write 01: Project-0000 -> tiger
+Write 02: Project-0001 -> apple
+
+RETRIEVAL RESULTS
+------------------------------------------------------------------------------------------
+Project-0000   true=tiger    pred=falcon   rank= 7 loss=7.6851 FAIL
+Project-0001   true=apple    pred=falcon   rank=14 loss=13.6959 FAIL
+
+SUMMARY
+N=2 | accuracy=0.00% | MRR=0.1071 | mean_rank=10.50
+
+
+==========================================================================================
+TESTING 4 FACT(S) IN SAME MEMORY
+==========================================================================================
+
+WRITE SEQUENCE
+----------------------------------------------------------------------
+Write 01: Project-0000 -> tiger
+Write 02: Project-0001 -> apple
+Write 03: Project-0002 -> blue
+Write 04: Project-0003 -> horse
+
+RETRIEVAL RESULTS
+------------------------------------------------------------------------------------------
+Project-0000   true=tiger    pred=falcon   rank=10 loss=10.8133 FAIL
+Project-0001   true=apple    pred=falcon   rank=14 loss=13.9721 FAIL
+Project-0002   true=blue     pred=falcon   rank= 3 loss=7.0728 FAIL
+Project-0003   true=horse    pred=falcon   rank= 7 loss=9.2378 FAIL
+
+SUMMARY
+N=4 | accuracy=0.00% | MRR=0.1619 | mean_rank=8.50
+
+
+==========================================================================================
+TESTING 8 FACT(S) IN SAME MEMORY
+==========================================================================================
+
+WRITE SEQUENCE
+----------------------------------------------------------------------
+Write 01: Project-0000 -> tiger
+Write 02: Project-0001 -> apple
+Write 03: Project-0002 -> blue
+Write 04: Project-0003 -> horse
+Write 05: Project-0004 -> green
+Write 06: Project-0005 -> orange
+Write 07: Project-0006 -> piano
+Write 08: Project-0007 -> river
+
+RETRIEVAL RESULTS
+------------------------------------------------------------------------------------------
+Project-0000   true=tiger    pred=green    rank=13 loss=12.1175 FAIL
+Project-0001   true=apple    pred=green    rank=14 loss=12.2526 FAIL
+Project-0002   true=blue     pred=green    rank= 2 loss=3.9342 FAIL
+Project-0003   true=horse    pred=green    rank= 8 loss=10.3471 FAIL
+Project-0004   true=green    pred=green    rank= 1 loss=3.6839 OK
+Project-0005   true=orange   pred=green    rank= 6 loss=6.5739 FAIL
+Project-0006   true=piano    pred=green    rank= 7 loss=8.1389 FAIL
+Project-0007   true=river    pred=green    rank=11 loss=11.7555 FAIL
+
+SUMMARY
+N=8 | accuracy=12.50% | MRR=0.2717 | mean_rank=7.75
+
+
+==========================================================================================
+TESTING 12 FACT(S) IN SAME MEMORY
+==========================================================================================
+
+WRITE SEQUENCE
+----------------------------------------------------------------------
+Write 01: Project-0000 -> tiger
+Write 02: Project-0001 -> apple
+Write 03: Project-0002 -> blue
+Write 04: Project-0003 -> horse
+Write 05: Project-0004 -> green
+Write 06: Project-0005 -> orange
+Write 07: Project-0006 -> piano
+Write 08: Project-0007 -> river
+Write 09: Project-0008 -> chair
+Write 10: Project-0009 -> lemon
+Write 11: Project-0010 -> purple
+Write 12: Project-0011 -> rabbit
+
+RETRIEVAL RESULTS
+------------------------------------------------------------------------------------------
+Project-0000   true=tiger    pred=green    rank=16 loss=12.3974 FAIL
+Project-0001   true=apple    pred=green    rank=13 loss=11.6776 FAIL
+Project-0002   true=blue     pred=green    rank= 2 loss=2.6035 FAIL
+Project-0003   true=horse    pred=green    rank=10 loss=11.4421 FAIL
+Project-0004   true=green    pred=green    rank= 1 loss=2.3259 OK
+Project-0005   true=orange   pred=green    rank= 4 loss=4.6596 FAIL
+Project-0006   true=piano    pred=green    rank= 7 loss=7.8807 FAIL
+Project-0007   true=river    pred=green    rank= 9 loss=10.5535 FAIL
+Project-0008   true=chair    pred=green    rank=10 loss=11.4579 FAIL
+Project-0009   true=lemon    pred=green    rank= 8 loss=10.5060 FAIL
+Project-0010   true=purple   pred=green    rank= 3 loss=4.2147 FAIL
+Project-0011   true=rabbit   pred=green    rank=12 loss=11.5678 FAIL
+
+SUMMARY
+N=12 | accuracy=8.33% | MRR=0.2404 | mean_rank=7.92
+
+
+==========================================================================================
+TESTING 16 FACT(S) IN SAME MEMORY
+==========================================================================================
+
+WRITE SEQUENCE
+----------------------------------------------------------------------
+Write 01: Project-0000 -> tiger
+Write 02: Project-0001 -> apple
+Write 03: Project-0002 -> blue
+Write 04: Project-0003 -> horse
+Write 05: Project-0004 -> green
+Write 06: Project-0005 -> orange
+Write 07: Project-0006 -> piano
+Write 08: Project-0007 -> river
+Write 09: Project-0008 -> chair
+Write 10: Project-0009 -> lemon
+Write 11: Project-0010 -> purple
+Write 12: Project-0011 -> rabbit
+Write 13: Project-0012 -> silver
+Write 14: Project-0013 -> garden
+Write 15: Project-0014 -> falcon
+Write 16: Project-0015 -> banana
+
+RETRIEVAL RESULTS
+------------------------------------------------------------------------------------------
+Project-0000   true=tiger    pred=green    rank=16 loss=12.5065 FAIL
+Project-0001   true=apple    pred=green    rank=12 loss=11.5129 FAIL
+Project-0002   true=blue     pred=green    rank= 2 loss=2.6717 FAIL
+Project-0003   true=horse    pred=green    rank=11 loss=11.6495 FAIL
+Project-0004   true=green    pred=green    rank= 1 loss=2.3667 OK
+Project-0005   true=orange   pred=green    rank= 4 loss=4.5842 FAIL
+Project-0006   true=piano    pred=green    rank= 7 loss=8.0021 FAIL
+Project-0007   true=river    pred=green    rank= 9 loss=10.5730 FAIL
+Project-0008   true=chair    pred=green    rank=10 loss=11.5283 FAIL
+Project-0009   true=lemon    pred=green    rank= 8 loss=10.3258 FAIL
+Project-0010   true=purple   pred=green    rank= 3 loss=4.2961 FAIL
+Project-0011   true=rabbit   pred=green    rank=13 loss=11.6795 FAIL
+Project-0012   true=silver   pred=green    rank= 5 loss=5.3498 FAIL
+Project-0013   true=garden   pred=green    rank=15 loss=12.1138 FAIL
+Project-0014   true=falcon   pred=green    rank= 6 loss=6.9762 FAIL
+Project-0015   true=banana   pred=green    rank=14 loss=12.0757 FAIL
+
+SUMMARY
+N=16 | accuracy=6.25% | MRR=0.2113 | mean_rank=8.50
+
+
+==========================================================================================
+FINAL SEQUENTIAL MEMORY SUMMARY
+==========================================================================================
+   FACTS     ACCURACY        MRR    MEAN RANK
+------------------------------------------------------------------------------------------
+       1      100.00%     1.0000         1.00
+       2        0.00%     0.1071        10.50
+       4        0.00%     0.1619         8.50
+       8       12.50%     0.2717         7.75
+      12        8.33%     0.2404         7.92
+      16        6.25%     0.2113         8.50
+
+16-way chance accuracy = 6.25%

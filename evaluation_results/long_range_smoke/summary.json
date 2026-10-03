@@ -1,0 +1,16 @@
+[
+  {
+    "distance": 1,
+    "examples": 3,
+    "plain_accuracy": 0.3333333333333333,
+    "reset_accuracy": 0.3333333333333333,
+    "persistent_accuracy": 0.3333333333333333
+  },
+  {
+    "distance": 2,
+    "examples": 3,
+    "plain_accuracy": 0.0,
+    "reset_accuracy": 0.0,
+    "persistent_accuracy": 0.0
+  }
+]

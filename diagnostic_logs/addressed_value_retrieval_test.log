@@ -1,0 +1,330 @@
+
+========================================================================================================================
+TOKENIZER
+========================================================================================================================
+Tokenizer: GPT2Tokenizer
+Vocabulary: 50257
+
+========================================================================================================================
+ANSWER TOKENIZATION
+========================================================================================================================
+tiger      [26241] | tokens = 1
+apple      [17180] | tokens = 1
+blue       [4171] | tokens = 1
+horse      [8223] | tokens = 1
+green      [4077] | tokens = 1
+orange     [10912] | tokens = 1
+piano      [19132] | tokens = 1
+river      [7850] | tokens = 1
+chair      [5118] | tokens = 1
+lemon      [18873] | tokens = 1
+purple     [14032] | tokens = 1
+rabbit     [22746] | tokens = 1
+silver     [8465] | tokens = 1
+garden     [11376] | tokens = 1
+falcon     [24215, 1102] | tokens = 2
+banana     [25996] | tokens = 1
+
+Multi-token answers are allowed.
+
+========================================================================================================================
+LOAD FROZEN MEMORY MODEL
+========================================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5743.28it/s]
+Compatible tensors: 236
+Missing tensors: 0
+Skipped tensors: 0
+Memory model frozen.
+
+========================================================================================================================
+LOAD ADDRESS ENCODER
+========================================================================================================================
+Address layer: 1
+Address dimension: 256
+Previous address test R@1: 0.9710000157356262
+Address encoder frozen.
+
+========================================================================================================================
+ADDRESSED MEMORY VALUE RETRIEVAL
+========================================================================================================================
+Fact counts: [2, 4, 8]
+Episodes per size: 100
+Candidate answers: 16
+Chance: 6.25%
+
+========================================================================================================================
+2-FACT VALUE RETRIEVAL
+========================================================================================================================
+
+FACTS / ACTUAL SLOT ASSIGNMENTS
+ValueEntity-SJRSRO-95765       -> slot 1 | value=piano
+ValueEntity-OJLHXK-97647       -> slot 4 | value=green
+
+QUERY RESULTS
+
+ENTITY: ValueEntity-SJRSRO-95765
+TRUE ANSWER: piano
+Correct slot: 1
+Addressed slot: 1
+Address correct: True
+ADDRESSED -> falcon | rank 8
+ORACLE    -> falcon | rank 8
+WRONG     -> falcon | rank 8
+NO MEMORY -> falcon | rank 8
+
+ENTITY: ValueEntity-OJLHXK-97647
+TRUE ANSWER: green
+Correct slot: 4
+Addressed slot: 4
+Address correct: True
+ADDRESSED -> falcon | rank 2
+ORACLE    -> falcon | rank 2
+WRONG     -> falcon | rank 2
+NO MEMORY -> falcon | rank 3
+Completed 25/100
+Completed 50/100
+Completed 75/100
+Completed 100/100
+
+2-FACT RESULTS
+
+Valid episodes: 100
+Invalid episodes: 0
+Address slot accuracy: 100.00%
+
+Condition           16-way Acc         MRR     Mean Rank     Mean LogP
+ADDRESSED                5.00%      0.2088        8.4700    -12.340515
+ORACLE                   5.00%      0.2088        8.4700    -12.340515
+WRONG SLOT               5.00%      0.2073        8.5700    -12.408351
+NO MEMORY                5.00%      0.2031        8.5000    -13.413497
+
+========================================================================================================================
+4-FACT VALUE RETRIEVAL
+========================================================================================================================
+
+FACTS / ACTUAL SLOT ASSIGNMENTS
+ValueEntity-UBSPXN-74359       -> slot 1 | value=green
+ValueEntity-UQPOSD-10365       -> slot 4 | value=horse
+ValueEntity-ZLJAKI-21381       -> slot 0 | value=orange
+ValueEntity-DHWOUO-82320       -> slot 3 | value=garden
+
+QUERY RESULTS
+
+ENTITY: ValueEntity-UBSPXN-74359
+TRUE ANSWER: green
+Correct slot: 1
+Addressed slot: 1
+Address correct: True
+ADDRESSED -> falcon | rank 2
+ORACLE    -> falcon | rank 2
+WRONG     -> falcon | rank 4
+NO MEMORY -> falcon | rank 2
+
+ENTITY: ValueEntity-UQPOSD-10365
+TRUE ANSWER: horse
+Correct slot: 4
+Addressed slot: 4
+Address correct: True
+ADDRESSED -> falcon | rank 7
+ORACLE    -> falcon | rank 7
+WRONG     -> falcon | rank 7
+NO MEMORY -> falcon | rank 7
+
+ENTITY: ValueEntity-ZLJAKI-21381
+TRUE ANSWER: orange
+Correct slot: 0
+Addressed slot: 0
+Address correct: True
+ADDRESSED -> falcon | rank 6
+ORACLE    -> falcon | rank 6
+WRONG     -> falcon | rank 5
+NO MEMORY -> falcon | rank 5
+
+ENTITY: ValueEntity-DHWOUO-82320
+TRUE ANSWER: garden
+Correct slot: 3
+Addressed slot: 3
+Address correct: True
+ADDRESSED -> falcon | rank 15
+ORACLE    -> falcon | rank 15
+WRONG     -> falcon | rank 13
+NO MEMORY -> falcon | rank 15
+Completed 25/100
+Completed 50/100
+Completed 75/100
+Completed 100/100
+
+4-FACT RESULTS
+
+Valid episodes: 100
+Invalid episodes: 0
+Address slot accuracy: 100.00%
+
+Condition           16-way Acc         MRR     Mean Rank     Mean LogP
+ADDRESSED                6.50%      0.2197        8.4300     -9.250897
+ORACLE                   6.50%      0.2197        8.4300     -9.250897
+WRONG SLOT               6.75%      0.2155        8.5875     -7.390586
+NO MEMORY                6.50%      0.2188        8.4125    -13.244426
+
+========================================================================================================================
+8-FACT VALUE RETRIEVAL
+========================================================================================================================
+
+FACTS / ACTUAL SLOT ASSIGNMENTS
+ValueEntity-HOPDKS-07935       -> slot 1 | value=apple
+ValueEntity-WCXOHJ-43048       -> slot 4 | value=purple
+ValueEntity-GESNSR-29492       -> slot 0 | value=silver
+ValueEntity-KRPXNX-19861       -> slot 3 | value=garden
+ValueEntity-CJHMCH-85593       -> slot 5 | value=banana
+ValueEntity-OYDNPN-43016       -> slot 2 | value=piano
+ValueEntity-XQGIUV-57998       -> slot 7 | value=rabbit
+ValueEntity-LZAIDK-84416       -> slot 6 | value=lemon
+
+QUERY RESULTS
+
+ENTITY: ValueEntity-HOPDKS-07935
+TRUE ANSWER: apple
+Correct slot: 1
+Addressed slot: 1
+Address correct: True
+ADDRESSED -> falcon | rank 15
+ORACLE    -> falcon | rank 15
+WRONG     -> falcon | rank 14
+NO MEMORY -> falcon | rank 13
+
+ENTITY: ValueEntity-WCXOHJ-43048
+TRUE ANSWER: purple
+Correct slot: 4
+Addressed slot: 4
+Address correct: True
+ADDRESSED -> falcon | rank 6
+ORACLE    -> falcon | rank 6
+WRONG     -> silver | rank 5
+NO MEMORY -> falcon | rank 6
+
+ENTITY: ValueEntity-GESNSR-29492
+TRUE ANSWER: silver
+Correct slot: 0
+Addressed slot: 0
+Address correct: True
+ADDRESSED -> falcon | rank 4
+ORACLE    -> falcon | rank 4
+WRONG     -> falcon | rank 4
+NO MEMORY -> falcon | rank 4
+
+ENTITY: ValueEntity-KRPXNX-19861
+TRUE ANSWER: garden
+Correct slot: 3
+Addressed slot: 3
+Address correct: True
+ADDRESSED -> falcon | rank 15
+ORACLE    -> falcon | rank 15
+WRONG     -> falcon | rank 14
+NO MEMORY -> falcon | rank 14
+
+ENTITY: ValueEntity-CJHMCH-85593
+TRUE ANSWER: banana
+Correct slot: 5
+Addressed slot: 5
+Address correct: True
+ADDRESSED -> falcon | rank 11
+ORACLE    -> falcon | rank 11
+WRONG     -> falcon | rank 8
+NO MEMORY -> falcon | rank 15
+
+ENTITY: ValueEntity-OYDNPN-43016
+TRUE ANSWER: piano
+Correct slot: 2
+Addressed slot: 2
+Address correct: True
+ADDRESSED -> falcon | rank 8
+ORACLE    -> falcon | rank 8
+WRONG     -> green | rank 12
+NO MEMORY -> falcon | rank 8
+
+ENTITY: ValueEntity-XQGIUV-57998
+TRUE ANSWER: rabbit
+Correct slot: 7
+Addressed slot: 7
+Address correct: True
+ADDRESSED -> falcon | rank 12
+ORACLE    -> falcon | rank 12
+WRONG     -> falcon | rank 16
+NO MEMORY -> falcon | rank 13
+
+ENTITY: ValueEntity-LZAIDK-84416
+TRUE ANSWER: lemon
+Correct slot: 6
+Addressed slot: 6
+Address correct: True
+ADDRESSED -> falcon | rank 9
+ORACLE    -> falcon | rank 9
+WRONG     -> falcon | rank 10
+NO MEMORY -> falcon | rank 9
+Completed 25/100
+Completed 50/100
+Completed 75/100
+Completed 100/100
+
+8-FACT RESULTS
+
+Valid episodes: 100
+Invalid episodes: 0
+Address slot accuracy: 100.00%
+
+Condition           16-way Acc         MRR     Mean Rank     Mean LogP
+ADDRESSED                5.38%      0.2041        8.6250    -10.497451
+ORACLE                   5.38%      0.2041        8.6250    -10.497451
+WRONG SLOT               5.50%      0.2004        8.7037     -6.782462
+NO MEMORY                5.38%      0.2008        8.6662    -13.425138
+
+========================================================================================================================
+FINAL 16-WAY ANSWER ACCURACY
+========================================================================================================================
+Facts          Address     Addressed      Oracle       Wrong       NoMem      Chance
+2              100.00%         5.00%       5.00%       5.00%       5.00%       6.25%
+4              100.00%         6.50%       6.50%       6.75%       6.50%       6.25%
+8              100.00%         5.38%       5.38%       5.50%       5.38%       6.25%
+
+========================================================================================================================
+MEMORY VALUE EFFECT
+========================================================================================================================
+
+2 facts
+Addressed - NoMem: +0.00 points
+Oracle - NoMem: +0.00 points
+Oracle - Wrong: +0.00 points
+
+4 facts
+Addressed - NoMem: +0.00 points
+Oracle - NoMem: +0.00 points
+Oracle - Wrong: -0.25 points
+
+8 facts
+Addressed - NoMem: +0.00 points
+Oracle - NoMem: +0.00 points
+Oracle - Wrong: -0.13 points
+
+========================================================================================================================
+AUTOMATIC DIAGNOSIS
+========================================================================================================================
+Mean addressed accuracy: 5.62%
+Mean oracle accuracy: 5.62%
+Mean wrong-slot accuracy: 5.75%
+Mean no-memory accuracy: 5.62%
+
+RESULT: CORRECT SLOT DOES NOT YET PRODUCE THE CORRECT ANSWER.
+
+Addressing works, but the current memory VALUE representation/read-fusion path is still insufficient.
+
+NEXT STEP:
+Inspect the value written into each slot and redesign the value representation before changing addressing.
+
+========================================================================================================================
+EXPERIMENT COMPLETE
+========================================================================================================================
+No parameters were trained.
+No source files were modified.
+No checkpoints were overwritten.

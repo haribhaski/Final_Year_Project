@@ -1,0 +1,374 @@
+==========================================================================================
+FORCED-SLOT LATENT VALUE TRAINING
+==========================================================================================
+Device: cuda
+Starting checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Forced slot: 0
+
+NO FILE UNDER models/ WILL BE MODIFIED.
+
+Single-token answers:
+  amber        token_id=36505
+  frost        token_id=21682
+  harbor       token_id=25451
+  maple        token_id=31377
+  olive        token_id=19450
+  pearl        token_id=43836
+  rose         token_id=8278
+  silver       token_id=8465
+  stone        token_id=7815
+  violet       token_id=45725
+  cloud        token_id=6279
+  river        token_id=7850
+  ocean        token_id=9151
+
+Total answer classes: 13
+
+Train: 2000
+Validation: 400
+Test: 400
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5529.98it/s]
+
+==========================================================================================
+TRAINABLE PARAMETERS
+==========================================================================================
+memory_bank.layer_norm.weight                                                  768
+memory_bank.layer_norm.bias                                                    768
+write_gate_module.input_norm.weight                                            768
+write_gate_module.input_norm.bias                                              768
+write_gate_module.network.0.weight                                         294,912
+write_gate_module.network.0.bias                                               384
+write_gate_module.network.3.weight                                           3,072
+write_gate_module.network.3.bias                                                 8
+writer.slot_embeddings                                                       6,144
+writer.residual_scale                                                            1
+writer.summary_norm.weight                                                     768
+writer.summary_norm.bias                                                       768
+writer.memory_norm.weight                                                      768
+writer.memory_norm.bias                                                        768
+writer.output_norm.weight                                                      768
+writer.output_norm.bias                                                        768
+writer.mlp_writer.0.weight                                               3,538,944
+writer.mlp_writer.0.bias                                                     1,536
+writer.mlp_writer.3.weight                                               1,179,648
+writer.mlp_writer.3.bias                                                       768
+writer.gru_input_projection.weight                                       1,179,648
+writer.gru_input_projection.bias                                               768
+writer.gru_cell.weight_ih                                                1,769,472
+writer.gru_cell.weight_hh                                                1,769,472
+writer.gru_cell.bias_ih                                                      2,304
+writer.gru_cell.bias_hh                                                      2,304
+writer.residual_writer.0.weight                                          3,538,944
+writer.residual_writer.0.bias                                                1,536
+writer.residual_writer.3.weight                                          1,179,648
+writer.residual_writer.3.bias                                                  768
+writer.cross_attention.in_proj_weight                                    1,769,472
+writer.cross_attention.in_proj_bias                                          2,304
+writer.cross_attention.out_proj.weight                                     589,824
+writer.cross_attention.out_proj.bias                                           768
+writer.attention_fusion.0.weight                                         3,538,944
+writer.attention_fusion.0.bias                                               1,536
+writer.attention_fusion.3.weight                                         1,179,648
+writer.attention_fusion.3.bias                                                 768
+writer.query_projection.weight                                             589,824
+writer.query_projection.bias                                                   768
+writer.slot_projection.weight                                              589,824
+writer.slot_projection.bias                                                    768
+orthogonalizer.learned_basis                                                 3,072
+reader.learned_query                                                           768
+reader.residual_scale                                                            1
+reader.query_norm.weight                                                       768
+reader.query_norm.bias                                                         768
+reader.memory_norm.weight                                                      768
+reader.memory_norm.bias                                                        768
+reader.output_norm.weight                                                      768
+reader.output_norm.bias                                                        768
+reader.query_projection.weight                                             589,824
+reader.key_projection.weight                                               589,824
+reader.value_projection.weight                                             589,824
+reader.output_projection.weight                                            589,824
+reader.summary_projection.weight                                           589,824
+reader.summary_projection.bias                                                 768
+reader.query_combiner.0.weight                                           1,769,472
+reader.query_combiner.0.bias                                                   768
+reader.query_combiner.3.weight                                             589,824
+reader.query_combiner.3.bias                                                   768
+reader.fusion_gate.0.weight                                              1,179,648
+reader.fusion_gate.0.bias                                                      768
+reader.fusion_gate.2.weight                                                589,824
+reader.fusion_gate.2.bias                                                      768
+reader.concat_fusion.0.weight                                            1,179,648
+reader.concat_fusion.0.bias                                                    768
+reader.concat_fusion.3.weight                                              589,824
+reader.concat_fusion.3.bias                                                    768
+reader.confidence_projection.0.weight                                      294,912
+reader.confidence_projection.0.bias                                            384
+reader.confidence_projection.2.weight                                          384
+reader.confidence_projection.2.bias                                              1
+write_confidence_head.0.weight                                                 768
+write_confidence_head.0.bias                                                   768
+write_confidence_head.1.weight                                                 768
+write_confidence_head.1.bias                                                     1
+------------------------------------------------------------------------------------------
+Total parameters:     157,833,236
+Trainable parameters: 31,901,580
+Trainable percentage: 20.2122%
+
+==========================================================================================
+PRE-TRAIN VALIDATION
+==========================================================================================
+
+==========================================================================================
+PRE-TRAIN VALIDATION RESULTS
+==========================================================================================
+Condition                    Accuracy       Correct      Mean NLL
+-------------------------------------------------------------------
+EMPTY_MEMORY                   25.50%      102       10.0858
+MATCHED_MEMORY                 25.25%      101        9.9609
+MISMATCHED_MEMORY              25.25%      101        9.9609
+RAW_TEXT                       98.75%      395        8.4849
+
+Matched - Empty:      -0.25 pp
+Matched - Mismatched: +0.00 pp
+Mean mismatched NLL - matched NLL: +0.000007
+
+FORCED SLOT VALUE VECTORS
+  mean_norm                27.659355
+  mean_pairwise_l2         0.039196
+  relative_l2              0.001417
+  mean_pairwise_cosine     0.999998
+
+FORCED SLOT WRITE DELTAS
+  mean_norm                2.099200
+  mean_pairwise_l2         0.038146
+  relative_l2              0.018172
+  mean_pairwise_cosine     0.999730
+
+==========================================================================================
+EPOCH 1/5
+==========================================================================================
+Train loss:          6.1109
+Train full-vocab acc: 4.15%
+Mean grad norm:      30.2984
+
+==========================================================================================
+VALIDATION AFTER EPOCH 1
+==========================================================================================
+Condition                    Accuracy       Correct      Mean NLL
+-------------------------------------------------------------------
+EMPTY_MEMORY                   25.75%      103        5.3464
+MATCHED_MEMORY                 27.25%      109        5.3493
+MISMATCHED_MEMORY              27.25%      109        5.3494
+RAW_TEXT                       98.75%      395        8.4849
+
+Matched - Empty:      +1.50 pp
+Matched - Mismatched: +0.00 pp
+Mean mismatched NLL - matched NLL: +0.000138
+
+FORCED SLOT VALUE VECTORS
+  mean_norm                27.663113
+  mean_pairwise_l2         0.096169
+  relative_l2              0.003476
+  mean_pairwise_cosine     0.999989
+
+FORCED SLOT WRITE DELTAS
+  mean_norm                2.763826
+  mean_pairwise_l2         0.094704
+  relative_l2              0.034265
+  mean_pairwise_cosine     0.998884
+
+Checkpoint selection score: 27.2500
+Saved: outputs/forced_slot_value_training/checkpoint_best.pt
+Saved: outputs/forced_slot_value_training/checkpoint_epoch_1.pt
+
+==========================================================================================
+EPOCH 2/5
+==========================================================================================
+Train loss:          5.3118
+Train full-vocab acc: 4.80%
+Mean grad norm:      29.3010
+
+==========================================================================================
+VALIDATION AFTER EPOCH 2
+==========================================================================================
+Condition                    Accuracy       Correct      Mean NLL
+-------------------------------------------------------------------
+EMPTY_MEMORY                   26.50%      106        4.9009
+MATCHED_MEMORY                 26.50%      106        4.8991
+MISMATCHED_MEMORY              26.50%      106        4.8992
+RAW_TEXT                       98.75%      395        8.4849
+
+Matched - Empty:      +0.00 pp
+Matched - Mismatched: +0.00 pp
+Mean mismatched NLL - matched NLL: +0.000136
+
+FORCED SLOT VALUE VECTORS
+  mean_norm                27.660406
+  mean_pairwise_l2         0.063810
+  relative_l2              0.002307
+  mean_pairwise_cosine     0.999995
+
+FORCED SLOT WRITE DELTAS
+  mean_norm                2.342561
+  mean_pairwise_l2         0.063224
+  relative_l2              0.026989
+  mean_pairwise_cosine     0.999363
+
+Checkpoint selection score: 26.5000
+Saved: outputs/forced_slot_value_training/checkpoint_epoch_2.pt
+
+==========================================================================================
+EPOCH 3/5
+==========================================================================================
+Train loss:          4.8448
+Train full-vocab acc: 4.60%
+Mean grad norm:      26.9312
+
+==========================================================================================
+VALIDATION AFTER EPOCH 3
+==========================================================================================
+Condition                    Accuracy       Correct      Mean NLL
+-------------------------------------------------------------------
+EMPTY_MEMORY                   27.50%      110        4.4304
+MATCHED_MEMORY                 26.25%      105        4.4281
+MISMATCHED_MEMORY              26.25%      105        4.4283
+RAW_TEXT                       98.75%      395        8.4849
+
+Matched - Empty:      -1.25 pp
+Matched - Mismatched: +0.00 pp
+Mean mismatched NLL - matched NLL: +0.000160
+
+FORCED SLOT VALUE VECTORS
+  mean_norm                27.658115
+  mean_pairwise_l2         0.054699
+  relative_l2              0.001978
+  mean_pairwise_cosine     0.999997
+
+FORCED SLOT WRITE DELTAS
+  mean_norm                2.354222
+  mean_pairwise_l2         0.054157
+  relative_l2              0.023004
+  mean_pairwise_cosine     0.999595
+
+Checkpoint selection score: 26.2500
+Saved: outputs/forced_slot_value_training/checkpoint_epoch_3.pt
+
+==========================================================================================
+EPOCH 4/5
+==========================================================================================
+Train loss:          4.3883
+Train full-vocab acc: 6.90%
+Mean grad norm:      23.8251
+
+==========================================================================================
+VALIDATION AFTER EPOCH 4
+==========================================================================================
+Condition                    Accuracy       Correct      Mean NLL
+-------------------------------------------------------------------
+EMPTY_MEMORY                   26.50%      106        4.0775
+MATCHED_MEMORY                 26.00%      104        4.0801
+MISMATCHED_MEMORY              26.00%      104        4.0803
+RAW_TEXT                       98.75%      395        8.4849
+
+Matched - Empty:      -0.50 pp
+Matched - Mismatched: +0.00 pp
+Mean mismatched NLL - matched NLL: +0.000211
+
+FORCED SLOT VALUE VECTORS
+  mean_norm                27.656469
+  mean_pairwise_l2         0.053567
+  relative_l2              0.001937
+  mean_pairwise_cosine     0.999997
+
+FORCED SLOT WRITE DELTAS
+  mean_norm                2.584042
+  mean_pairwise_l2         0.052867
+  relative_l2              0.020459
+  mean_pairwise_cosine     0.999745
+
+Checkpoint selection score: 26.0000
+Saved: outputs/forced_slot_value_training/checkpoint_epoch_4.pt
+
+==========================================================================================
+EPOCH 5/5
+==========================================================================================
+Train loss:          3.9933
+Train full-vocab acc: 7.85%
+Mean grad norm:      20.6000
+
+==========================================================================================
+VALIDATION AFTER EPOCH 5
+==========================================================================================
+Condition                    Accuracy       Correct      Mean NLL
+-------------------------------------------------------------------
+EMPTY_MEMORY                   26.50%      106        3.6683
+MATCHED_MEMORY                 26.75%      107        3.6708
+MISMATCHED_MEMORY              26.75%      107        3.6712
+RAW_TEXT                       98.75%      395        8.4849
+
+Matched - Empty:      +0.25 pp
+Matched - Mismatched: +0.00 pp
+Mean mismatched NLL - matched NLL: +0.000315
+
+FORCED SLOT VALUE VECTORS
+  mean_norm                27.654699
+  mean_pairwise_l2         0.056267
+  relative_l2              0.002035
+  mean_pairwise_cosine     0.999997
+
+FORCED SLOT WRITE DELTAS
+  mean_norm                2.820697
+  mean_pairwise_l2         0.055838
+  relative_l2              0.019796
+  mean_pairwise_cosine     0.999842
+
+Checkpoint selection score: 26.7500
+Saved: outputs/forced_slot_value_training/checkpoint_epoch_5.pt
+
+==========================================================================================
+LOADING BEST EPOCH: 1
+==========================================================================================
+
+==========================================================================================
+FINAL HELD-OUT TEST
+==========================================================================================
+Condition                    Accuracy       Correct      Mean NLL
+-------------------------------------------------------------------
+EMPTY_MEMORY                   26.50%      106        5.3706
+MATCHED_MEMORY                 26.75%      107        5.3752
+MISMATCHED_MEMORY              26.75%      107        5.3753
+RAW_TEXT                       97.75%      391        8.5652
+
+Matched - Empty:      +0.25 pp
+Matched - Mismatched: +0.00 pp
+Mean mismatched NLL - matched NLL: +0.000097
+
+FORCED SLOT VALUE VECTORS
+  mean_norm                27.663111
+  mean_pairwise_l2         0.095533
+  relative_l2              0.003453
+  mean_pairwise_cosine     0.999989
+
+FORCED SLOT WRITE DELTAS
+  mean_norm                2.762050
+  mean_pairwise_l2         0.094471
+  relative_l2              0.034203
+  mean_pairwise_cosine     0.998884
+
+==========================================================================================
+FINAL DIAGNOSTIC
+==========================================================================================
+EMPTY_MEMORY:      26.50%
+MATCHED_MEMORY:    26.75%
+MISMATCHED_MEMORY: 26.75%
+RAW_TEXT:          97.75%
+
+Matched - Empty:      +0.25 pp
+Matched - Mismatched: +0.00 pp
+
+FAIL: even after direct forced-slot training, matched memory does not meaningfully outperform mismatched memory. The writer/value/fusion design needs architectural revision.
+
+This experiment intentionally bypasses slot selection. It does NOT evaluate E5, the router, or long-range retrieval.
+
+Saved results: outputs/forced_slot_value_training/forced_slot_value_results.json
+Best checkpoint: outputs/forced_slot_value_training/checkpoint_best.pt

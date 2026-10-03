@@ -1,0 +1,775 @@
+==========================================================================================
+LEVEL-2 WRITE GATE EXPERIMENT
+==========================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+Gate mode: FROZEN FROM CHECKPOINT
+
+CURRENT LADDER:
+  Level 0: Linear VALUE                    PASS
+  Level 1: + MemoryBank                    PASS
+  Level 2: + ORIGINAL learned write gate   NOW
+
+Still disabled:
+  - CandidateWriter
+  - OrthogonalUpdate
+  - Router
+  - Original MemoryReader
+  - E5
+
+Chance accuracy: 7.69%
+Chance CE: 2.5649
+Loading original model/checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5291.41it/s]
+
+Hidden size: 768
+Memory normalization: layernorm
+Forced slot: 0
+
+==========================================================================================
+PRECOMPUTING TRAIN
+==========================================================================================
+  4000/4000
+
+==========================================================================================
+PRECOMPUTING VALIDATION
+==========================================================================================
+  500/500
+
+==========================================================================================
+PRECOMPUTING TEST
+==========================================================================================
+  500/500
+
+Trainable parameters: 2,373,901
+Gate trainable: False
+
+==========================================================================================
+PRE-TRAIN VALIDATION
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                        9.60%        2.5811
+MISMATCHED                     9.60%        2.5811
+QUERY_ONLY                     7.60%        2.5722
+
+Matched - mismatched accuracy: +0.00 pp
+Mismatched NLL - matched NLL:   -0.000042
+Positive-gap examples:          41.40%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               15.654540
+  mean_pairwise_l2        1.597707
+  relative_l2             0.102060
+  mean_pairwise_cosine    0.994371
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657673
+  mean_pairwise_l2        0.122270
+  relative_l2             0.004421
+  mean_pairwise_cosine    0.999989
+
+==========================================================================================
+EPOCH 1/15
+==========================================================================================
+Train loss: 2.8417
+Train matched CE: 2.5950
+Train rank loss: 0.4935
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 1
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                        6.60%        2.5619
+MISMATCHED                     6.60%        2.5759
+QUERY_ONLY                     7.60%        2.5719
+
+Matched - mismatched accuracy: +0.00 pp
+Mismatched NLL - matched NLL:   +0.013964
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               16.094667
+  mean_pairwise_l2        3.136142
+  relative_l2             0.194856
+  mean_pairwise_cosine    0.978891
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657717
+  mean_pairwise_l2        0.239895
+  relative_l2             0.008674
+  mean_pairwise_cosine    0.999958
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 2/15
+==========================================================================================
+Train loss: 2.7966
+Train matched CE: 2.5588
+Train rank loss: 0.4756
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 2
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                        6.60%        2.5541
+MISMATCHED                     6.60%        2.5989
+QUERY_ONLY                     7.60%        2.5722
+
+Matched - mismatched accuracy: +0.00 pp
+Mismatched NLL - matched NLL:   +0.044861
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               16.835760
+  mean_pairwise_l2        5.884889
+  relative_l2             0.349547
+  mean_pairwise_cosine    0.931728
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657749
+  mean_pairwise_l2        0.451763
+  relative_l2             0.016334
+  mean_pairwise_cosine    0.999846
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 3/15
+==========================================================================================
+Train loss: 2.6921
+Train matched CE: 2.4929
+Train rank loss: 0.3985
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 3
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                       34.40%        2.3728
+MISMATCHED                     4.40%        2.6125
+QUERY_ONLY                     7.60%        2.5746
+
+Matched - mismatched accuracy: +30.00 pp
+Mismatched NLL - matched NLL:   +0.239737
+Positive-gap examples:          99.40%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               19.682640
+  mean_pairwise_l2        10.136123
+  relative_l2             0.514978
+  mean_pairwise_cosine    0.853809
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657726
+  mean_pairwise_l2        0.790056
+  relative_l2             0.028565
+  mean_pairwise_cosine    0.999514
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 4/15
+==========================================================================================
+Train loss: 2.3065
+Train matched CE: 2.2154
+Train rank loss: 0.1822
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 4
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                       25.00%        1.9924
+MISMATCHED                     6.20%        2.9078
+QUERY_ONLY                     7.60%        2.5824
+
+Matched - mismatched accuracy: +18.80 pp
+Mismatched NLL - matched NLL:   +0.915390
+Positive-gap examples:          99.20%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               29.367184
+  mean_pairwise_l2        15.660182
+  relative_l2             0.533254
+  mean_pairwise_cosine    0.842989
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657703
+  mean_pairwise_l2        1.265478
+  relative_l2             0.045755
+  mean_pairwise_cosine    0.998739
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 5/15
+==========================================================================================
+Train loss: 1.7173
+Train matched CE: 1.6957
+Train rank loss: 0.0432
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 5
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                       76.00%        1.3660
+MISMATCHED                     1.80%        3.5244
+QUERY_ONLY                     7.60%        2.5899
+
+Matched - mismatched accuracy: +74.20 pp
+Mismatched NLL - matched NLL:   +2.158448
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               45.073963
+  mean_pairwise_l2        20.589270
+  relative_l2             0.456789
+  mean_pairwise_cosine    0.883807
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657656
+  mean_pairwise_l2        1.750130
+  relative_l2             0.063278
+  mean_pairwise_cosine    0.997597
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 6/15
+==========================================================================================
+Train loss: 1.1483
+Train matched CE: 1.1430
+Train rank loss: 0.0105
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 6
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                       72.80%        0.9259
+MISMATCHED                     2.60%        4.6863
+QUERY_ONLY                     7.60%        2.5981
+
+Matched - mismatched accuracy: +70.20 pp
+Mismatched NLL - matched NLL:   +3.760384
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               63.325748
+  mean_pairwise_l2        24.468630
+  relative_l2             0.386393
+  mean_pairwise_cosine    0.917073
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657566
+  mean_pairwise_l2        2.205491
+  relative_l2             0.079743
+  mean_pairwise_cosine    0.996236
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 7/15
+==========================================================================================
+Train loss: 0.7126
+Train matched CE: 0.7122
+Train rank loss: 0.0008
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 7
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                       96.60%        0.5160
+MISMATCHED                     0.60%        5.9864
+QUERY_ONLY                     7.60%        2.6120
+
+Matched - mismatched accuracy: +96.00 pp
+Mismatched NLL - matched NLL:   +5.470313
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               82.081985
+  mean_pairwise_l2        27.383638
+  relative_l2             0.333613
+  mean_pairwise_cosine    0.938698
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657482
+  mean_pairwise_l2        2.628862
+  relative_l2             0.095051
+  mean_pairwise_cosine    0.994729
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 8/15
+==========================================================================================
+Train loss: 0.3921
+Train matched CE: 0.3920
+Train rank loss: 0.0001
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 8
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.2441
+MISMATCHED                     0.00%        7.3940
+QUERY_ONLY                     7.60%        2.6315
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +7.149954
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               99.654366
+  mean_pairwise_l2        29.511602
+  relative_l2             0.296140
+  mean_pairwise_cosine    0.952071
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657387
+  mean_pairwise_l2        3.016388
+  relative_l2             0.109063
+  mean_pairwise_cosine    0.993130
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 9/15
+==========================================================================================
+Train loss: 0.2026
+Train matched CE: 0.2026
+Train rank loss: 0.0000
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 9
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.1225
+MISMATCHED                     0.00%        8.8087
+QUERY_ONLY                     7.60%        2.6452
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +8.686210
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               114.996300
+  mean_pairwise_l2        30.990032
+  relative_l2             0.269487
+  mean_pairwise_cosine    0.960537
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657305
+  mean_pairwise_l2        3.356136
+  relative_l2             0.121347
+  mean_pairwise_cosine    0.991547
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 10/15
+==========================================================================================
+Train loss: 0.1042
+Train matched CE: 0.1042
+Train rank loss: 0.0000
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 10
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.0651
+MISMATCHED                     0.00%       10.0235
+QUERY_ONLY                     7.60%        2.6632
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +9.958431
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               127.158127
+  mean_pairwise_l2        31.967585
+  relative_l2             0.251400
+  mean_pairwise_cosine    0.965762
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657223
+  mean_pairwise_l2        3.633335
+  relative_l2             0.131370
+  mean_pairwise_cosine    0.990128
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 11/15
+==========================================================================================
+Train loss: 0.0576
+Train matched CE: 0.0576
+Train rank loss: 0.0000
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 11
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.0416
+MISMATCHED                     0.00%       11.0137
+QUERY_ONLY                     8.00%        2.6737
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +10.972104
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               136.580811
+  mean_pairwise_l2        32.615757
+  relative_l2             0.238802
+  mean_pairwise_cosine    0.969181
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657156
+  mean_pairwise_l2        3.854672
+  relative_l2             0.139373
+  mean_pairwise_cosine    0.988911
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 12/15
+==========================================================================================
+Train loss: 0.0358
+Train matched CE: 0.0358
+Train rank loss: 0.0000
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 12
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.0278
+MISMATCHED                     0.00%       11.8249
+QUERY_ONLY                     6.40%        2.6824
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +11.797133
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               144.045090
+  mean_pairwise_l2        33.076099
+  relative_l2             0.229623
+  mean_pairwise_cosine    0.971555
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657101
+  mean_pairwise_l2        4.036247
+  relative_l2             0.145939
+  mean_pairwise_cosine    0.987858
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 13/15
+==========================================================================================
+Train loss: 0.0240
+Train matched CE: 0.0240
+Train rank loss: 0.0000
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 13
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.0203
+MISMATCHED                     0.00%       12.4996
+QUERY_ONLY                     6.40%        2.6902
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +12.479305
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               150.082840
+  mean_pairwise_l2        33.416412
+  relative_l2             0.222653
+  mean_pairwise_cosine    0.973292
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657051
+  mean_pairwise_l2        4.188046
+  relative_l2             0.151428
+  mean_pairwise_cosine    0.986940
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 14/15
+==========================================================================================
+Train loss: 0.0171
+Train matched CE: 0.0171
+Train rank loss: 0.0000
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 14
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.0146
+MISMATCHED                     0.00%       13.0657
+QUERY_ONLY                     6.40%        2.6965
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +13.051114
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               155.101746
+  mean_pairwise_l2        33.679680
+  relative_l2             0.217146
+  mean_pairwise_cosine    0.974622
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.657007
+  mean_pairwise_l2        4.317976
+  relative_l2             0.156126
+  mean_pairwise_cosine    0.986127
+Saved new best checkpoint.
+
+==========================================================================================
+EPOCH 15/15
+==========================================================================================
+Train loss: 0.0129
+Train matched CE: 0.0129
+Train rank loss: 0.0000
+Train gate mean: 0.070257
+Train gate std: 0.000151
+
+==========================================================================================
+VALIDATION EPOCH 15
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.0115
+MISMATCHED                     0.00%       13.5733
+QUERY_ONLY                     6.40%        2.7013
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +13.561708
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070394
+  std                     0.000093
+  min                     0.070161
+  max                     0.070617
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               159.444748
+  mean_pairwise_l2        33.896320
+  relative_l2             0.212590
+  mean_pairwise_cosine    0.975699
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.656975
+  mean_pairwise_l2        4.433708
+  relative_l2             0.160311
+  mean_pairwise_cosine    0.985382
+Saved new best checkpoint.
+
+==========================================================================================
+LOADING BEST EPOCH 15
+==========================================================================================
+
+==========================================================================================
+FINAL HELD-OUT TEST
+==========================================================================================
+Condition                   Accuracy          Loss
+--------------------------------------------------
+MATCHED                      100.00%        0.0123
+MISMATCHED                     0.00%       13.2327
+QUERY_ONLY                     7.80%        2.6517
+
+Matched - mismatched accuracy: +100.00 pp
+Mismatched NLL - matched NLL:   +13.220391
+Positive-gap examples:          100.00%
+
+WRITE GATE
+  mean                    0.070318
+  std                     0.000081
+  min                     0.070093
+  max                     0.070501
+  fraction_lt_0.01        0.000000
+  fraction_lt_0.05        0.000000
+
+RAW VALUE BEFORE GATING/MEMORY BANK
+  mean_norm               158.941986
+  mean_pairwise_l2        33.424770
+  relative_l2             0.210295
+  mean_pairwise_cosine    0.976401
+
+STORED VALUE AFTER GATING/MEMORY BANK
+  mean_norm               27.656992
+  mean_pairwise_l2        4.355412
+  relative_l2             0.157480
+  mean_pairwise_cosine    0.985943
+
+==========================================================================================
+LEVEL-2 VERDICT
+==========================================================================================
+MATCHED:       100.00%
+MISMATCHED:    0.00%
+QUERY ONLY:    7.80%
+NLL GAP:       +13.220391
+GATE MEAN:     0.070318
+
+PASS: the learned write-gate mechanism preserves usable fact-specific VALUE.
+Proceed to Level 3: add OrthogonalUpdate.
+
+Saved results: outputs/level2_write_gate_frozen/level2_results.json
+Best checkpoint: outputs/level2_write_gate_frozen/checkpoint_best.pt

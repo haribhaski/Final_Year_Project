@@ -1,0 +1,30 @@
+[
+  {
+    "distance": 0,
+    "examples": 20,
+    "plain_accuracy": 0.2,
+    "reset_accuracy": 0.2,
+    "persistent_accuracy": 0.2
+  },
+  {
+    "distance": 1,
+    "examples": 20,
+    "plain_accuracy": 0.2,
+    "reset_accuracy": 0.2,
+    "persistent_accuracy": 0.2
+  },
+  {
+    "distance": 2,
+    "examples": 20,
+    "plain_accuracy": 0.3,
+    "reset_accuracy": 0.25,
+    "persistent_accuracy": 0.25
+  },
+  {
+    "distance": 4,
+    "examples": 20,
+    "plain_accuracy": 0.3,
+    "reset_accuracy": 0.3,
+    "persistent_accuracy": 0.3
+  }
+]

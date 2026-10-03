@@ -1,0 +1,204 @@
+
+Loading model...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 2100.99it/s]
+
+BEFORE TRAINING
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=6.0738 | river=5.2799 | prediction=river
+B | correct=river   | rabbit=6.0344 | river=5.4035 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.98538691
+A/B L2 difference: 13.36873436
+A/B relative diff: 0.17095667
+
+===========================================================================
+TRAINING TWO FACTS
+===========================================================================
+
+STEP 001 | loss=5.832490
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=5.7353 | river=5.0557 | prediction=river
+B | correct=river   | rabbit=5.7072 | river=5.1559 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.98687339
+A/B L2 difference: 12.67054081
+A/B relative diff: 0.16202847
+
+STEP 025 | loss=1.550375
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.9441 | river=2.0493 | prediction=rabbit
+B | correct=river   | rabbit=1.0415 | river=1.9124 | prediction=rabbit
+
+MEMORY DIFFERENCE
+A/B cosine:        0.97942996
+A/B L2 difference: 15.86067581
+A/B relative diff: 0.20283264
+
+STEP 050 | loss=1.173260
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.8785 | river=0.9665 | prediction=rabbit
+B | correct=river   | rabbit=0.9818 | river=0.8814 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.98731911
+A/B L2 difference: 12.45313263
+A/B relative diff: 0.15925487
+
+STEP 075 | loss=0.990267
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.6637 | river=1.1007 | prediction=rabbit
+B | correct=river   | rabbit=0.7194 | river=1.0322 | prediction=rabbit
+
+MEMORY DIFFERENCE
+A/B cosine:        0.99044305
+A/B L2 difference: 10.81102276
+A/B relative diff: 0.13825414
+
+STEP 100 | loss=0.878680
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.5485 | river=1.2207 | prediction=rabbit
+B | correct=river   | rabbit=0.6897 | river=1.0170 | prediction=rabbit
+
+MEMORY DIFFERENCE
+A/B cosine:        0.98391026
+A/B L2 difference: 14.02741241
+A/B relative diff: 0.17938794
+
+STEP 125 | loss=0.682307
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.6146 | river=1.0782 | prediction=rabbit
+B | correct=river   | rabbit=1.3870 | river=0.5610 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.96566010
+A/B L2 difference: 20.49185181
+A/B relative diff: 0.26206790
+
+STEP 150 | loss=0.452422
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.3368 | river=1.6486 | prediction=rabbit
+B | correct=river   | rabbit=3.7632 | river=0.2660 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.92835379
+A/B L2 difference: 29.59739113
+A/B relative diff: 0.37855168
+
+STEP 175 | loss=0.175432
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.0317 | river=5.6500 | prediction=rabbit
+B | correct=river   | rabbit=6.4922 | river=0.0606 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.84691399
+A/B L2 difference: 43.26345825
+A/B relative diff: 0.55334807
+
+STEP 200 | loss=0.051948
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.0143 | river=7.1655 | prediction=rabbit
+B | correct=river   | rabbit=8.9102 | river=0.0392 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.87952369
+A/B L2 difference: 38.37923050
+A/B relative diff: 0.49088431
+
+STEP 225 | loss=0.014662
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.0023 | river=13.9853 | prediction=rabbit
+B | correct=river   | rabbit=11.7387 | river=0.0132 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.81713355
+A/B L2 difference: 47.28607178
+A/B relative diff: 0.60476763
+
+STEP 250 | loss=0.007398
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.0012 | river=15.9807 | prediction=rabbit
+B | correct=river   | rabbit=14.5706 | river=0.0170 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.85015160
+A/B L2 difference: 42.80371094
+A/B relative diff: 0.54744201
+
+STEP 275 | loss=0.007413
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.0010 | river=16.2170 | prediction=rabbit
+B | correct=river   | rabbit=15.3770 | river=0.0078 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.82735801
+A/B L2 difference: 45.94339752
+A/B relative diff: 0.58763000
+
+STEP 300 | loss=0.004643
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.0007 | river=17.4059 | prediction=rabbit
+B | correct=river   | rabbit=17.1173 | river=0.0066 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.81443661
+A/B L2 difference: 47.63241196
+A/B relative diff: 0.60922956
+
+===========================================================================
+FINAL RESULT
+===========================================================================
+
+===========================================================================
+EVALUATION
+===========================================================================
+A | correct=rabbit  | rabbit=0.0007 | river=17.4059 | prediction=rabbit
+B | correct=river   | rabbit=17.1173 | river=0.0066 | prediction=river
+
+MEMORY DIFFERENCE
+A/B cosine:        0.81443661
+A/B L2 difference: 47.63241196
+A/B relative diff: 0.60922956

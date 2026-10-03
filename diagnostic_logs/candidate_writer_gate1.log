@@ -1,0 +1,130 @@
+==========================================================================================
+CANDIDATE WRITER + FORCE GATE = 1
+==========================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+Pipeline:
+GPT2 token states + masked mean
+  -> TRAINABLE CandidateWriter
+  -> frozen OrthogonalUpdate
+  -> WRITE GATE = 1.0
+  -> frozen MemoryBank
+  -> trainable simple reader
+
+Router: forced slot 0
+Original MemoryReader: disabled
+
+Classes: 13
+Chance accuracy: 7.69%
+Chance CE: 2.5649
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5266.23it/s]
+
+Precomputing train...
+  4000/4000
+
+Precomputing validation...
+  500/500
+
+Precomputing test...
+  500/500
+
+Writer trainable params: 22,440,961
+Reader trainable params: 1,781,773
+MemoryBank trainable: False
+Orthogonalizer trainable: False
+
+==========================================================================================
+PRETRAIN VALIDATION
+==========================================================================================
+Matched:       8.80%
+Mismatched:    8.80%
+NLL gap:       -0.000245
+Writer relL2:  0.017285
+Stored relL2:  0.018263
+
+EPOCH 01 | loss=2.8512 | match=7.00% | mismatch=7.00% | query=7.60% | gap=+0.0007 | writer_relL2=0.0128 | stored_relL2=0.0134
+Saved best checkpoint.
+
+EPOCH 02 | loss=2.8055 | match=12.80% | mismatch=7.00% | query=7.60% | gap=+0.1221 | writer_relL2=0.2695 | stored_relL2=0.2752
+Saved best checkpoint.
+
+EPOCH 03 | loss=1.8672 | match=31.60% | mismatch=5.20% | query=7.60% | gap=+2.9355 | writer_relL2=0.9146 | stored_relL2=0.9293
+Saved best checkpoint.
+
+EPOCH 04 | loss=0.7742 | match=42.40% | mismatch=4.00% | query=6.40% | gap=+5.3457 | writer_relL2=1.0312 | stored_relL2=1.0498
+Saved best checkpoint.
+
+EPOCH 05 | loss=0.2187 | match=46.80% | mismatch=4.00% | query=6.40% | gap=+6.1178 | writer_relL2=1.0636 | stored_relL2=1.0743
+Saved best checkpoint.
+
+EPOCH 06 | loss=0.1025 | match=52.20% | mismatch=3.80% | query=6.20% | gap=+6.9409 | writer_relL2=1.0753 | stored_relL2=1.0853
+Saved best checkpoint.
+
+EPOCH 07 | loss=0.0097 | match=51.60% | mismatch=3.80% | query=7.20% | gap=+8.2344 | writer_relL2=1.0997 | stored_relL2=1.1107
+Saved best checkpoint.
+
+EPOCH 08 | loss=0.0019 | match=53.40% | mismatch=3.40% | query=7.20% | gap=+8.9180 | writer_relL2=1.1174 | stored_relL2=1.1280
+Saved best checkpoint.
+
+EPOCH 09 | loss=0.0011 | match=46.60% | mismatch=3.60% | query=7.20% | gap=+8.4566 | writer_relL2=1.0823 | stored_relL2=1.0943
+
+EPOCH 10 | loss=0.0009 | match=50.40% | mismatch=4.00% | query=7.20% | gap=+8.9494 | writer_relL2=1.1016 | stored_relL2=1.1106
+Saved best checkpoint.
+
+EPOCH 11 | loss=0.0007 | match=58.40% | mismatch=2.40% | query=7.20% | gap=+10.0770 | writer_relL2=1.1529 | stored_relL2=1.1607
+Saved best checkpoint.
+
+EPOCH 12 | loss=0.0004 | match=56.40% | mismatch=2.40% | query=7.20% | gap=+10.0509 | writer_relL2=1.1519 | stored_relL2=1.1604
+
+EPOCH 13 | loss=0.0003 | match=56.80% | mismatch=2.40% | query=7.20% | gap=+10.1787 | writer_relL2=1.1541 | stored_relL2=1.1623
+Saved best checkpoint.
+
+EPOCH 14 | loss=0.0003 | match=56.20% | mismatch=2.40% | query=7.20% | gap=+10.2521 | writer_relL2=1.1517 | stored_relL2=1.1602
+Saved best checkpoint.
+
+EPOCH 15 | loss=0.0002 | match=56.20% | mismatch=2.40% | query=7.20% | gap=+10.3812 | writer_relL2=1.1549 | stored_relL2=1.1636
+Saved best checkpoint.
+
+==========================================================================================
+FINAL TEST — BEST EPOCH 15
+==========================================================================================
+MATCHED:       50.60%
+MISMATCHED:    4.00%
+QUERY ONLY:    8.00%
+NLL GAP:       +9.555276
+POSITIVE GAP:  94.20%
+
+WRITER CANDIDATE GEOMETRY
+mean_norm               27.732006
+mean_pairwise_l2        30.534069
+relative_l2             1.101041
+mean_cosine             0.285158
+
+WRITER DELTA GEOMETRY
+mean_norm               39.154465
+mean_pairwise_l2        30.534069
+relative_l2             0.779836
+mean_cosine             0.640041
+
+AFTER ORTHOGONAL UPDATE
+mean_norm               27.021311
+mean_pairwise_l2        30.079027
+relative_l2             1.113159
+mean_cosine             0.279484
+
+FINAL STORED VALUE
+mean_norm               27.651680
+mean_pairwise_l2        30.730473
+relative_l2             1.111342
+mean_cosine             0.279879
+
+==========================================================================================
+VERDICT
+==========================================================================================
+FAIL.
+Even with gate forced to 1, the CandidateWriter does not produce a sufficiently usable VALUE.
+This strongly points to the CandidateWriter formulation as the write-side bottleneck.
+
+Saved: outputs/candidate_writer_gate1/candidate_writer_gate1_results.json

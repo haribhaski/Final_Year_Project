@@ -1,0 +1,344 @@
+
+=============================================================================================================================
+TOKENIZER
+=============================================================================================================================
+Tokenizer: GPT2Tokenizer
+Vocabulary: 50257
+
+=============================================================================================================================
+LOAD FROZEN GPT-2
+=============================================================================================================================
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5865.49it/s]
+Compatible tensors: 236
+Missing tensors: 0
+GPT-2 / memory checkpoint frozen.
+
+=============================================================================================================================
+LOAD ADDRESS ENCODER
+=============================================================================================================================
+Address layer: 1
+Address dimension: 256
+Previous address Recall@1: 0.9710000157356262
+Address encoder frozen.
+
+=============================================================================================================================
+BUILD VALUE DECODER DATA
+=============================================================================================================================
+Train: 2400
+Validation: 480
+Held-out test: 800
+
+=============================================================================================================================
+EXTRACT VALUE TRAIN FEATURES
+=============================================================================================================================
+VALUE TRAIN: 100/2400
+VALUE TRAIN: 200/2400
+VALUE TRAIN: 300/2400
+VALUE TRAIN: 400/2400
+VALUE TRAIN: 500/2400
+VALUE TRAIN: 600/2400
+VALUE TRAIN: 700/2400
+VALUE TRAIN: 800/2400
+VALUE TRAIN: 900/2400
+VALUE TRAIN: 1000/2400
+VALUE TRAIN: 1100/2400
+VALUE TRAIN: 1200/2400
+VALUE TRAIN: 1300/2400
+VALUE TRAIN: 1400/2400
+VALUE TRAIN: 1500/2400
+VALUE TRAIN: 1600/2400
+VALUE TRAIN: 1700/2400
+VALUE TRAIN: 1800/2400
+VALUE TRAIN: 1900/2400
+VALUE TRAIN: 2000/2400
+VALUE TRAIN: 2100/2400
+VALUE TRAIN: 2200/2400
+VALUE TRAIN: 2300/2400
+VALUE TRAIN: 2400/2400
+
+=============================================================================================================================
+EXTRACT VALUE VALID FEATURES
+=============================================================================================================================
+VALUE VALID: 100/480
+VALUE VALID: 200/480
+VALUE VALID: 300/480
+VALUE VALID: 400/480
+VALUE VALID: 480/480
+
+=============================================================================================================================
+EXTRACT VALUE TEST FEATURES
+=============================================================================================================================
+VALUE TEST: 100/800
+VALUE TEST: 200/800
+VALUE TEST: 300/800
+VALUE TEST: 400/800
+VALUE TEST: 500/800
+VALUE TEST: 600/800
+VALUE TEST: 700/800
+VALUE TEST: 800/800
+
+=============================================================================================================================
+TRAIN VALUE DECODER
+=============================================================================================================================
+Epoch 01/50 | loss=1.4609 | val acc=61.04% | val MRR=0.7547
+Epoch 10/50 | loss=0.0120 | val acc=83.13% | val MRR=0.8936
+Epoch 20/50 | loss=0.0048 | val acc=85.42% | val MRR=0.9075
+Epoch 30/50 | loss=0.0028 | val acc=86.46% | val MRR=0.9146
+Epoch 40/50 | loss=0.0018 | val acc=86.67% | val MRR=0.9158
+Epoch 50/50 | loss=0.0013 | val acc=87.08% | val MRR=0.9180
+
+Best epoch: 48
+
+Split             Accuracy         MRR     Mean Rank
+TRAIN              100.00%      1.0000        1.0000
+VALID               87.50%      0.9203        1.2729
+TEST                79.00%      0.8547        1.8312
+
+=============================================================================================================================
+STANDALONE KEY-VALUE MEMORY TEST
+=============================================================================================================================
+Fact counts: [2, 4, 8]
+Episodes per size: 200
+Address key dimension: 256
+Value dimension: 768
+
+=============================================================================================================================
+2-FACT EPISODES
+=============================================================================================================================
+Example episode:
+
+STORED FACTS
+slot 0 | Episode-CKUXRRU-995660 -> apple
+slot 1 | Episode-UELZQXV-153074 -> horse
+
+QUERY RESULTS
+
+Entity: Episode-CKUXRRU-995660
+True: apple
+Correct slot: 0
+Addressed slot: 0
+Address rank: 1
+Addressed value prediction: chair
+Oracle value prediction: chair
+Wrong value prediction: horse
+
+Entity: Episode-UELZQXV-153074
+True: horse
+Correct slot: 1
+Addressed slot: 1
+Address rank: 1
+Addressed value prediction: horse
+Oracle value prediction: horse
+Wrong value prediction: chair
+Completed 50/200
+Completed 100/200
+Completed 150/200
+Completed 200/200
+
+2-FACT RESULTS
+Address accuracy: 100.00%
+Address MRR: 1.000000
+Addressed value answer accuracy: 75.75%
+Oracle value answer accuracy: 75.75%
+Wrong value answer accuracy: 1.00%
+Answer chance: 6.25%
+
+=============================================================================================================================
+4-FACT EPISODES
+=============================================================================================================================
+Example episode:
+
+STORED FACTS
+slot 0 | Episode-YITFVJS-794686 -> falcon
+slot 1 | Episode-UCQENZI-082736 -> purple
+slot 2 | Episode-KJWEVBU-076344 -> apple
+slot 3 | Episode-ABOMECA-725436 -> blue
+
+QUERY RESULTS
+
+Entity: Episode-YITFVJS-794686
+True: falcon
+Correct slot: 0
+Addressed slot: 0
+Address rank: 1
+Addressed value prediction: falcon
+Oracle value prediction: falcon
+Wrong value prediction: purple
+
+Entity: Episode-UCQENZI-082736
+True: purple
+Correct slot: 1
+Addressed slot: 1
+Address rank: 1
+Addressed value prediction: purple
+Oracle value prediction: purple
+Wrong value prediction: falcon
+
+Entity: Episode-KJWEVBU-076344
+True: apple
+Correct slot: 2
+Addressed slot: 2
+Address rank: 1
+Addressed value prediction: chair
+Oracle value prediction: chair
+Wrong value prediction: falcon
+
+Entity: Episode-ABOMECA-725436
+True: blue
+Correct slot: 3
+Addressed slot: 3
+Address rank: 1
+Addressed value prediction: blue
+Oracle value prediction: blue
+Wrong value prediction: falcon
+Completed 50/200
+Completed 100/200
+Completed 150/200
+Completed 200/200
+
+4-FACT RESULTS
+Address accuracy: 100.00%
+Address MRR: 1.000000
+Addressed value answer accuracy: 73.38%
+Oracle value answer accuracy: 73.38%
+Wrong value answer accuracy: 1.50%
+Answer chance: 6.25%
+
+=============================================================================================================================
+8-FACT EPISODES
+=============================================================================================================================
+Example episode:
+
+STORED FACTS
+slot 0 | Episode-WCKVMJT-677715 -> blue
+slot 1 | Episode-GTWEZEN-792687 -> garden
+slot 2 | Episode-LODIGRO-014512 -> orange
+slot 3 | Episode-WMTMDVE-806242 -> piano
+slot 4 | Episode-ZCJWCHL-766910 -> silver
+slot 5 | Episode-ZONSKYU-248022 -> purple
+slot 6 | Episode-WXGQPZV-094566 -> chair
+slot 7 | Episode-MZGIUNC-317574 -> tiger
+
+QUERY RESULTS
+
+Entity: Episode-WCKVMJT-677715
+True: blue
+Correct slot: 0
+Addressed slot: 0
+Address rank: 1
+Addressed value prediction: blue
+Oracle value prediction: blue
+Wrong value prediction: garden
+
+Entity: Episode-GTWEZEN-792687
+True: garden
+Correct slot: 1
+Addressed slot: 1
+Address rank: 1
+Addressed value prediction: garden
+Oracle value prediction: garden
+Wrong value prediction: blue
+
+Entity: Episode-LODIGRO-014512
+True: orange
+Correct slot: 2
+Addressed slot: 2
+Address rank: 1
+Addressed value prediction: purple
+Oracle value prediction: purple
+Wrong value prediction: blue
+
+Entity: Episode-WMTMDVE-806242
+True: piano
+Correct slot: 3
+Addressed slot: 3
+Address rank: 1
+Addressed value prediction: piano
+Oracle value prediction: piano
+Wrong value prediction: blue
+
+Entity: Episode-ZCJWCHL-766910
+True: silver
+Correct slot: 4
+Addressed slot: 4
+Address rank: 1
+Addressed value prediction: silver
+Oracle value prediction: silver
+Wrong value prediction: blue
+
+Entity: Episode-ZONSKYU-248022
+True: purple
+Correct slot: 5
+Addressed slot: 5
+Address rank: 1
+Addressed value prediction: purple
+Oracle value prediction: purple
+Wrong value prediction: blue
+
+Entity: Episode-WXGQPZV-094566
+True: chair
+Correct slot: 6
+Addressed slot: 6
+Address rank: 1
+Addressed value prediction: chair
+Oracle value prediction: chair
+Wrong value prediction: blue
+
+Entity: Episode-MZGIUNC-317574
+True: tiger
+Correct slot: 7
+Addressed slot: 7
+Address rank: 1
+Addressed value prediction: tiger
+Oracle value prediction: tiger
+Wrong value prediction: blue
+Completed 50/200
+Completed 100/200
+Completed 150/200
+Completed 200/200
+
+8-FACT RESULTS
+Address accuracy: 100.00%
+Address MRR: 1.000000
+Addressed value answer accuracy: 74.69%
+Oracle value answer accuracy: 74.69%
+Wrong value answer accuracy: 2.06%
+Answer chance: 6.25%
+
+=============================================================================================================================
+FINAL KEY-VALUE MEMORY RESULTS
+=============================================================================================================================
+Facts          Address    Addr MRR   Addressed Ans    Oracle Ans   Wrong Ans    Chance
+2              100.00%      1.0000          75.75%        75.75%       1.00%     6.25%
+4              100.00%      1.0000          73.38%        73.38%       1.50%     6.25%
+8              100.00%      1.0000          74.69%        74.69%       2.06%     6.25%
+
+=============================================================================================================================
+AUTOMATIC DIAGNOSIS
+=============================================================================================================================
+Mean address accuracy: 100.00%
+Mean addressed answer accuracy: 74.60%
+Mean oracle value accuracy: 74.60%
+Mean wrong-value accuracy: 1.52%
+
+RESULT: KEY-VALUE DESIGN IS PROMISING.
+
+Addressing is strong and semantic values contain useful answer information.
+
+The value representation or decoder may still need refinement before integration.
+
+=============================================================================================================================
+SAVE RESULTS
+=============================================================================================================================
+Saved: outputs/standalone_key_value_memory_test.pt
+
+=============================================================================================================================
+EXPERIMENT COMPLETE
+=============================================================================================================================
+GPT-2 frozen.
+Address encoder frozen.
+Original CandidateWriter not used for value storage.
+Vector/scalar gate not used.
+Only standalone value decoder was trained.
+No models/ files were modified.
+No original checkpoints were overwritten.

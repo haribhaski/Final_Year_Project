@@ -1,0 +1,46 @@
+{
+  "reader_training": {
+    "best_epoch": 10,
+    "best_validation": 99.60000514984131
+  },
+  "single_slot": {
+    "matched": 90.80000519752502,
+    "mismatched": 0.6000000052154064,
+    "nll_gap": 8.552543640136719
+  },
+  "multi_slot": {
+    "one_shot_accuracy": 96.1,
+    "sequential_accuracy": 96.2,
+    "one_shot_vs_sequential": {
+      "mean_l2": 0.2487618914246559,
+      "relative_l2": 0.009087844548746943,
+      "cosine": 0.9999782955646515
+    },
+    "slot0_after_later_writes": {
+      "mean_l2": 0.3912472817897797,
+      "relative_l2": 0.014290034040808678,
+      "cosine": 0.999944233417511
+    },
+    "sequential_position_accuracy": {
+      "0": 95.2,
+      "1": 96.0,
+      "2": 96.8,
+      "3": 96.8
+    }
+  },
+  "arguments": {
+    "checkpoint": "outputs/retrieval_gradient_test/checkpoint_best.pt",
+    "value_checkpoint": "outputs/read_side_all_tests/known_good_value_encoder.pt",
+    "model_name": "gpt2",
+    "train_examples": 4000,
+    "validation_examples": 500,
+    "test_examples": 500,
+    "test_episodes": 250,
+    "facts_per_episode": 4,
+    "reader_epochs": 15,
+    "reader_learning_rate": 0.0003,
+    "batch_size": 128,
+    "seed": 2090,
+    "output_dir": "outputs/oracle_multislot_storage_test"
+  }
+}

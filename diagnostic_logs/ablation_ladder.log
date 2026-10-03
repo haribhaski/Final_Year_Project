@@ -1,0 +1,140 @@
+Chance: 7.69%
+Chance CE: 2.5649
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 4565.93it/s]
+
+Precomputing train...
+  500/4000
+  1000/4000
+  1500/4000
+  2000/4000
+  2500/4000
+  3000/4000
+  3500/4000
+  4000/4000
+
+Precomputing validation...
+  500/500
+
+Precomputing test...
+  500/500
+
+##########################################################################################
+STARTING LEVEL 0
+##########################################################################################
+L0 E01 | loss=2.2816 | match=91.80% | mismatch=1.00% | gap=+1.8205
+L0 E02 | loss=0.5692 | match=100.00% | mismatch=0.00% | gap=+6.3310
+L0 E03 | loss=0.0631 | match=100.00% | mismatch=0.00% | gap=+8.4990
+L0 E04 | loss=0.0187 | match=100.00% | mismatch=0.00% | gap=+9.3546
+L0 E05 | loss=0.0105 | match=100.00% | mismatch=0.00% | gap=+9.8989
+L0 E06 | loss=0.0070 | match=100.00% | mismatch=0.00% | gap=+10.3250
+L0 E07 | loss=0.0051 | match=100.00% | mismatch=0.00% | gap=+10.6735
+L0 E08 | loss=0.0039 | match=100.00% | mismatch=0.00% | gap=+10.9836
+L0 E09 | loss=0.0031 | match=100.00% | mismatch=0.00% | gap=+11.2510
+L0 E10 | loss=0.0025 | match=100.00% | mismatch=0.00% | gap=+11.4905
+L0 E11 | loss=0.0021 | match=100.00% | mismatch=0.00% | gap=+11.7080
+L0 E12 | loss=0.0018 | match=100.00% | mismatch=0.00% | gap=+11.9072
+L0 E13 | loss=0.0015 | match=100.00% | mismatch=0.00% | gap=+12.0887
+L0 E14 | loss=0.0013 | match=100.00% | mismatch=0.00% | gap=+12.2595
+L0 E15 | loss=0.0012 | match=100.00% | mismatch=0.00% | gap=+12.4182
+
+LEVEL 0 TEST
+{'matched_accuracy': 100.0, 'mismatched_accuracy': 0.0, 'query_only_accuracy': 7.200000435113907, 'matched_loss': 0.0010114040924236178, 'mismatched_loss': 12.330246925354004, 'nll_gap': 12.329235076904297}
+
+##########################################################################################
+STARTING LEVEL 1
+##########################################################################################
+L1 E01 | loss=1.8762 | match=100.00% | mismatch=0.00% | gap=+4.9867
+L1 E02 | loss=0.0382 | match=100.00% | mismatch=0.00% | gap=+11.5207
+L1 E03 | loss=0.0006 | match=100.00% | mismatch=0.00% | gap=+13.3138
+L1 E04 | loss=0.0002 | match=100.00% | mismatch=0.00% | gap=+13.9032
+L1 E05 | loss=0.0001 | match=100.00% | mismatch=0.00% | gap=+14.2113
+L1 E06 | loss=0.0001 | match=100.00% | mismatch=0.00% | gap=+14.4304
+L1 E07 | loss=0.0001 | match=100.00% | mismatch=0.00% | gap=+14.6012
+L1 E08 | loss=0.0001 | match=100.00% | mismatch=0.00% | gap=+14.7386
+L1 E09 | loss=0.0001 | match=100.00% | mismatch=0.00% | gap=+14.8558
+L1 E10 | loss=0.0001 | match=100.00% | mismatch=0.00% | gap=+14.9567
+L1 E11 | loss=0.0001 | match=100.00% | mismatch=0.00% | gap=+15.0444
+L1 E12 | loss=0.0000 | match=100.00% | mismatch=0.00% | gap=+15.1226
+L1 E13 | loss=0.0000 | match=100.00% | mismatch=0.00% | gap=+15.1942
+L1 E14 | loss=0.0000 | match=100.00% | mismatch=0.00% | gap=+15.2583
+L1 E15 | loss=0.0000 | match=100.00% | mismatch=0.00% | gap=+15.3178
+
+LEVEL 1 TEST
+{'matched_accuracy': 100.0, 'mismatched_accuracy': 0.0, 'query_only_accuracy': 8.000000566244125, 'matched_loss': 5.490729381563142e-05, 'mismatched_loss': 15.333584785461426, 'nll_gap': 15.33353042602539}
+
+##########################################################################################
+STARTING LEVEL 2
+##########################################################################################
+L2 E01 | loss=2.8388 | match=8.80% | mismatch=8.80% | gap=+0.0148
+L2 E02 | loss=2.8041 | match=7.40% | mismatch=6.60% | gap=+0.0470
+L2 E03 | loss=2.6906 | match=42.40% | mismatch=4.40% | gap=+0.2390
+L2 E04 | loss=2.3052 | match=35.60% | mismatch=6.00% | gap=+0.8891
+L2 E05 | loss=1.7261 | match=59.80% | mismatch=3.00% | gap=+2.0397
+L2 E06 | loss=1.1553 | match=94.00% | mismatch=1.00% | gap=+3.5445
+L2 E07 | loss=0.6986 | match=100.00% | mismatch=0.00% | gap=+5.2322
+L2 E08 | loss=0.3742 | match=100.00% | mismatch=0.00% | gap=+6.9131
+L2 E09 | loss=0.1830 | match=100.00% | mismatch=0.00% | gap=+8.3790
+L2 E10 | loss=0.0945 | match=100.00% | mismatch=0.00% | gap=+9.5528
+L2 E11 | loss=0.0543 | match=100.00% | mismatch=0.00% | gap=+10.5001
+L2 E12 | loss=0.0345 | match=100.00% | mismatch=0.00% | gap=+11.2822
+L2 E13 | loss=0.0235 | match=100.00% | mismatch=0.00% | gap=+11.9215
+L2 E14 | loss=0.0169 | match=100.00% | mismatch=0.00% | gap=+12.4812
+L2 E15 | loss=0.0127 | match=100.00% | mismatch=0.00% | gap=+12.9693
+
+LEVEL 2 TEST
+{'matched_accuracy': 100.0, 'mismatched_accuracy': 0.0, 'query_only_accuracy': 7.800000160932541, 'matched_loss': 0.011950737796723843, 'mismatched_loss': 12.636832237243652, 'nll_gap': 12.624881744384766}
+
+##########################################################################################
+STARTING LEVEL 3
+##########################################################################################
+L3 E01 | loss=2.8388 | match=8.80% | mismatch=8.80% | gap=+0.0148
+L3 E02 | loss=2.8041 | match=10.80% | mismatch=6.60% | gap=+0.0472
+L3 E03 | loss=2.6894 | match=42.00% | mismatch=4.40% | gap=+0.2433
+L3 E04 | loss=2.2862 | match=35.40% | mismatch=6.20% | gap=+0.9543
+L3 E05 | loss=1.6351 | match=63.40% | mismatch=2.60% | gap=+2.4152
+L3 E06 | loss=0.9477 | match=96.60% | mismatch=0.40% | gap=+4.4494
+L3 E07 | loss=0.4621 | match=100.00% | mismatch=0.00% | gap=+6.2534
+L3 E08 | loss=0.2217 | match=100.00% | mismatch=0.00% | gap=+7.5830
+L3 E09 | loss=0.1127 | match=100.00% | mismatch=0.00% | gap=+8.5642
+L3 E10 | loss=0.0662 | match=100.00% | mismatch=0.00% | gap=+9.2968
+L3 E11 | loss=0.0438 | match=100.00% | mismatch=0.00% | gap=+9.8793
+L3 E12 | loss=0.0312 | match=100.00% | mismatch=0.00% | gap=+10.3644
+L3 E13 | loss=0.0235 | match=100.00% | mismatch=0.00% | gap=+10.7664
+L3 E14 | loss=0.0184 | match=100.00% | mismatch=0.00% | gap=+11.1217
+L3 E15 | loss=0.0147 | match=100.00% | mismatch=0.00% | gap=+11.4362
+
+LEVEL 3 TEST
+{'matched_accuracy': 100.0, 'mismatched_accuracy': 0.0, 'query_only_accuracy': 9.200000762939453, 'matched_loss': 0.014071211218833923, 'mismatched_loss': 11.193142890930176, 'nll_gap': 11.179072380065918}
+
+##########################################################################################
+STARTING LEVEL 4
+##########################################################################################
+L4 E01 | loss=2.8478 | match=8.80% | mismatch=8.80% | gap=+0.0000
+L4 E02 | loss=2.8343 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E03 | loss=2.8215 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E04 | loss=2.8216 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E05 | loss=2.8207 | match=8.20% | mismatch=8.00% | gap=+0.0000
+L4 E06 | loss=2.8173 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E07 | loss=2.8171 | match=8.60% | mismatch=8.60% | gap=+0.0000
+L4 E08 | loss=2.8184 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E09 | loss=2.8165 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E10 | loss=2.8160 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E11 | loss=2.8159 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E12 | loss=2.8153 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E13 | loss=2.8145 | match=9.60% | mismatch=9.60% | gap=+0.0000
+L4 E14 | loss=2.8143 | match=8.60% | mismatch=8.60% | gap=+0.0000
+L4 E15 | loss=2.8156 | match=9.60% | mismatch=9.60% | gap=+0.0000
+
+LEVEL 4 TEST
+{'matched_accuracy': 9.600000083446503, 'mismatched_accuracy': 9.600000083446503, 'query_only_accuracy': 7.000000029802322, 'matched_loss': 2.5710620880126953, 'mismatched_loss': 2.571058750152588, 'nll_gap': -3.5452844713290688e-06}
+
+====================================================================================================
+FINAL ABLATION LADDER
+====================================================================================================
+LEVEL            MATCH      MISMATCH       QUERY       NLL GAP
+--------------------------------------------------------------
+0              100.00%         0.00%       7.20%       12.3292
+1              100.00%         0.00%       8.00%       15.3335
+2              100.00%         0.00%       7.80%       12.6249
+3              100.00%         0.00%       9.20%       11.1791
+4                9.60%         9.60%       7.00%       -0.0000

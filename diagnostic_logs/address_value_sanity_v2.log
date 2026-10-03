@@ -1,0 +1,121 @@
+====================================================================================================
+REPAIRED MEMORY — INTEGRATED TRAINING
+====================================================================================================
+Device: cuda
+Checkpoint: outputs/retrieval_gradient_test/checkpoint_best.pt
+
+TRAINABLE:
+  CandidateWriter
+  VectorGate
+  MemoryReader + fusion
+  SlotRouter
+  AddressEncoder
+
+FROZEN:
+  GPT-2
+  LM head weights
+  MemoryBank
+  OrthogonalUpdate
+
+REPAIR:
+  write_count -> free-slot mask
+  straight-through top-1 routing
+  explicit answer-token loss
+  reader slot-address supervision
+  matched-vs-mismatched memory loss
+  minimum gate-strength penalty
+
+Classes: 13
+Candidate chance: 7.69%
+Loading original checkpoint...
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 3502.69it/s]
+Missing keys:
+   address_encoder.0.weight
+   address_encoder.0.bias
+   address_encoder.1.weight
+Unexpected keys:
+
+Precomputing train GPT-2 states...
+Precomputing validation GPT-2 states...
+Precomputing test GPT-2 states...
+
+Trainable parameter counts:
+Writer: 22,440,961
+Gate: 299,912
+Reader: 9,153,794
+Router: 1,485,704
+Address encoder: 591,360
+
+
+===============================================================================================
+PRETRAIN VALIDATION
+===============================================================================================
+FULL VOCAB ACC:       0.00%
+CANDIDATE ACC:        8.12%
+MISMATCH CANDIDATE:   8.12%
+QUERY-ONLY CANDIDATE: 7.81%
+MATCHED NLL:          15.0037
+MISMATCHED NLL:       15.0038
+NLL GAP:              +0.0001
+TARGET SLOT ATTENTION: 0.2500
+MEAN ACTIVE GATE:     0.5557
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.25]
+
+EPOCH 01
+train loss=10.5713 | answer=8.5211 | address=1.4971 | mismatch=1.0192 | gate=0.4195
+VAL candidate=7.19% | full=1.56% | mismatch=7.19% | query=7.81% | gap=+0.0193 | read_attn=0.2500 | gate=0.5326 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 02
+train loss=8.1541 | answer=6.0816 | address=1.5753 | mismatch=0.9875 | gate=0.6482
+VAL candidate=7.81% | full=3.12% | mismatch=7.19% | query=7.81% | gap=-0.0232 | read_attn=0.2500 | gate=0.7150 | collision=0.00%
+Saved best integrated checkpoint.
+
+EPOCH 03
+train loss=7.8932 | answer=5.8431 | address=1.5510 | mismatch=0.9969 | gate=0.7445
+VAL candidate=7.50% | full=2.81% | mismatch=7.50% | query=7.81% | gap=-0.0063 | read_attn=0.2500 | gate=0.7824 | collision=0.00%
+
+===============================================================================================
+FINAL TEST — DENSE READER (BEST EPOCH 2)
+===============================================================================================
+FULL VOCAB ACC:       4.06%
+CANDIDATE ACC:        8.44%
+MISMATCH CANDIDATE:   8.44%
+QUERY-ONLY CANDIDATE: 8.44%
+MATCHED NLL:          5.8417
+MISMATCHED NLL:       5.8218
+NLL GAP:              -0.0198
+TARGET SLOT ATTENTION: 0.2500
+MEAN ACTIVE GATE:     0.7159
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.0, 0.0, 0.25, 0.25, 0.0, 0.25, 0.25]
+
+===============================================================================================
+FINAL TEST — READER TOP-K=3
+===============================================================================================
+FULL VOCAB ACC:       4.06%
+CANDIDATE ACC:        8.44%
+MISMATCH CANDIDATE:   8.44%
+QUERY-ONLY CANDIDATE: 8.44%
+MATCHED NLL:          5.8394
+MISMATCHED NLL:       5.8198
+NLL GAP:              -0.0197
+TARGET SLOT ATTENTION: 0.2500
+MEAN ACTIVE GATE:     0.7159
+COLLISION RATE:       0.00%
+UNUSED SLOT FRACTION: 0.5000
+SLOT DISTRIBUTION:
+[0.0, 0.0, 0.0, 0.25, 0.25, 0.0, 0.25, 0.25]
+
+====================================================================================================
+FINAL INTEGRATION INTERPRETATION
+====================================================================================================
+READER ADDRESSING REMAINS WEAK.
+
+Saved checkpoint: outputs/repaired_memory_integration/checkpoint_best.pt
+Saved results: outputs/repaired_memory_integration/integration_results.json
